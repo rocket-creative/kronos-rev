@@ -118,13 +118,13 @@ export default function Footer() {
           </p>
           <nav className="flex items-center gap-4 sm:gap-6" aria-label="Legal links">
             <a
-              href="https://kronoshealth.co/privacy"
+              href="https://kronos-health.vercel.app/privacy"
               className="font-body text-white/50 text-[10px] sm:text-xs hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
             >
               Privacy Policy
             </a>
             <a
-              href="https://kronoshealth.co/terms"
+              href="https://kronos-health.vercel.app/terms"
               className="font-body text-white/50 text-[10px] sm:text-xs hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
             >
               Terms of Service

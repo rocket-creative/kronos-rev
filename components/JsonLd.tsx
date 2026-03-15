@@ -22,7 +22,7 @@ export function OrganizationSchema() {
     parentOrganization: {
       "@type": "Organization",
       name: "Kronos Health",
-      url: "https://kronoshealth.co",
+      url: "https://kronos-health.vercel.app",
     },
     founder: {
       "@type": "Person",

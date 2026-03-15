@@ -14,7 +14,7 @@ const navLinks = [
 ];
 
 const parentLink = {
-  href: "https://kronoshealth.co?utm_source=kronosrev&utm_medium=nav",
+  href: "https://kronos-health.vercel.app/?utm_source=kronosrev&utm_medium=nav",
   label: "Kronos Health",
 };
 
