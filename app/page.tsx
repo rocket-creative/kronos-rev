@@ -14,6 +14,7 @@ import {
 import { HeroBackground } from "@/components/HeroBackground";
 import { TrustSignal } from "@/components/TrustSignal";
 import { ContactForm } from "@/components/ContactForm";
+import { LogoImage } from "@/components/LogoImage";
 
 export const metadata: Metadata = {
   title: "Revenue Cycle Management & Payment Dispute Resolution | Kronos Revenue",
@@ -140,6 +141,9 @@ export default function HomePage() {
         <div className="relative z-10 min-h-[80vh] sm:min-h-screen flex items-center">
           <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-0">
             <div className="backdrop-blur-md bg-black/40 border border-white/10 p-8 sm:p-10 lg:p-14 max-w-xl">
+              <div className="mb-6 sm:mb-8">
+                <LogoImage width={180} textSize="text-2xl" priority />
+              </div>
               <p className="text-xs tracking-widest uppercase text-white/50 mb-4 sm:mb-6">
                 Revenue Cycle Management
               </p>
