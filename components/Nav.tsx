@@ -12,6 +12,11 @@ const navLinks = [
   { href: "#team", label: "Team" },
 ];
 
+const parentLink = {
+  href: "https://kronoshealth.co?utm_source=kronosrev&utm_medium=nav",
+  label: "Kronos Health",
+};
+
 export default function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -61,6 +66,14 @@ export default function Nav() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href={parentLink.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body text-xs text-white/25 hover:text-white/60 uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg border-l border-white/10 pl-8"
+            >
+              {parentLink.label}
+            </a>
           </div>
 
           {/* Right — CTA + hamburger */}
@@ -110,7 +123,7 @@ export default function Nav() {
                 {link.label}
               </Link>
             ))}
-            <div className="pt-4 sm:pt-6 border-t border-white/10">
+            <div className="pt-4 sm:pt-6 border-t border-white/10 flex flex-col gap-4">
               <Link
                 href="#contact"
                 className="inline-flex items-center gap-3 bg-kronos-cyan text-kronos-bg py-3 px-6 uppercase tracking-widest text-xs font-light hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
@@ -119,6 +132,14 @@ export default function Nav() {
                 Free Revenue Review
                 <ArrowRight className="w-3 h-3" aria-hidden="true" />
               </Link>
+              <a
+                href={parentLink.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-body text-xs text-white/30 hover:text-white/60 uppercase tracking-widest transition-colors"
+              >
+                ← {parentLink.label}
+              </a>
             </div>
           </div>
         </div>
