@@ -2,7 +2,15 @@ import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, IBM_Plex_Sans, Open_Sans } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { OrganizationSchema, ServiceSchema } from "@/components/JsonLd";
+import { MobileStickyCTA } from "@/components/MobileStickyCTA";
+import {
+  OrganizationSchema,
+  ServiceSchema,
+  WebSiteSchema,
+  BreadcrumbListSchema,
+  LocalBusinessSchema,
+  FAQPageSchema,
+} from "@/components/JsonLd";
 import SkipLink from "@/components/SkipLink";
 import "./globals.css";
 
@@ -39,11 +47,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Kronos Revenue — Expert Revenue Cycle Management",
-    template: "%s | Kronos Revenue",
+    default: "Revenue Cycle Management & IDR | Kronos Revenue",
+    template: "%s",
   },
   description:
-    "Expert arbitration and out of network dispute resolution support under the No Surprises Act. Kronos Revenue maximizes your reimbursements with full case management from negotiation through final arbitration.",
+    "Expert arbitration and out of network dispute resolution under the No Surprises Act. Maximize reimbursements with full case management. Request a free revenue review.",
   metadataBase: new URL("https://kronosrevenue.co"),
   alternates: {
     canonical: "https://kronosrevenue.co",
@@ -59,28 +67,28 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Kronos Revenue — Expert Revenue Cycle Management",
+    title: "Revenue Cycle Management & IDR | Kronos Revenue",
     description:
-      "Expert arbitration and out of network dispute resolution under the No Surprises Act. We maximize your reimbursements.",
+      "Expert arbitration and out of network dispute resolution under the No Surprises Act. Maximize reimbursements. Request a free revenue review.",
     url: "https://kronosrevenue.co",
     siteName: "Kronos Revenue",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://kronosrevenue.co/og-image.jpg",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Kronos Revenue — Expert Revenue Cycle Management",
+        alt: "Kronos Revenue — Revenue Cycle Management & IDR",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kronos Revenue — Expert Revenue Cycle Management",
+    title: "Revenue Cycle Management & IDR | Kronos Revenue",
     description:
-      "Expert arbitration and out of network dispute resolution under the No Surprises Act.",
-    images: ["https://kronosrevenue.co/twitter-image.jpg"],
+      "Expert arbitration and out of network dispute resolution under the No Surprises Act. Request a free revenue review.",
+    images: ["/twitter-image"],
   },
   robots: {
     index: true,
@@ -104,6 +112,10 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <OrganizationSchema />
+        <WebSiteSchema />
+        <BreadcrumbListSchema />
+        <LocalBusinessSchema />
+        <FAQPageSchema />
         <ServiceSchema
           name="Revenue Cycle Management & IDR Dispute Resolution"
           description="Expert arbitration and out of network dispute resolution support under the No Surprises Act. Complete case management from negotiation through final arbitration."
@@ -116,10 +128,11 @@ export default function RootLayout({
       >
         <SkipLink />
         <Nav />
-        <main id="main-content" className="pt-14 sm:pt-16 lg:pt-20" role="main">
+        <main id="main-content" className="pt-14 sm:pt-16 lg:pt-20 pb-24 lg:pb-0" role="main">
           {children}
         </main>
         <Footer />
+        <MobileStickyCTA />
       </body>
     </html>
   );

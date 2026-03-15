@@ -10,6 +10,7 @@ const navLinks = [
   { href: "#process", label: "How It Works" },
   { href: "#why-us", label: "Why Us" },
   { href: "#team", label: "Team" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 const parentLink = {

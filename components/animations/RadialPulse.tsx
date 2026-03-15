@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 interface RadialPulseProps {
@@ -9,11 +9,24 @@ interface RadialPulseProps {
   color?: string;
 }
 
+function usePrefersReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return prefersReducedMotion;
+}
+
 export function RadialPulse({
   className = "",
   ringCount = 6,
   color = "0, 255, 255",
 }: RadialPulseProps) {
+  const prefersReducedMotion = usePrefersReducedMotion();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | null>(null);
   const timeRef = useRef<{ value: number }>({ value: 0 });
@@ -33,6 +46,37 @@ export function RadialPulse({
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    if (prefersReducedMotion) {
+      const drawStatic = () => {
+        const rect = canvas.getBoundingClientRect();
+        ctx.clearRect(0, 0, rect.width, rect.height);
+        const centerX = rect.width * 0.3;
+        const centerY = rect.height * 0.5;
+        const gradient = ctx.createRadialGradient(
+          centerX, centerY, 0,
+          centerX, centerY, 80,
+        );
+        gradient.addColorStop(0, `rgba(${color}, 0.2)`);
+        gradient.addColorStop(0.5, `rgba(${color}, 0.1)`);
+        gradient.addColorStop(1, `rgba(${color}, 0)`);
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, 80, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+      };
+      const resizeCanvas = () => {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+        drawStatic();
+      };
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+      return () => window.removeEventListener("resize", resizeCanvas);
+    }
 
     const resizeCanvas = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -188,7 +232,7 @@ export function RadialPulse({
       }
       gsap.killTweensOf(timeRef.current);
     };
-  }, [ringCount, color]);
+  }, [ringCount, color, prefersReducedMotion]);
 
   return (
     <canvas

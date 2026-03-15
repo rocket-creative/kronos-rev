@@ -60,7 +60,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
       <div>
-        <label htmlFor="contact-name" className="sr-only">
+        <label htmlFor="contact-name" className="block font-body text-xs text-white/70 mb-1">
           Your Name
         </label>
         <input
@@ -74,7 +74,7 @@ export function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="contact-phone" className="sr-only">
+        <label htmlFor="contact-phone" className="block font-body text-xs text-white/70 mb-1">
           Phone Number
         </label>
         <input
@@ -88,7 +88,7 @@ export function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="contact-email" className="sr-only">
+        <label htmlFor="contact-email" className="block font-body text-xs text-white/70 mb-1">
           Email Address
         </label>
         <input
@@ -102,7 +102,7 @@ export function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="contact-org" className="sr-only">
+        <label htmlFor="contact-org" className="block font-body text-xs text-white/70 mb-1">
           Organization / Practice Name
         </label>
         <input
@@ -116,7 +116,7 @@ export function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="contact-message" className="sr-only">
+        <label htmlFor="contact-message" className="block font-body text-xs text-white/70 mb-1">
           Message (optional)
         </label>
         <textarea
@@ -137,7 +137,7 @@ export function ContactForm() {
         disabled={isSubmitting}
         className="w-full bg-kronos-cyan text-kronos-bg font-bold py-3 px-6 hover:bg-kronos-cyan/90 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-kronos-green"
       >
-        {isSubmitting ? "Sending..." : "Request a Demo"}
+        {isSubmitting ? "Sending..." : "Free Revenue Review"}
       </button>
     </form>
   );

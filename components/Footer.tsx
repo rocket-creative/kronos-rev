@@ -7,6 +7,7 @@ const anchorLinks = [
   { href: "#process", label: "How It Works" },
   { href: "#why-us", label: "Why Us" },
   { href: "#team", label: "Team" },
+  { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -88,7 +89,7 @@ export default function Footer() {
                 className="hover:text-kronos-cyan transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
                 aria-label="Follow us on LinkedIn"
               >
-                LIIG
+                LinkedIn
               </a>
             </nav>
           </div>
