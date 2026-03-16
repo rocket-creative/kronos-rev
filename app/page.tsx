@@ -142,20 +142,15 @@ export default function HomePage() {
         <div className="relative z-10 min-h-[80vh] sm:min-h-screen flex items-center">
           <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-0">
             <div className="backdrop-blur-md bg-black/40 border border-white/10 p-8 sm:p-10 lg:p-14 max-w-xl">
-              <div className="mb-6 sm:mb-8">
-                <LogoImage width={180} textSize="text-2xl" priority />
-              </div>
               <p className="text-xs tracking-widest uppercase text-white/50 mb-4 sm:mb-6">
                 Revenue Cycle Management
               </p>
 
               <h1
                 id="hero-heading"
-                className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white leading-none tracking-tight mb-4 sm:mb-6"
+                className="mb-6 sm:mb-8"
               >
-                Revenue
-                <br />
-                <span className="text-white/40">Cycle</span>
+                <LogoImage width={320} textSize="text-4xl" priority className="max-w-full" />
               </h1>
 
               <p className="font-body text-sm sm:text-base text-white/70 font-light leading-relaxed mb-6 sm:mb-8">
