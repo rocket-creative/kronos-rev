@@ -45,7 +45,7 @@ export default async function Image() {
             style={{
               width: 120,
               height: 2,
-              background: "#00FFFF",
+              background: "#00A896",
             }}
           />
           <div
