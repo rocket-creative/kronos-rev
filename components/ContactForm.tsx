@@ -70,7 +70,9 @@ export function ContactForm() {
           placeholder="Your Name"
           required
           autoComplete="name"
-          className="w-full bg-kronos-card border border-white/10 px-4 py-3 text-white placeholder:text-white/40 font-body text-sm hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
+          inputMode="text"
+          style={{ fontSize: "16px" }}
+          className="w-full h-12 bg-kronos-card border border-white/10 px-4 text-white placeholder:text-white/40 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
         />
       </div>
       <div>
@@ -84,7 +86,9 @@ export function ContactForm() {
           placeholder="Phone Number"
           required
           autoComplete="tel"
-          className="w-full bg-kronos-card border border-white/10 px-4 py-3 text-white placeholder:text-white/40 font-body text-sm hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
+          inputMode="tel"
+          style={{ fontSize: "16px" }}
+          className="w-full h-12 bg-kronos-card border border-white/10 px-4 text-white placeholder:text-white/40 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
         />
       </div>
       <div>
@@ -98,7 +102,9 @@ export function ContactForm() {
           placeholder="Email Address"
           required
           autoComplete="email"
-          className="w-full bg-kronos-card border border-white/10 px-4 py-3 text-white placeholder:text-white/40 font-body text-sm hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
+          inputMode="email"
+          style={{ fontSize: "16px" }}
+          className="w-full h-12 bg-kronos-card border border-white/10 px-4 text-white placeholder:text-white/40 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
         />
       </div>
       <div>
@@ -112,7 +118,9 @@ export function ContactForm() {
           placeholder="Organization / Practice Name"
           required
           autoComplete="organization"
-          className="w-full bg-kronos-card border border-white/10 px-4 py-3 text-white placeholder:text-white/40 font-body text-sm hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
+          inputMode="text"
+          style={{ fontSize: "16px" }}
+          className="w-full h-12 bg-kronos-card border border-white/10 px-4 text-white placeholder:text-white/40 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
         />
       </div>
       <div>
@@ -124,7 +132,8 @@ export function ContactForm() {
           name="message"
           placeholder="Message (optional)"
           rows={3}
-          className="w-full bg-kronos-card border border-white/10 px-4 py-3 text-white placeholder:text-white/40 font-body text-sm hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors resize-none"
+          style={{ fontSize: "16px" }}
+          className="w-full bg-kronos-card border border-white/10 px-4 py-3 text-white placeholder:text-white/40 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors resize-none"
         />
       </div>
       {error && (
@@ -135,7 +144,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-kronos-cyan text-kronos-bg font-bold py-3 px-6 hover:bg-kronos-cyan/90 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-kronos-green"
+        className="w-full min-h-[48px] bg-kronos-cyan text-kronos-bg font-bold py-3 px-6 hover:bg-kronos-cyan/90 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-kronos-green"
       >
         {isSubmitting ? "Sending..." : "Free Revenue Review"}
       </button>

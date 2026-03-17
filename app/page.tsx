@@ -134,12 +134,12 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section
-        className="relative min-h-[80vh] sm:min-h-screen bg-kronos-bg overflow-hidden"
+        className="relative min-h-[80dvh] sm:min-h-dvh bg-kronos-bg overflow-hidden pt-safe-top"
         aria-labelledby="hero-heading"
       >
         <HeroBackground color="0, 255, 255" />
 
-        <div className="relative z-10 min-h-[80vh] sm:min-h-screen flex items-center">
+        <div className="relative z-10 min-h-[80dvh] sm:min-h-dvh flex items-center">
           <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-0">
             <div className="backdrop-blur-md bg-black/40 border border-white/10 p-8 sm:p-10 lg:p-14 max-w-xl">
               <p className="text-xs tracking-widest uppercase text-white/50 mb-4 sm:mb-6">
@@ -192,7 +192,7 @@ export default function HomePage() {
               id="services-heading"
               className="font-heading text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white"
             >
-              <span className="bg-yellow-100 dark:bg-yellow-900/40">What services does Kronos Revenue offer?</span>
+              What services does Kronos Revenue offer?
             </h2>
           </header>
 
@@ -238,7 +238,7 @@ export default function HomePage() {
               id="process-heading"
               className="font-heading text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white"
             >
-              <span className="bg-yellow-100 dark:bg-yellow-900/40">How does the IDR process work?</span>
+              How does the IDR process work?
             </h2>
           </header>
 
@@ -315,7 +315,7 @@ export default function HomePage() {
                 id="why-heading"
                 className="font-heading text-xl sm:text-2xl lg:text-3xl xl:text-4xl text-white mb-4 sm:mb-6 lg:mb-8"
               >
-                <span className="bg-yellow-100 dark:bg-yellow-900/40">Why choose Kronos Revenue for revenue cycle management?</span>
+                Why choose Kronos Revenue for revenue cycle management?
               </h2>
 
               <div className="space-y-4 sm:space-y-6 lg:space-y-8">
@@ -329,7 +329,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h3 className="font-heading text-sm sm:text-base lg:text-lg text-white mb-1">
-                      <span className="bg-yellow-100 dark:bg-yellow-900/40">Do you work for providers?</span>
+                      Do you work for providers?
                     </h3>
                     <p className="font-body text-[10px] sm:text-xs lg:text-sm text-white/60 font-light">
                       Our mission is to protect your practice from underpayment and excessive administrative burden.
@@ -347,13 +347,13 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h3 className="font-heading text-sm sm:text-base lg:text-lg text-white mb-1">
-                      <span className="bg-yellow-100 dark:bg-yellow-900/40">Are you versed in the No Surprises Act?</span>
+                      Are you versed in the No Surprises Act?
                     </h3>
                     <p className="font-body text-[10px] sm:text-xs lg:text-sm text-white/60 font-light">
                       Our team is fully versed in the No Surprises Act (Pub. L. 116-260, Dec. 2020) and its evolving requirements.
                     </p>
                     <p className="font-body text-[9px] sm:text-[10px] text-white/40 font-light mt-2">
-                      <span className="bg-yellow-100 dark:bg-yellow-900/40">References: CMS No Surprises Act (cms.gov/nosurprises); Federal IDR (45 CFR 149.500).</span>
+                      References: CMS No Surprises Act (cms.gov/nosurprises); Federal IDR (45 CFR 149.500).
                     </p>
                   </div>
                 </div>
@@ -368,10 +368,10 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h3 className="font-heading text-sm sm:text-base lg:text-lg text-white mb-1">
-                      <span className="bg-yellow-100 dark:bg-yellow-900/40">How do you maximize reimbursement?</span>
+                      How do you maximize reimbursement?
                     </h3>
                     <p className="font-body text-[10px] sm:text-xs lg:text-sm text-white/60 font-light">
-                      With deep clinical and regulatory expertise, we prepare strong, <span className="bg-yellow-100 dark:bg-yellow-900/40">evidence based</span> submissions.
+                      With deep clinical and regulatory expertise, we prepare strong, evidence based submissions.
                     </p>
                   </div>
                 </div>
@@ -396,7 +396,7 @@ export default function HomePage() {
               id="team-heading"
               className="font-heading text-xl sm:text-2xl lg:text-3xl xl:text-4xl text-white"
             >
-              <span className="bg-yellow-100 dark:bg-yellow-900/40">Who is on the Kronos Revenue team?</span>
+              Who is on the Kronos Revenue team?
             </h2>
           </header>
 
@@ -457,42 +457,42 @@ export default function HomePage() {
           <dl className="space-y-6 sm:space-y-8">
             <div>
               <dt className="font-heading text-sm sm:text-base lg:text-lg text-white mb-2">
-                <span className="bg-yellow-100 dark:bg-yellow-900/40">What is the No Surprises Act and how does it affect my practice?</span>
+                What is the No Surprises Act and how does it affect my practice?
               </dt>
               <dd className="font-body text-xs sm:text-sm text-white/60 font-light leading-relaxed">
-                <span className="bg-yellow-100 dark:bg-yellow-900/40">The No Surprises Act (2020) protects patients from surprise medical bills for out of network care. It also establishes a federal Independent Dispute Resolution (IDR) process so providers can challenge low insurer payments. We help you navigate this process and maximize reimbursements.</span>
+                The No Surprises Act (2020) protects patients from surprise medical bills for out of network care. It also establishes a federal Independent Dispute Resolution (IDR) process so providers can challenge low insurer payments. We help you navigate this process and maximize reimbursements.
               </dd>
             </div>
             <div>
               <dt className="font-heading text-sm sm:text-base lg:text-lg text-white mb-2">
-                <span className="bg-yellow-100 dark:bg-yellow-900/40">What is Independent Dispute Resolution (IDR)?</span>
+                What is Independent Dispute Resolution (IDR)?
               </dt>
               <dd className="font-body text-xs sm:text-sm text-white/60 font-light leading-relaxed">
-                <span className="bg-yellow-100 dark:bg-yellow-900/40">IDR is a federal arbitration process where a neutral party reviews your payment dispute with an insurer and makes a binding determination. We handle the entire process from submission through final award.</span>
+                IDR is a federal arbitration process where a neutral party reviews your payment dispute with an insurer and makes a binding determination. We handle the entire process from submission through final award.
               </dd>
             </div>
             <div>
               <dt className="font-heading text-sm sm:text-base lg:text-lg text-white mb-2">
-                <span className="bg-yellow-100 dark:bg-yellow-900/40">How long does the IDR process take?</span>
+                How long does the IDR process take?
               </dt>
               <dd className="font-body text-xs sm:text-sm text-white/60 font-light leading-relaxed">
-                <span className="bg-yellow-100 dark:bg-yellow-900/40">Timelines vary by case complexity and portal volume. We track all deadlines and ensure your case moves through negotiation and IDR without costly delays.</span>
+                Timelines vary by case complexity and portal volume. We track all deadlines and ensure your case moves through negotiation and IDR without costly delays.
               </dd>
             </div>
             <div>
               <dt className="font-heading text-sm sm:text-base lg:text-lg text-white mb-2">
-                <span className="bg-yellow-100 dark:bg-yellow-900/40">What types of cases do you handle?</span>
+                What types of cases do you handle?
               </dt>
               <dd className="font-body text-xs sm:text-sm text-white/60 font-light leading-relaxed">
-                <span className="bg-yellow-100 dark:bg-yellow-900/40">We handle out of network payment disputes, including emergency and nonemergency care, across specialties. Our team manages negotiation, IDR submission, and post arbitration follow up.</span>
+                We handle out of network payment disputes, including emergency and nonemergency care, across specialties. Our team manages negotiation, IDR submission, and post arbitration follow up.
               </dd>
             </div>
             <div>
               <dt className="font-heading text-sm sm:text-base lg:text-lg text-white mb-2">
-                <span className="bg-yellow-100 dark:bg-yellow-900/40">How do I get started?</span>
+                How do I get started?
               </dt>
               <dd className="font-body text-xs sm:text-sm text-white/60 font-light leading-relaxed">
-                <span className="bg-yellow-100 dark:bg-yellow-900/40">Call us at (914) 705 6830 for a free revenue review. We will assess your situation and outline next steps.</span>
+                Call us at (914) 705 6830 for a free revenue review. We will assess your situation and outline next steps.
               </dd>
             </div>
           </dl>

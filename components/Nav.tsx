@@ -36,12 +36,26 @@ export default function Nav() {
     }
   }, [mobileMenuOpen]);
 
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileMenuOpen]);
+
   const handleAnchorClick = () => {
     setMobileMenuOpen(false);
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-kronos-bg/90 backdrop-blur-md border-b border-white/5">
+    <header className="fixed top-0 w-full z-50 bg-kronos-bg/90 backdrop-blur-md border-b border-white/5 pt-safe-top">
       <nav
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         aria-label="Main navigation"
@@ -118,7 +132,7 @@ export default function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block font-body text-sm text-white/60 hover:text-white uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan py-2"
+                className="flex items-center min-h-[44px] font-body text-sm text-white/60 hover:text-white uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
                 onClick={handleAnchorClick}
               >
                 {link.label}
