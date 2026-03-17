@@ -3,6 +3,7 @@ import { Bebas_Neue, IBM_Plex_Sans, Open_Sans } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
+import { PageTransition } from "@/components/animations";
 import {
   OrganizationSchema,
   ServiceSchema,
@@ -129,7 +130,7 @@ export default function RootLayout({
         <SkipLink />
         <Nav />
         <main id="main-content" className="pt-14 sm:pt-16 lg:pt-20 pb-24 lg:pb-0" role="main">
-          {children}
+          <PageTransition>{children}</PageTransition>
         </main>
         <Footer />
         <MobileStickyCTA />

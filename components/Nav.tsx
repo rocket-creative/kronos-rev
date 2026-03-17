@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { LogoImage } from "@/components/LogoImage";
+import { useNavScrollEffect, useMobileMenuAnimation } from "@/components/animations";
 
 const navLinks = [
   { href: "#services", label: "Services" },
@@ -21,20 +22,8 @@ const parentLink = {
 export default function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!menuRef.current) return;
-    const menu = menuRef.current;
-    if (mobileMenuOpen) {
-      menu.style.opacity = "0";
-      menu.style.transform = "translateY(-8px)";
-      requestAnimationFrame(() => {
-        menu.style.transition = "opacity 0.25s ease, transform 0.25s ease";
-        menu.style.opacity = "1";
-        menu.style.transform = "translateY(0)";
-      });
-    }
-  }, [mobileMenuOpen]);
+  const navRef = useNavScrollEffect();
+  useMobileMenuAnimation(mobileMenuOpen, menuRef);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -55,7 +44,7 @@ export default function Nav() {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-kronos-bg/90 backdrop-blur-md border-b border-white/5 pt-safe-top">
+    <header ref={navRef} className="fixed top-0 w-full z-50 bg-kronos-bg/90 backdrop-blur-md border-b border-white/5 pt-safe-top">
       <nav
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         aria-label="Main navigation"
