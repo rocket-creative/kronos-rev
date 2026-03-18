@@ -6,7 +6,7 @@
 
   --kronos-bg: #0A0A0A;
   --kronos-card: #161616;
-  --kronos-cyan: #00A550;
+  --kronos-cyan: #00843D;
   --kronos-gray-100: #F5F5F5;
   --kronos-gray-200: #E5E5E5;
   --kronos-gray-300: #D4D4D4;
@@ -18,7 +18,7 @@
   --kronos-gray-900: #171717;
   --kronos-text-dark: #171717;
   --kronos-lavender: #D4B8E8;
-  --kronos-green: #00A550;
+  --kronos-green: #00843D;
 }
 
 @theme inline {
