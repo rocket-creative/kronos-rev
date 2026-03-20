@@ -24,7 +24,7 @@ function usePrefersReducedMotion() {
 export function RadialPulse({
   className = "",
   ringCount = 6,
-  color = "0, 168, 150",
+  color = "0, 132, 61",
 }: RadialPulseProps) {
   const prefersReducedMotion = usePrefersReducedMotion();
   const canvasRef = useRef<HTMLCanvasElement>(null);

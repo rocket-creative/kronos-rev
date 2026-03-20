@@ -15,7 +15,7 @@ interface HeroBackgroundProps {
 export function HeroBackground({ color, className = "" }: HeroBackgroundProps) {
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`} aria-hidden="true">
-      <RadialPulse color={color || "0, 168, 150"} />
+      <RadialPulse color={color || "0, 132, 61"} />
     </div>
   );
 }

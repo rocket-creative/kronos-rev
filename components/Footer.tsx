@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-5">
             <Link
               href="/"
-              className="inline-block mb-4 sm:mb-6 hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-kronos-cyan focus:ring-offset-2 focus:ring-offset-kronos-bg"
+              className="inline-block mb-4 sm:mb-6 hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg"
               aria-label="Kronos Revenue — Home"
             >
               <LogoImage width={120} textSize="text-lg" />
@@ -103,7 +103,7 @@ export default function Footer() {
             </p>
             <Link
               href="#contact"
-              className="inline-flex items-center gap-3 bg-kronos-cyan text-kronos-bg py-3 px-6 uppercase tracking-widest text-xs font-light hover:gap-5 transition-all w-fit focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-kronos-bg"
+              className="inline-flex items-center gap-3 bg-kronos-cyan text-kronos-bg py-3 px-6 uppercase tracking-widest text-xs font-light hover:gap-5 transition-all w-fit focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg"
             >
               Contact Us
               <ArrowRight className="w-3 h-3" aria-hidden="true" />
