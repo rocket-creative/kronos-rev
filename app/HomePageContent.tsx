@@ -88,11 +88,6 @@ const teamMembers = [
     image: "/team/camila-nicasio.png",
   },
   {
-    name: "Nicole Cedeno",
-    title: "Revenue Cycle Specialist",
-    image: "/team/nicole-cedeno.png",
-  },
-  {
     name: "Soily Rivera",
     title: "Revenue Cycle Specialist",
     image: "/team/soily-rivera.png",
@@ -414,7 +409,6 @@ export default function HomePageContent() {
           <TrustSignal
             author="Heisha Rivera"
             credentials="Director of Revenue Cycle, 20+ Years Experience"
-            reviewedBy="Dr. John M. Abrahams, M.D."
             lastUpdated="2026-03-01"
           />
         </div>
@@ -506,7 +500,6 @@ export default function HomePageContent() {
               <TrustSignal
                 author="Heisha Rivera"
                 credentials="Director of Revenue Cycle"
-                reviewedBy="Dr. John M. Abrahams, M.D."
                 className="mb-4 sm:mb-6"
               />
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
