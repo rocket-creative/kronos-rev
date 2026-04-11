@@ -11,6 +11,10 @@ import {
   Shield,
   DollarSign,
   ArrowRight,
+  Brain,
+  Clock,
+  BarChart3,
+  AlertTriangle,
 } from "lucide-react";
 import { HeroBackground } from "@/components/HeroBackground";
 import { TrustSignal } from "@/components/TrustSignal";
@@ -97,6 +101,7 @@ const teamMembers = [
 export default function HomePageContent() {
   const heroRef = useHeroAnimation();
   const servicesRef = useStaggeredCards();
+  const sydraRef = useStaggeredCards();
   const processRef = useStaggeredCards();
   const teamRef = useStaggeredCards();
   const whyRef = useSectionReveal();
@@ -195,6 +200,112 @@ export default function HomePageContent() {
                 </article>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Sydra Feature */}
+      <section
+        ref={sydraRef}
+        id="sydra"
+        className="py-12 sm:py-16 lg:py-24 bg-kronos-bg relative overflow-hidden"
+        aria-labelledby="sydra-heading"
+      >
+        {/* Subtle radial accent */}
+        <div
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(0,132,61,0.08)_0%,_transparent_60%)]"
+          aria-hidden="true"
+        />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Coming Soon badge */}
+          <div className="flex items-center gap-2 mb-6 sm:mb-8">
+            <span className="inline-flex items-center gap-1.5 bg-kronos-cyan/10 border border-kronos-cyan/30 px-3 py-1.5">
+              <AlertTriangle className="w-3 h-3 text-kronos-cyan" aria-hidden="true" />
+              <span className="font-body text-[10px] uppercase tracking-widest text-kronos-cyan">
+                Coming Soon — Beta
+              </span>
+            </span>
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+            {/* Left: Content */}
+            <div className="lg:col-span-6">
+              <p data-section-header className="text-xs tracking-widest uppercase text-white/40 mb-4">
+                Introducing
+              </p>
+              <h2
+                id="sydra-heading"
+                className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white mb-4 sm:mb-6 leading-none"
+              >
+                SYDRA
+              </h2>
+              <p className="font-body text-sm sm:text-base text-white/60 font-light leading-relaxed mb-6 sm:mb-8 max-w-lg">
+                AI powered IDR submission platform built for surgical practices. Sydra automates the entire No Surprises Act dispute workflow — from deadline tracking to submission drafts — so your team recovers more revenue with less effort.
+              </p>
+
+              <div className="grid grid-cols-1 gap-3 sm:gap-4 mb-8 sm:mb-10">
+                {[
+                  { icon: Brain, label: "AI generated submissions in minutes, not days" },
+                  { icon: Clock, label: "Automated deadline tracking — never miss a 4 day window" },
+                  { icon: BarChart3, label: "Win rate analytics by CPT code and insurer" },
+                ].map(({ icon: Icon, label }) => (
+                  <div key={label} className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-kronos-cyan/10 flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-3.5 h-3.5 text-kronos-cyan/70" strokeWidth={1.5} aria-hidden="true" />
+                    </div>
+                    <span className="font-body text-xs sm:text-sm text-white/70 font-light">{label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Link
+                href="/sydra"
+                className="inline-flex items-center gap-3 bg-kronos-cyan text-kronos-bg py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-bold hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg"
+              >
+                Learn About Sydra
+                <ArrowRight className="w-3 h-3" aria-hidden="true" />
+              </Link>
+            </div>
+
+            {/* Right: Feature cards */}
+            <div data-stagger-card className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              {[
+                {
+                  icon: Brain,
+                  title: "AI Submissions",
+                  description: "Custom IDR drafts built from your clinical data, credentials, and market rates.",
+                },
+                {
+                  icon: Clock,
+                  title: "Deadline Alerts",
+                  description: "Statutory windows tracked automatically — including federal holidays.",
+                },
+                {
+                  icon: BarChart3,
+                  title: "Analytics Dashboard",
+                  description: "Track win rates, recovered dollars, and insurer patterns in real time.",
+                },
+                {
+                  icon: Shield,
+                  title: "HIPAA Compliant",
+                  description: "AWS infrastructure. Encrypted PHI. Audit logs. Compliance by design.",
+                },
+              ].map(({ icon: Icon, title, description }) => (
+                <div
+                  key={title}
+                  className="bg-kronos-gray-800/60 border border-white/5 p-4 sm:p-5 hover:border-kronos-cyan/20 transition-colors"
+                >
+                  <div className="w-8 h-8 bg-kronos-cyan/10 flex items-center justify-center mb-3">
+                    <Icon className="w-3.5 h-3.5 text-kronos-cyan/60" strokeWidth={1.5} aria-hidden="true" />
+                  </div>
+                  <h3 className="font-heading text-sm sm:text-base text-white mb-1">{title}</h3>
+                  <p className="font-body text-[10px] sm:text-xs text-white/50 font-light leading-relaxed">
+                    {description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

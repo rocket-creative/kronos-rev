@@ -14,6 +14,8 @@ const navLinks = [
   { href: "#faq", label: "FAQ" },
 ];
 
+const sydraLink = { href: "/sydra", label: "Sydra" };
+
 const parentLink = {
   href: "https://kronos-health.vercel.app/?utm_source=kronosrev&utm_medium=nav",
   label: "Kronos Health",
@@ -70,6 +72,13 @@ export default function Nav() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href={sydraLink.href}
+              className="font-body text-xs text-kronos-cyan/80 hover:text-kronos-cyan uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg border-l border-white/10 pl-8 flex items-center gap-1.5"
+            >
+              {sydraLink.label}
+              <span className="text-[8px] bg-kronos-cyan/20 text-kronos-cyan px-1 py-0.5 tracking-wider">BETA</span>
+            </Link>
             <a
               href={parentLink.href}
               target="_blank"
@@ -127,6 +136,14 @@ export default function Nav() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href={sydraLink.href}
+              className="flex items-center gap-2 min-h-[44px] font-body text-sm text-kronos-cyan/80 hover:text-kronos-cyan uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
+              onClick={handleAnchorClick}
+            >
+              {sydraLink.label}
+              <span className="text-[8px] bg-kronos-cyan/20 text-kronos-cyan px-1 py-0.5 tracking-wider">BETA</span>
+            </Link>
             <div className="pt-4 sm:pt-6 border-t border-white/10 flex flex-col gap-4">
               <Link
                 href="#contact"
