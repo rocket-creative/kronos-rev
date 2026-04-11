@@ -12,6 +12,7 @@ import {
   CheckCircle,
   AlertTriangle,
   Plug,
+  Lock,
 } from "lucide-react";
 import { useSectionReveal, useStaggeredCards, useHeroAnimation } from "@/components/animations";
 
@@ -149,14 +150,26 @@ export default function SydraPageContent() {
 
             <p
               data-hero-description
-              className="font-body text-base sm:text-lg lg:text-xl text-white/70 font-light leading-relaxed mb-4 max-w-2xl"
+              className="font-body text-base sm:text-lg lg:text-xl text-white/70 font-light leading-relaxed mb-6 max-w-2xl"
             >
               AI powered IDR submission platform for the No Surprises Act. From case intake and deadline tracking to AI generated submissions — Sydra automates the entire IDR workflow so your practice can fight more cases and recover more revenue.
             </p>
 
-            <p data-hero-description className="font-body text-sm text-white/40 font-light mb-8 sm:mb-10">
-              Built for surgical specialties. Designed for compliance.
-            </p>
+            {/* Claude AI + HIPAA badge */}
+            <div data-hero-description className="flex flex-wrap items-center gap-3 mb-8 sm:mb-10">
+              <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-2">
+                <Lock className="w-3 h-3 text-kronos-cyan flex-shrink-0" aria-hidden="true" />
+                <span className="font-body text-xs text-white/70 font-light tracking-wide">
+                  HIPAA Compliant
+                </span>
+              </div>
+              <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-2">
+                <Brain className="w-3 h-3 text-kronos-cyan flex-shrink-0" aria-hidden="true" />
+                <span className="font-body text-xs text-white/70 font-light tracking-wide">
+                  Powered by Claude AI
+                </span>
+              </div>
+            </div>
 
             <div data-hero-cta className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
@@ -172,6 +185,71 @@ export default function SydraPageContent() {
               >
                 See Features
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Claude AI Landmark Statement */}
+      <section
+        className="bg-kronos-cyan py-16 sm:py-20 lg:py-28 relative overflow-hidden"
+        aria-labelledby="claude-statement-heading"
+      >
+        {/* Large background text */}
+        <div
+          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+          aria-hidden="true"
+        >
+          <span className="font-heading text-[120px] sm:text-[180px] lg:text-[240px] xl:text-[320px] text-kronos-bg/10 leading-none whitespace-nowrap">
+            FIRST
+          </span>
+        </div>
+
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="font-body text-xs uppercase tracking-widest text-kronos-bg/60 mb-6 sm:mb-8">
+            A Healthcare First
+          </p>
+
+          <h2
+            id="claude-statement-heading"
+            className="font-heading text-4xl sm:text-6xl lg:text-7xl xl:text-8xl text-kronos-bg leading-none mb-6 sm:mb-8"
+          >
+            The First HIPAA Compliant<br />IDR Tool Powered<br />by Claude AI
+          </h2>
+
+          <p className="font-body text-sm sm:text-base lg:text-lg text-kronos-bg/70 font-light max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10">
+            Sydra runs on Anthropic&apos;s Claude — one of the most capable and safety focused AI models available — deployed on HIPAA eligible AWS infrastructure. Your PHI never leaves encrypted storage. Every action is logged. Every submission is audit ready.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 lg:gap-12">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-kronos-bg/15 flex items-center justify-center flex-shrink-0">
+                <Lock className="w-4 h-4 text-kronos-bg" strokeWidth={1.5} aria-hidden="true" />
+              </div>
+              <div className="text-left">
+                <p className="font-heading text-sm sm:text-base text-kronos-bg leading-none">HIPAA Eligible AWS</p>
+                <p className="font-body text-[10px] text-kronos-bg/60 font-light mt-0.5">Encrypted at rest and in transit</p>
+              </div>
+            </div>
+            <div className="hidden sm:block w-px h-10 bg-kronos-bg/20" aria-hidden="true" />
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-kronos-bg/15 flex items-center justify-center flex-shrink-0">
+                <Brain className="w-4 h-4 text-kronos-bg" strokeWidth={1.5} aria-hidden="true" />
+              </div>
+              <div className="text-left">
+                <p className="font-heading text-sm sm:text-base text-kronos-bg leading-none">Claude AI by Anthropic</p>
+                <p className="font-body text-[10px] text-kronos-bg/60 font-light mt-0.5">Purpose built for healthcare reasoning</p>
+              </div>
+            </div>
+            <div className="hidden sm:block w-px h-10 bg-kronos-bg/20" aria-hidden="true" />
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-kronos-bg/15 flex items-center justify-center flex-shrink-0">
+                <Shield className="w-4 h-4 text-kronos-bg" strokeWidth={1.5} aria-hidden="true" />
+              </div>
+              <div className="text-left">
+                <p className="font-heading text-sm sm:text-base text-kronos-bg leading-none">Zero PHI in Logs</p>
+                <p className="font-body text-[10px] text-kronos-bg/60 font-light mt-0.5">Audit ready from day one</p>
+              </div>
             </div>
           </div>
         </div>

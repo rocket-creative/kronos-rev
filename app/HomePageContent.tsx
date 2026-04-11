@@ -208,101 +208,129 @@ export default function HomePageContent() {
       <section
         ref={sydraRef}
         id="sydra"
-        className="py-12 sm:py-16 lg:py-24 bg-kronos-bg relative overflow-hidden"
+        className="bg-kronos-cyan relative overflow-hidden"
         aria-labelledby="sydra-heading"
       >
-        {/* Subtle radial accent */}
+        {/* Large background ghost text */}
         <div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(0,132,61,0.08)_0%,_transparent_60%)]"
+          className="absolute inset-0 flex items-center justify-end pointer-events-none select-none overflow-hidden pr-4 sm:pr-8"
           aria-hidden="true"
-        />
+        >
+          <span className="font-heading text-[100px] sm:text-[160px] lg:text-[220px] xl:text-[280px] text-kronos-bg/10 leading-none">
+            SYDRA
+          </span>
+        </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Coming Soon badge */}
-          <div className="flex items-center gap-2 mb-6 sm:mb-8">
-            <span className="inline-flex items-center gap-1.5 bg-kronos-cyan/10 border border-kronos-cyan/30 px-3 py-1.5">
-              <AlertTriangle className="w-3 h-3 text-kronos-cyan" aria-hidden="true" />
-              <span className="font-body text-[10px] uppercase tracking-widest text-kronos-cyan">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-28">
+
+          {/* Top badges row */}
+          <div className="flex flex-wrap items-center gap-2 mb-8 sm:mb-10">
+            <span className="inline-flex items-center gap-1.5 bg-kronos-bg/15 px-3 py-1.5">
+              <AlertTriangle className="w-3 h-3 text-kronos-bg/70" aria-hidden="true" />
+              <span className="font-body text-[10px] uppercase tracking-widest text-kronos-bg/70">
                 Coming Soon — Beta
+              </span>
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-kronos-bg/15 px-3 py-1.5">
+              <Brain className="w-3 h-3 text-kronos-bg/70" aria-hidden="true" />
+              <span className="font-body text-[10px] uppercase tracking-widest text-kronos-bg/70">
+                Powered by Claude AI
+              </span>
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-kronos-bg/15 px-3 py-1.5">
+              <Shield className="w-3 h-3 text-kronos-bg/70" aria-hidden="true" />
+              <span className="font-body text-[10px] uppercase tracking-widest text-kronos-bg/70">
+                HIPAA Compliant
               </span>
             </span>
           </div>
 
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
             {/* Left: Content */}
-            <div className="lg:col-span-6">
-              <p data-section-header className="text-xs tracking-widest uppercase text-white/40 mb-4">
+            <div className="lg:col-span-7">
+              <p className="font-body text-[10px] uppercase tracking-widest text-kronos-bg/50 mb-3">
                 Introducing
               </p>
+
               <h2
                 id="sydra-heading"
-                className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white mb-4 sm:mb-6 leading-none"
+                className="font-heading text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-kronos-bg leading-none mb-5 sm:mb-6"
               >
                 SYDRA
               </h2>
-              <p className="font-body text-sm sm:text-base text-white/60 font-light leading-relaxed mb-6 sm:mb-8 max-w-lg">
-                AI powered IDR submission platform built for surgical practices. Sydra automates the entire No Surprises Act dispute workflow — from deadline tracking to submission drafts — so your team recovers more revenue with less effort.
+
+              {/* The big claim */}
+              <p className="font-heading text-xl sm:text-2xl lg:text-3xl text-kronos-bg/80 leading-tight mb-5 sm:mb-6 max-w-xl">
+                The first HIPAA compliant IDR tool powered by Claude AI
               </p>
 
-              <div className="grid grid-cols-1 gap-3 sm:gap-4 mb-8 sm:mb-10">
+              <p className="font-body text-sm sm:text-base text-kronos-bg/65 font-light leading-relaxed mb-8 sm:mb-10 max-w-lg">
+                Sydra automates the entire No Surprises Act dispute workflow — from deadline tracking to AI generated submissions — so your practice fights more cases and recovers more revenue, with zero PHI exposure.
+              </p>
+
+              <div className="grid grid-cols-1 gap-3 mb-8 sm:mb-10">
                 {[
-                  { icon: Brain, label: "AI generated submissions in minutes, not days" },
-                  { icon: Clock, label: "Automated deadline tracking — never miss a 4 day window" },
+                  { icon: Brain, label: "Claude AI drafts each submission from your clinical data in minutes" },
+                  { icon: Clock, label: "Automated deadline tracking — never lose the 4 day IDR window" },
                   { icon: BarChart3, label: "Win rate analytics by CPT code and insurer" },
                 ].map(({ icon: Icon, label }) => (
                   <div key={label} className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-kronos-cyan/10 flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-3.5 h-3.5 text-kronos-cyan/70" strokeWidth={1.5} aria-hidden="true" />
+                    <div className="w-8 h-8 bg-kronos-bg/15 flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-3.5 h-3.5 text-kronos-bg" strokeWidth={1.5} aria-hidden="true" />
                     </div>
-                    <span className="font-body text-xs sm:text-sm text-white/70 font-light">{label}</span>
+                    <span className="font-body text-xs sm:text-sm text-kronos-bg/75 font-light">{label}</span>
                   </div>
                 ))}
               </div>
 
               <Link
                 href="/sydra"
-                className="inline-flex items-center gap-3 bg-kronos-cyan text-kronos-bg py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-bold hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg"
+                className="inline-flex items-center gap-3 bg-kronos-bg text-white py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-bold hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-bg focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-cyan"
               >
-                Learn About Sydra
+                See Sydra in Action
                 <ArrowRight className="w-3 h-3" aria-hidden="true" />
               </Link>
             </div>
 
             {/* Right: Feature cards */}
-            <div data-stagger-card className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <div data-stagger-card className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
               {[
                 {
                   icon: Brain,
-                  title: "AI Submissions",
-                  description: "Custom IDR drafts built from your clinical data, credentials, and market rates.",
-                },
-                {
-                  icon: Clock,
-                  title: "Deadline Alerts",
-                  description: "Statutory windows tracked automatically — including federal holidays.",
-                },
-                {
-                  icon: BarChart3,
-                  title: "Analytics Dashboard",
-                  description: "Track win rates, recovered dollars, and insurer patterns in real time.",
+                  title: "Claude AI Submissions",
+                  description: "Custom IDR drafts built from your clinical data, credentials, and market rates — not templates.",
                 },
                 {
                   icon: Shield,
-                  title: "HIPAA Compliant",
-                  description: "AWS infrastructure. Encrypted PHI. Audit logs. Compliance by design.",
+                  title: "HIPAA Compliant by Design",
+                  description: "AWS encrypted infrastructure. Zero PHI in logs. Audit ready from day one.",
+                },
+                {
+                  icon: Clock,
+                  title: "Deadline Automation",
+                  description: "Every statutory window tracked automatically, including federal holidays.",
+                },
+                {
+                  icon: BarChart3,
+                  title: "Real Time Analytics",
+                  description: "Track win rates, recovered dollars, and insurer patterns as they happen.",
                 },
               ].map(({ icon: Icon, title, description }) => (
                 <div
                   key={title}
-                  className="bg-kronos-gray-800/60 border border-white/5 p-4 sm:p-5 hover:border-kronos-cyan/20 transition-colors"
+                  className="bg-kronos-bg/15 border border-kronos-bg/10 p-4 sm:p-5 hover:bg-kronos-bg/25 transition-colors"
                 >
-                  <div className="w-8 h-8 bg-kronos-cyan/10 flex items-center justify-center mb-3">
-                    <Icon className="w-3.5 h-3.5 text-kronos-cyan/60" strokeWidth={1.5} aria-hidden="true" />
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-kronos-bg/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Icon className="w-3.5 h-3.5 text-kronos-bg" strokeWidth={1.5} aria-hidden="true" />
+                    </div>
+                    <div>
+                      <h3 className="font-heading text-sm sm:text-base text-kronos-bg mb-1">{title}</h3>
+                      <p className="font-body text-[10px] sm:text-xs text-kronos-bg/60 font-light leading-relaxed">
+                        {description}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="font-heading text-sm sm:text-base text-white mb-1">{title}</h3>
-                  <p className="font-body text-[10px] sm:text-xs text-white/50 font-light leading-relaxed">
-                    {description}
-                  </p>
                 </div>
               ))}
             </div>
