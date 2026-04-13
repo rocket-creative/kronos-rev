@@ -25,6 +25,37 @@ export async function POST(request: NextRequest) {
 
     const { name, phone, email, organization, message, source } = parsed.data;
 
+    const isSydra = source === "sydra_waitlist";
+
+    const subject = isSydra
+      ? `[Sydra] Beta Waitlist — ${organization} — ${name}`
+      : `[Kronos Revenue] Revenue Review Request — ${organization} — ${name}`;
+
+    const formType = isSydra ? "Sydra Beta Waitlist" : "Revenue Review Request";
+    const site = isSydra ? "kronos-rev.vercel.app/sydra" : "kronosrevenue.co";
+
+    const emailBody = `
+================================================================================
+KRONOS REVENUE — ${formType.toUpperCase()}
+================================================================================
+
+SITE:       ${site}
+FORM:       ${formType}
+
+SUBMITTED:  ${new Date().toLocaleString("en-US", { timeZone: "America/New_York", dateStyle: "full", timeStyle: "short" })} ET
+
+--------------------------------------------------------------------------------
+CONTACT DETAILS
+--------------------------------------------------------------------------------
+
+Name:         ${name}
+Email:        ${email}
+Phone:        ${phone}
+Organization: ${organization}
+${message?.trim() ? `\n--------------------------------------------------------------------------------\nNOTES\n--------------------------------------------------------------------------------\n\n${message.trim()}\n` : ""}
+================================================================================
+    `.trim();
+
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
@@ -39,19 +70,8 @@ export async function POST(request: NextRequest) {
       from: "Kronos Revenue <noreply@kronosrevenue.co>",
       to: ["info@kronoshealth.co"],
       replyTo: email,
-      subject: `Revenue Review Request — ${organization}`,
-      html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #00A896;">New Revenue Review Request</h2>
-          <p><strong>Source:</strong> ${source ?? "kronos-revenue landing page"}</p>
-          <hr style="border-color: #262626;" />
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Phone:</strong> ${phone}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Organization:</strong> ${organization}</p>
-          ${message ? `<p><strong>Message:</strong> ${message}</p>` : ""}
-        </div>
-      `,
+      subject,
+      text: emailBody,
     });
 
     return NextResponse.json({ success: true }, { status: 200 });

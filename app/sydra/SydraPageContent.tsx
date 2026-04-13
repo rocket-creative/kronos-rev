@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { SydraWaitlistForm } from "@/components/SydraWaitlistForm";
 import {
   ArrowRight,
   Brain,
@@ -449,25 +450,21 @@ export default function SydraPageContent() {
             </h2>
 
             <p className="font-body text-sm sm:text-base text-white/80 font-light mb-8 sm:mb-10 leading-relaxed">
-              Sydra is in beta testing and nearly ready to launch. Contact Kronos Revenue now to get early access and be among the first practices to automate your IDR workflow.
+              Sydra is in beta testing and nearly ready to launch. Join the waitlist to get early access and be among the first practices to automate your IDR workflow.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <SydraWaitlistForm />
+
+            <p className="font-body text-xs text-white/50 text-center mt-4">
+              Or call us directly:{" "}
               <Link
                 href="tel:+19147056830"
-                className="inline-flex items-center justify-center gap-3 bg-kronos-bg text-white py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-light hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-green"
+                className="underline hover:text-white/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
                 aria-label="Call Kronos Revenue at (914) 705 6830"
               >
                 (914) 705 6830
-                <ArrowRight className="w-3 h-3" aria-hidden="true" />
               </Link>
-              <Link
-                href="/#contact"
-                className="inline-flex items-center justify-center gap-3 border border-white text-white py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-light hover:bg-white/10 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-green"
-              >
-                Request Early Access
-              </Link>
-            </div>
+            </p>
           </div>
         </div>
       </section>
