@@ -12,6 +12,7 @@ const navLinks = [
   { href: "#why-us", label: "Why Us" },
   { href: "#team", label: "Team" },
   { href: "#faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const sydraLink = { href: "/sydra", label: "Sydra" };

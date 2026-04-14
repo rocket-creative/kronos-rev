@@ -66,18 +66,22 @@ export function WebSiteSchema() {
   );
 }
 
-export function BreadcrumbListSchema() {
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+export function BreadcrumbListSchema({ items }: { items?: BreadcrumbItem[] } = {}) {
+  const list = items ?? [{ name: "Home", url: "https://kronosrevenue.co" }];
   const schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://kronosrevenue.co",
-      },
-    ],
+    itemListElement: list.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
   };
 
   return (

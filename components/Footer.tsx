@@ -9,6 +9,7 @@ const anchorLinks = [
   { href: "#team", label: "Team" },
   { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contact" },
+  { href: "/contact", label: "Contact Page" },
 ];
 
 export default function Footer() {

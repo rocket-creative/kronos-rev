@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Send } from "lucide-react";
 
-export function ContactForm() {
+export function ContactForm({ source = "revenue_review_request" }: { source?: string } = {}) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -26,7 +26,7 @@ export function ContactForm() {
           email: formData.get("email"),
           organization: formData.get("organization"),
           message: formData.get("message") || "Revenue review request",
-          source: "revenue_review_request",
+          source,
         }),
       });
 
