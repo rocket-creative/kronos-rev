@@ -312,8 +312,8 @@ export async function POST(request: NextRequest) {
 
     const resend = new Resend(apiKey);
     const { error: sendError } = await resend.emails.send({
-      from: "Kronos Revenue <noreply@kronosrevenue.co>",
-      to: ["info@kronosrevenue.co"],
+      from: "Kronos Revenue <noreply@kronoshealth.co>",
+      to: ["info@kronoshealth.co"],
       replyTo,
       subject: emailPayload.subject,
       text: emailPayload.text,
