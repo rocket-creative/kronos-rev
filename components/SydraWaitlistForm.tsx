@@ -49,20 +49,30 @@ export function SydraWaitlistForm() {
     setIsSubmitting(true);
 
     try {
+      // #region agent log
+      const payload = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        organization: formData.get("organization"),
+        message: formData.get("message") || "",
+        source: "sydra_waitlist",
+      };
+      console.log("[DEBUG] Sydra form payload:", JSON.stringify(payload));
+      // #endregion
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.get("name"),
-          email: formData.get("email"),
-          phone: formData.get("phone"),
-          organization: formData.get("organization"),
-          message: formData.get("message") || "",
-          source: "sydra_waitlist",
-        }),
+        body: JSON.stringify(payload),
       });
 
-      if (!response.ok) throw new Error("Failed to submit");
+      if (!response.ok) {
+        // #region agent log
+        const errBody = await response.json().catch(() => null);
+        console.error("[DEBUG] API error response:", response.status, JSON.stringify(errBody));
+        // #endregion
+        throw new Error("Failed to submit");
+      }
 
       setIsSubmitted(true);
       form.reset();
