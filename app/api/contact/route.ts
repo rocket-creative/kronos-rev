@@ -342,7 +342,7 @@ export async function POST(request: NextRequest) {
     fetch('http://127.0.0.1:7477/ingest/06e2e710-1e77-43e9-bbf6-5e273d6b57f8',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'94e5f0'},body:JSON.stringify({sessionId:'94e5f0',location:'route.ts:post-send',message:'Resend result',data:{sendData:sendResult.data,sendError:sendResult.error},timestamp:Date.now(),hypothesisId:'B,C,E'})}).catch(()=>{});
     // #endregion
     if (sendResult.error) {
-      return NextResponse.json({ error: "Email send failed", details: String(sendResult.error) }, { status: 500 });
+      return NextResponse.json({ error: "Email send failed", details: JSON.stringify(sendResult.error) }, { status: 500 });
     }
 
     return NextResponse.json({ success: true }, { status: 200 });
