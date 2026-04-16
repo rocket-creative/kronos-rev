@@ -267,7 +267,16 @@ export async function POST(request: NextRequest) {
     const body: unknown = await request.json();
     const raw = body as Record<string, unknown>;
 
+    // #region agent log
+    fetch('http://127.0.0.1:7477/ingest/06e2e710-1e77-43e9-bbf6-5e273d6b57f8',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'94e5f0'},body:JSON.stringify({sessionId:'94e5f0',location:'route.ts:entry',message:'POST received',data:{form_type:raw.form_type,source:(raw as Record<string,unknown>).source,has_name:!!raw.name,has_contact_name:!!raw.contact_name,keys:Object.keys(raw as Record<string,unknown>)},timestamp:Date.now(),hypothesisId:'D'})}).catch(()=>{});
+    // #endregion
+
     const apiKey = process.env.RESEND_API_KEY;
+
+    // #region agent log
+    fetch('http://127.0.0.1:7477/ingest/06e2e710-1e77-43e9-bbf6-5e273d6b57f8',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'94e5f0'},body:JSON.stringify({sessionId:'94e5f0',location:'route.ts:apikey',message:'API key check',data:{has_key:!!apiKey,key_prefix:apiKey?apiKey.slice(0,8)+'...':'MISSING'},timestamp:Date.now(),hypothesisId:'A'})}).catch(()=>{});
+    // #endregion
+
     if (!apiKey) {
       return NextResponse.json({ error: "Email service not configured" }, { status: 500 });
     }
@@ -305,19 +314,36 @@ export async function POST(request: NextRequest) {
     } else {
       // Legacy ContactForm (name / organization / source fields)
       const p = ContactSchema.safeParse(body);
+      // #region agent log
+      fetch('http://127.0.0.1:7477/ingest/06e2e710-1e77-43e9-bbf6-5e273d6b57f8',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'94e5f0'},body:JSON.stringify({sessionId:'94e5f0',location:'route.ts:contact-schema',message:'ContactSchema parse result',data:{success:p.success,errors:p.success?null:p.error.flatten()},timestamp:Date.now(),hypothesisId:'D'})}).catch(()=>{});
+      // #endregion
       if (!p.success) return NextResponse.json({ error: "Invalid form data", details: p.error.flatten() }, { status: 400 });
       emailPayload = buildContactEmail(p.data);
       replyTo = p.data.email;
     }
 
     const resend = new Resend(apiKey);
-    await resend.emails.send({
-      from: "Kronos Revenue <noreply@kronosrevenue.co>",
-      to: ["info@kronosrevenue.co"],
-      replyTo,
-      subject: emailPayload.subject,
-      text: emailPayload.text,
-    });
+    // #region agent log
+    fetch('http://127.0.0.1:7477/ingest/06e2e710-1e77-43e9-bbf6-5e273d6b57f8',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'94e5f0'},body:JSON.stringify({sessionId:'94e5f0',location:'route.ts:pre-send',message:'About to call Resend',data:{to:'info@kronosrevenue.co',from:'noreply@kronosrevenue.co',subject:emailPayload.subject},timestamp:Date.now(),hypothesisId:'B,C'})}).catch(()=>{});
+    // #endregion
+    let sendResult: {data: unknown; error: unknown} = {data: null, error: null};
+    try {
+      sendResult = await resend.emails.send({
+        from: "Kronos Revenue <noreply@kronosrevenue.co>",
+        to: ["info@kronosrevenue.co"],
+        replyTo,
+        subject: emailPayload.subject,
+        text: emailPayload.text,
+      });
+    } catch (sendErr) {
+      sendResult = {data: null, error: String(sendErr)};
+    }
+    // #region agent log
+    fetch('http://127.0.0.1:7477/ingest/06e2e710-1e77-43e9-bbf6-5e273d6b57f8',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'94e5f0'},body:JSON.stringify({sessionId:'94e5f0',location:'route.ts:post-send',message:'Resend result',data:{sendData:sendResult.data,sendError:sendResult.error},timestamp:Date.now(),hypothesisId:'B,C,E'})}).catch(()=>{});
+    // #endregion
+    if (sendResult.error) {
+      return NextResponse.json({ error: "Email send failed", details: String(sendResult.error) }, { status: 500 });
+    }
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch {
