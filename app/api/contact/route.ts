@@ -313,7 +313,7 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(apiKey);
     await resend.emails.send({
       from: "Kronos Revenue <noreply@kronosrevenue.co>",
-      to: ["info@kronosrevenue.com"],
+      to: ["info@kronosrevenue.co"],
       replyTo,
       subject: emailPayload.subject,
       text: emailPayload.text,
