@@ -245,7 +245,7 @@ function buildContactEmail(d: z.infer<typeof ContactSchema>) {
       : `[Kronos Revenue] Revenue Review Request — ${d.organization} — ${d.name}`,
     text: [
       header(label),
-      `\nSITE:       ${isSydra ? "kronosrevenue.co/sydra" : "kronosrevenue.co"}`,
+      `\nSITE:       ${isSydra ? "www.kronosrevenue.health/sydra" : "www.kronosrevenue.health"}`,
       `SUBMITTED:  ${ts()}\n`,
       DIV, "CONTACT", DIV,
       `Name:         ${d.name}`,

@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   description:
     "Expert arbitration and out of network dispute resolution under the No Surprises Act. Maximize reimbursements with full case management. Request a free revenue review.",
   alternates: {
-    canonical: "https://kronosrevenue.co",
+    canonical: "https://www.kronosrevenue.health",
   },
   openGraph: {
     title: "Revenue Cycle Management & IDR | Kronos Revenue",
     description:
       "Expert arbitration and out of network dispute resolution under the No Surprises Act. Maximize reimbursements. Request a free revenue review.",
-    url: "https://kronosrevenue.co",
+    url: "https://www.kronosrevenue.health",
     siteName: "Kronos Revenue",
     type: "website",
     images: [

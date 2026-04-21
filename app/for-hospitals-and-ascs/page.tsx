@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   description:
     "Centralized No Surprises Act dispute resolution and out-of-network billing for multi-facility hospital groups and ASC management companies. One partner, every location.",
   alternates: {
-    canonical: "https://kronosrevenue.co/for-hospitals-and-ascs",
+    canonical: "https://www.kronosrevenue.health/for-hospitals-and-ascs",
   },
   openGraph: {
     title: "OON Billing Partner for Hospital Groups and ASC Management Companies | Kronos Revenue",
     description:
       "Centralized NSA dispute resolution and OON billing for multi-facility hospital groups and ASC companies.",
-    url: "https://kronosrevenue.co/for-hospitals-and-ascs",
+    url: "https://www.kronosrevenue.health/for-hospitals-and-ascs",
     siteName: "Kronos Revenue",
     type: "website",
   },
@@ -37,8 +37,8 @@ export default function ForHospitalsAndASCsPage() {
     <>
       <BreadcrumbListSchema
         items={[
-          { name: "Home", url: "https://kronosrevenue.co" },
-          { name: "For Hospitals and ASCs", url: "https://kronosrevenue.co/for-hospitals-and-ascs" },
+          { name: "Home", url: "https://www.kronosrevenue.health" },
+          { name: "For Hospitals and ASCs", url: "https://www.kronosrevenue.health/for-hospitals-and-ascs" },
         ]}
       />
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">

@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   description:
     "Out-of-network surgeons being short-paid by United, Cigna, Anthem, or Aetna. Kronos Revenue handles your NSA IDR disputes from filing through final arbitration.",
   alternates: {
-    canonical: "https://kronosrevenue.co/no-surprises-act",
+    canonical: "https://www.kronosrevenue.health/no-surprises-act",
   },
   openGraph: {
     title: "No Surprises Act Dispute Resolution for Surgeons | Kronos Revenue",
     description:
       "OON surgeons short-paid by United, Cigna, Anthem, or Aetna. We handle NSA IDR disputes from filing through arbitration.",
-    url: "https://kronosrevenue.co/no-surprises-act",
+    url: "https://www.kronosrevenue.health/no-surprises-act",
     siteName: "Kronos Revenue",
     type: "website",
   },
@@ -37,8 +37,8 @@ export default function NoSurprisesActPage() {
     <>
       <BreadcrumbListSchema
         items={[
-          { name: "Home", url: "https://kronosrevenue.co" },
-          { name: "No Surprises Act", url: "https://kronosrevenue.co/no-surprises-act" },
+          { name: "Home", url: "https://www.kronosrevenue.health" },
+          { name: "No Surprises Act", url: "https://www.kronosrevenue.health/no-surprises-act" },
         ]}
       />
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">

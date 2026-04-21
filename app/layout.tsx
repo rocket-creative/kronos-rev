@@ -53,12 +53,12 @@ export const metadata: Metadata = {
   },
   description:
     "Expert arbitration and out of network dispute resolution under the No Surprises Act. Maximize reimbursements with full case management. Request a free revenue review.",
-  metadataBase: new URL("https://kronosrevenue.co"),
+  metadataBase: new URL("https://www.kronosrevenue.health"),
   alternates: {
-    canonical: "https://kronosrevenue.co",
+    canonical: "https://www.kronosrevenue.health",
   },
   authors: [
-    { name: "Heisha Rivera", url: "https://kronosrevenue.co" },
+    { name: "Heisha Rivera", url: "https://www.kronosrevenue.health" },
   ],
   creator: "Kronos Revenue",
   publisher: "Kronos Revenue",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     title: "Revenue Cycle Management & IDR | Kronos Revenue",
     description:
       "Expert arbitration and out of network dispute resolution under the No Surprises Act. Maximize reimbursements. Request a free revenue review.",
-    url: "https://kronosrevenue.co",
+    url: "https://www.kronosrevenue.health",
     siteName: "Kronos Revenue",
     locale: "en_US",
     type: "website",
@@ -120,7 +120,7 @@ export default function RootLayout({
         <ServiceSchema
           name="Revenue Cycle Management & IDR Dispute Resolution"
           description="Expert arbitration and out of network dispute resolution support under the No Surprises Act. Complete case management from negotiation through final arbitration."
-          url="https://kronosrevenue.co"
+          url="https://www.kronosrevenue.health"
           serviceType="Healthcare Revenue Services"
         />
       </head>

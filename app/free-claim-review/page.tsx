@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   description:
     "Get a free review of your out-of-network surgical claims. Kronos Revenue identifies underpaid CPT codes and files No Surprises Act disputes to recover what you are owed.",
   alternates: {
-    canonical: "https://kronosrevenue.co/free-claim-review",
+    canonical: "https://www.kronosrevenue.health/free-claim-review",
   },
   openGraph: {
     title: "Free Claim Review for Out-of-Network Surgeons | Kronos Revenue",
     description:
       "Get a free review of your OON surgical claims. We identify underpaid CPT codes and file NSA disputes to recover what you are owed.",
-    url: "https://kronosrevenue.co/free-claim-review",
+    url: "https://www.kronosrevenue.health/free-claim-review",
     siteName: "Kronos Revenue",
     type: "website",
   },
@@ -37,8 +37,8 @@ export default function FreeClaimReviewPage() {
     <>
       <BreadcrumbListSchema
         items={[
-          { name: "Home", url: "https://kronosrevenue.co" },
-          { name: "Free Claim Review", url: "https://kronosrevenue.co/free-claim-review" },
+          { name: "Home", url: "https://www.kronosrevenue.health" },
+          { name: "Free Claim Review", url: "https://www.kronosrevenue.health/free-claim-review" },
         ]}
       />
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">

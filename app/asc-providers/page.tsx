@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   description:
     "If you are an out-of-network provider performing procedures at an in-network ASC or hospital, the No Surprises Act protects your right to fair payment. Kronos Revenue handles the disputes.",
   alternates: {
-    canonical: "https://kronosrevenue.co/asc-providers",
+    canonical: "https://www.kronosrevenue.health/asc-providers",
   },
   openGraph: {
     title: "OON Provider at In-Network ASC? Recover What You Are Owed | Kronos Revenue",
     description:
       "OON provider at an in-network ASC or hospital? The NSA protects your right to fair payment. We handle the disputes.",
-    url: "https://kronosrevenue.co/asc-providers",
+    url: "https://www.kronosrevenue.health/asc-providers",
     siteName: "Kronos Revenue",
     type: "website",
   },
@@ -37,8 +37,8 @@ export default function ASCProvidersPage() {
     <>
       <BreadcrumbListSchema
         items={[
-          { name: "Home", url: "https://kronosrevenue.co" },
-          { name: "ASC Providers", url: "https://kronosrevenue.co/asc-providers" },
+          { name: "Home", url: "https://www.kronosrevenue.health" },
+          { name: "ASC Providers", url: "https://www.kronosrevenue.health/asc-providers" },
         ]}
       />
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">

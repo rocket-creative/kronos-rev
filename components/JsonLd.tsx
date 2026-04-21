@@ -1,4 +1,4 @@
-const ORGANIZATION_ID = "https://kronosrevenue.co/#organization";
+const ORGANIZATION_ID = "https://www.kronosrevenue.health/#organization";
 
 export function OrganizationSchema() {
   const schema = {
@@ -6,7 +6,7 @@ export function OrganizationSchema() {
     "@type": "Organization",
     "@id": ORGANIZATION_ID,
     name: "Kronos Revenue",
-    url: "https://kronosrevenue.co",
+    url: "https://www.kronosrevenue.health",
     description:
       "Expert revenue cycle management and out of network dispute resolution under the No Surprises Act.",
     telephone: "+1 914 705 6830",
@@ -22,7 +22,7 @@ export function OrganizationSchema() {
     parentOrganization: {
       "@type": "Organization",
       name: "Kronos Health",
-      url: "https://kronos-health.vercel.app",
+      url: "https://www.kronosgroup.health",
     },
     founder: {
       "@type": "Person",
@@ -52,9 +52,9 @@ export function WebSiteSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://kronosrevenue.co/#website",
+    "@id": "https://www.kronosrevenue.health/#website",
     name: "Kronos Revenue",
-    url: "https://kronosrevenue.co",
+    url: "https://www.kronosrevenue.health",
     publisher: { "@id": ORGANIZATION_ID },
   };
 
@@ -72,7 +72,7 @@ interface BreadcrumbItem {
 }
 
 export function BreadcrumbListSchema({ items }: { items?: BreadcrumbItem[] } = {}) {
-  const list = items ?? [{ name: "Home", url: "https://kronosrevenue.co" }];
+  const list = items ?? [{ name: "Home", url: "https://www.kronosrevenue.health" }];
   const schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -96,9 +96,9 @@ export function LocalBusinessSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "@id": "https://kronosrevenue.co/#localbusiness",
+    "@id": "https://www.kronosrevenue.health/#localbusiness",
     name: "Kronos Revenue",
-    url: "https://kronosrevenue.co",
+    url: "https://www.kronosrevenue.health",
     telephone: "+1 914 705 6830",
     email: "info@kronoshealth.co",
     address: {
@@ -179,7 +179,7 @@ interface ServiceSchemaProps {
   areaServed?: string;
 }
 
-const SERVICE_ID = "https://kronosrevenue.co/#service";
+const SERVICE_ID = "https://www.kronosrevenue.health/#service";
 
 export function ServiceSchema({
   name,
@@ -201,7 +201,7 @@ export function ServiceSchema({
       "@id": ORGANIZATION_ID,
       "@type": "Organization",
       name: "Kronos Revenue",
-      url: "https://kronosrevenue.co",
+      url: "https://www.kronosrevenue.health",
     },
   };
 

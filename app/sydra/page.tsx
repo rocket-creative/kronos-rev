@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   description:
     "Sydra automates the No Surprises Act IDR workflow for surgical practices. AI generated submissions, automated deadline tracking, and real time analytics. Coming soon.",
   alternates: {
-    canonical: "https://kronosrevenue.co/sydra",
+    canonical: "https://www.kronosrevenue.health/sydra",
   },
   openGraph: {
     title: "Sydra — AI Powered IDR Submission Platform | Kronos Revenue",
     description:
       "Sydra automates the No Surprises Act IDR workflow for surgical practices. AI generated submissions, automated deadline tracking, and real time analytics.",
-    url: "https://kronosrevenue.co/sydra",
+    url: "https://www.kronosrevenue.health/sydra",
     siteName: "Kronos Revenue",
     type: "website",
     images: [

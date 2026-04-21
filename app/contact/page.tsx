@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   description:
     "Reach out to Kronos Revenue for a free revenue review. We specialize in No Surprises Act dispute resolution and out-of-network billing for surgical providers.",
   alternates: {
-    canonical: "https://kronosrevenue.co/contact",
+    canonical: "https://www.kronosrevenue.health/contact",
   },
   openGraph: {
     title: "Contact Kronos Revenue | Free Revenue Review",
     description:
       "Reach out for a free revenue review. No Surprises Act dispute resolution and OON billing for surgical providers.",
-    url: "https://kronosrevenue.co/contact",
+    url: "https://www.kronosrevenue.health/contact",
     siteName: "Kronos Revenue",
     type: "website",
   },
@@ -30,8 +30,8 @@ export default function ContactPage() {
     <>
       <BreadcrumbListSchema
         items={[
-          { name: "Home", url: "https://kronosrevenue.co" },
-          { name: "Contact", url: "https://kronosrevenue.co/contact" },
+          { name: "Home", url: "https://www.kronosrevenue.health" },
+          { name: "Contact", url: "https://www.kronosrevenue.health/contact" },
         ]}
       />
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
@@ -60,10 +60,10 @@ export default function ContactPage() {
               <div className="border-l-2 border-kronos-cyan/30 pl-4">
                 <p className="font-body text-xs text-white/40 uppercase tracking-widest mb-1">Email</p>
                 <a
-                  href="mailto:info@kronosrevenue.com"
+                  href="mailto:info@kronoshealth.co"
                   className="font-body text-sm text-white hover:text-kronos-cyan transition-colors"
                 >
-                  info@kronosrevenue.com
+                  info@kronoshealth.co
                 </a>
               </div>
               <div className="border-l-2 border-kronos-cyan/30 pl-4">

@@ -18,7 +18,7 @@ const navLinks = [
 const sydraLink = { href: "/sydra", label: "Sydra" };
 
 const parentLink = {
-  href: "https://kronos-health.vercel.app/?utm_source=kronosrev&utm_medium=nav",
+  href: "https://www.kronosgroup.health/?utm_source=kronosrev&utm_medium=nav",
   label: "Kronos Health",
 };
 

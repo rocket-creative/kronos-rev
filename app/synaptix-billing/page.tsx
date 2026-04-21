@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   description:
     "Kronos Revenue handles CPT coding, claim management, and NSA dispute filing for Synaptix licensees running concussion programs. Get paid for every session.",
   alternates: {
-    canonical: "https://kronosrevenue.co/synaptix-billing",
+    canonical: "https://www.kronosrevenue.health/synaptix-billing",
   },
   openGraph: {
     title: "Synaptix Concussion Program Billing | Kronos Revenue",
     description:
       "CPT coding, claim management, and NSA disputes for Synaptix concussion programs. Get paid for every session.",
-    url: "https://kronosrevenue.co/synaptix-billing",
+    url: "https://www.kronosrevenue.health/synaptix-billing",
     siteName: "Kronos Revenue",
     type: "website",
   },
@@ -37,8 +37,8 @@ export default function SynaptixBillingPage() {
     <>
       <BreadcrumbListSchema
         items={[
-          { name: "Home", url: "https://kronosrevenue.co" },
-          { name: "Synaptix Billing", url: "https://kronosrevenue.co/synaptix-billing" },
+          { name: "Home", url: "https://www.kronosrevenue.health" },
+          { name: "Synaptix Billing", url: "https://www.kronosrevenue.health/synaptix-billing" },
         ]}
       />
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">

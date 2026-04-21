@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://kronosrevenue.co";
+  const baseUrl = "https://www.kronosrevenue.health";
   return [
     {
       url: baseUrl,

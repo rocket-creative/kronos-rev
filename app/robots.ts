@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://kronosrevenue.co/sitemap.xml",
+    sitemap: "https://www.kronosrevenue.health/sitemap.xml",
   };
 }
