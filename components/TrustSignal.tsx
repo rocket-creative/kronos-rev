@@ -4,6 +4,8 @@ interface TrustSignalProps {
   lastUpdated?: string;
   reviewedBy?: string;
   className?: string;
+  /** Use on light/white backgrounds */
+  light?: boolean;
 }
 
 export function TrustSignal({
@@ -12,32 +14,68 @@ export function TrustSignal({
   lastUpdated,
   reviewedBy,
   className = "",
+  light = false,
 }: TrustSignalProps) {
+  if (light) {
+    return (
+      <aside
+        className={`border-l-4 border-kronos-cyan pl-4 py-1 ${className}`}
+        aria-label="Content trust signals"
+      >
+        {author && (
+          <p className="font-body text-sm font-semibold text-gray-900">
+            {author}
+            {credentials && (
+              <span className="font-light text-kronos-cyan"> — {credentials}</span>
+            )}
+          </p>
+        )}
+        {reviewedBy && (
+          <p className="font-body text-sm text-gray-600 mt-0.5">
+            Reviewed by <span className="font-semibold text-gray-900">{reviewedBy}</span>
+          </p>
+        )}
+        {lastUpdated && (
+          <p className="font-body text-xs text-gray-400 mt-1">
+            Last updated{" "}
+            <time dateTime={lastUpdated}>
+              {new Date(lastUpdated).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
+          </p>
+        )}
+      </aside>
+    );
+  }
+
   return (
     <aside
-      className={`bg-kronos-card/50 border border-white/5 p-4 text-xs ${className}`}
+      className={`p-0 text-xs ${className}`}
       aria-label="Content trust signals"
     >
-      <div className="flex flex-wrap gap-4 text-white/40">
+      <div className="flex flex-wrap gap-4 text-white/50">
         {author && (
           <div>
             <span className="text-white/60">Author:</span>{" "}
-            <span className="text-white/80">{author}</span>
+            <span className="text-white">{author}</span>
             {credentials && (
-              <span className="text-kronos-cyan">, {credentials}</span>
+              <span className="text-white">, {credentials}</span>
             )}
           </div>
         )}
         {reviewedBy && (
           <div>
             <span className="text-white/60">Reviewed by:</span>{" "}
-            <span className="text-white/80">{reviewedBy}</span>
+            <span className="text-white">{reviewedBy}</span>
           </div>
         )}
         {lastUpdated && (
           <div>
             <span className="text-white/60">Last updated:</span>{" "}
-            <time dateTime={lastUpdated} className="text-white/80">
+            <time dateTime={lastUpdated} className="text-white">
               {new Date(lastUpdated).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",

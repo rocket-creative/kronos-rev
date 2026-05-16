@@ -1,12 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0A0A0A;
-  --foreground: #FFFFFF;
+  --background: #FFFFFF;
+  --foreground: #171717;
 
   --kronos-bg: #0A0A0A;
-  --kronos-card: #161616;
+  --kronos-card: #F5F5F5;
+  --kronos-surface: #F5F5F5;
+  --kronos-surface-2: #EFEFEF;
   --kronos-cyan: #00843D;
+  --kronos-green-dark: #00542A;
   --kronos-gray-100: #F5F5F5;
   --kronos-gray-200: #E5E5E5;
   --kronos-gray-300: #D4D4D4;
@@ -27,6 +30,9 @@
 
   --color-kronos-bg: var(--kronos-bg);
   --color-kronos-card: var(--kronos-card);
+  --color-kronos-surface: var(--kronos-surface);
+  --color-kronos-surface-2: var(--kronos-surface-2);
+  --color-kronos-green-dark: var(--kronos-green-dark);
   --color-kronos-cyan: var(--kronos-cyan);
   --color-kronos-gray-100: var(--kronos-gray-100);
   --color-kronos-gray-200: var(--kronos-gray-200);
@@ -96,6 +102,10 @@ p, li, td, th {
 @media (hover: none) {
   * { cursor: auto !important; }
   .custom-cursor { display: none; }
+}
+
+@utility logo-dark-green {
+  filter: brightness(0) saturate(100%) invert(24%) sepia(87%) saturate(742%) hue-rotate(121deg) brightness(97%) contrast(101%);
 }
 
 @utility pt-safe-top {

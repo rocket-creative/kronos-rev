@@ -15,7 +15,7 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-const sydraLink = { href: "/sydra", label: "Sydra" };
+const sydraLink = { href: "https://www.sydrahealth.com/", label: "Sydra" };
 
 const parentLink = {
   href: "https://www.kronosgroup.health/?utm_source=kronosrev&utm_medium=nav",
@@ -47,44 +47,46 @@ export default function Nav() {
   };
 
   return (
-    <header ref={navRef} className="fixed top-0 w-full z-50 bg-kronos-bg/90 backdrop-blur-md border-b border-white/5 pt-safe-top">
+    <header ref={navRef} className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm pt-safe-top">
       <nav
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         aria-label="Main navigation"
       >
-        <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
+        <div className="flex items-center justify-between h-14 sm:h-16 xl:h-20">
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg"
+            className="flex items-center hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             aria-label="Kronos Revenue — Home"
           >
-            <LogoImage width={160} textSize="text-xl sm:text-2xl" priority />
+            <LogoImage width={160} textSize="text-xl sm:text-2xl" priority className="logo-dark-green" />
           </Link>
 
           {/* Center nav links — desktop */}
-          <div className="hidden lg:flex items-center gap-8 xl:gap-10">
+          <div className="hidden xl:flex items-center gap-6 2xl:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-body text-xs text-white/50 hover:text-white uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg"
+                className="font-body text-xs text-gray-500 hover:text-gray-900 uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 {link.label}
               </Link>
             ))}
-            <Link
+            <a
               href={sydraLink.href}
-              className="font-body text-xs text-kronos-cyan/80 hover:text-kronos-cyan uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg border-l border-white/10 pl-8 flex items-center gap-1.5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body text-xs text-kronos-cyan hover:text-kronos-green-dark uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white border-l border-gray-200 pl-6 flex items-center gap-1.5"
             >
               {sydraLink.label}
-              <span className="text-[8px] bg-kronos-cyan/20 text-kronos-cyan px-1 py-0.5 tracking-wider">BETA</span>
-            </Link>
+              <span className="text-[8px] bg-kronos-cyan/15 text-kronos-cyan px-1 py-0.5 tracking-wider">LIVE</span>
+            </a>
             <a
               href={parentLink.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-body text-xs text-white/25 hover:text-white/60 uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg border-l border-white/10 pl-8"
+              className="font-body text-xs text-gray-400 hover:text-gray-600 uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white border-l border-gray-200 pl-6"
             >
               {parentLink.label}
             </a>
@@ -94,14 +96,14 @@ export default function Nav() {
           <div className="flex items-center gap-3 sm:gap-4">
             <Link
               href="#contact"
-              className="hidden lg:inline-flex items-center gap-2 bg-kronos-cyan text-kronos-bg py-2.5 px-5 text-xs uppercase tracking-widest font-light hover:gap-3 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg"
+              className="hidden xl:inline-flex items-center gap-2 bg-kronos-cyan text-white py-2.5 px-5 text-xs uppercase tracking-widest font-light hover:bg-kronos-green-dark hover:gap-3 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Free Revenue Review
               <ArrowRight className="w-3 h-3" aria-hidden="true" />
             </Link>
 
             <button
-              className="lg:hidden text-white/60 hover:text-white p-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg"
+              className="xl:hidden text-gray-500 hover:text-gray-900 p-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
@@ -122,7 +124,7 @@ export default function Nav() {
         <div
           ref={menuRef}
           id="mobile-menu"
-          className="lg:hidden bg-kronos-bg/95 backdrop-blur-md border-t border-white/5"
+          className="xl:hidden bg-white border-t border-gray-100"
           role="navigation"
           aria-label="Mobile navigation"
         >
@@ -131,24 +133,25 @@ export default function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex items-center min-h-[44px] font-body text-sm text-white/60 hover:text-white uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
+                className="flex items-center min-h-[44px] font-body text-sm text-gray-500 hover:text-gray-900 uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
                 onClick={handleAnchorClick}
               >
                 {link.label}
               </Link>
             ))}
-            <Link
+            <a
               href={sydraLink.href}
-              className="flex items-center gap-2 min-h-[44px] font-body text-sm text-kronos-cyan/80 hover:text-kronos-cyan uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
-              onClick={handleAnchorClick}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 min-h-[44px] font-body text-sm text-kronos-cyan hover:text-kronos-green-dark uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
             >
               {sydraLink.label}
-              <span className="text-[8px] bg-kronos-cyan/20 text-kronos-cyan px-1 py-0.5 tracking-wider">BETA</span>
-            </Link>
-            <div className="pt-4 sm:pt-6 border-t border-white/10 flex flex-col gap-4">
+              <span className="text-[8px] bg-kronos-cyan/15 text-kronos-cyan px-1 py-0.5 tracking-wider">LIVE</span>
+            </a>
+            <div className="pt-4 sm:pt-6 border-t border-gray-100 flex flex-col gap-4">
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-3 bg-kronos-cyan text-kronos-bg py-3 px-6 uppercase tracking-widest text-xs font-light hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="inline-flex items-center gap-3 bg-kronos-cyan text-white py-3 px-6 uppercase tracking-widest text-xs font-light hover:bg-kronos-green-dark hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
                 onClick={handleAnchorClick}
               >
                 Free Revenue Review
@@ -158,7 +161,7 @@ export default function Nav() {
                 href={parentLink.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body text-xs text-white/30 hover:text-white/60 uppercase tracking-widest transition-colors"
+                className="font-body text-xs text-gray-400 hover:text-gray-600 uppercase tracking-widest transition-colors"
               >
                 ← {parentLink.label}
               </a>

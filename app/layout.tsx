@@ -43,7 +43,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#0A0A0A",
+  themeColor: "#00542A",
 };
 
 export const metadata: Metadata = {
@@ -125,11 +125,11 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${bebasNeue.variable} ${ibmPlexSans.variable} ${openSans.variable} antialiased bg-kronos-bg text-white`}
+        className={`${bebasNeue.variable} ${ibmPlexSans.variable} ${openSans.variable} antialiased bg-white text-kronos-text-dark`}
       >
         <SkipLink />
         <Nav />
-        <main id="main-content" className="pt-14 sm:pt-16 lg:pt-20 pb-24 lg:pb-0" role="main">
+        <main id="main-content" className="pt-14 sm:pt-16 xl:pt-20 pb-24 xl:pb-0" role="main">
           <PageTransition>{children}</PageTransition>
         </main>
         <Footer />

@@ -5,11 +5,13 @@ import { useState } from "react";
 interface LogoImageProps {
   /** Rendered width in px */
   width?: number;
-  /** Optional className for the wrapper */
+  /** Optional className for the wrapper/img */
   className?: string;
   /** Text size fallback class */
   textSize?: string;
   priority?: boolean;
+  /** Use dark text for light backgrounds (fallback only) */
+  dark?: boolean;
 }
 
 export function LogoImage({
@@ -17,6 +19,7 @@ export function LogoImage({
   className = "",
   textSize = "text-2xl",
   priority = false,
+  dark = false,
 }: LogoImageProps) {
   const [imgError, setImgError] = useState(false);
 
@@ -25,7 +28,7 @@ export function LogoImage({
 
   if (imgError) {
     return (
-      <span className={`font-heading ${textSize} text-white tracking-wider`}>
+      <span className={`font-heading ${textSize} ${dark ? "text-gray-900" : "text-white"} tracking-wider`}>
         KRONOS <span className="text-kronos-cyan">REVENUE</span>
       </span>
     );

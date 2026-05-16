@@ -45,13 +45,13 @@ export function useNavScrollEffect() {
       
       if (currentScrollY > 100) {
         gsap.to(nav, {
-          backgroundColor: "rgba(10, 10, 10, 0.98)",
+          backgroundColor: "rgba(255, 255, 255, 0.98)",
           duration: 0.3,
           ease: "power2.out",
         });
       } else {
         gsap.to(nav, {
-          backgroundColor: "rgba(10, 10, 10, 0.9)",
+          backgroundColor: "rgba(255, 255, 255, 0.95)",
           duration: 0.3,
           ease: "power2.out",
         });

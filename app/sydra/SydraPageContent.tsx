@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { SydraWaitlistForm } from "@/components/SydraWaitlistForm";
 import {
@@ -11,9 +12,9 @@ import {
   Shield,
   Zap,
   CheckCircle,
-  AlertTriangle,
   Plug,
   Lock,
+  ExternalLink,
 } from "lucide-react";
 import { useSectionReveal, useStaggeredCards, useHeroAnimation } from "@/components/animations";
 
@@ -108,92 +109,120 @@ export default function SydraPageContent() {
 
   return (
     <>
-      {/* Coming Soon Banner */}
+      {/* Live Banner */}
       <div
-        className="bg-kronos-cyan text-kronos-bg px-4 py-3 text-center"
+        className="bg-kronos-cyan text-white px-4 py-3 text-center"
         role="banner"
-        aria-label="Beta status notice"
+        aria-label="Sydra platform status"
       >
         <p className="font-body text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2 flex-wrap">
-          <AlertTriangle className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
-          <span>Coming Soon</span>
-          <span className="font-light opacity-70 normal-case tracking-normal">
-            — Sydra is currently in beta testing and nearly ready to launch.
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-pulse" aria-hidden="true" />
+          <span>Sydra is Live</span>
+          <span className="font-light opacity-80 normal-case tracking-normal">
+            — The IDR platform is now in production at NY Brain and Spine Surgery.
           </span>
-          <span className="opacity-70">Join the waitlist below.</span>
+          <a
+            href="https://www.sydrahealth.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:opacity-80 transition-opacity"
+          >
+            Visit the platform →
+          </a>
         </p>
       </div>
 
-      {/* Hero */}
+      {/* Hero — dark green gradient */}
       <section
         ref={heroRef}
-        className="relative bg-kronos-bg overflow-hidden py-20 sm:py-28 lg:py-36"
+        className="relative overflow-hidden py-20 sm:py-28 lg:py-36"
+        style={{ background: "linear-gradient(135deg, #003D1A 0%, #00843D 100%)" }}
         aria-labelledby="sydra-hero-heading"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(0,132,61,0.12)_0%,_transparent_60%)]" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(255,255,255,0.06)_0%,_transparent_60%)]" aria-hidden="true" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <p
               data-hero-eyebrow
-              className="text-xs tracking-widest uppercase text-kronos-cyan mb-4 sm:mb-6"
+              className="text-xs tracking-widest uppercase text-white/60 mb-4 sm:mb-6"
             >
               By Kronos Revenue
             </p>
 
-            <h1
-              data-hero-title
-              id="sydra-hero-heading"
-              className="font-heading text-5xl sm:text-7xl lg:text-8xl xl:text-9xl text-white leading-none mb-6 sm:mb-8"
-            >
-              SYDRA
-            </h1>
+            <div data-hero-title className="mb-6 sm:mb-8">
+              <Image
+                src="/sydra-logo.png"
+                alt="Sydra — NSA IDR Simplified"
+                width={280}
+                height={59}
+                className="object-contain brightness-0 invert"
+                priority
+              />
+            </div>
 
             <p
               data-hero-description
-              className="font-body text-base sm:text-lg lg:text-xl text-white/70 font-light leading-relaxed mb-6 max-w-2xl"
+              className="font-body text-base sm:text-lg lg:text-xl text-white/80 font-light leading-relaxed mb-6 max-w-2xl"
             >
-              AI powered IDR submission platform for the No Surprises Act. From case intake and deadline tracking to AI generated submissions — Sydra automates the entire IDR workflow so your practice can fight more cases and recover more revenue.
+              Win more IDR disputes. Defend the whole claim. Sydra drafts winning No Surprises Act IDR submissions in minutes using AI trained on hundreds of real determinations — and runs your eligibility checks, prior authorizations, CPT review, and compliance audits.
             </p>
 
-            {/* Claude AI + HIPAA badge */}
+            {/* HIPAA + Claude badge */}
             <div data-hero-description className="flex flex-wrap items-center gap-3 mb-8 sm:mb-10">
-              <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-2">
-                <Lock className="w-3 h-3 text-kronos-cyan flex-shrink-0" aria-hidden="true" />
+              <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-2">
+                <Lock className="w-3 h-3 text-white/70 flex-shrink-0" aria-hidden="true" />
                 <span className="font-body text-xs text-white/70 font-light tracking-wide">
                   HIPAA Compliant
                 </span>
               </div>
-              <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-2">
-                <Brain className="w-3 h-3 text-kronos-cyan flex-shrink-0" aria-hidden="true" />
+              <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-2">
+                <Brain className="w-3 h-3 text-white/70 flex-shrink-0" aria-hidden="true" />
                 <span className="font-body text-xs text-white/70 font-light tracking-wide">
                   Powered by Claude AI
+                </span>
+              </div>
+              <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-2">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-pulse flex-shrink-0" aria-hidden="true" />
+                <span className="font-body text-xs text-white/70 font-light tracking-wide">
+                  Live in Production
                 </span>
               </div>
             </div>
 
             <div data-hero-cta className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <a
+                href="https://www.sydrahealth.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 bg-white text-[#00542A] py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-bold hover:bg-white/95 hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00843D]"
+              >
+                Visit Sydra Platform
+                <ExternalLink className="w-3 h-3" aria-hidden="true" />
+              </a>
+              <a
+                href="https://www.sydrahealth.com/#demo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 border border-white/40 text-white/80 py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-light hover:bg-white/10 hover:text-white transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00843D]"
+              >
+                Request Demo
+              </a>
               <Link
                 href="#waitlist"
-                className="inline-flex items-center justify-center gap-3 bg-kronos-cyan text-kronos-bg py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-bold hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg"
+                className="inline-flex items-center justify-center gap-3 border border-white/20 text-white/60 py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-light hover:bg-white/5 hover:text-white/80 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00843D]"
               >
-                Join the Waitlist
+                Join Waitlist
                 <ArrowRight className="w-3 h-3" aria-hidden="true" />
-              </Link>
-              <Link
-                href="#features"
-                className="inline-flex items-center justify-center gap-3 border border-white/20 text-white/70 py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-light hover:bg-white/5 hover:text-white transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg"
-              >
-                See Features
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Claude AI Landmark Statement */}
+      {/* Claude AI Landmark Statement — light grey */}
       <section
-        className="bg-kronos-cyan py-16 sm:py-20 lg:py-28 relative overflow-hidden"
+        className="bg-gray-50 py-16 sm:py-20 lg:py-28 relative overflow-hidden"
         aria-labelledby="claude-statement-heading"
       >
         {/* Large background text */}
@@ -201,65 +230,77 @@ export default function SydraPageContent() {
           className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
           aria-hidden="true"
         >
-          <span className="font-heading text-[120px] sm:text-[180px] lg:text-[240px] xl:text-[320px] text-kronos-bg/10 leading-none whitespace-nowrap">
+          <span className="font-heading text-[120px] sm:text-[180px] lg:text-[240px] xl:text-[320px] text-gray-900/[0.04] leading-none whitespace-nowrap">
             FIRST
           </span>
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="font-body text-xs uppercase tracking-widest text-kronos-bg/60 mb-6 sm:mb-8">
+          <p className="font-body text-xs uppercase tracking-widest text-gray-400 mb-6 sm:mb-8">
             A Healthcare First
           </p>
 
           <h2
             id="claude-statement-heading"
-            className="font-heading text-4xl sm:text-6xl lg:text-7xl xl:text-8xl text-kronos-bg leading-none mb-6 sm:mb-8"
+            className="font-heading text-4xl sm:text-6xl lg:text-7xl xl:text-8xl text-gray-900 leading-none mb-6 sm:mb-8"
           >
             The First HIPAA Compliant<br />IDR Tool Powered<br />by Claude AI
           </h2>
 
-          <p className="font-body text-sm sm:text-base lg:text-lg text-kronos-bg/70 font-light max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10">
+          <p className="font-body text-sm sm:text-base lg:text-lg text-gray-500 font-light max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10">
             Sydra runs on Anthropic&apos;s Claude — one of the most capable and safety focused AI models available — deployed on HIPAA eligible AWS infrastructure. Your PHI never leaves encrypted storage. Every action is logged. Every submission is audit ready.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 lg:gap-12">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-kronos-bg/15 flex items-center justify-center flex-shrink-0">
-                <Lock className="w-4 h-4 text-kronos-bg" strokeWidth={1.5} aria-hidden="true" />
+              <div className="w-10 h-10 bg-kronos-cyan/10 flex items-center justify-center flex-shrink-0">
+                <Lock className="w-4 h-4 text-kronos-cyan" strokeWidth={1.5} aria-hidden="true" />
               </div>
               <div className="text-left">
-                <p className="font-heading text-sm sm:text-base text-kronos-bg leading-none">HIPAA Eligible AWS</p>
-                <p className="font-body text-[10px] text-kronos-bg/60 font-light mt-0.5">Encrypted at rest and in transit</p>
+                <p className="font-heading text-sm sm:text-base text-gray-900 leading-none">HIPAA Eligible AWS</p>
+                <p className="font-body text-[10px] text-gray-400 font-light mt-0.5">Encrypted at rest and in transit</p>
               </div>
             </div>
-            <div className="hidden sm:block w-px h-10 bg-kronos-bg/20" aria-hidden="true" />
+            <div className="hidden sm:block w-px h-10 bg-gray-200" aria-hidden="true" />
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-kronos-bg/15 flex items-center justify-center flex-shrink-0">
-                <Brain className="w-4 h-4 text-kronos-bg" strokeWidth={1.5} aria-hidden="true" />
+              <div className="w-10 h-10 bg-kronos-cyan/10 flex items-center justify-center flex-shrink-0">
+                <Brain className="w-4 h-4 text-kronos-cyan" strokeWidth={1.5} aria-hidden="true" />
               </div>
               <div className="text-left">
-                <p className="font-heading text-sm sm:text-base text-kronos-bg leading-none">Claude AI by Anthropic</p>
-                <p className="font-body text-[10px] text-kronos-bg/60 font-light mt-0.5">Purpose built for healthcare reasoning</p>
+                <p className="font-heading text-sm sm:text-base text-gray-900 leading-none">Claude AI by Anthropic</p>
+                <p className="font-body text-[10px] text-gray-400 font-light mt-0.5">Purpose built for healthcare reasoning</p>
               </div>
             </div>
-            <div className="hidden sm:block w-px h-10 bg-kronos-bg/20" aria-hidden="true" />
+            <div className="hidden sm:block w-px h-10 bg-gray-200" aria-hidden="true" />
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-kronos-bg/15 flex items-center justify-center flex-shrink-0">
-                <Shield className="w-4 h-4 text-kronos-bg" strokeWidth={1.5} aria-hidden="true" />
+              <div className="w-10 h-10 bg-kronos-cyan/10 flex items-center justify-center flex-shrink-0">
+                <Shield className="w-4 h-4 text-kronos-cyan" strokeWidth={1.5} aria-hidden="true" />
               </div>
               <div className="text-left">
-                <p className="font-heading text-sm sm:text-base text-kronos-bg leading-none">Zero PHI in Logs</p>
-                <p className="font-body text-[10px] text-kronos-bg/60 font-light mt-0.5">Audit ready from day one</p>
+                <p className="font-heading text-sm sm:text-base text-gray-900 leading-none">Zero PHI in Logs</p>
+                <p className="font-body text-[10px] text-gray-400 font-light mt-0.5">Audit ready from day one</p>
               </div>
             </div>
+          </div>
+
+          <div className="mt-10 sm:mt-12">
+            <a
+              href="https://www.sydrahealth.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-kronos-cyan text-white py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-bold hover:bg-[#00542A] hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
+            >
+              Visit the Platform
+              <ExternalLink className="w-3 h-3" aria-hidden="true" />
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Stats Bar */}
+      {/* Stats Bar — white */}
       <section
         ref={statsRef}
-        className="py-10 sm:py-12 bg-kronos-gray-800 border-y border-white/5"
+        className="py-10 sm:py-12 bg-white border-y border-gray-100"
         aria-label="Key statistics"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -269,7 +310,7 @@ export default function SydraPageContent() {
                 <p className="font-heading text-2xl sm:text-3xl lg:text-4xl text-kronos-cyan mb-1">
                   {stat.value}
                 </p>
-                <p className="font-body text-[10px] sm:text-xs text-white/50 font-light leading-snug">
+                <p className="font-body text-[10px] sm:text-xs text-gray-400 font-light leading-snug">
                   {stat.label}
                 </p>
               </div>
@@ -278,20 +319,20 @@ export default function SydraPageContent() {
         </div>
       </section>
 
-      {/* The Problem */}
+      {/* The Problem — light grey */}
       <section
         ref={problemRef}
-        className="py-16 sm:py-20 lg:py-28 bg-kronos-bg"
+        className="py-16 sm:py-20 lg:py-28 bg-gray-50"
         aria-labelledby="problem-heading"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="mb-10 sm:mb-14 lg:mb-20">
-            <p className="text-xs tracking-widest uppercase text-white/40 mb-4">
+            <p className="text-xs tracking-widest uppercase text-gray-400 mb-4">
               The Problem
             </p>
             <h2
               id="problem-heading"
-              className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white"
+              className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-gray-900"
             >
               Why IDR fails most practices
             </h2>
@@ -300,17 +341,17 @@ export default function SydraPageContent() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {painPoints.map((point) => (
               <article data-stagger-card key={point.number}>
-                <div className="bg-kronos-gray-800 p-6 sm:p-8 h-full border-l-2 border-white/10 hover:border-kronos-cyan/40 transition-colors">
+                <div className="bg-white border border-gray-200 p-6 sm:p-8 h-full border-l-4 border-l-kronos-cyan/30 hover:border-l-kronos-cyan transition-colors">
                   <span
-                    className="font-heading text-5xl sm:text-6xl text-white/5 leading-none block mb-4"
+                    className="font-heading text-5xl sm:text-6xl text-gray-900/[0.06] leading-none block mb-4"
                     aria-hidden="true"
                   >
                     {point.number}
                   </span>
-                  <h3 className="font-heading text-lg sm:text-xl lg:text-2xl text-white mb-3">
+                  <h3 className="font-heading text-lg sm:text-xl lg:text-2xl text-gray-900 mb-3">
                     {point.problem}
                   </h3>
-                  <p className="font-body text-xs sm:text-sm text-white/60 font-light leading-relaxed">
+                  <p className="font-body text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
                     {point.description}
                   </p>
                 </div>
@@ -320,25 +361,25 @@ export default function SydraPageContent() {
         </div>
       </section>
 
-      {/* Features */}
+      {/* Features — white */}
       <section
         ref={featuresRef}
         id="features"
-        className="py-16 sm:py-20 lg:py-28 bg-kronos-card"
+        className="py-16 sm:py-20 lg:py-28 bg-white"
         aria-labelledby="features-heading"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="mb-10 sm:mb-14 lg:mb-20">
-            <p className="text-xs tracking-widest uppercase text-white/40 mb-4">
+            <p className="text-xs tracking-widest uppercase text-gray-400 mb-4">
               Platform Features
             </p>
             <h2
               id="features-heading"
-              className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white"
+              className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-gray-900"
             >
               Everything you need to win
             </h2>
-            <p className="font-body text-sm sm:text-base text-white/50 font-light mt-4 max-w-2xl">
+            <p className="font-body text-sm sm:text-base text-gray-500 font-light mt-4 max-w-2xl">
               Sydra handles the full IDR lifecycle — from the moment a claim is underpaid to the moment payment is collected.
             </p>
           </header>
@@ -348,18 +389,18 @@ export default function SydraPageContent() {
               const Icon = feature.icon;
               return (
                 <article data-stagger-card key={feature.title}>
-                  <div className="bg-kronos-gray-800/50 p-6 sm:p-8 h-full hover:bg-kronos-gray-800 transition-colors group">
+                  <div className="bg-gray-50 border border-gray-100 p-6 sm:p-8 h-full hover:bg-gray-100 hover:border-gray-200 transition-colors group">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-kronos-cyan/10 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-kronos-cyan/20 transition-colors">
                       <Icon
-                        className="w-4 h-4 sm:w-5 sm:h-5 text-kronos-cyan/70"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-kronos-cyan"
                         strokeWidth={1.5}
                         aria-hidden="true"
                       />
                     </div>
-                    <h3 className="font-heading text-lg sm:text-xl text-white mb-2 sm:mb-3">
+                    <h3 className="font-heading text-lg sm:text-xl text-gray-900 mb-2 sm:mb-3">
                       {feature.title}
                     </h3>
-                    <p className="font-body text-xs sm:text-sm text-white/60 font-light leading-relaxed">
+                    <p className="font-body text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
@@ -367,40 +408,52 @@ export default function SydraPageContent() {
               );
             })}
           </div>
+
+          <div className="mt-12 text-center">
+            <a
+              href="https://www.sydrahealth.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-kronos-cyan text-white py-3 sm:py-4 px-8 sm:px-10 uppercase tracking-widest text-xs font-bold hover:bg-[#00542A] hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            >
+              Explore the Full Platform
+              <ExternalLink className="w-3 h-3" aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* Who It's For */}
+      {/* Who It's For — light grey */}
       <section
         ref={audienceRef}
-        className="py-16 sm:py-20 lg:py-28 bg-kronos-bg"
+        className="py-16 sm:py-20 lg:py-28 bg-gray-50"
         aria-labelledby="audience-heading"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             <div className="lg:col-span-5">
-              <div className="bg-kronos-cyan/5 border border-kronos-cyan/20 p-8 sm:p-10 lg:p-12">
+              <div className="bg-kronos-cyan/8 border border-kronos-cyan/20 p-8 sm:p-10 lg:p-12">
                 <Zap
-                  className="w-10 h-10 sm:w-12 sm:h-12 text-kronos-cyan/50 mb-6"
+                  className="w-10 h-10 sm:w-12 sm:h-12 text-kronos-cyan mb-6"
                   strokeWidth={1}
                   aria-hidden="true"
                 />
                 <p className="font-heading text-4xl sm:text-5xl lg:text-6xl text-kronos-cyan leading-none mb-4">
                   Built for surgical specialties
                 </p>
-                <p className="font-body text-sm text-white/50 font-light leading-relaxed">
+                <p className="font-body text-sm text-gray-500 font-light leading-relaxed">
                   Generic IDR templates do not work for complex surgical cases. Sydra knows the difference between a lumbar fusion and a routine office visit.
                 </p>
               </div>
             </div>
 
             <div data-section-content className="lg:col-span-7">
-              <p className="text-xs tracking-widest uppercase text-white/40 mb-4">
+              <p className="text-xs tracking-widest uppercase text-gray-400 mb-4">
                 Who It&apos;s For
               </p>
               <h2
                 id="audience-heading"
-                className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-8"
+                className="font-heading text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-8"
               >
                 Is Sydra right for your practice?
               </h2>
@@ -412,48 +465,89 @@ export default function SydraPageContent() {
                     className="flex items-start gap-3 sm:gap-4"
                   >
                     <CheckCircle
-                      className="w-4 h-4 sm:w-5 sm:h-5 text-kronos-cyan/60 flex-shrink-0 mt-0.5"
+                      className="w-4 h-4 sm:w-5 sm:h-5 text-kronos-cyan flex-shrink-0 mt-0.5"
                       strokeWidth={1.5}
                       aria-hidden="true"
                     />
-                    <span className="font-body text-sm sm:text-base text-white/70 font-light">
+                    <span className="font-body text-sm sm:text-base text-gray-600 font-light">
                       {item}
                     </span>
                   </li>
                 ))}
               </ul>
+
+              <div className="mt-8">
+                <a
+                  href="https://www.sydrahealth.com/#demo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-kronos-cyan text-white py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-bold hover:bg-[#00542A] hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
+                >
+                  Request a Demo
+                  <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Waitlist / CTA */}
+      {/* Waitlist / CTA — dark green gradient */}
       <section
         id="waitlist"
-        className="py-16 sm:py-20 lg:py-28 bg-kronos-green"
+        className="py-16 sm:py-20 lg:py-28 relative overflow-hidden"
+        style={{ background: "linear-gradient(135deg, #003D1A 0%, #00843D 100%)" }}
         aria-labelledby="waitlist-heading"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-black/20 px-4 py-2 mb-6 sm:mb-8">
-              <AlertTriangle className="w-3 h-3 text-white/70" aria-hidden="true" />
-              <span className="font-body text-xs uppercase tracking-widest text-white/70">
-                Beta Testing — Launching Soon
-              </span>
+            <div className="mb-6 sm:mb-8 flex justify-center">
+              <Image
+                src="/sydra-logo.png"
+                alt="Sydra"
+                width={160}
+                height={34}
+                className="object-contain brightness-0 invert opacity-90"
+              />
             </div>
 
             <h2
               id="waitlist-heading"
               className="font-heading text-3xl sm:text-5xl lg:text-6xl text-white mb-4 sm:mb-6"
             >
-              Be first in line
+              Ready to recover what insurers owe you?
             </h2>
 
             <p className="font-body text-sm sm:text-base text-white/80 font-light mb-8 sm:mb-10 leading-relaxed">
-              Sydra is in beta testing and nearly ready to launch. Join the waitlist to get early access and be among the first practices to automate your IDR workflow.
+              Sydra is live and accepting new practices. Join the waitlist or request a demo — we will walk you through a recent denied claim in under 30 minutes, with no commitment.
             </p>
 
-            <SydraWaitlistForm />
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+              <a
+                href="https://www.sydrahealth.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 bg-white text-[#00542A] py-3 sm:py-4 px-8 uppercase tracking-widest text-xs font-bold hover:bg-white/95 hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                Visit Sydra Platform
+                <ExternalLink className="w-3 h-3" aria-hidden="true" />
+              </a>
+              <a
+                href="https://www.sydrahealth.com/#demo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 border border-white/40 text-white py-3 sm:py-4 px-8 uppercase tracking-widest text-xs font-light hover:bg-white/10 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                Request Demo
+              </a>
+            </div>
+
+            <div className="border-t border-white/15 pt-8">
+              <p className="font-body text-xs uppercase tracking-widest text-white/50 mb-5">
+                Or join the waitlist for priority access
+              </p>
+              <SydraWaitlistForm />
+            </div>
 
             <p className="font-body text-xs text-white/50 text-center mt-4">
               Or call us directly:{" "}
