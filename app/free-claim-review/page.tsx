@@ -1,83 +1,56 @@
 import type { Metadata } from "next";
 import { ClaimReviewForm } from "@/components/ClaimReviewForm";
-import { BreadcrumbListSchema } from "@/components/JsonLd";
+import { ServiceLandingPage } from "@/components/ServiceLandingPage";
+import { createPageMetadata } from "@/lib/metadata";
+import { breadcrumbItems, serviceLinks } from "@/lib/navigation";
+import { FREE_CLAIM_FAQS } from "@/lib/faqs";
+import { ReviewHighlight } from "@/components/ReviewHighlight";
+import { SITE_URL } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Free Claim Review for Out-of-Network Surgeons | Kronos Revenue",
+export const metadata: Metadata = createPageMetadata({
+  title: "Free OON Surgical Claim Review, No Cost | Kronos",
   description:
-    "Get a free review of your out-of-network surgical claims. Kronos Revenue identifies underpaid CPT codes and files No Surprises Act disputes to recover what you are owed.",
-  alternates: {
-    canonical: "https://www.kronosrevenue.health/free-claim-review",
-  },
-  openGraph: {
-    title: "Free Claim Review for Out-of-Network Surgeons | Kronos Revenue",
-    description:
-      "Get a free review of your OON surgical claims. We identify underpaid CPT codes and file NSA disputes to recover what you are owed.",
-    url: "https://www.kronosrevenue.health/free-claim-review",
-    siteName: "Kronos Revenue",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Free Claim Review for Out-of-Network Surgeons | Kronos Revenue",
-    description:
-      "Free OON claim review. We identify underpaid CPT codes and file NSA disputes on your behalf.",
-  },
-};
+    "Free claim review for orthopedic, neurosurgery, spine, and plastic surgery practices. We find underpaid CPT codes and file NSA disputes. Request your review today.",
+  path: "/free-claim-review",
+});
 
 const TRUST_ITEMS = [
-  "Flat fee per CPT code — not a percentage",
+  "Flat fee per CPT code, not a percentage",
   "Every operative report reviewed before filing",
   "No Surprises Act experts",
-  "Neurosurgery and surgical subspecialties",
+  "Orthopedic, neurosurgery, spine, and plastic surgery",
 ];
 
 export default function FreeClaimReviewPage() {
   return (
-    <>
-      <BreadcrumbListSchema
-        items={[
-          { name: "Home", url: "https://www.kronosrevenue.health" },
-          { name: "Free Claim Review", url: "https://www.kronosrevenue.health/free-claim-review" },
-        ]}
-      />
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-          {/* Left */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28">
-            <p className="font-body text-xs text-kronos-cyan uppercase tracking-widest mb-4">
-              No cost. No commitment.
-            </p>
-            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-white leading-none mb-6">
-              Free claim review
-            </h1>
-            <p className="font-body text-white/60 text-sm font-light leading-relaxed mb-8">
-              We review your out-of-network surgical claims, identify every underpaid CPT code, and show you exactly how much you are owed before we file a single dispute.
-            </p>
-            <ul className="space-y-3 mb-10">
-              {TRUST_ITEMS.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-0.5 w-4 h-4 shrink-0 border border-kronos-cyan/40 flex items-center justify-center">
-                    <span className="w-1.5 h-1.5 bg-kronos-cyan" />
-                  </span>
-                  <span className="font-body text-sm text-white/70 font-light">{item}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="font-body text-xs text-white/30 font-light">
-              Positive targets: out-of-network neurosurgeons, general surgeons, surgical subspecialists, GI, and any OON provider performing services at in-network ASCs or hospitals.
-            </p>
-          </div>
-
-          {/* Right — form */}
-          <div className="lg:col-span-7">
-            <div className="bg-kronos-card p-6 sm:p-8">
-              <h2 className="font-heading text-2xl text-white mb-6">Tell us about your practice</h2>
-              <ClaimReviewForm />
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+    <ServiceLandingPage
+      path="/free-claim-review"
+      serviceId={`${SITE_URL}/free-claim-review#service`}
+      serviceName="Free Out of Network Surgical Claim Review"
+      serviceDescription="No cost review of out of network surgical claims with underpaid CPT identification and No Surprises Act dispute filing."
+      serviceType="Medical Billing Review"
+      breadcrumbs={breadcrumbItems([{ name: "Free Claim Review", path: "/free-claim-review" }])}
+      eyebrow="No cost. No commitment."
+      h1="Free claim review"
+      intro={
+        <ReviewHighlight>
+          We review your out of network surgical claims, identify every underpaid CPT code, and
+          show you exactly how much you are owed before we file a single dispute.
+        </ReviewHighlight>
+      }
+      trustItems={TRUST_ITEMS}
+      footnote={
+        <ReviewHighlight>
+          Specialty focus: orthopedic surgery, neurosurgery, spine, and plastic surgery. We also
+          review claims for any out of network provider performing services at in network ASCs
+          or hospitals.
+        </ReviewHighlight>
+      }
+      formTitle="Tell us about your practice"
+      form={<ClaimReviewForm />}
+      faqs={FREE_CLAIM_FAQS}
+      relatedLinks={serviceLinks}
+      showPrimarySpecialties
+    />
   );
 }

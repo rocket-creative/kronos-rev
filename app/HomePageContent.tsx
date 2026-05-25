@@ -19,9 +19,15 @@ import {
 } from "lucide-react";
 import { HeroBackground } from "@/components/HeroBackground";
 import { TrustSignal } from "@/components/TrustSignal";
+import { FAQSection } from "@/components/FAQSection";
+import { ReferencesSection } from "@/components/ReferencesSection";
+import { ReviewHighlight } from "@/components/ReviewHighlight";
+import { HOME_FAQS } from "@/lib/faqs";
+import { serviceLinks } from "@/lib/navigation";
 import { ContactForm } from "@/components/ContactForm";
 import { LogoImage } from "@/components/LogoImage";
 import { RevenueCalculator } from "@/components/RevenueCalculator";
+import { PrimarySpecialties } from "@/components/PrimarySpecialties";
 import { useHeroAnimation, useStaggeredCards, useSectionReveal } from "@/components/animations";
 
 const offerings = [
@@ -100,6 +106,12 @@ const teamMembers = [
   },
 ];
 
+// Pending Dr. Abrahams approval before publish
+const SHOW_PROOF_POINT: boolean = false;
+
+// Pending Hayes pricing ratification before publish
+const SHOW_TIER_FRAMING: boolean = false;
+
 export default function HomePageContent() {
   const heroRef = useHeroAnimation();
   const servicesRef = useStaggeredCards();
@@ -113,7 +125,7 @@ export default function HomePageContent() {
       {/* Hero — dark green gradient */}
       <section
         ref={heroRef}
-        className="relative min-h-[80dvh] sm:min-h-dvh overflow-hidden pt-safe-top"
+        className="relative min-h-dvh overflow-hidden pt-safe-top"
         style={{ background: "linear-gradient(160deg, #001A0A 0%, #003D1A 45%, #005C2A 100%)" }}
         aria-labelledby="hero-heading"
       >
@@ -126,23 +138,26 @@ export default function HomePageContent() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 min-h-[80dvh] sm:min-h-dvh flex items-center">
-          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-0">
-            <div className="bg-black/30 border border-white/15 p-8 sm:p-10 lg:p-14 max-w-xl">
-              <p data-hero-eyebrow className="text-xs tracking-widest uppercase text-white/60 mb-4 sm:mb-6">
-                Revenue Cycle Management
-              </p>
+        <div className="relative z-10 min-h-dvh flex items-center">
+          <div className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-16 lg:py-0">
+            <div className="bg-black/30 border border-white/15 p-8 sm:p-10 lg:p-14 max-w-2xl">
+              <div data-hero-eyebrow className="mb-6 sm:mb-8">
+                <span className="sr-only">Kronos Revenue</span>
+                <span aria-hidden="true" className="block">
+                  <LogoImage width={200} textSize="text-2xl" priority className="max-w-full brightness-0 invert" />
+                </span>
+              </div>
 
               <h1
                 data-hero-title
                 id="hero-heading"
-                className="mb-6 sm:mb-8"
+                className="font-heading text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white leading-tight mb-5 sm:mb-7"
               >
-                <LogoImage width={320} textSize="text-4xl" priority className="max-w-full brightness-0 invert" />
+                Attorneys charge 20% of your NSA recovery. We charge far less. And we&rsquo;re much better at it.
               </h1>
 
               <p data-hero-description className="font-body text-sm sm:text-base text-white/80 font-light leading-relaxed mb-6 sm:mb-8">
-                Expert arbitration and out of network dispute resolution support under the No Surprises Act. We maximize your reimbursements.
+                Specialty trained revenue cycle management for orthopedic, neurosurgery, spine, and plastic surgery practices. Full case management, federal IDR submissions, post award follow up — end to end.
               </p>
 
               <div data-hero-cta>
@@ -159,6 +174,8 @@ export default function HomePageContent() {
                 <TrustSignal
                   author="Heisha Rivera"
                   credentials="Director of Revenue Cycle, 20+ Years"
+                  reviewedBy="Dr. John M. Abrahams, MD"
+                  lastUpdated="2026-03-01"
                   className="mt-4"
                 />
               </div>
@@ -167,6 +184,8 @@ export default function HomePageContent() {
         </div>
       </section>
 
+      <PrimarySpecialties variant="light" />
+
       {/* Services — white */}
       <section
         ref={servicesRef}
@@ -174,7 +193,7 @@ export default function HomePageContent() {
         className="py-12 sm:py-16 lg:py-24 bg-white"
         aria-labelledby="services-heading"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <header className="mb-8 sm:mb-12 lg:mb-20">
             <p data-section-header className="text-xs tracking-widest uppercase text-gray-400 mb-4">
               What We Offer
@@ -221,7 +240,7 @@ export default function HomePageContent() {
         className="py-12 sm:py-16 lg:py-24 bg-gray-50"
         aria-labelledby="process-heading"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <header className="mb-8 sm:mb-12 lg:mb-20">
             <p data-section-header className="text-xs tracking-widest uppercase text-gray-400 mb-4">
               The Process
@@ -276,7 +295,7 @@ export default function HomePageContent() {
         className="py-12 sm:py-16 lg:py-24 bg-white"
         aria-labelledby="why-heading"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16">
             {/* Left: Large stat */}
             <div data-section-content className="lg:col-span-5">
@@ -345,9 +364,6 @@ export default function HomePageContent() {
                     <p className="font-body text-[10px] sm:text-xs lg:text-sm text-gray-500 font-light">
                       Our team is fully versed in the No Surprises Act (Pub. L. 116-260, Dec. 2020) and its evolving requirements.
                     </p>
-                    <p className="font-body text-[9px] sm:text-[10px] text-gray-400 font-light mt-2">
-                      References: CMS No Surprises Act (cms.gov/nosurprises); Federal IDR (45 CFR 149.500).
-                    </p>
                   </div>
                 </div>
 
@@ -374,6 +390,27 @@ export default function HomePageContent() {
         </div>
       </section>
 
+      {/* Proof point — standalone callout. Pending Dr. Abrahams approval before publish */}
+      {SHOW_PROOF_POINT && (
+        <section
+          className="py-12 sm:py-16 lg:py-24 bg-white border-t border-gray-100"
+          aria-labelledby="proof-point-heading"
+        >
+          <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12">
+            <p
+              id="proof-point-heading"
+              className="text-xs tracking-widest uppercase text-gray-400 mb-4 sm:mb-6"
+            >
+              Client Results
+            </p>
+            <blockquote className="font-heading text-xl sm:text-2xl lg:text-3xl xl:text-4xl text-gray-900 leading-tight">
+              One of our hand surgery clients recovers an average of{" "}
+              <span className="text-kronos-cyan">$5,000 per won claim</span> at a flat $500 fee — keeping more than 90% of every recovery instead of the 80% an attorney leaves them.
+            </blockquote>
+          </div>
+        </section>
+      )}
+
       {/* Team — light grey */}
       <section
         ref={teamRef}
@@ -381,7 +418,7 @@ export default function HomePageContent() {
         className="py-12 sm:py-16 lg:py-24 bg-gray-50"
         aria-labelledby="team-heading"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <header className="mb-8 sm:mb-12 lg:mb-16">
             <p data-section-header className="text-xs tracking-widest uppercase text-gray-400 mb-4">
               The Team
@@ -394,13 +431,13 @@ export default function HomePageContent() {
             </h2>
           </header>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 lg:gap-6">
             {teamMembers.map((member) => (
               <article data-stagger-card key={member.name} className="group">
                 <div className="bg-gray-200 aspect-square relative overflow-hidden mb-2 sm:mb-3 lg:mb-4">
                   <Image
                     src={member.image}
-                    alt={member.name}
+                    alt={`${member.name}, ${member.title} at Kronos Revenue`}
                     fill
                     className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25%"
@@ -420,79 +457,53 @@ export default function HomePageContent() {
 
       {/* Trust Signal — white */}
       <section className="py-6 sm:py-8 bg-white border-y border-gray-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <TrustSignal
             author="Heisha Rivera"
             credentials="Director of Revenue Cycle, 20+ Years Experience"
+            reviewedBy="Dr. John M. Abrahams, MD"
             lastUpdated="2026-03-01"
             light
           />
         </div>
       </section>
 
-      {/* FAQ — white */}
       <section
-        id="faq"
-        className="py-12 sm:py-16 lg:py-24 bg-white"
-        aria-labelledby="faq-heading"
+        id="solutions"
+        className="py-12 sm:py-16 bg-white border-t border-gray-100"
+        aria-labelledby="solutions-heading"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <header className="mb-8 sm:mb-12">
-            <p data-scroll-fade className="text-xs tracking-widest uppercase text-gray-400 mb-4">
-              FAQ
-            </p>
-            <h2
-              data-scroll-fade
-              id="faq-heading"
-              className="font-heading text-2xl sm:text-3xl lg:text-4xl text-gray-900"
-            >
-              Frequently asked questions
-            </h2>
-          </header>
-          <dl className="space-y-6 sm:space-y-8">
-            <div data-scroll-fade className="border-b border-gray-100 pb-6">
-              <dt className="font-heading text-sm sm:text-base lg:text-lg text-gray-900 mb-2">
-                What is the No Surprises Act and how does it affect my practice?
-              </dt>
-              <dd className="font-body text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                The No Surprises Act (2020) protects patients from surprise medical bills for out of network care. It also establishes a federal Independent Dispute Resolution (IDR) process so providers can challenge low insurer payments. We help you navigate this process and maximize reimbursements.
-              </dd>
-            </div>
-            <div data-scroll-fade className="border-b border-gray-100 pb-6">
-              <dt className="font-heading text-sm sm:text-base lg:text-lg text-gray-900 mb-2">
-                What is Independent Dispute Resolution (IDR)?
-              </dt>
-              <dd className="font-body text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                IDR is a federal arbitration process where a neutral party reviews your payment dispute with an insurer and makes a binding determination. We handle the entire process from submission through final award.
-              </dd>
-            </div>
-            <div data-scroll-fade className="border-b border-gray-100 pb-6">
-              <dt className="font-heading text-sm sm:text-base lg:text-lg text-gray-900 mb-2">
-                How long does the IDR process take?
-              </dt>
-              <dd className="font-body text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                Timelines vary by case complexity and portal volume. We track all deadlines and ensure your case moves through negotiation and IDR without costly delays.
-              </dd>
-            </div>
-            <div data-scroll-fade className="border-b border-gray-100 pb-6">
-              <dt className="font-heading text-sm sm:text-base lg:text-lg text-gray-900 mb-2">
-                What types of cases do you handle?
-              </dt>
-              <dd className="font-body text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                We handle out of network payment disputes, including emergency and nonemergency care, across specialties. Our team manages negotiation, IDR submission, and post arbitration follow up.
-              </dd>
-            </div>
-            <div data-scroll-fade>
-              <dt className="font-heading text-sm sm:text-base lg:text-lg text-gray-900 mb-2">
-                How do I get started?
-              </dt>
-              <dd className="font-body text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                Call us at (914) 705 6830 for a free revenue review. We will assess your situation and outline next steps.
-              </dd>
-            </div>
-          </dl>
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
+          <h2
+            id="solutions-heading"
+            className="font-heading text-2xl sm:text-3xl text-gray-900 mb-6"
+          >
+            What solutions does Kronos Revenue offer?
+          </h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {serviceLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="block min-h-[44px] p-4 border border-gray-200 hover:border-kronos-cyan hover:bg-gray-50 font-body text-xs uppercase tracking-widest text-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
+                >
+                  <ReviewHighlight>{link.label}</ReviewHighlight>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
+
+      <FAQSection
+        id="faq"
+        heading="What do providers ask about IDR and out of network billing?"
+        headingId="faq-heading"
+        items={HOME_FAQS}
+        variant="light"
+      />
+
+      <ReferencesSection variant="light" />
 
       {/* Recovery Calculator — light grey */}
       <section
@@ -503,6 +514,26 @@ export default function HomePageContent() {
         <RevenueCalculator />
       </section>
 
+      {/* Tier framing — engagement models. Pending Hayes pricing ratification before publish */}
+      {SHOW_TIER_FRAMING && (
+        <section
+          className="py-12 sm:py-16 lg:py-20 bg-white border-t border-gray-100"
+          aria-labelledby="engagement-heading"
+        >
+          <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12">
+            <p
+              id="engagement-heading"
+              className="text-xs tracking-widest uppercase text-gray-400 mb-4 sm:mb-6"
+            >
+              Engagement Models
+            </p>
+            <p className="font-heading text-lg sm:text-xl lg:text-2xl text-gray-900 leading-snug font-light">
+              We offer three engagement models depending on your claim volume and how much you want us to handle. Pricing is structured per claim — not a flat monthly retainer that doesn&rsquo;t move with your caseload. Call to discuss what fits your practice.
+            </p>
+          </div>
+        </section>
+      )}
+
       {/* CTA / Contact — dark green gradient */}
       <section
         id="contact"
@@ -510,7 +541,7 @@ export default function HomePageContent() {
         style={{ background: "linear-gradient(135deg, #00542A 0%, #00843D 100%)" }}
         aria-labelledby="cta-heading"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-center">
             <div>
               <h2
@@ -526,6 +557,8 @@ export default function HomePageContent() {
               <TrustSignal
                 author="Heisha Rivera"
                 credentials="Director of Revenue Cycle"
+                reviewedBy="Dr. John M. Abrahams, MD"
+                lastUpdated="2026-03-01"
                 className="mb-4 sm:mb-6"
               />
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -554,7 +587,7 @@ export default function HomePageContent() {
       </section>
       {/* White spacer between Contact form and Sydra */}
       <div className="bg-white py-12 sm:py-16 lg:py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <p className="font-heading text-xl sm:text-2xl text-gray-400 font-light">
             Also built by Kronos Health
           </p>
@@ -576,7 +609,7 @@ export default function HomePageContent() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-28">
+        <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 lg:py-28">
 
           {/* Badges */}
           <div className="flex flex-wrap items-center gap-2 mb-8 sm:mb-10">

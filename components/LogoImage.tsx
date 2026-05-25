@@ -1,16 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 interface LogoImageProps {
-  /** Rendered width in px */
   width?: number;
-  /** Optional className for the wrapper/img */
   className?: string;
-  /** Text size fallback class */
   textSize?: string;
   priority?: boolean;
-  /** Use dark text for light backgrounds (fallback only) */
   dark?: boolean;
 }
 
@@ -22,30 +19,28 @@ export function LogoImage({
   dark = false,
 }: LogoImageProps) {
   const [imgError, setImgError] = useState(false);
-
-  // viewBox is 5000 × 2084 → aspect ratio ≈ 2.4 : 1
   const height = Math.round(width / 2.4);
 
   if (imgError) {
     return (
-      <span className={`font-heading ${textSize} ${dark ? "text-gray-900" : "text-white"} tracking-wider`}>
+      <span
+        className={`font-heading ${textSize} ${dark ? "text-gray-900" : "text-white"} tracking-wider`}
+      >
         KRONOS <span className="text-kronos-cyan">REVENUE</span>
       </span>
     );
   }
 
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
+    <Image
       src="/logo.svg"
-      alt="Kronos Revenue"
+      alt="Kronos Revenue logo"
       width={width}
       height={height}
-      loading={priority ? "eager" : "lazy"}
-      decoding="async"
+      priority={priority}
       onError={() => setImgError(true)}
       className={className}
-      style={{ display: "block" }}
+      style={{ display: "block", width, height: "auto" }}
     />
   );
 }

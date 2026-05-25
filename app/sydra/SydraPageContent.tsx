@@ -141,7 +141,7 @@ export default function SydraPageContent() {
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(255,255,255,0.06)_0%,_transparent_60%)]" aria-hidden="true" />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="max-w-3xl">
             <p
               data-hero-eyebrow
@@ -150,16 +150,23 @@ export default function SydraPageContent() {
               By Kronos Revenue
             </p>
 
-            <div data-hero-title className="mb-6 sm:mb-8">
-              <Image
-                src="/sydra-logo.png"
-                alt="Sydra — NSA IDR Simplified"
-                width={280}
-                height={59}
-                className="object-contain brightness-0 invert"
-                priority
-              />
-            </div>
+            <h1
+              id="sydra-hero-heading"
+              data-hero-title
+              className="mb-6 sm:mb-8"
+            >
+              <span className="sr-only">Sydra AI IDR platform for surgical practices</span>
+              <span aria-hidden="true">
+                <Image
+                  src="/sydra-logo.png"
+                  alt="Sydra NSA IDR platform logo"
+                  width={280}
+                  height={59}
+                  className="object-contain brightness-0 invert"
+                  priority
+                />
+              </span>
+            </h1>
 
             <p
               data-hero-description
@@ -235,7 +242,7 @@ export default function SydraPageContent() {
           </span>
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
           <p className="font-body text-xs uppercase tracking-widest text-gray-400 mb-6 sm:mb-8">
             A Healthcare First
           </p>
@@ -303,7 +310,7 @@ export default function SydraPageContent() {
         className="py-10 sm:py-12 bg-white border-y border-gray-100"
         aria-label="Key statistics"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {stats.map((stat) => (
               <div data-stagger-card key={stat.value} className="text-center">
@@ -325,7 +332,7 @@ export default function SydraPageContent() {
         className="py-16 sm:py-20 lg:py-28 bg-gray-50"
         aria-labelledby="problem-heading"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <header className="mb-10 sm:mb-14 lg:mb-20">
             <p className="text-xs tracking-widest uppercase text-gray-400 mb-4">
               The Problem
@@ -368,7 +375,7 @@ export default function SydraPageContent() {
         className="py-16 sm:py-20 lg:py-28 bg-white"
         aria-labelledby="features-heading"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <header className="mb-10 sm:mb-14 lg:mb-20">
             <p className="text-xs tracking-widest uppercase text-gray-400 mb-4">
               Platform Features
@@ -429,7 +436,7 @@ export default function SydraPageContent() {
         className="py-16 sm:py-20 lg:py-28 bg-gray-50"
         aria-labelledby="audience-heading"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             <div className="lg:col-span-5">
               <div className="bg-kronos-cyan/8 border border-kronos-cyan/20 p-8 sm:p-10 lg:p-12">
@@ -499,7 +506,7 @@ export default function SydraPageContent() {
         style={{ background: "linear-gradient(135deg, #003D1A 0%, #00843D 100%)" }}
         aria-labelledby="waitlist-heading"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="max-w-2xl mx-auto text-center">
             <div className="mb-6 sm:mb-8 flex justify-center">
               <Image

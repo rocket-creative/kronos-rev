@@ -1,38 +1,37 @@
 import type { Metadata } from "next";
 import SydraPageContent from "./SydraPageContent";
+import {
+  BreadcrumbListSchema,
+  WebPageSchema,
+} from "@/components/JsonLd";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { createPageMetadata, absoluteUrl } from "@/lib/metadata";
+import { breadcrumbItems } from "@/lib/navigation";
 
-export const metadata: Metadata = {
-  title: "Sydra — AI Powered IDR Submission Platform | Kronos Revenue",
+export const metadata: Metadata = createPageMetadata({
+  title: "Sydra AI IDR Platform for Surgical Practices | Kronos",
   description:
-    "Sydra automates the No Surprises Act IDR workflow for surgical practices. AI generated submissions, automated deadline tracking, and real time analytics. Coming soon.",
-  alternates: {
-    canonical: "https://www.kronosrevenue.health/sydra",
-  },
-  openGraph: {
-    title: "Sydra — AI Powered IDR Submission Platform | Kronos Revenue",
-    description:
-      "Sydra automates the No Surprises Act IDR workflow for surgical practices. AI generated submissions, automated deadline tracking, and real time analytics.",
-    url: "https://www.kronosrevenue.health/sydra",
-    siteName: "Kronos Revenue",
-    type: "website",
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Sydra — AI Powered IDR Submission Platform by Kronos Revenue",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Sydra — AI Powered IDR Submission Platform | Kronos Revenue",
-    description:
-      "Sydra automates the No Surprises Act IDR workflow. AI generated submissions, automated deadlines, real time analytics. Coming soon.",
-    images: ["/twitter-image"],
-  },
-};
+    "Sydra automates No Surprises Act IDR for surgical practices. AI submissions, deadline tracking, and analytics. Live in production. Request a demo or join the waitlist.",
+  path: "/sydra",
+  ogImageAlt: "Sydra AI IDR platform by Kronos Revenue",
+});
 
 export default function SydraPage() {
-  return <SydraPageContent />;
+  const pageUrl = absoluteUrl("/sydra");
+  const crumbs = breadcrumbItems([{ name: "Sydra", path: "/sydra" }]);
+
+  return (
+    <>
+      <BreadcrumbListSchema items={crumbs} />
+      <WebPageSchema
+        name="Sydra AI IDR Platform"
+        description="AI powered No Surprises Act IDR submission platform for surgical practices by Kronos Revenue."
+        url={pageUrl}
+      />
+      <div className="bg-kronos-bg min-h-dvh">
+        <Breadcrumbs items={crumbs} />
+        <SydraPageContent />
+      </div>
+    </>
+  );
 }

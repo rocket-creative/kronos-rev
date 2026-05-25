@@ -122,7 +122,7 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
 
   // Full mode
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
       <header className="mb-10 sm:mb-14">
         <p className="text-xs tracking-widest uppercase text-gray-400 mb-4">
           Recovery Calculator

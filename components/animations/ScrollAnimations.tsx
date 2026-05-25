@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { getIsMobileLayout } from "@/hooks/useMobileLayout";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -17,6 +18,8 @@ export function useScrollFadeIn() {
 
     const elements = ref.current.querySelectorAll("[data-scroll-fade]");
     
+    const scrollStart = getIsMobileLayout() ? "top 92%" : "top 85%";
+
     elements.forEach((el) => {
       gsap.fromTo(el,
         { opacity: 0, y: 50 },
@@ -27,7 +30,7 @@ export function useScrollFadeIn() {
           ease: "power2.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 85%",
+            start: scrollStart,
             end: "top 60%",
             toggleActions: "play none none reverse",
           },
@@ -49,17 +52,18 @@ export function useStaggeredCards() {
     const cards = ref.current.querySelectorAll("[data-stagger-card]");
     
     if (cards.length) {
+      const stagger = getIsMobileLayout() ? 0.072 : 0.12;
       gsap.fromTo(cards,
         { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
           duration: 0.6,
-          stagger: 0.12,
+          stagger,
           ease: "power2.out",
           scrollTrigger: {
             trigger: ref.current,
-            start: "top 75%",
+            start: getIsMobileLayout() ? "top 88%" : "top 75%",
           },
         }
       );
@@ -154,7 +158,7 @@ export function useParallax(speed: number = 0.3) {
   const prefersReducedMotion = useReducedMotion();
 
   useGSAP(() => {
-    if (!ref.current || prefersReducedMotion) return;
+    if (!ref.current || prefersReducedMotion || getIsMobileLayout()) return;
 
     const images = ref.current.querySelectorAll("[data-parallax]");
     

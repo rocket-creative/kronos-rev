@@ -1,214 +1,289 @@
-const ORGANIZATION_ID = "https://www.kronosrevenue.health/#organization";
+import type { FaqItem } from "@/lib/faqs";
+import {
+  EMAIL,
+  LINKEDIN_URL,
+  LOGO_URL,
+  ORG_ID,
+  PHONE_TEL,
+  SITE_URL,
+  WEBSITE_ID,
+} from "@/lib/site";
 
-export function OrganizationSchema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": ORGANIZATION_ID,
-    name: "Kronos Revenue",
-    url: "https://www.kronosrevenue.health",
-    description:
-      "Expert revenue cycle management and out of network dispute resolution under the No Surprises Act.",
-    telephone: "+1 914 705 6830",
-    email: "info@kronoshealth.co",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "244 Westchester Avenue, Suite 209",
-      addressLocality: "West Harrison",
-      addressRegion: "NY",
-      postalCode: "10604",
-      addressCountry: "US",
-    },
-    parentOrganization: {
-      "@type": "Organization",
-      name: "Kronos Health",
-      url: "https://www.kronosgroup.health",
-    },
-    founder: {
-      "@type": "Person",
-      name: "Dr. John M. Abrahams",
-      jobTitle: "Founder & CEO",
-      description:
-        "Board certified neurosurgeon with 20+ years experience. Past President of Brain and Spine Surgeons of New York.",
-    },
-    knowsAbout: [
-      "Revenue Cycle Management",
-      "No Surprises Act",
-      "Independent Dispute Resolution",
-      "Healthcare Arbitration",
-      "Out of Network Billing",
-    ],
-  };
-
+function JsonLdScript({ data }: { data: object }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+export type BreadcrumbItem = { name: string; url: string };
+
+export function OrganizationSchema() {
+  return (
+    <JsonLdScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": ORG_ID,
+        name: "Kronos Revenue",
+        url: SITE_URL,
+        logo: {
+          "@type": "ImageObject",
+          url: LOGO_URL,
+        },
+        description:
+          "Specialty trained revenue cycle management and No Surprises Act IDR for orthopedic, neurosurgery, spine, and plastic surgery practices.",
+        telephone: PHONE_TEL,
+        // Update to sales@sydrahealth.com — pending alias setup
+        email: EMAIL,
+        sameAs: [LINKEDIN_URL],
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: PHONE_TEL,
+          // Update to sales@sydrahealth.com — pending alias setup
+          email: EMAIL,
+          contactType: "customer service",
+          areaServed: "US",
+          availableLanguage: "English",
+        },
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "244 Westchester Avenue, Suite 209",
+          addressLocality: "West Harrison",
+          addressRegion: "NY",
+          postalCode: "10604",
+          addressCountry: "US",
+        },
+        parentOrganization: {
+          "@type": "Organization",
+          name: "Kronos Health",
+          url: "https://www.kronosgroup.health",
+        },
+        founder: {
+          "@id": `${SITE_URL}/#person-john-abrahams`,
+        },
+        knowsAbout: [
+          "Revenue Cycle Management",
+          "No Surprises Act",
+          "Independent Dispute Resolution",
+          "Healthcare Arbitration",
+          "Out of Network Billing",
+          "Orthopedic Surgery Billing",
+          "Neurosurgery Billing",
+          "Spine Surgery Billing",
+          "Plastic Surgery Billing",
+        ],
+      }}
     />
   );
 }
 
 export function WebSiteSchema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https://www.kronosrevenue.health/#website",
-    name: "Kronos Revenue",
-    url: "https://www.kronosrevenue.health",
-    publisher: { "@id": ORGANIZATION_ID },
-  };
-
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    <JsonLdScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": WEBSITE_ID,
+        name: "Kronos Revenue",
+        url: SITE_URL,
+        publisher: { "@id": ORG_ID },
+      }}
     />
   );
 }
 
-interface BreadcrumbItem {
-  name: string;
-  url: string;
-}
-
-export function BreadcrumbListSchema({ items }: { items?: BreadcrumbItem[] } = {}) {
-  const list = items ?? [{ name: "Home", url: "https://www.kronosrevenue.health" }];
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: list.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: item.url,
-    })),
-  };
-
+export function BreadcrumbListSchema({ items }: { items: BreadcrumbItem[] }) {
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    <JsonLdScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: items.map((item, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: item.name,
+          item: item.url,
+        })),
+      }}
     />
   );
 }
 
-export function LocalBusinessSchema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "@id": "https://www.kronosrevenue.health/#localbusiness",
-    name: "Kronos Revenue",
-    url: "https://www.kronosrevenue.health",
-    telephone: "+1 914 705 6830",
-    email: "info@kronoshealth.co",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "244 Westchester Avenue, Suite 209",
-      addressLocality: "West Harrison",
-      addressRegion: "NY",
-      postalCode: "10604",
-      addressCountry: "US",
-    },
-    areaServed: "United States",
-    priceRange: "$$",
-  };
-
+export function LocalBusinessSchema({ pageUrl }: { pageUrl: string }) {
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    <JsonLdScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": `${pageUrl}#localbusiness`,
+        name: "Kronos Revenue",
+        url: pageUrl,
+        telephone: PHONE_TEL,
+        // Update to sales@sydrahealth.com — pending alias setup
+        email: EMAIL,
+        image: LOGO_URL,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "244 Westchester Avenue, Suite 209",
+          addressLocality: "West Harrison",
+          addressRegion: "NY",
+          postalCode: "10604",
+          addressCountry: "US",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 40.9626,
+          longitude: -73.7471,
+        },
+        areaServed: "United States",
+        priceRange: "$$",
+        parentOrganization: { "@id": ORG_ID },
+      }}
     />
   );
 }
 
-const faqItems = [
-  {
-    question: "What is the No Surprises Act and how does it affect my practice?",
-    answer:
-      "The No Surprises Act (2020) protects patients from surprise medical bills for out of network care. It also establishes a federal Independent Dispute Resolution (IDR) process so providers can challenge low insurer payments. We help you navigate this process and maximize reimbursements.",
-  },
-  {
-    question: "What is Independent Dispute Resolution (IDR)?",
-    answer:
-      "IDR is a federal arbitration process where a neutral party reviews your payment dispute with an insurer and makes a binding determination. We handle the entire process from submission through final award.",
-  },
-  {
-    question: "How long does the IDR process take?",
-    answer:
-      "Timelines vary by case complexity and portal volume. We track all deadlines and ensure your case moves through negotiation and IDR without costly delays.",
-  },
-  {
-    question: "What types of cases do you handle?",
-    answer:
-      "We handle out of network payment disputes, including emergency and nonemergency care, across specialties. Our team manages negotiation, IDR submission, and post arbitration follow up.",
-  },
-  {
-    question: "How do I get started?",
-    answer:
-      "Call us at (914) 705 6830 for a free revenue review. We will assess your situation and outline next steps.",
-  },
-];
-
-export function FAQPageSchema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqItems.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
-
+export function FAQPageSchema({ items }: { items: FaqItem[] }) {
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    <JsonLdScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: items.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      }}
     />
   );
 }
 
-interface ServiceSchemaProps {
+export type ServiceSchemaProps = {
   name: string;
   description: string;
   url: string;
   serviceType: string;
+  serviceId: string;
   areaServed?: string;
-}
-
-const SERVICE_ID = "https://www.kronosrevenue.health/#service";
+};
 
 export function ServiceSchema({
   name,
   description,
   url,
   serviceType,
+  serviceId,
   areaServed = "United States",
 }: ServiceSchemaProps) {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": SERVICE_ID,
-    name,
-    description,
-    url,
-    serviceType,
-    areaServed,
-    provider: {
-      "@id": ORGANIZATION_ID,
-      "@type": "Organization",
-      name: "Kronos Revenue",
-      url: "https://www.kronosrevenue.health",
-    },
-  };
-
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    <JsonLdScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": serviceId,
+        name,
+        description,
+        url,
+        serviceType,
+        areaServed,
+        provider: { "@id": ORG_ID },
+      }}
     />
   );
 }
+
+export function WebPageSchema({
+  name,
+  description,
+  url,
+}: {
+  name: string;
+  description: string;
+  url: string;
+}) {
+  return (
+    <JsonLdScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        name,
+        description,
+        url,
+        isPartOf: { "@id": WEBSITE_ID },
+        about: { "@id": ORG_ID },
+      }}
+    />
+  );
+}
+
+export type PersonSchemaMember = {
+  id: string;
+  name: string;
+  jobTitle: string;
+  description: string;
+  image?: string;
+  sameAs?: string[];
+  isPhysician?: boolean;
+  medicalSpecialty?: string;
+};
+
+export function PersonSchema({ person }: { person: PersonSchemaMember }) {
+  const base = {
+    "@context": "https://schema.org",
+    "@type": person.isPhysician ? "Physician" : "Person",
+    "@id": person.id,
+    name: person.name,
+    jobTitle: person.jobTitle,
+    description: person.description,
+    worksFor: { "@id": ORG_ID },
+    ...(person.image ? { image: `${SITE_URL}${person.image}` } : {}),
+    ...(person.sameAs?.length ? { sameAs: person.sameAs } : {}),
+    ...(person.medicalSpecialty
+      ? { medicalSpecialty: person.medicalSpecialty }
+      : {}),
+  };
+
+  return <JsonLdScript data={base} />;
+}
+
+export const TEAM_MEMBERS: PersonSchemaMember[] = [
+  {
+    id: `${SITE_URL}/#person-heisha-rivera`,
+    name: "Heisha Rivera",
+    jobTitle: "Director of Revenue Cycle",
+    description:
+      "Director of Revenue Cycle with 20+ years of healthcare billing and dispute experience.",
+    image: "/team/heisha-rivera.png",
+  },
+  {
+    id: `${SITE_URL}/#person-camila-nicasio`,
+    name: "Camila Nicasio",
+    jobTitle: "Revenue Cycle Specialist",
+    description: "Revenue cycle specialist focused on out of network claim resolution.",
+    image: "/team/camila-nicasio.png",
+  },
+  {
+    id: `${SITE_URL}/#person-soily-rivera`,
+    name: "Soily Rivera",
+    jobTitle: "Revenue Cycle Specialist",
+    description: "Revenue cycle specialist supporting IDR submissions and payer follow up.",
+    image: "/team/soily-rivera.png",
+  },
+  {
+    id: `${SITE_URL}/#person-john-abrahams`,
+    name: "Dr. John M. Abrahams",
+    jobTitle: "Founder",
+    description:
+      "Board certified neurosurgeon and founder of Kronos Health. Past President of Brain and Spine Surgeons of New York.",
+    isPhysician: true,
+    medicalSpecialty: "Neurosurgery",
+  },
+];

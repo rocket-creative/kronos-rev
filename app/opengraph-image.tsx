@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Kronos Revenue — Revenue Cycle Management & IDR";
+export const alt =
+  "Kronos Revenue — Specialty trained NSA IDR for orthopedic, neurosurgery, spine, and plastic surgery";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -50,13 +51,14 @@ export default async function Image() {
           />
           <div
             style={{
-              fontSize: 36,
+              fontSize: 34,
               color: "#A3A3A3",
               textAlign: "center",
-              maxWidth: 800,
+              maxWidth: 900,
+              lineHeight: 1.2,
             }}
           >
-            Revenue Cycle Management & IDR Dispute Resolution
+            Specialty trained NSA IDR for orthopedic, neurosurgery, spine & plastic surgery
           </div>
           <div
             style={{

@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { getIsMobileLayout } from "@/hooks/useMobileLayout";
 
 gsap.registerPlugin(useGSAP);
 
@@ -30,7 +31,10 @@ export function useHeroAnimation() {
         return;
       }
 
+      const mobile = getIsMobileLayout();
+      const timeScale = mobile ? 0.6 : 1;
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.timeScale(timeScale);
 
       if (eyebrow.length)     gsap.set(eyebrow,     { opacity: 0, y: 20 });
       if (title.length)       gsap.set(title,       { opacity: 0, y: 40 });

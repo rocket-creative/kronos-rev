@@ -1,38 +1,41 @@
 import type { Metadata } from "next";
 import HomePageContent from "./HomePageContent";
+import { createPageMetadata } from "@/lib/metadata";
+import {
+  OrganizationSchema,
+  WebSiteSchema,
+  ServiceSchema,
+  FAQPageSchema,
+  PersonSchema,
+  TEAM_MEMBERS,
+} from "@/components/JsonLd";
+import { HOME_FAQS } from "@/lib/faqs";
+import { SITE_URL } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Revenue Cycle Management & IDR | Kronos Revenue",
+export const metadata: Metadata = createPageMetadata({
+  title: "Healthcare IDR & Revenue Cycle Management | Kronos",
   description:
-    "Expert arbitration and out of network dispute resolution under the No Surprises Act. Maximize reimbursements with full case management. Request a free revenue review.",
-  alternates: {
-    canonical: "https://www.kronosrevenue.health",
-  },
-  openGraph: {
-    title: "Revenue Cycle Management & IDR | Kronos Revenue",
-    description:
-      "Expert arbitration and out of network dispute resolution under the No Surprises Act. Maximize reimbursements. Request a free revenue review.",
-    url: "https://www.kronosrevenue.health",
-    siteName: "Kronos Revenue",
-    type: "website",
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Kronos Revenue — Revenue Cycle Management & IDR",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Revenue Cycle Management & IDR | Kronos Revenue",
-    description:
-      "Expert arbitration and out of network dispute resolution under the No Surprises Act. Request a free revenue review.",
-    images: ["/twitter-image"],
-  },
-};
+    "Specialty trained revenue cycle for orthopedic, neurosurgery, spine, and plastic surgery. Full NSA IDR case management. Call (914) 705 6830 for a free review.",
+  path: "/",
+});
 
 export default function HomePage() {
-  return <HomePageContent />;
+  return (
+    <>
+      <OrganizationSchema />
+      <WebSiteSchema />
+      <ServiceSchema
+        name="Revenue Cycle Management and IDR Dispute Resolution"
+        description="Specialty trained revenue cycle management and federal IDR for orthopedic, neurosurgery, spine, and plastic surgery practices. Full case management, NSA submissions, and post award follow up — end to end."
+        url={SITE_URL}
+        serviceType="Healthcare Revenue Services"
+        serviceId={`${SITE_URL}/#service-home`}
+      />
+      <FAQPageSchema items={HOME_FAQS} />
+      {TEAM_MEMBERS.map((person) => (
+        <PersonSchema key={person.id} person={person} />
+      ))}
+      <HomePageContent />
+    </>
+  );
 }

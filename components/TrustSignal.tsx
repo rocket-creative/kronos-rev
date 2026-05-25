@@ -1,3 +1,5 @@
+import { ReviewHighlight } from "@/components/ReviewHighlight";
+
 interface TrustSignalProps {
   author?: string;
   credentials?: string;
@@ -26,13 +28,16 @@ export function TrustSignal({
           <p className="font-body text-sm font-semibold text-gray-900">
             {author}
             {credentials && (
-              <span className="font-light text-kronos-cyan"> — {credentials}</span>
+              <span className="font-light text-kronos-cyan">, {credentials}</span>
             )}
           </p>
         )}
         {reviewedBy && (
           <p className="font-body text-sm text-gray-600 mt-0.5">
-            Reviewed by <span className="font-semibold text-gray-900">{reviewedBy}</span>
+            Medically reviewed by{" "}
+            <ReviewHighlight>
+              <span className="font-semibold text-gray-900">{reviewedBy}</span>
+            </ReviewHighlight>
           </p>
         )}
         {lastUpdated && (
@@ -68,8 +73,10 @@ export function TrustSignal({
         )}
         {reviewedBy && (
           <div>
-            <span className="text-white/60">Reviewed by:</span>{" "}
-            <span className="text-white">{reviewedBy}</span>
+            <span className="text-white/60">Medically reviewed by:</span>{" "}
+            <ReviewHighlight>
+              <span className="text-white">{reviewedBy}</span>
+            </ReviewHighlight>
           </div>
         )}
         {lastUpdated && (

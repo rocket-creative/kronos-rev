@@ -69,6 +69,7 @@ export function ContactForm({ source = "revenue_review_request" }: { source?: st
           name="name"
           placeholder="Your Name"
           required
+          aria-required="true"
           autoComplete="name"
           inputMode="text"
           style={{ fontSize: "16px" }}
@@ -85,6 +86,7 @@ export function ContactForm({ source = "revenue_review_request" }: { source?: st
           name="phone"
           placeholder="Phone Number"
           required
+          aria-required="true"
           autoComplete="tel"
           inputMode="tel"
           style={{ fontSize: "16px" }}
@@ -101,6 +103,7 @@ export function ContactForm({ source = "revenue_review_request" }: { source?: st
           name="email"
           placeholder="Email Address"
           required
+          aria-required="true"
           autoComplete="email"
           inputMode="email"
           style={{ fontSize: "16px" }}
@@ -117,6 +120,7 @@ export function ContactForm({ source = "revenue_review_request" }: { source?: st
           name="organization"
           placeholder="Organization / Practice Name"
           required
+          aria-required="true"
           autoComplete="organization"
           inputMode="text"
           style={{ fontSize: "16px" }}
