@@ -279,6 +279,39 @@ export const CONTACT_FAQS: FaqItem[] = [
   },
 ];
 
+export const SPECIALTY_FAQS: FaqItem[] = [
+  {
+    question: "Which surgical specialties does Kronos Revenue support for NSA IDR?",
+    answer:
+      "We support orthopedic, neurosurgery, spine, plastic, anesthesia, and general surgery practices. Every federal IDR submission is one claim per CPT, specialty coded by RCM specialists trained on your procedure set.",
+    highlightAnswer: true,
+  },
+  {
+    question: "Why does specialty coding matter at federal IDR?",
+    answer:
+      "Arbiters expect operative detail and correct CPT separation. Generalist attorneys batch codes, which violates federal IDR rules and loses awards your practice earned. We file each eligible CPT individually.",
+    highlightAnswer: true,
+  },
+  {
+    question: "Can Kronos handle high value neurosurgery and spine claims?",
+    answer:
+      "Yes. Kronos was founded by a board certified neurosurgeon. Complex cranial, spine, and instrumentation claims receive the clinical depth IDR requires, not boilerplate attorney letters.",
+    highlightAnswer: true,
+  },
+  {
+    question: "What is a typical claim range by specialty?",
+    answer:
+      "Ranges vary by CPT and market. Orthopedic claims often fall between $2,000 and $8,000 per CPT; neurosurgery and spine claims can run higher. We confirm estimates on your free case review using real EOBs.",
+    highlightAnswer: true,
+  },
+  {
+    question: "How do I get a free NSA IDR review for my specialty?",
+    answer:
+      "Submit the case review form or call (914) 705 6830. Share sample EOBs and your specialty mix. We respond within one business day with what you could recover versus your current attorney or biller.",
+    highlightAnswer: true,
+  },
+];
+
 /** @deprecated Legacy service page FAQs — kept for redirect source pages if cached */
 export const NSA_FAQS: FaqItem[] = SWITCHING_FAQS;
 export const ASC_FAQS: FaqItem[] = PROCESS_FAQS;

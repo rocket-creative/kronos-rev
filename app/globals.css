@@ -111,11 +111,28 @@ p, li, td, th {
   html {
     scroll-behavior: auto;
   }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  scroll-margin-top: 7rem;
+  scroll-margin-bottom: 5rem;
 }
 
 @media (hover: none) {
   * { cursor: auto !important; }
   .custom-cursor { display: none; }
+}
+
+@utility pb-mobile-cta {
+  padding-bottom: calc(3.5rem + env(safe-area-inset-bottom));
 }
 
 @utility logo-dark-green {

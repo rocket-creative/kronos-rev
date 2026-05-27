@@ -43,7 +43,11 @@ export function FAQSection({
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                {item.question}
+                {item.highlightAnswer ? (
+                  <ReviewHighlight>{item.question}</ReviewHighlight>
+                ) : (
+                  item.question
+                )}
               </dt>
               <dd
                 className={`font-body text-sm font-light leading-relaxed ${

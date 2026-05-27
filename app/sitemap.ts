@@ -1,7 +1,9 @@
 import { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
+
+const LAST_CONTENT_UPDATE = new Date("2026-05-01");
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.kronosrevenue.health";
   const pages = [
     { path: "", priority: 1, changeFrequency: "weekly" as const },
     { path: "/lawyer-problem", priority: 0.9, changeFrequency: "monthly" as const },
@@ -15,8 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   return pages.map(({ path, priority, changeFrequency }) => ({
-    url: `${baseUrl}${path}`,
-    lastModified: new Date(),
+    url: path ? `${SITE_URL}${path}` : SITE_URL,
+    lastModified: LAST_CONTENT_UPDATE,
     changeFrequency,
     priority,
   }));

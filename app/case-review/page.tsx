@@ -1,24 +1,35 @@
 import type { Metadata } from "next";
 import { ClaimReviewForm } from "@/components/ClaimReviewForm";
-import { BreadcrumbListSchema } from "@/components/JsonLd";
+import { FAQSection } from "@/components/FAQSection";
+import {
+  BreadcrumbListSchema,
+  FAQPageSchema,
+  LocalBusinessSchema,
+} from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { createPageMetadata } from "@/lib/metadata";
-import { breadcrumbItems } from "@/lib/navigation";
+import { ReferencesSection } from "@/components/ReferencesSection";
+import { RelatedServices } from "@/components/RelatedServices";
+import { createPageMetadata, absoluteUrl } from "@/lib/metadata";
+import { breadcrumbItems, mainNavLinks } from "@/lib/navigation";
+import { FREE_CLAIM_FAQS } from "@/lib/faqs";
+import { PAGE_SEO } from "@/lib/page-seo";
 import { EMAIL, OFFICE_ADDRESS, PHONE_DISPLAY, PHONE_TEL } from "@/lib/site";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Free NSA IDR Review | Kronos Revenue",
-  description:
-    "Get a free No Surprises Act IDR case review. See what you keep per dollar won — versus a 20% attorney contingency.",
+  title: PAGE_SEO.caseReview.title,
+  description: PAGE_SEO.caseReview.description,
   path: "/case-review",
 });
 
 export default function CaseReviewPage() {
+  const pageUrl = absoluteUrl("/case-review");
   const crumbs = breadcrumbItems([{ name: "Free IDR Review", path: "/case-review" }]);
 
   return (
     <div className="bg-kronos-bg min-h-dvh">
       <BreadcrumbListSchema items={crumbs} />
+      <LocalBusinessSchema pageUrl={pageUrl} />
+      <FAQPageSchema items={FREE_CLAIM_FAQS} />
       <Breadcrumbs items={crumbs} />
 
       <section
@@ -35,17 +46,20 @@ export default function CaseReviewPage() {
           >
             Get a free NSA IDR review
           </h1>
-          <p className="font-body text-white/70 text-sm font-light leading-relaxed max-w-2xl">
+          <p className="font-body text-white/70 text-sm sm:text-base font-light leading-relaxed max-w-2xl">
             Submit the form and tell us about your No Surprises Act disputes. We show you what you
-            keep per dollar recovered at IDR — versus twenty cents on the dollar to a contingency
+            keep per dollar recovered at IDR versus twenty cents on the dollar to a contingency
             attorney. Prefer to talk? Call us directly.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <div id="form" className="bg-white/10 border border-white/15 p-6 sm:p-8">
-              <h2 className="font-heading text-2xl text-white mb-6">Tell us about your practice</h2>
+            <div id="form" className="bg-white/10 border border-white/15 p-6 sm:p-8 scroll-mt-28">
+              <h2 className="font-heading text-2xl text-white mb-2">Tell us about your practice</h2>
+              <p className="font-body text-white/50 text-xs mb-6">
+                Fields marked with <span className="text-kronos-cyan">*</span> are required.
+              </p>
               <ClaimReviewForm />
             </div>
           </div>
@@ -65,7 +79,7 @@ export default function CaseReviewPage() {
                   <dd>
                     <a
                       href={`tel:${PHONE_TEL}`}
-                      className="font-body text-white hover:text-kronos-cyan transition-colors"
+                      className="font-body text-white hover:text-kronos-cyan transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan scroll-mt-28"
                     >
                       {PHONE_DISPLAY}
                     </a>
@@ -78,7 +92,7 @@ export default function CaseReviewPage() {
                   <dd>
                     <a
                       href={`mailto:${EMAIL}`}
-                      className="font-body text-white hover:text-kronos-cyan transition-colors"
+                      className="font-body text-white hover:text-kronos-cyan transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
                     >
                       {EMAIL}
                     </a>
@@ -101,6 +115,20 @@ export default function CaseReviewPage() {
           </div>
         </div>
       </section>
+
+      <section className="bg-white py-12 sm:py-16" aria-labelledby="case-review-faq-heading">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
+          <FAQSection
+            heading="Questions about the free case review"
+            headingId="case-review-faq-heading"
+            items={FREE_CLAIM_FAQS}
+            variant="light"
+          />
+        </div>
+      </section>
+
+      <ReferencesSection variant="light" />
+      <RelatedServices links={mainNavLinks} currentPath="/case-review" variant="light" />
     </div>
   );
 }

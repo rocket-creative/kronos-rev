@@ -20,13 +20,13 @@ export function Breadcrumbs({ items }: { items: BreadcrumbSegment[] }) {
                 </span>
               )}
               {isLast ? (
-                <span className="text-white/80" aria-current="page">
+                <span className="inline-flex items-center min-h-[44px] text-white/80" aria-current="page">
                   {item.name}
                 </span>
               ) : (
                 <Link
                   href={item.url.replace(/^https:\/\/www\.kronosrevenue\.health/, "") || "/"}
-                  className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan rounded"
+                  className="inline-flex items-center min-h-[44px] hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan rounded"
                 >
                   {item.name}
                 </Link>

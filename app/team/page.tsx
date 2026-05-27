@@ -3,32 +3,37 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { MarketingPage, MarketingSection, SydraCrossLink } from "@/components/MarketingPage";
+import { ReviewHeading } from "@/components/ReviewHeading";
+import { PersonSchema, TEAM_MEMBERS } from "@/components/JsonLd";
 import { createPageMetadata } from "@/lib/metadata";
 import { breadcrumbItems } from "@/lib/navigation";
 import { CTA } from "@/lib/ctas";
+import { PAGE_SEO } from "@/lib/page-seo";
 import { KRONOS_HEALTH_URL } from "@/lib/site";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Team and Leadership | Kronos Revenue",
-  description:
-    "Meet Dr. John M. Abrahams, surgeon founder, and the Kronos Revenue RCM team. Specialty depth built by a practicing neurosurgeon, operated by revenue cycle specialists.",
+  title: PAGE_SEO.team.title,
+  description: PAGE_SEO.team.description,
   path: "/team",
 });
 
 const rcmTeam = [
   {
+    id: "person-heisha-rivera",
     name: "Heisha Rivera",
     title: "Director of Revenue Cycle",
     image: "/team/heisha-rivera.png",
     bio: "Director of Revenue Cycle with 20+ years of healthcare billing and dispute experience. She runs the day to day IDR operation.",
   },
   {
+    id: "person-camila-nicasio",
     name: "Camila Nicasio",
     title: "Revenue Cycle Specialist",
     image: "/team/camila-nicasio.png",
     bio: "Revenue cycle specialist focused on out of network claim resolution and specialty coded IDR submissions.",
   },
   {
+    id: "person-soily-rivera",
     name: "Soily Rivera",
     title: "Revenue Cycle Specialist",
     image: "/team/soily-rivera.png",
@@ -42,17 +47,30 @@ export default function TeamPage() {
   return (
     <MarketingPage
       breadcrumbs={crumbs}
+      currentPath="/team"
+      showMedicallyReviewed={false}
+      faqHeadingId="team-faq-heading"
       eyebrow="Leadership"
       h1="Built by a surgeon. Operated by RCM specialists."
-      intro="Dr. Abrams is a board certified neurosurgeon and the most valuable trust signal Kronos Revenue has. Kronos Health builds Sydra (software) and runs Kronos Revenue (full service) — same expertise, two delivery models."
+      intro="Dr. Abrams is a board certified neurosurgeon and the most valuable trust signal Kronos Revenue has. Kronos Health builds Sydra (software) and runs Kronos Revenue (full service), same expertise, two delivery models."
       primaryCta="consultation"
       bottomCtaHeading="Book a consultation with our team"
     >
-      <MarketingSection variant="white">
+      {TEAM_MEMBERS.map((person) => (
+        <PersonSchema key={person.id} person={person} />
+      ))}
+
+      <MarketingSection variant="white" labelledById="founder-heading">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-4">
-            <div className="bg-gray-200 aspect-square relative overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center bg-[#003D1A]">
+            <div
+              id="person-john-abrahams"
+              className="bg-gray-200 aspect-square relative overflow-hidden scroll-mt-28"
+            >
+              <div
+                className="absolute inset-0 flex items-center justify-center bg-[#003D1A]"
+                aria-hidden="true"
+              >
                 <span className="font-heading text-5xl text-white/30">JMA</span>
               </div>
             </div>
@@ -61,14 +79,14 @@ export default function TeamPage() {
             <p className="font-body text-xs uppercase tracking-widest text-kronos-cyan mb-2">
               Surgeon founder
             </p>
-            <h2 className="font-heading text-3xl sm:text-4xl text-gray-900 mb-4">
-              Dr. John M. Abrahams, MD
-            </h2>
+            <ReviewHeading review id="founder-heading" className="font-heading text-3xl sm:text-4xl text-gray-900 mb-4">
+              Who founded Kronos Revenue?
+            </ReviewHeading>
             <p className="font-body text-gray-600 font-light leading-relaxed mb-4">
-              Board certified neurosurgeon and founder of Kronos Health. Past President of Brain and
-              Spine Surgeons of New York. Dr. Abrams built Kronos because he saw surgical practices
-              losing recoverable dollars to generalist attorneys who batch CPT codes and treat IDR
-              as a side practice.
+              Dr. John M. Abrahams, MD, is a board certified neurosurgeon and founder of Kronos
+              Health. Past President of Brain and Spine Surgeons of New York. Dr. Abrams built
+              Kronos because he saw surgical practices losing recoverable dollars to generalist
+              attorneys who batch CPT codes and treat IDR as a side practice.
             </p>
             <p className="font-body text-gray-600 font-light leading-relaxed">
               Every Kronos Revenue submission reflects the clinical and regulatory precision that
@@ -78,13 +96,13 @@ export default function TeamPage() {
         </div>
       </MarketingSection>
 
-      <MarketingSection variant="neutral">
-        <h2 className="font-heading text-2xl sm:text-3xl text-gray-900 mb-8">
-          Revenue cycle team
-        </h2>
+      <MarketingSection variant="neutral" labelledById="rcm-team-heading">
+        <ReviewHeading review id="rcm-team-heading" className="font-heading text-2xl sm:text-3xl text-gray-900 mb-8">
+          Who runs day to day NSA IDR operations?
+        </ReviewHeading>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {rcmTeam.map((member) => (
-            <article key={member.name}>
+            <article key={member.name} id={member.id} className="scroll-mt-28">
               <div className="bg-gray-200 aspect-square relative overflow-hidden mb-4">
                 <Image
                   src={member.image}
@@ -104,32 +122,32 @@ export default function TeamPage() {
         </div>
       </MarketingSection>
 
-      <MarketingSection variant="white">
-        <h2 className="font-heading text-2xl sm:text-3xl text-gray-900 mb-4">
-          Part of Kronos Health
-        </h2>
+      <MarketingSection variant="white" labelledById="kronos-health-heading">
+        <ReviewHeading review id="kronos-health-heading" className="font-heading text-2xl sm:text-3xl text-gray-900 mb-4">
+          How does Kronos Revenue relate to Kronos Health?
+        </ReviewHeading>
         <p className="font-body text-gray-600 font-light leading-relaxed max-w-3xl mb-4">
           Kronos Health is the parent company. It builds Sydra (NSA IDR software) and runs Kronos
           Revenue (full service RCM). Dr. John M. Abrahams founded both. Heisha Rivera leads revenue
-          cycle operations; Chelsea leads software and integrations on Sydra.
+          cycle operations.
         </p>
         <p className="font-body text-gray-600 font-light leading-relaxed max-w-3xl mb-6">
-          Same specialty depth across every tier — whether your team runs Sydra in house, uses Sydra
-          + Kronos Support, or hands every claim to Kronos Full-Service.
+          Same specialty depth across every tier, whether your team runs Sydra in house, uses Sydra
+          with Kronos Support, or hands every claim to Kronos Full-Service.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 mb-8">
           <a
             href={KRONOS_HEALTH_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-kronos-green-dark uppercase tracking-widest text-xs font-bold hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 text-kronos-green-dark uppercase tracking-widest text-xs font-bold hover:gap-3 transition-all scroll-mt-28"
           >
             Kronos Health
             <ExternalLink className="w-3 h-3" aria-hidden="true" />
           </a>
           <Link
             href={CTA.consultation.href}
-            className="inline-flex items-center gap-2 text-kronos-green-dark uppercase tracking-widest text-xs font-bold hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 text-kronos-green-dark uppercase tracking-widest text-xs font-bold hover:gap-3 transition-all scroll-mt-28"
           >
             {CTA.consultation.label}
             <ArrowRight className="w-3 h-3" aria-hidden="true" />

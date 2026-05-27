@@ -67,7 +67,7 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
               max={100}
               value={monthlyCases}
               onChange={(e) => setMonthlyCases(Number(e.target.value))}
-              className="w-full h-1 bg-white/20 appearance-none cursor-pointer accent-kronos-cyan [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:cursor-pointer"
+              className="w-full h-3 bg-white/20 appearance-none cursor-pointer accent-kronos-cyan [&::-webkit-slider-thumb]:w-11 [&::-webkit-slider-thumb]:h-11 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:rounded-full"
               aria-label="Monthly out-of-network cases"
             />
             <div className="flex justify-between mt-1">
@@ -83,7 +83,8 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
             <select
               value={bandIndex}
               onChange={(e) => setBandIndex(Number(e.target.value))}
-              className="w-full bg-white/10 border border-white/20 text-white font-body text-xs py-2 px-3 appearance-none cursor-pointer focus:outline-none focus:border-white/50"
+              className="w-full h-12 bg-white/10 border border-white/20 text-white font-body text-base py-2 px-3 appearance-none cursor-pointer focus:outline-none focus:border-white/50"
+              style={{ fontSize: "16px" }}
               aria-label="Average disputed amount per case"
             >
               {AMOUNT_BANDS.map((band, i) => (
@@ -158,7 +159,7 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
               max={100}
               value={monthlyCases}
               onChange={(e) => setMonthlyCases(Number(e.target.value))}
-              className="w-full h-1.5 bg-gray-200 appearance-none cursor-pointer accent-kronos-cyan [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:bg-kronos-cyan [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-sm"
+              className="w-full h-3 bg-gray-200 appearance-none cursor-pointer accent-kronos-cyan [&::-webkit-slider-thumb]:w-11 [&::-webkit-slider-thumb]:h-11 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:bg-kronos-cyan [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-sm [&::-webkit-slider-thumb]:rounded-full"
             />
             <div className="flex justify-between mt-2">
               <span className="font-body text-[10px] text-gray-400">1 / month</span>
@@ -179,7 +180,7 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
                 <button
                   key={band.label}
                   onClick={() => setBandIndex(i)}
-                  className={`flex items-center justify-between px-4 py-3 border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan ${
+                  className={`flex items-center justify-between min-h-[44px] px-4 py-3 border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan ${
                     bandIndex === i
                       ? "border-kronos-cyan bg-kronos-cyan/8 text-gray-900"
                       : "border-gray-200 bg-white text-gray-500 hover:border-gray-300 hover:text-gray-700"
@@ -275,7 +276,7 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
             </div>
             <Link
               href="/case-review"
-              className="inline-flex items-center gap-3 bg-white text-[#003D1A] py-3 px-6 uppercase tracking-widest text-xs font-bold hover:bg-white/90 hover:gap-5 transition-all whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#003D1A]"
+              className="inline-flex items-center justify-center gap-3 min-h-[44px] bg-white text-[#003D1A] py-3 px-6 uppercase tracking-widest text-xs font-bold hover:bg-white/90 hover:gap-5 transition-all whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#003D1A]"
             >
               Get a free NSA IDR review
               <ArrowRight className="w-3 h-3" aria-hidden="true" />

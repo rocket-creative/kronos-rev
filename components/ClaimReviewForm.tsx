@@ -7,7 +7,7 @@ import { useUtmParams } from "@/hooks/useUtmParams";
 const inputClass =
   "w-full h-12 bg-black/20 border border-white/10 px-4 text-white placeholder:text-white/40 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors";
 const selectClass =
-  "w-full h-12 bg-kronos-bg border border-white/10 px-4 text-white font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors appearance-none";
+  "w-full h-12 bg-kronos-bg border border-white/10 px-4 text-base text-white font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors appearance-none";
 const labelClass = "block font-body text-xs text-white/60 uppercase tracking-widest mb-1.5";
 const errorClass = "text-red-400 text-xs mt-1";
 
@@ -121,24 +121,31 @@ function ClaimReviewFormInner() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+      <p className="font-body text-white/50 text-xs sr-only" id="cr-required-legend">
+        Required fields are marked with an asterisk.
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="cr-name" className={labelClass}>
-            Your name <span className="text-kronos-cyan">*</span>
+            Your name <span className="text-kronos-cyan" aria-hidden="true">*</span>
           </label>
           <input
             type="text"
             id="cr-name"
             name="contact_name"
             required
+            aria-required="true"
             autoComplete="name"
             inputMode="text"
             style={{ fontSize: "16px" }}
             aria-invalid={!!fieldErrors.contact_name}
-            className={`${inputClass} ${fieldErrors.contact_name ? "border-red-400" : ""}`}
+            aria-describedby={
+              fieldErrors.contact_name ? "cr-name-error cr-required-legend" : "cr-required-legend"
+            }
+            className={`${inputClass} ${fieldErrors.contact_name ? "border-red-400" : ""} scroll-mt-28`}
           />
           {fieldErrors.contact_name && (
-            <p className={errorClass} role="alert">
+            <p id="cr-name-error" className={errorClass} role="alert">
               {fieldErrors.contact_name}
             </p>
           )}
@@ -162,21 +169,25 @@ function ClaimReviewFormInner() {
 
       <div>
         <label htmlFor="cr-practice" className={labelClass}>
-          Practice name <span className="text-kronos-cyan">*</span>
+          Practice name <span className="text-kronos-cyan" aria-hidden="true">*</span>
         </label>
         <input
           type="text"
           id="cr-practice"
           name="practice_name"
           required
+          aria-required="true"
           autoComplete="organization"
           inputMode="text"
           style={{ fontSize: "16px" }}
           aria-invalid={!!fieldErrors.practice_name}
-          className={`${inputClass} ${fieldErrors.practice_name ? "border-red-400" : ""}`}
+          aria-describedby={
+            fieldErrors.practice_name ? "cr-practice-error cr-required-legend" : "cr-required-legend"
+          }
+          className={`${inputClass} ${fieldErrors.practice_name ? "border-red-400" : ""} scroll-mt-28`}
         />
         {fieldErrors.practice_name && (
-          <p className={errorClass} role="alert">
+          <p id="cr-practice-error" className={errorClass} role="alert">
             {fieldErrors.practice_name}
           </p>
         )}
@@ -185,42 +196,50 @@ function ClaimReviewFormInner() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="cr-phone" className={labelClass}>
-            Phone <span className="text-kronos-cyan">*</span>
+            Phone <span className="text-kronos-cyan" aria-hidden="true">*</span>
           </label>
           <input
             type="tel"
             id="cr-phone"
             name="phone"
             required
+            aria-required="true"
             autoComplete="tel"
             inputMode="tel"
             style={{ fontSize: "16px" }}
             aria-invalid={!!fieldErrors.phone}
-            className={`${inputClass} ${fieldErrors.phone ? "border-red-400" : ""}`}
+            aria-describedby={
+              fieldErrors.phone ? "cr-phone-error cr-required-legend" : "cr-required-legend"
+            }
+            className={`${inputClass} ${fieldErrors.phone ? "border-red-400" : ""} scroll-mt-28`}
           />
           {fieldErrors.phone && (
-            <p className={errorClass} role="alert">
+            <p id="cr-phone-error" className={errorClass} role="alert">
               {fieldErrors.phone}
             </p>
           )}
         </div>
         <div>
           <label htmlFor="cr-email" className={labelClass}>
-            Work email <span className="text-kronos-cyan">*</span>
+            Work email <span className="text-kronos-cyan" aria-hidden="true">*</span>
           </label>
           <input
             type="email"
             id="cr-email"
             name="email"
             required
+            aria-required="true"
             autoComplete="email"
             inputMode="email"
             style={{ fontSize: "16px" }}
             aria-invalid={!!fieldErrors.email}
-            className={`${inputClass} ${fieldErrors.email ? "border-red-400" : ""}`}
+            aria-describedby={
+              fieldErrors.email ? "cr-email-error cr-required-legend" : "cr-required-legend"
+            }
+            className={`${inputClass} ${fieldErrors.email ? "border-red-400" : ""} scroll-mt-28`}
           />
           {fieldErrors.email && (
-            <p className={errorClass} role="alert">
+            <p id="cr-email-error" className={errorClass} role="alert">
               {fieldErrors.email}
             </p>
           )}
@@ -230,15 +249,19 @@ function ClaimReviewFormInner() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="cr-specialty" className={labelClass}>
-            Primary specialty <span className="text-kronos-cyan">*</span>
+            Primary specialty <span className="text-kronos-cyan" aria-hidden="true">*</span>
           </label>
           <div className="relative">
             <select
               id="cr-specialty"
               name="specialty"
               required
+              aria-required="true"
               aria-invalid={!!fieldErrors.specialty}
-              className={`${selectClass} ${fieldErrors.specialty ? "border-red-400" : ""}`}
+              aria-describedby={
+                fieldErrors.specialty ? "cr-specialty-error cr-required-legend" : "cr-required-legend"
+              }
+              className={`${selectClass} ${fieldErrors.specialty ? "border-red-400" : ""} scroll-mt-28`}
               defaultValue=""
             >
               <option value="" disabled>
@@ -252,7 +275,7 @@ function ClaimReviewFormInner() {
             </select>
           </div>
           {fieldErrors.specialty && (
-            <p className={errorClass} role="alert">
+            <p id="cr-specialty-error" className={errorClass} role="alert">
               {fieldErrors.specialty}
             </p>
           )}
@@ -278,7 +301,10 @@ function ClaimReviewFormInner() {
         <label className={labelClass}>Current handling</label>
         <div className="space-y-2.5 mt-1">
           {CURRENT_HANDLING.map((opt) => (
-            <label key={opt.value} className="flex items-start gap-3 cursor-pointer group">
+            <label
+              key={opt.value}
+              className="flex items-center min-h-[44px] gap-3 cursor-pointer group py-1"
+            >
               <input
                 type="radio"
                 name="current_handling"

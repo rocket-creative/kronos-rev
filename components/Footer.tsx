@@ -4,6 +4,7 @@ import { LogoImage } from "@/components/LogoImage";
 import { mainNavLinks } from "@/lib/navigation";
 import { SYDRA_CROSS_LINK_COPY } from "@/lib/nsa-tiers";
 import { CTA } from "@/lib/ctas";
+import { MOBILE_CTA_CLEARANCE } from "@/lib/layout";
 import {
   EMAIL,
   KRONOS_HEALTH_URL,
@@ -16,7 +17,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#00542A] text-white" role="contentinfo">
+    <footer className={`bg-[#00542A] text-white ${MOBILE_CTA_CLEARANCE}`} role="contentinfo">
       {/* Sydra cross-link module */}
       <div className="border-b border-white/10">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-8 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -129,13 +130,19 @@ export default function Footer() {
               >
                 LinkedIn
               </a>
+              <Link
+                href="/sydra"
+                className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
+              >
+                Sydra on Kronos
+              </Link>
               <a
                 href={SYDRA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
               >
-                Sydra
+                Sydra Software
               </a>
             </nav>
           </div>

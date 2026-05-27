@@ -81,7 +81,7 @@ export function OrganizationSchema() {
           ],
         },
         founder: {
-          "@id": `${SITE_URL}/#person-john-abrahams`,
+          "@id": `${SITE_URL}/team#person-john-abrahams`,
         },
         knowsAbout: [
           "Revenue Cycle Management",
@@ -251,6 +251,8 @@ export type PersonSchemaMember = {
   sameAs?: string[];
   isPhysician?: boolean;
   medicalSpecialty?: string;
+  boardCertifications?: string[];
+  hospitalAffiliations?: string[];
 };
 
 export function PersonSchema({ person }: { person: PersonSchemaMember }) {
@@ -267,6 +269,12 @@ export function PersonSchema({ person }: { person: PersonSchemaMember }) {
     ...(person.medicalSpecialty
       ? { medicalSpecialty: person.medicalSpecialty }
       : {}),
+    ...(person.boardCertifications?.length
+      ? { hasCredential: person.boardCertifications.map((name) => ({ "@type": "EducationalOccupationalCredential", name })) }
+      : {}),
+    ...(person.hospitalAffiliations?.length
+      ? { hospitalAffiliation: person.hospitalAffiliations.map((name) => ({ "@type": "Hospital", name })) }
+      : {}),
   };
 
   return <JsonLdScript data={base} />;
@@ -274,7 +282,7 @@ export function PersonSchema({ person }: { person: PersonSchemaMember }) {
 
 export const TEAM_MEMBERS: PersonSchemaMember[] = [
   {
-    id: `${SITE_URL}/#person-heisha-rivera`,
+    id: `${SITE_URL}/team#person-heisha-rivera`,
     name: "Heisha Rivera",
     jobTitle: "Director of Revenue Cycle",
     description:
@@ -282,26 +290,28 @@ export const TEAM_MEMBERS: PersonSchemaMember[] = [
     image: "/team/heisha-rivera.png",
   },
   {
-    id: `${SITE_URL}/#person-camila-nicasio`,
+    id: `${SITE_URL}/team#person-camila-nicasio`,
     name: "Camila Nicasio",
     jobTitle: "Revenue Cycle Specialist",
     description: "Revenue cycle specialist focused on out of network claim resolution.",
     image: "/team/camila-nicasio.png",
   },
   {
-    id: `${SITE_URL}/#person-soily-rivera`,
+    id: `${SITE_URL}/team#person-soily-rivera`,
     name: "Soily Rivera",
     jobTitle: "Revenue Cycle Specialist",
     description: "Revenue cycle specialist supporting IDR submissions and payer follow up.",
     image: "/team/soily-rivera.png",
   },
   {
-    id: `${SITE_URL}/#person-john-abrahams`,
+    id: `${SITE_URL}/team#person-john-abrahams`,
     name: "Dr. John M. Abrahams",
     jobTitle: "Founder",
     description:
       "Board certified neurosurgeon and founder of Kronos Health. Past President of Brain and Spine Surgeons of New York.",
     isPhysician: true,
     medicalSpecialty: "Neurosurgery",
+    boardCertifications: ["American Board of Neurological Surgery"],
+    hospitalAffiliations: ["Brain and Spine Surgeons of New York"],
   },
 ];

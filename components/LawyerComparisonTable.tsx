@@ -54,11 +54,17 @@ export function LawyerComparisonTable({
   const isDark = variant === "dark";
 
   return (
-    <div
-      className={`overflow-x-auto ${className}`}
-      role="region"
-      aria-label="Attorney versus Kronos Revenue comparison"
-    >
+    <div className={className}>
+      <p
+        className={`font-body text-xs mb-2 sm:hidden ${isDark ? "text-white/50" : "text-gray-400"}`}
+      >
+        Scroll horizontally to compare
+      </p>
+      <div
+        className="-mx-5 px-5 sm:mx-0 sm:px-0 overflow-x-auto"
+        role="region"
+        aria-label="Attorney versus Kronos Revenue comparison"
+      >
       <table
         className={`w-full min-w-[540px] border-collapse text-left ${
           isDark ? "text-white" : "text-gray-900"
@@ -130,6 +136,7 @@ export function LawyerComparisonTable({
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

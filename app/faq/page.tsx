@@ -5,11 +5,11 @@ import { FAQPageSchema } from "@/components/JsonLd";
 import { createPageMetadata } from "@/lib/metadata";
 import { breadcrumbItems } from "@/lib/navigation";
 import { FAQ_CATEGORIES, ALL_FAQS } from "@/lib/faqs";
+import { PAGE_SEO } from "@/lib/page-seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "NSA IDR FAQ | Kronos Revenue",
-  description:
-    "Answers about switching from an attorney, Kronos Revenue pricing, contracts, onboarding, recovery rates, and HIPAA compliance for NSA IDR services.",
+  title: PAGE_SEO.faq.title,
+  description: PAGE_SEO.faq.description,
   path: "/faq",
 });
 
@@ -19,10 +19,13 @@ export default function FaqPage() {
   return (
     <MarketingPage
       breadcrumbs={crumbs}
+      currentPath="/faq"
+      showMedicallyReviewed={false}
+      showReferences={false}
+      bottomCta={false}
       eyebrow="NSA · Federal IDR"
       h1="Questions about switching your NSA IDR from an attorney."
-      intro="Switching from an attorney, pricing, contracts, process, recovery, and security — honest answers before you book a consultation."
-      bottomCta={false}
+      intro="Switching from an attorney, pricing, contracts, process, recovery, and security. Honest answers before you book a consultation."
     >
       <FAQPageSchema items={ALL_FAQS} />
 
@@ -32,10 +35,11 @@ export default function FaqPage() {
           id={category.id}
           variant={index % 2 === 0 ? "white" : "neutral"}
           className="!py-10 sm:!py-14"
+          labelledById={`faq-${category.id}-heading`}
         >
           <FAQSection
             heading={category.title}
-            headingId={`faq-${category.id}`}
+            headingId={`faq-${category.id}-heading`}
             items={category.items}
             variant="light"
           />

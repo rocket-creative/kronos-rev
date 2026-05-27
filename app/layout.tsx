@@ -6,6 +6,9 @@ import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 import { PageTransition } from "@/components/animations";
 import SkipLink from "@/components/SkipLink";
 import { createPageMetadata } from "@/lib/metadata";
+import { MAIN_TOP_OFFSET, MOBILE_CTA_CLEARANCE } from "@/lib/layout";
+import { PAGE_SEO } from "@/lib/page-seo";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -41,17 +44,16 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   ...createPageMetadata({
-    title: "Healthcare IDR & Revenue Cycle Management | Kronos",
-    description:
-      "Specialty trained revenue cycle for orthopedic, neurosurgery, spine, and plastic surgery. Full NSA IDR case management. Call (914) 705 6830 for a free review.",
+    title: PAGE_SEO.home.title,
+    description: PAGE_SEO.home.description,
     path: "/",
   }),
-  metadataBase: new URL("https://www.kronosrevenue.health"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Healthcare IDR & Revenue Cycle Management | Kronos",
+    default: PAGE_SEO.home.title,
     template: "%s",
   },
-  authors: [{ name: "Heisha Rivera", url: "https://www.kronosrevenue.health/#team" }],
+  authors: [{ name: "Heisha Rivera", url: `${SITE_URL}/team` }],
   creator: "Kronos Revenue",
   publisher: "Kronos Revenue",
   formatDetection: {
@@ -67,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <body
         className={`${bebasNeue.variable} ${ibmPlexSans.variable} ${openSans.variable} antialiased bg-white text-kronos-text-dark`}
       >
@@ -75,7 +77,7 @@ export default function RootLayout({
         <Nav />
         <main
           id="main-content"
-          className="pt-14 sm:pt-16 lg:pt-16 xl:pt-20 pb-[4.5rem] lg:pb-0 scroll-mt-20"
+          className={`${MAIN_TOP_OFFSET} ${MOBILE_CTA_CLEARANCE} scroll-mt-28`}
           role="main"
         >
           <PageTransition>{children}</PageTransition>
