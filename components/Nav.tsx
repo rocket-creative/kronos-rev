@@ -11,6 +11,15 @@ import { PAGE_CONTAINER_WIDE } from "@/lib/layout";
 import { CTA } from "@/lib/ctas";
 import { KRONOS_HEALTH_URL, SYDRA_URL } from "@/lib/site";
 
+const XL_NAV_LINKS: { href: string; label: string; shortLabel?: string; ariaLabel: string }[] = [
+  { href: "/lawyer-problem", label: "NSA IDR vs Lawyers", shortLabel: "vs Lawyers", ariaLabel: "NSA IDR vs Lawyers" },
+  { href: "/how-we-work", label: "NSA IDR Process", shortLabel: "Process", ariaLabel: "NSA IDR Process" },
+  { href: "/specialties", label: "Specialties", ariaLabel: "Specialties" },
+  { href: "/results", label: "IDR Results", ariaLabel: "IDR Results" },
+  { href: "/pricing", label: "Pricing", ariaLabel: "Pricing" },
+  { href: "/team", label: "Team", ariaLabel: "Team" },
+];
+
 export default function Nav() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -46,6 +55,11 @@ export default function Nav() {
 
   const handleNavClick = () => setMobileMenuOpen(false);
 
+  const linkClass = (href: string) =>
+    `font-body text-xs uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan min-h-[44px] inline-flex items-center whitespace-nowrap ${
+      pathname === href ? "text-gray-900 font-medium" : "text-gray-500 hover:text-gray-900"
+    }`;
+
   return (
     <>
       <header
@@ -53,10 +67,10 @@ export default function Nav() {
         className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm pt-safe-top"
       >
         <nav className={PAGE_CONTAINER_WIDE} aria-label="Main navigation">
-          <div className="flex items-center justify-between h-14 lg:h-16 xl:h-20">
+          <div className="flex items-center h-14 lg:h-16 xl:h-20 gap-4">
             <Link
               href="/"
-              className="flex items-center hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white min-h-[44px] min-w-[44px]"
+              className="shrink-0 flex items-center hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white min-h-[44px] min-w-[44px]"
               aria-label="Kronos Revenue home"
             >
               <LogoImage
@@ -67,28 +81,20 @@ export default function Nav() {
               />
             </Link>
 
-            <div className="hidden xl:flex items-center gap-3 2xl:gap-5">
-              <Link
-                href="/"
-                className={`font-body text-xs uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan min-h-[44px] inline-flex items-center ${
-                  pathname === "/"
-                    ? "text-gray-900 font-medium"
-                    : "text-gray-500 hover:text-gray-900"
-                }`}
-              >
-                Home
+            <div className="hidden xl:flex flex-1 min-w-0 items-center justify-center gap-x-5 2xl:gap-x-8">
+              <Link href="/" className={linkClass("/")} aria-label="Home">
+                <span className="2xl:hidden">Home</span>
+                <span className="hidden 2xl:inline">Home</span>
               </Link>
-              {mainNavLinks.slice(0, 6).map((link) => (
+              {XL_NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`font-body text-xs uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan min-h-[44px] inline-flex items-center ${
-                    pathname === link.href
-                      ? "text-gray-900 font-medium"
-                      : "text-gray-500 hover:text-gray-900"
-                  }`}
+                  className={linkClass(link.href)}
+                  aria-label={link.ariaLabel}
                 >
-                  {link.label}
+                  <span className="2xl:hidden">{link.shortLabel ?? link.label}</span>
+                  <span className="hidden 2xl:inline">{link.label}</span>
                 </Link>
               ))}
               <a
@@ -96,16 +102,16 @@ export default function Nav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={CTA.seeSydra.ariaLabel}
-                className="font-body text-xs text-kronos-cyan hover:text-kronos-green-dark uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan border-l border-gray-200 pl-3 flex items-center min-h-[44px]"
+                className="font-body text-xs text-kronos-cyan hover:text-kronos-green-dark uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan border-l border-gray-200 pl-5 2xl:pl-8 flex items-center min-h-[44px] shrink-0 whitespace-nowrap"
               >
                 Sydra
               </a>
             </div>
 
-            <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0 ml-auto xl:ml-0">
               <Link
                 href={CTA.caseReview.href}
-                className="hidden lg:inline-flex items-center gap-2 bg-kronos-cyan text-white py-2.5 px-4 xl:px-5 text-xs uppercase tracking-widest font-light hover:bg-kronos-green-dark hover:gap-3 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white min-h-[44px]"
+                className="hidden lg:inline-flex items-center gap-2 bg-kronos-cyan text-white py-2.5 px-4 xl:px-5 text-xs uppercase tracking-widest font-light hover:bg-kronos-green-dark hover:gap-3 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white min-h-[44px] whitespace-nowrap"
               >
                 <span className="hidden xl:inline">{CTA.caseReview.label}</span>
                 <span className="xl:hidden">Free IDR review</span>

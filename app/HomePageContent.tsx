@@ -27,7 +27,8 @@ import { TrustSignalStrip } from "@/components/TrustSignalStrip";
 import { CTA } from "@/lib/ctas";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/site";
 import { mainNavLinks } from "@/lib/navigation";
-import { VASTLY_MORE_LINE, KRONOS_FEE_SHORT } from "@/lib/pricing-copy";
+import { HERO_BODY, HERO_H1, HERO_TRUST_LINE } from "@/lib/hero-copy";
+import { VASTLY_MORE_LINE } from "@/lib/pricing-copy";
 
 const valueProps = [
   {
@@ -102,7 +103,7 @@ export default function HomePageContent() {
 
         <div className="relative z-10 min-h-dvh flex items-center">
           <div className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-16 lg:py-0">
-            <div className="bg-black/30 border border-white/15 p-8 sm:p-10 lg:p-14 max-w-2xl">
+            <div className="bg-white/5 border border-white/20 p-8 sm:p-10 lg:p-14 max-w-2xl">
               <div data-hero-eyebrow className="mb-6 sm:mb-8">
                 <p className="font-body text-xs text-kronos-cyan uppercase tracking-widest mb-4">
                   No Surprises Act · Federal IDR
@@ -123,16 +124,14 @@ export default function HomePageContent() {
                 id="hero-heading"
                 className="font-heading text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white leading-tight mb-5 sm:mb-7"
               >
-                Stop Paying Lawyers 20% on Your NSA IDR Recoveries.
+                {HERO_H1}
               </h1>
 
               <p
                 data-hero-description
                 className="font-body text-sm sm:text-base text-white/80 font-light leading-relaxed mb-6 sm:mb-8"
               >
-                Kronos Revenue handles your No Surprises Act claims and federal IDR disputes end
-                to end. {KRONOS_FEE_SHORT}. We win more IDR cases because we are specialty coded,
-                not generalist. {VASTLY_MORE_LINE}
+                {HERO_BODY}
               </p>
 
               <div data-hero-cta className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-4">
@@ -153,9 +152,7 @@ export default function HomePageContent() {
                 </Link>
               </div>
 
-              <p className="text-xs text-white/50 font-body">
-                NSA IDR built by surgeons. {KRONOS_FEE_SHORT}.
-              </p>
+              <p className="text-xs text-white/50 font-body">{HERO_TRUST_LINE}</p>
             </div>
           </div>
         </div>

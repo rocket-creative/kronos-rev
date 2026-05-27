@@ -2,9 +2,8 @@ import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { LogoImage } from "@/components/LogoImage";
 import { mainNavLinks } from "@/lib/navigation";
-import { SYDRA_CROSS_LINK_COPY } from "@/lib/nsa-tiers";
 import { CTA } from "@/lib/ctas";
-import { MOBILE_CTA_CLEARANCE } from "@/lib/layout";
+import { MOBILE_CTA_CLEARANCE, PAGE_CONTAINER } from "@/lib/layout";
 import {
   EMAIL,
   KRONOS_HEALTH_URL,
@@ -15,14 +14,18 @@ import {
   SYDRA_URL,
 } from "@/lib/site";
 
+const FOOTER_SYDRA_COPY =
+  "Run NSA IDR in house with Sydra, Kronos Health's AI platform. Same specialty depth, your team operates it.";
+
 export default function Footer() {
   return (
     <footer className={`bg-[#00542A] text-white ${MOBILE_CTA_CLEARANCE}`} role="contentinfo">
-      {/* Sydra cross-link module */}
       <div className="border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-8 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <p className="font-body text-sm text-white/70 font-light max-w-xl">
-            {SYDRA_CROSS_LINK_COPY}
+        <div
+          className={`${PAGE_CONTAINER} py-8 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-8`}
+        >
+          <p className="font-body text-sm text-white/70 font-light max-w-lg leading-relaxed">
+            {FOOTER_SYDRA_COPY}
           </p>
           <a
             href={SYDRA_URL}
@@ -37,26 +40,26 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-10 sm:py-12 lg:py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16 mb-10 sm:mb-12 lg:mb-16">
-          <div className="sm:col-span-2 lg:col-span-4">
+      <div className={`${PAGE_CONTAINER} py-10 sm:py-12 lg:py-16`}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 mb-10 lg:mb-12">
+          <div className="lg:col-span-5">
             <Link
               href="/"
-              className="inline-block mb-4 sm:mb-6 hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00542A] min-h-[44px]"
+              className="inline-block mb-5 hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00542A] min-h-[44px]"
               aria-label="Kronos Revenue home"
             >
               <LogoImage width={120} textSize="text-lg" className="brightness-0 invert" />
             </Link>
-            <p className="font-body text-xs sm:text-sm text-white/60 font-light leading-relaxed max-w-xs">
+            <p className="font-body text-xs sm:text-sm text-white/60 font-light leading-relaxed max-w-sm">
               No Surprises Act IDR for orthopedic, neurosurgery, spine, and plastic surgery
               practices. Quoted to your volume — not a 20% contingency cut. More won disputes,
               vastly more kept.
             </p>
-            <p className="font-body text-[10px] sm:text-xs text-white/50 font-light leading-relaxed max-w-xs mt-4 sm:mt-5">
+            <p className="font-body text-[10px] sm:text-xs text-white/50 font-light leading-relaxed max-w-sm mt-4">
               We actively support practices in Texas, California, New York, New Jersey, Florida, and
               Arizona.
             </p>
-            <p className="font-body text-[10px] sm:text-xs text-white/40 font-light mt-4 leading-relaxed max-w-xs">
+            <p className="font-body text-[10px] sm:text-xs text-white/40 font-light mt-4 leading-relaxed max-w-sm">
               Part of{" "}
               <a
                 href={KRONOS_HEALTH_URL}
@@ -71,10 +74,10 @@ export default function Footer() {
           </div>
 
           <nav className="lg:col-span-4" aria-label="Footer navigation">
-            <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/50 mb-3 sm:mb-4">
+            <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/80 mb-4">
               Explore
             </p>
-            <ul className="grid grid-cols-2 gap-x-4 gap-y-2 sm:gap-y-3" role="list">
+            <ul className="flex flex-col gap-2" role="list">
               {mainNavLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -88,8 +91,8 @@ export default function Footer() {
             </ul>
           </nav>
 
-          <div className="lg:col-span-4">
-            <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/50 mb-3 sm:mb-4">
+          <div className="lg:col-span-3">
+            <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/80 mb-4">
               Contact
             </p>
             <address className="not-italic space-y-1 sm:space-y-2 font-body text-[10px] sm:text-xs text-white/60 font-light">
@@ -97,7 +100,7 @@ export default function Footer() {
               <p>
                 {OFFICE_ADDRESS.city}, {OFFICE_ADDRESS.state} {OFFICE_ADDRESS.zip}
               </p>
-              <p className="pt-2 sm:pt-3">
+              <p className="pt-2">
                 <a
                   href={`tel:${PHONE_TEL}`}
                   className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
@@ -117,34 +120,40 @@ export default function Footer() {
               </p>
             </address>
 
-            <nav
-              className="flex gap-4 sm:gap-6 mt-4 sm:mt-6 text-[10px] sm:text-xs tracking-widest uppercase text-white/50"
-              aria-label="Social media links"
+            <ul
+              className="mt-6 flex flex-col gap-2 text-[10px] sm:text-xs tracking-widest uppercase"
+              aria-label="Social and related links"
             >
-              <a
-                href={LINKEDIN_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
-                aria-label="Follow us on LinkedIn"
-              >
-                LinkedIn
-              </a>
-              <Link
-                href="/sydra"
-                className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
-              >
-                Sydra on Kronos
-              </Link>
-              <a
-                href={SYDRA_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
-              >
-                Sydra Software
-              </a>
-            </nav>
+              <li>
+                <a
+                  href={LINKEDIN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
+                  aria-label="Follow us on LinkedIn"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <Link
+                  href="/sydra"
+                  className="text-white/60 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
+                >
+                  Sydra on Kronos
+                </Link>
+              </li>
+              <li>
+                <a
+                  href={SYDRA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
+                >
+                  Sydra Software
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 

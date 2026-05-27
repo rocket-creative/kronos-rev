@@ -4,13 +4,6 @@ import { Suspense, useState } from "react";
 import { ArrowRight, CheckCircle, Loader2 } from "lucide-react";
 import { useUtmParams } from "@/hooks/useUtmParams";
 
-const inputClass =
-  "w-full h-12 bg-black/20 border border-white/10 px-4 text-white placeholder:text-white/40 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors";
-const selectClass =
-  "w-full h-12 bg-kronos-bg border border-white/10 px-4 text-base text-white font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors appearance-none";
-const labelClass = "block font-body text-xs text-white/60 uppercase tracking-widest mb-1.5";
-const errorClass = "text-red-400 text-xs mt-1";
-
 const SPECIALTIES = [
   "Orthopedic surgery",
   "Neurosurgery",
@@ -37,6 +30,43 @@ const BEST_TIME_OPTIONS = [
   { value: "email", label: "Email is fine — no call needed" },
 ];
 
+type FormVariant = "light" | "dark";
+
+function getFormStyles(variant: FormVariant) {
+  const isLight = variant === "light";
+  return {
+    input: isLight
+      ? "w-full h-12 bg-white border border-gray-200 px-4 text-gray-900 placeholder:text-gray-400 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors"
+      : "w-full h-12 bg-black/20 border border-white/10 px-4 text-white placeholder:text-white/40 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors",
+    select: isLight
+      ? "w-full h-12 bg-white border border-gray-200 px-4 text-base text-gray-900 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors appearance-none"
+      : "w-full h-12 bg-kronos-bg border border-white/10 px-4 text-base text-white font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors appearance-none",
+    textarea: isLight
+      ? "w-full bg-white border border-gray-200 px-4 py-3 text-gray-900 placeholder:text-gray-400 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors resize-none"
+      : "w-full bg-black/20 border border-white/10 px-4 py-3 text-white placeholder:text-white/40 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors resize-none",
+    label: isLight
+      ? "block font-body text-xs text-gray-600 uppercase tracking-widest mb-1.5"
+      : "block font-body text-xs text-white/60 uppercase tracking-widest mb-1.5",
+    error: isLight ? "text-red-600 text-xs mt-1" : "text-red-400 text-xs mt-1",
+    radioLabel: isLight
+      ? "font-body text-sm text-gray-700 group-hover:text-gray-900 transition-colors leading-snug"
+      : "font-body text-sm text-white/70 group-hover:text-white transition-colors leading-snug",
+    successBox: isLight
+      ? "bg-gray-50 border border-gray-200 p-8 text-center"
+      : "bg-black/20 p-8 text-center",
+    successTitle: isLight ? "font-heading text-2xl text-gray-900 mb-2" : "font-heading text-2xl text-white mb-2",
+    successBody: isLight
+      ? "font-body text-gray-600 text-sm font-light"
+      : "font-body text-white/60 text-sm font-light",
+    submitFocus: isLight
+      ? "focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
+      : "focus:outline-none focus-visible:ring-2 focus-visible:ring-white",
+    loadingText: isLight ? "text-gray-500 text-sm font-body" : "text-white/50 text-sm font-body",
+    legend: isLight ? "font-body text-gray-500 text-xs sr-only" : "font-body text-white/50 text-xs sr-only",
+    formError: isLight ? "text-red-600 text-sm font-body" : "text-red-400 text-sm font-body",
+  };
+}
+
 interface FieldErrors {
   contact_name?: string;
   practice_name?: string;
@@ -45,7 +75,8 @@ interface FieldErrors {
   specialty?: string;
 }
 
-function ClaimReviewFormInner() {
+function ClaimReviewFormInner({ variant }: { variant: FormVariant }) {
+  const styles = getFormStyles(variant);
   const utm = useUtmParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -108,10 +139,10 @@ function ClaimReviewFormInner() {
 
   if (isSubmitted) {
     return (
-      <div className="bg-black/20 p-8 text-center">
+      <div className={styles.successBox}>
         <CheckCircle className="w-12 h-12 text-kronos-cyan mx-auto mb-4" aria-hidden="true" />
-        <h3 className="font-heading text-2xl text-white mb-2">Request Received</h3>
-        <p className="font-body text-white/60 text-sm font-light">
+        <h3 className={styles.successTitle}>Request Received</h3>
+        <p className={styles.successBody}>
           We&apos;ve received your case review request. A Kronos specialist will reply within one
           business day.
         </p>
@@ -121,12 +152,12 @@ function ClaimReviewFormInner() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-      <p className="font-body text-white/50 text-xs sr-only" id="cr-required-legend">
+      <p className={styles.legend} id="cr-required-legend">
         Required fields are marked with an asterisk.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="cr-name" className={labelClass}>
+          <label htmlFor="cr-name" className={styles.label}>
             Your name <span className="text-kronos-cyan" aria-hidden="true">*</span>
           </label>
           <input
@@ -142,16 +173,16 @@ function ClaimReviewFormInner() {
             aria-describedby={
               fieldErrors.contact_name ? "cr-name-error cr-required-legend" : "cr-required-legend"
             }
-            className={`${inputClass} ${fieldErrors.contact_name ? "border-red-400" : ""} scroll-mt-28`}
+            className={`${styles.input} ${fieldErrors.contact_name ? "border-red-400" : ""} scroll-mt-28`}
           />
           {fieldErrors.contact_name && (
-            <p id="cr-name-error" className={errorClass} role="alert">
+            <p id="cr-name-error" className={styles.error} role="alert">
               {fieldErrors.contact_name}
             </p>
           )}
         </div>
         <div>
-          <label htmlFor="cr-title" className={labelClass}>
+          <label htmlFor="cr-title" className={styles.label}>
             Title
           </label>
           <input
@@ -162,13 +193,13 @@ function ClaimReviewFormInner() {
             autoComplete="organization-title"
             inputMode="text"
             style={{ fontSize: "16px" }}
-            className={inputClass}
+            className={styles.input}
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="cr-practice" className={labelClass}>
+        <label htmlFor="cr-practice" className={styles.label}>
           Practice name <span className="text-kronos-cyan" aria-hidden="true">*</span>
         </label>
         <input
@@ -184,10 +215,10 @@ function ClaimReviewFormInner() {
           aria-describedby={
             fieldErrors.practice_name ? "cr-practice-error cr-required-legend" : "cr-required-legend"
           }
-          className={`${inputClass} ${fieldErrors.practice_name ? "border-red-400" : ""} scroll-mt-28`}
+          className={`${styles.input} ${fieldErrors.practice_name ? "border-red-400" : ""} scroll-mt-28`}
         />
         {fieldErrors.practice_name && (
-          <p id="cr-practice-error" className={errorClass} role="alert">
+          <p id="cr-practice-error" className={styles.error} role="alert">
             {fieldErrors.practice_name}
           </p>
         )}
@@ -195,7 +226,7 @@ function ClaimReviewFormInner() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="cr-phone" className={labelClass}>
+          <label htmlFor="cr-phone" className={styles.label}>
             Phone <span className="text-kronos-cyan" aria-hidden="true">*</span>
           </label>
           <input
@@ -211,16 +242,16 @@ function ClaimReviewFormInner() {
             aria-describedby={
               fieldErrors.phone ? "cr-phone-error cr-required-legend" : "cr-required-legend"
             }
-            className={`${inputClass} ${fieldErrors.phone ? "border-red-400" : ""} scroll-mt-28`}
+            className={`${styles.input} ${fieldErrors.phone ? "border-red-400" : ""} scroll-mt-28`}
           />
           {fieldErrors.phone && (
-            <p id="cr-phone-error" className={errorClass} role="alert">
+            <p id="cr-phone-error" className={styles.error} role="alert">
               {fieldErrors.phone}
             </p>
           )}
         </div>
         <div>
-          <label htmlFor="cr-email" className={labelClass}>
+          <label htmlFor="cr-email" className={styles.label}>
             Work email <span className="text-kronos-cyan" aria-hidden="true">*</span>
           </label>
           <input
@@ -236,10 +267,10 @@ function ClaimReviewFormInner() {
             aria-describedby={
               fieldErrors.email ? "cr-email-error cr-required-legend" : "cr-required-legend"
             }
-            className={`${inputClass} ${fieldErrors.email ? "border-red-400" : ""} scroll-mt-28`}
+            className={`${styles.input} ${fieldErrors.email ? "border-red-400" : ""} scroll-mt-28`}
           />
           {fieldErrors.email && (
-            <p id="cr-email-error" className={errorClass} role="alert">
+            <p id="cr-email-error" className={styles.error} role="alert">
               {fieldErrors.email}
             </p>
           )}
@@ -248,7 +279,7 @@ function ClaimReviewFormInner() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="cr-specialty" className={labelClass}>
+          <label htmlFor="cr-specialty" className={styles.label}>
             Primary specialty <span className="text-kronos-cyan" aria-hidden="true">*</span>
           </label>
           <div className="relative">
@@ -261,7 +292,7 @@ function ClaimReviewFormInner() {
               aria-describedby={
                 fieldErrors.specialty ? "cr-specialty-error cr-required-legend" : "cr-required-legend"
               }
-              className={`${selectClass} ${fieldErrors.specialty ? "border-red-400" : ""} scroll-mt-28`}
+              className={`${styles.select} ${fieldErrors.specialty ? "border-red-400" : ""} scroll-mt-28`}
               defaultValue=""
             >
               <option value="" disabled>
@@ -275,17 +306,17 @@ function ClaimReviewFormInner() {
             </select>
           </div>
           {fieldErrors.specialty && (
-            <p id="cr-specialty-error" className={errorClass} role="alert">
+            <p id="cr-specialty-error" className={styles.error} role="alert">
               {fieldErrors.specialty}
             </p>
           )}
         </div>
         <div>
-          <label htmlFor="cr-volume" className={labelClass}>
+          <label htmlFor="cr-volume" className={styles.label}>
             Monthly NSA volume (approx.)
           </label>
           <div className="relative">
-            <select id="cr-volume" name="monthly_oon_claims" className={selectClass} defaultValue="">
+            <select id="cr-volume" name="monthly_oon_claims" className={styles.select} defaultValue="">
               <option value="">Select range</option>
               {MONTHLY_CLAIMS.map((c) => (
                 <option key={c} value={c}>
@@ -298,7 +329,7 @@ function ClaimReviewFormInner() {
       </div>
 
       <div>
-        <label className={labelClass}>Current handling</label>
+        <label className={styles.label}>Current handling</label>
         <div className="space-y-2.5 mt-1">
           {CURRENT_HANDLING.map((opt) => (
             <label
@@ -309,22 +340,20 @@ function ClaimReviewFormInner() {
                 type="radio"
                 name="current_handling"
                 value={opt.value}
-                className="mt-0.5 accent-[#00E5BE] shrink-0"
+                className="mt-0.5 accent-kronos-cyan shrink-0"
               />
-              <span className="font-body text-sm text-white/70 group-hover:text-white transition-colors leading-snug">
-                {opt.label}
-              </span>
+              <span className={styles.radioLabel}>{opt.label}</span>
             </label>
           ))}
         </div>
       </div>
 
       <div>
-        <label htmlFor="cr-best-time" className={labelClass}>
+        <label htmlFor="cr-best-time" className={styles.label}>
           Best time to reach you
         </label>
         <div className="relative">
-          <select id="cr-best-time" name="best_time_to_reach" className={selectClass} defaultValue="">
+          <select id="cr-best-time" name="best_time_to_reach" className={styles.select} defaultValue="">
             <option value="">Select a time (optional)</option>
             {BEST_TIME_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.label}>
@@ -336,7 +365,7 @@ function ClaimReviewFormInner() {
       </div>
 
       <div>
-        <label htmlFor="cr-claims" className={labelClass}>
+        <label htmlFor="cr-claims" className={styles.label}>
           Tell us about your claims
         </label>
         <textarea
@@ -345,12 +374,12 @@ function ClaimReviewFormInner() {
           rows={4}
           placeholder="Payers, typical CPT codes, dispute volume, or anything that helps us prepare for your review…"
           style={{ fontSize: "16px" }}
-          className="w-full bg-black/20 border border-white/10 px-4 py-3 text-white placeholder:text-white/40 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors resize-none"
+          className={styles.textarea}
         />
       </div>
 
       {error && (
-        <p className="text-red-400 text-sm font-body" role="alert">
+        <p className={styles.formError} role="alert">
           {error}
         </p>
       )}
@@ -358,7 +387,7 @@ function ClaimReviewFormInner() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full min-h-[48px] bg-kronos-cyan text-kronos-bg font-body font-bold py-3 px-6 uppercase tracking-widest text-xs hover:bg-kronos-cyan/90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        className={`w-full min-h-[48px] bg-kronos-cyan text-white font-body font-bold py-3 px-6 uppercase tracking-widest text-xs hover:bg-kronos-green-dark disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 transition-colors ${styles.submitFocus}`}
       >
         {isSubmitting ? (
           <>
@@ -376,10 +405,10 @@ function ClaimReviewFormInner() {
   );
 }
 
-export function ClaimReviewForm() {
+export function ClaimReviewForm({ variant = "dark" }: { variant?: FormVariant }) {
   return (
-    <Suspense fallback={<p className="text-white/50 text-sm font-body">Loading form…</p>}>
-      <ClaimReviewFormInner />
+    <Suspense fallback={<p className={getFormStyles(variant).loadingText}>Loading form…</p>}>
+      <ClaimReviewFormInner variant={variant} />
     </Suspense>
   );
 }
