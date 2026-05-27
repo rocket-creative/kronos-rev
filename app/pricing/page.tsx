@@ -4,6 +4,7 @@ import {
   MarketingSection,
   SydraCrossLink,
 } from "@/components/MarketingPage";
+import { ThreeWaysToHandleNsa } from "@/components/ThreeWaysToHandleNsa";
 import { LawyerComparisonTable } from "@/components/LawyerComparisonTable";
 import { createPageMetadata } from "@/lib/metadata";
 import { breadcrumbItems } from "@/lib/navigation";
@@ -67,8 +68,12 @@ export default function PricingPage() {
       </MarketingSection>
 
       <MarketingSection variant="neutral">
+        <ThreeWaysToHandleNsa variant="neutral" />
+      </MarketingSection>
+
+      <MarketingSection variant="white">
         <h2 className="font-heading text-2xl sm:text-3xl text-gray-900 mb-6">
-          Software alternative
+          Run IDR in house with software?
         </h2>
         <SydraCrossLink />
       </MarketingSection>

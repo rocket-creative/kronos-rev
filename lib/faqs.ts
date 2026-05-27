@@ -39,6 +39,12 @@ export const HOME_FAQS: FaqItem[] = [
     highlightAnswer: true,
   },
   {
+    question: "How do I choose between Sydra and Kronos Full-Service?",
+    answer:
+      "Choose by who operates the workflow. Sydra fits teams that want to run NSA IDR software in house. Kronos Full-Service on this site handles every claim when you want zero biller time on IDR. Sydra + Kronos Support is the middle path — software plus a specialist backstop.",
+    highlightAnswer: true,
+  },
+  {
     question: "How is Kronos Revenue priced for NSA IDR?",
     answer:
       "Quoted to your volume — not a contingency cut of every recovery. Most practices keep roughly nine in ten dollars won at IDR, plus more disputes won than with batched attorney filings. We quote on a consultation call.",
@@ -201,9 +207,15 @@ export const SECURITY_FAQS: FaqItem[] = [
     highlightAnswer: true,
   },
   {
-    question: "Is SYDRA a better fit if we want to run claims in house?",
+    question: "When should we use Sydra vs Kronos Revenue vs Sydra + Kronos Support?",
     answer:
-      "For lower volume practices that prefer to operate software themselves, SYDRA offers the same specialty depth as a self serve platform. See SYDRA at sydrahealth.com.",
+      "Choose by who operates the workflow, not volume alone. Sydra Self-Serve fits teams comfortable running software in house. Sydra + Kronos Support adds live specialists and escalation on tricky cases. Kronos Full-Service on this site handles every claim end to end when you want zero biller time on IDR. See plans at sydrahealth.com.",
+    highlightAnswer: true,
+  },
+  {
+    question: "Is Sydra a better fit if we want to run claims in house?",
+    answer:
+      "If your team wants to operate NSA IDR software themselves, Sydra offers the same specialty depth as a self serve platform — prep in under 5 minutes per claim instead of 30. For software plus a Kronos specialist on call, see Sydra + Kronos Support at sydrahealth.com.",
     highlightAnswer: true,
   },
 ];

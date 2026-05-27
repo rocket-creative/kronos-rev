@@ -10,7 +10,7 @@ export const CASE_STORIES = [
     id: "hand-surgeon",
     lead: "[TBD] Retained recovery increased from 80% to 90%+ per claim",
     title: "Hand surgeon, prior 20% attorney",
-    body: "A hand surgeon was paying his attorney 20% of every $5,000 claim — keeping eighty cents on the dollar. We quoted the same disputes so he kept ninety cents or more, and won more of them. [Full anonymized story pending Hayes + Dr. Abrams approval.]",
+    body: "A hand surgeon was paying his attorney 20% of every $5,000 claim — keeping eighty cents on the dollar. We quoted the same disputes so he kept ninety cents or more, and won more of them. [Full anonymized story pending Heisha Rivera + Dr. Abrams approval.]",
   },
   {
     id: "spine-practice",

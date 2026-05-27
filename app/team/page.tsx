@@ -44,7 +44,7 @@ export default function TeamPage() {
       breadcrumbs={crumbs}
       eyebrow="Leadership"
       h1="Built by a surgeon. Operated by RCM specialists."
-      intro="Dr. Abrams is a board certified neurosurgeon and the most valuable trust signal Kronos Revenue has. The team behind SYDRA also runs Kronos Revenue — same expertise, two delivery models."
+      intro="Dr. Abrams is a board certified neurosurgeon and the most valuable trust signal Kronos Revenue has. Kronos Health builds Sydra (software) and runs Kronos Revenue (full service) — same expertise, two delivery models."
       primaryCta="consultation"
       bottomCtaHeading="Book a consultation with our team"
     >
@@ -106,10 +106,16 @@ export default function TeamPage() {
 
       <MarketingSection variant="white">
         <h2 className="font-heading text-2xl sm:text-3xl text-gray-900 mb-4">
-          Kronos Health
+          Part of Kronos Health
         </h2>
+        <p className="font-body text-gray-600 font-light leading-relaxed max-w-3xl mb-4">
+          Kronos Health is the parent company. It builds Sydra (NSA IDR software) and runs Kronos
+          Revenue (full service RCM). Dr. John M. Abrahams founded both. Heisha Rivera leads revenue
+          cycle operations; Chelsea leads software and integrations on Sydra.
+        </p>
         <p className="font-body text-gray-600 font-light leading-relaxed max-w-3xl mb-6">
-          The team behind SYDRA also runs Kronos Revenue. Same expertise, two delivery models.
+          Same specialty depth across every tier — whether your team runs Sydra in house, uses Sydra
+          + Kronos Support, or hands every claim to Kronos Full-Service.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 mb-8">
           <a

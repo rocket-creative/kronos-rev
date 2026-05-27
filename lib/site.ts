@@ -13,6 +13,9 @@ export const INTAKE_EMAIL = "intake@kronosrevenue.com";
 export const EMAIL = INTAKE_EMAIL;
 
 export const SYDRA_URL = "https://www.sydrahealth.com/";
+export const SYDRA_PLANS_URL = "https://www.sydrahealth.com/plans";
+export const SYDRA_DEMO_URL = "https://www.sydrahealth.com/#demo";
+export const KRONOS_HEALTH_BASE_URL = "https://www.kronosgroup.health";
 export const KRONOS_HEALTH_URL =
   "https://www.kronosgroup.health/?utm_source=kronosrev&utm_medium=footer";
 export const LINKEDIN_URL = "https://linkedin.com/company/kronos-health";

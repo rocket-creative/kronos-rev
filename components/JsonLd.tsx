@@ -1,11 +1,13 @@
 import type { FaqItem } from "@/lib/faqs";
 import {
   EMAIL,
+  KRONOS_HEALTH_BASE_URL,
   LINKEDIN_URL,
   LOGO_URL,
   ORG_ID,
   PHONE_TEL,
   SITE_URL,
+  SYDRA_URL,
   WEBSITE_ID,
 } from "@/lib/site";
 
@@ -57,7 +59,26 @@ export function OrganizationSchema() {
         parentOrganization: {
           "@type": "Organization",
           name: "Kronos Health",
-          url: "https://www.kronosgroup.health",
+          url: KRONOS_HEALTH_BASE_URL,
+          subOrganization: [
+            {
+              "@type": "Organization",
+              "@id": ORG_ID,
+              name: "Kronos Revenue",
+              url: SITE_URL,
+              description:
+                "Full service No Surprises Act IDR and revenue cycle management for surgical practices.",
+            },
+            {
+              "@type": "SoftwareApplication",
+              name: "Sydra",
+              url: SYDRA_URL,
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "Web",
+              description:
+                "AI software for federal and state No Surprises Act IDR disputes, built by Kronos Health.",
+            },
+          ],
         },
         founder: {
           "@id": `${SITE_URL}/#person-john-abrahams`,

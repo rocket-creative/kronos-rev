@@ -4,6 +4,7 @@ import {
   MarketingSection,
   SydraCrossLink,
 } from "@/components/MarketingPage";
+import { ThreeWaysToHandleNsa } from "@/components/ThreeWaysToHandleNsa";
 import { createPageMetadata } from "@/lib/metadata";
 import { breadcrumbItems } from "@/lib/navigation";
 import { KRONOS_FEE_SHORT, DOLLAR_KEPT_CONTRAST, VASTLY_MORE_LINE } from "@/lib/pricing-copy";
@@ -93,13 +94,17 @@ export default function HowWeWorkPage() {
       </MarketingSection>
 
       <MarketingSection variant="neutral">
+        <ThreeWaysToHandleNsa variant="neutral" />
+      </MarketingSection>
+
+      <MarketingSection variant="white">
         <h2 className="font-heading text-2xl sm:text-3xl text-gray-900 mb-6">
-          The SYDRA software under the hood
+          The Sydra software under the hood
         </h2>
         <SydraCrossLink />
         <p className="font-body text-gray-600 font-light leading-relaxed max-w-3xl mt-6">
-          Kronos Revenue runs on our own SYDRA software platform — the same engine you could license
-          and operate yourself if you preferred. Tier 3 means you do not have to.
+          Kronos Full-Service runs on Sydra — the same engine available on sydrahealth.com. You
+          do not have to operate the software yourself; we handle every claim end to end.
         </p>
       </MarketingSection>
     </MarketingPage>

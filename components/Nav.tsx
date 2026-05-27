@@ -95,9 +95,10 @@ export default function Nav() {
                 href={SYDRA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={CTA.seeSydra.ariaLabel}
                 className="font-body text-xs text-kronos-cyan hover:text-kronos-green-dark uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan border-l border-gray-200 pl-3 flex items-center min-h-[44px]"
               >
-                SYDRA
+                Sydra
               </a>
             </div>
 
@@ -184,9 +185,10 @@ export default function Nav() {
                   href={SYDRA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={CTA.seeSydra.ariaLabel}
                   className="flex items-center min-h-[48px] py-2 font-heading text-[clamp(1.5rem,7vw,2.25rem)] leading-tight text-kronos-cyan border-b border-gray-100"
                 >
-                  SYDRA
+                  Sydra
                 </a>
               </li>
             </ul>

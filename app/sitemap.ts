@@ -12,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/team", priority: 0.7, changeFrequency: "monthly" as const },
     { path: "/faq", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/case-review", priority: 0.95, changeFrequency: "monthly" as const },
-    { path: "/sydra", priority: 0.6, changeFrequency: "monthly" as const },
   ];
 
   return pages.map(({ path, priority, changeFrequency }) => ({

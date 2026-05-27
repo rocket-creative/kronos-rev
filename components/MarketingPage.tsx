@@ -5,6 +5,7 @@ import type { BreadcrumbItem } from "@/components/JsonLd";
 import { BreadcrumbListSchema } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/lib/ctas";
+import { SYDRA_CROSS_LINK_COPY } from "@/lib/nsa-tiers";
 import { PAGE_CONTAINER } from "@/lib/layout";
 
 export type MarketingPageProps = {
@@ -145,8 +146,7 @@ export function SydraCrossLink({ variant = "light" }: { variant?: "light" | "dar
           isDark ? "text-white/70" : "text-gray-600"
         }`}
       >
-        Lower volume practice? Want to run claims yourself? SYDRA is our software product — same
-        specialty depth, you operate it.
+        {SYDRA_CROSS_LINK_COPY}
       </p>
       <a
         href={CTA.seeSydra.href}

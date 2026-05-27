@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { LogoImage } from "@/components/LogoImage";
 import { mainNavLinks } from "@/lib/navigation";
+import { SYDRA_CROSS_LINK_COPY } from "@/lib/nsa-tiers";
+import { CTA } from "@/lib/ctas";
 import {
   EMAIL,
   KRONOS_HEALTH_URL,
@@ -15,20 +17,20 @@ import {
 export default function Footer() {
   return (
     <footer className="bg-[#00542A] text-white" role="contentinfo">
-      {/* SYDRA cross-link module */}
+      {/* Sydra cross-link module */}
       <div className="border-b border-white/10">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-8 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <p className="font-body text-sm text-white/70 font-light max-w-xl">
-            Lower volume? Want to run claims yourself? SYDRA is our software product — same
-            specialty depth, you operate it.
+            {SYDRA_CROSS_LINK_COPY}
           </p>
           <a
             href={SYDRA_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 uppercase tracking-widest text-xs font-bold text-white hover:gap-3 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white shrink-0"
+            aria-label={CTA.seeSydra.ariaLabel}
           >
-            See SYDRA
+            {CTA.seeSydra.label}
             <ExternalLink className="w-3 h-3" aria-hidden="true" />
           </a>
         </div>
@@ -53,8 +55,8 @@ export default function Footer() {
               We actively support practices in Texas, California, New York, New Jersey, Florida, and
               Arizona.
             </p>
-            <p className="font-body text-[10px] sm:text-xs text-white/40 font-light mt-4">
-              A{" "}
+            <p className="font-body text-[10px] sm:text-xs text-white/40 font-light mt-4 leading-relaxed max-w-xs">
+              Part of{" "}
               <a
                 href={KRONOS_HEALTH_URL}
                 target="_blank"
@@ -62,8 +64,8 @@ export default function Footer() {
                 className="hover:text-white/70 transition-colors underline underline-offset-2"
               >
                 Kronos Health
-              </a>{" "}
-              company
+              </a>
+              . Kronos Health builds Sydra (software) and runs Kronos Revenue (full service RCM).
             </p>
           </div>
 
@@ -133,7 +135,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
               >
-                SYDRA
+                Sydra
               </a>
             </nav>
           </div>

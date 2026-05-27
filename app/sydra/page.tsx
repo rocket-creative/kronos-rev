@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
-import SydraPageContent from "./SydraPageContent";
-import {
-  BreadcrumbListSchema,
-  WebPageSchema,
-} from "@/components/JsonLd";
+import SydraBridgeContent from "./SydraBridgeContent";
+import { BreadcrumbListSchema, WebPageSchema } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { createPageMetadata, absoluteUrl } from "@/lib/metadata";
 import { breadcrumbItems } from "@/lib/navigation";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Sydra AI IDR Platform for Surgical Practices | Kronos",
+  title: "Sydra | NSA IDR Software by Kronos Health",
   description:
-    "Sydra automates No Surprises Act IDR for surgical practices. AI submissions, deadline tracking, and analytics. Live in production. Request a demo or join the waitlist.",
+    "Sydra is Kronos Health's AI software for No Surprises Act IDR. Self-Serve or Sydra + Kronos Support on sydrahealth.com. Kronos Full-Service is handled on Kronos Revenue.",
   path: "/sydra",
-  ogImageAlt: "Sydra AI IDR platform by Kronos Revenue",
+  ogImageAlt: "Sydra NSA IDR software by Kronos Health",
+  robots: { index: false, follow: true },
 });
 
 export default function SydraPage() {
@@ -24,13 +22,13 @@ export default function SydraPage() {
     <>
       <BreadcrumbListSchema items={crumbs} />
       <WebPageSchema
-        name="Sydra AI IDR Platform"
-        description="AI powered No Surprises Act IDR submission platform for surgical practices by Kronos Revenue."
+        name="Sydra NSA IDR Software"
+        description="Bridge to Sydra, Kronos Health's AI software for No Surprises Act IDR disputes."
         url={pageUrl}
       />
       <div className="bg-kronos-bg min-h-dvh">
         <Breadcrumbs items={crumbs} />
-        <SydraPageContent />
+        <SydraBridgeContent />
       </div>
     </>
   );

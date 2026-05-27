@@ -11,7 +11,6 @@ import {
   Stethoscope,
   HandHelping,
   ArrowRight,
-  ExternalLink,
 } from "lucide-react";
 import { HeroBackground } from "@/components/HeroBackground";
 import { FAQSection } from "@/components/FAQSection";
@@ -22,8 +21,8 @@ import { LogoImage } from "@/components/LogoImage";
 import { PrimarySpecialties } from "@/components/PrimarySpecialties";
 import { LawyerComparisonTable } from "@/components/LawyerComparisonTable";
 import { useHeroAnimation, useStaggeredCards } from "@/components/animations";
+import { ThreeWaysToHandleNsa } from "@/components/ThreeWaysToHandleNsa";
 import { CTA } from "@/lib/ctas";
-import { SYDRA_URL } from "@/lib/site";
 import { mainNavLinks } from "@/lib/navigation";
 import { VASTLY_MORE_LINE, KRONOS_FEE_SHORT } from "@/lib/pricing-copy";
 
@@ -43,7 +42,7 @@ const valueProps = [
   {
     title: "Done for you IDR",
     description:
-      "You hand us the EOBs. We handle every step of the NSA IDR process — negotiation through final award. Your billing team gets their afternoons back.",
+      "You hand us the EOBs. We handle every step of the NSA IDR process — negotiation through final award. Sydra saves biller hours; Kronos Full-Service saves headcount entirely.",
     icon: HandHelping,
   },
 ];
@@ -365,30 +364,13 @@ export default function HomePageContent() {
         </div>
       </section>
 
-      {/* SYDRA software alternative */}
+      {/* Three ways to handle NSA */}
       <section
         className="py-12 sm:py-16 lg:py-20 bg-white border-t border-gray-100"
-        aria-labelledby="sydra-alt-heading"
+        aria-labelledby="three-ways-heading"
       >
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
-          <p className="font-body text-xs uppercase tracking-widest text-gray-400 mb-4">
-            Software alternative
-          </p>
-          <h2 id="sydra-alt-heading" className="font-heading text-xl sm:text-2xl text-gray-900 mb-4 max-w-2xl">
-            Lower volume practice? Want to run claims yourself?
-          </h2>
-          <p className="font-body text-gray-600 font-light leading-relaxed max-w-2xl mb-6">
-            SYDRA is our software product — same specialty depth, you operate it.
-          </p>
-          <a
-            href={SYDRA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 text-kronos-green-dark uppercase tracking-widest text-xs font-bold hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
-          >
-            See SYDRA
-            <ExternalLink className="w-3 h-3" aria-hidden="true" />
-          </a>
+          <ThreeWaysToHandleNsa />
         </div>
       </section>
     </>
