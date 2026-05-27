@@ -1,10 +1,26 @@
 import { SITE_URL } from "@/lib/site";
 
-export type NavLink = { href: string; label: string; external?: boolean };
+export type NavLink = {
+  href: string;
+  label: string;
+  shortLabel?: string;
+  ariaLabel?: string;
+  external?: boolean;
+};
 
 export const mainNavLinks: NavLink[] = [
-  { href: "/lawyer-problem", label: "NSA IDR vs Lawyers" },
-  { href: "/how-we-work", label: "NSA IDR Process" },
+  {
+    href: "/lawyer-problem",
+    label: "Traditional approach",
+    shortLabel: "Traditional",
+    ariaLabel: "Traditional attorney approach to NSA IDR",
+  },
+  {
+    href: "/how-we-work",
+    label: "NSA IDR Process",
+    shortLabel: "Process",
+    ariaLabel: "NSA IDR Process",
+  },
   { href: "/specialties", label: "Specialties" },
   { href: "/results", label: "IDR Results" },
   { href: "/pricing", label: "Pricing" },
@@ -17,6 +33,9 @@ export const mainNavLinks: NavLink[] = [
 export const serviceLinks: NavLink[] = mainNavLinks;
 
 export const homeSectionLinks: NavLink[] = mainNavLinks;
+
+/** First six items shown in the desktop header cluster (excludes FAQ and case review). */
+export const headerNavLinks: NavLink[] = mainNavLinks.slice(0, 6);
 
 export function homeAnchor(href: string): string {
   return href.startsWith("#") ? `/${href}` : href;

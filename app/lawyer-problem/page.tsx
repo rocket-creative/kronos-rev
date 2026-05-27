@@ -26,7 +26,7 @@ const service = marketingServiceSchema(
 );
 
 export default function LawyerProblemPage() {
-  const crumbs = breadcrumbItems([{ name: "NSA IDR vs Lawyers", path: "/lawyer-problem" }]);
+  const crumbs = breadcrumbItems([{ name: "Traditional approach", path: "/lawyer-problem" }]);
 
   return (
     <MarketingPage

@@ -6,19 +6,10 @@ import { useState, useRef, useEffect } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { LogoImage } from "@/components/LogoImage";
 import { useNavScrollEffect } from "@/components/animations";
-import { mainNavLinks } from "@/lib/navigation";
+import { headerNavLinks, mainNavLinks } from "@/lib/navigation";
 import { PAGE_CONTAINER_WIDE } from "@/lib/layout";
 import { CTA } from "@/lib/ctas";
 import { KRONOS_HEALTH_URL, SYDRA_URL } from "@/lib/site";
-
-const XL_NAV_LINKS: { href: string; label: string; shortLabel?: string; ariaLabel: string }[] = [
-  { href: "/lawyer-problem", label: "NSA IDR vs Lawyers", shortLabel: "vs Lawyers", ariaLabel: "NSA IDR vs Lawyers" },
-  { href: "/how-we-work", label: "NSA IDR Process", shortLabel: "Process", ariaLabel: "NSA IDR Process" },
-  { href: "/specialties", label: "Specialties", ariaLabel: "Specialties" },
-  { href: "/results", label: "IDR Results", ariaLabel: "IDR Results" },
-  { href: "/pricing", label: "Pricing", ariaLabel: "Pricing" },
-  { href: "/team", label: "Team", ariaLabel: "Team" },
-];
 
 export default function Nav() {
   const pathname = usePathname();
@@ -86,12 +77,12 @@ export default function Nav() {
                 <span className="2xl:hidden">Home</span>
                 <span className="hidden 2xl:inline">Home</span>
               </Link>
-              {XL_NAV_LINKS.map((link) => (
+              {headerNavLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={linkClass(link.href)}
-                  aria-label={link.ariaLabel}
+                  aria-label={link.ariaLabel ?? link.label}
                 >
                   <span className="2xl:hidden">{link.shortLabel ?? link.label}</span>
                   <span className="hidden 2xl:inline">{link.label}</span>
