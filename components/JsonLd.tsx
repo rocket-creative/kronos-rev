@@ -36,13 +36,11 @@ export function OrganizationSchema() {
         description:
           "Specialty trained revenue cycle management and No Surprises Act IDR for orthopedic, neurosurgery, spine, and plastic surgery practices.",
         telephone: PHONE_TEL,
-        // Update to sales@sydrahealth.com — pending alias setup
         email: EMAIL,
         sameAs: [LINKEDIN_URL],
         contactPoint: {
           "@type": "ContactPoint",
           telephone: PHONE_TEL,
-          // Update to sales@sydrahealth.com — pending alias setup
           email: EMAIL,
           contactType: "customer service",
           areaServed: "US",
@@ -122,7 +120,6 @@ export function LocalBusinessSchema({ pageUrl }: { pageUrl: string }) {
         name: "Kronos Revenue",
         url: pageUrl,
         telephone: PHONE_TEL,
-        // Update to sales@sydrahealth.com — pending alias setup
         email: EMAIL,
         image: LOGO_URL,
         address: {

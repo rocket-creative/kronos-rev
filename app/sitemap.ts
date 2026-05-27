@@ -2,54 +2,23 @@ import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.kronosrevenue.health";
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/free-claim-review`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/no-surprises-act`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/asc-providers`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/synaptix-billing`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/for-hospitals-and-ascs`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/sydra`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    },
+  const pages = [
+    { path: "", priority: 1, changeFrequency: "weekly" as const },
+    { path: "/lawyer-problem", priority: 0.9, changeFrequency: "monthly" as const },
+    { path: "/how-we-work", priority: 0.9, changeFrequency: "monthly" as const },
+    { path: "/specialties", priority: 0.9, changeFrequency: "monthly" as const },
+    { path: "/results", priority: 0.9, changeFrequency: "monthly" as const },
+    { path: "/pricing", priority: 0.8, changeFrequency: "monthly" as const },
+    { path: "/team", priority: 0.7, changeFrequency: "monthly" as const },
+    { path: "/faq", priority: 0.8, changeFrequency: "monthly" as const },
+    { path: "/case-review", priority: 0.95, changeFrequency: "monthly" as const },
+    { path: "/sydra", priority: 0.6, changeFrequency: "monthly" as const },
   ];
+
+  return pages.map(({ path, priority, changeFrequency }) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: new Date(),
+    changeFrequency,
+    priority,
+  }));
 }

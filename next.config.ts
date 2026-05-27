@@ -39,6 +39,16 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  async redirects() {
+    return [
+      { source: "/free-claim-review", destination: "/case-review", permanent: true },
+      { source: "/no-surprises-act", destination: "/lawyer-problem", permanent: true },
+      { source: "/asc-providers", destination: "/specialties", permanent: true },
+      { source: "/for-hospitals-and-ascs", destination: "/how-we-work", permanent: true },
+      { source: "/synaptix-billing", destination: "/case-review", permanent: true },
+      { source: "/contact", destination: "/case-review", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

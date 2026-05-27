@@ -13,9 +13,9 @@ import { HOME_FAQS } from "@/lib/faqs";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Healthcare IDR & Revenue Cycle Management | Kronos",
+  title: "NSA IDR | Stop Paying Lawyers 20% | Kronos",
   description:
-    "Specialty trained revenue cycle for orthopedic, neurosurgery, spine, and plastic surgery. Full NSA IDR case management. Call (914) 705 6830 for a free review.",
+    "No Surprises Act IDR, done for you. Quoted to your volume — not a 20% contingency. We win more federal IDR disputes. Free NSA IDR review.",
   path: "/",
 });
 

@@ -1,24 +1,22 @@
 import { SITE_URL } from "@/lib/site";
 
-export type NavLink = { href: string; label: string };
+export type NavLink = { href: string; label: string; external?: boolean };
 
-export const serviceLinks: NavLink[] = [
-  { href: "/free-claim-review", label: "Free Claim Review" },
-  { href: "/no-surprises-act", label: "No Surprises Act" },
-  { href: "/asc-providers", label: "ASC Providers" },
-  { href: "/synaptix-billing", label: "Synaptix Billing" },
-  { href: "/for-hospitals-and-ascs", label: "Hospitals & ASCs" },
-  { href: "/sydra", label: "Sydra Platform" },
+export const mainNavLinks: NavLink[] = [
+  { href: "/lawyer-problem", label: "NSA IDR vs Lawyers" },
+  { href: "/how-we-work", label: "NSA IDR Process" },
+  { href: "/specialties", label: "Specialties" },
+  { href: "/results", label: "IDR Results" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/team", label: "Team" },
+  { href: "/faq", label: "NSA IDR FAQ" },
+  { href: "/case-review", label: "Free IDR Review" },
 ];
 
-export const homeSectionLinks: NavLink[] = [
-  { href: "/#services", label: "Services" },
-  { href: "/#process", label: "How It Works" },
-  { href: "/#why-us", label: "Why Us" },
-  { href: "/#team", label: "Team" },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
-];
+/** @deprecated Use mainNavLinks. Kept for legacy page redirects. */
+export const serviceLinks: NavLink[] = mainNavLinks;
+
+export const homeSectionLinks: NavLink[] = mainNavLinks;
 
 export function homeAnchor(href: string): string {
   return href.startsWith("#") ? `/${href}` : href;

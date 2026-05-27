@@ -270,14 +270,14 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
                 Ready to start recovering?
               </p>
               <p className="font-body text-xs text-white/60 font-light">
-                Get a free revenue review — no commitment.
+                Get a free NSA IDR review — no commitment.
               </p>
             </div>
             <Link
-              href="#contact"
+              href="/case-review"
               className="inline-flex items-center gap-3 bg-white text-[#003D1A] py-3 px-6 uppercase tracking-widest text-xs font-bold hover:bg-white/90 hover:gap-5 transition-all whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#003D1A]"
             >
-              Free Revenue Review
+              Get a free NSA IDR review
               <ArrowRight className="w-3 h-3" aria-hidden="true" />
             </Link>
           </div>

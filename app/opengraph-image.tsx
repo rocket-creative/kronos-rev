@@ -67,7 +67,7 @@ export default async function Image() {
               marginTop: 24,
             }}
           >
-            Request a free revenue review
+            Get a free NSA IDR review
           </div>
         </div>
       </div>

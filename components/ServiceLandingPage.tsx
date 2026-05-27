@@ -122,7 +122,7 @@ export function ServiceLandingPage({
             <Link
               href={`tel:${PHONE_TEL}`}
               className="inline-flex items-center gap-3 bg-kronos-cyan text-kronos-bg py-3 px-6 uppercase tracking-widest text-xs font-bold hover:opacity-90 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-bg mb-6"
-              aria-label={`Call ${PHONE_DISPLAY} for a free revenue review`}
+              aria-label={`Call ${PHONE_DISPLAY} for a free NSA IDR review`}
             >
               {PHONE_DISPLAY}
               <ArrowRight className="w-4 h-4" aria-hidden="true" />

@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Send } from "lucide-react";
+import { useUtmParams } from "@/hooks/useUtmParams";
 
-export function ContactForm({ source = "revenue_review_request" }: { source?: string } = {}) {
+function ContactFormInner({ source = "revenue_review_request" }: { source?: string }) {
+  const utm = useUtmParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -25,8 +27,9 @@ export function ContactForm({ source = "revenue_review_request" }: { source?: st
           phone: formData.get("phone"),
           email: formData.get("email"),
           organization: formData.get("organization"),
-          message: formData.get("message") || "Revenue review request",
+          message: formData.get("message") || "Case review request",
           source,
+          utm: Object.keys(utm).length > 0 ? utm : undefined,
         }),
       });
 
@@ -51,7 +54,8 @@ export function ContactForm({ source = "revenue_review_request" }: { source?: st
         </div>
         <h3 className="font-heading text-2xl text-white mb-2">Request Received</h3>
         <p className="font-body text-white/60 text-sm font-light">
-          Thank you for reaching out. We will contact you shortly for your free revenue review.
+          We&apos;ve received your case review request. A Kronos specialist will reply within one
+          business day.
         </p>
       </div>
     );
@@ -150,8 +154,16 @@ export function ContactForm({ source = "revenue_review_request" }: { source?: st
         disabled={isSubmitting}
         className="w-full min-h-[48px] bg-kronos-cyan text-kronos-bg font-bold py-3 px-6 hover:bg-kronos-cyan/90 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-kronos-green"
       >
-        {isSubmitting ? "Sending..." : "Free Revenue Review"}
+        {isSubmitting ? "Sending..." : "Get a free NSA IDR review"}
       </button>
     </form>
+  );
+}
+
+export function ContactForm(props: { source?: string } = {}) {
+  return (
+    <Suspense fallback={<p className="text-white/50 text-sm font-body">Loading form…</p>}>
+      <ContactFormInner {...props} />
+    </Suspense>
   );
 }

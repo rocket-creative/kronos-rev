@@ -1,10 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { Resend } from "resend";
+import { INTAKE_EMAIL } from "@/lib/site";
 
-// ---------------------------------------------------------------------------
-// Shared base
-// ---------------------------------------------------------------------------
+const UtmSchema = z
+  .object({
+    utm_source: z.string().max(100).optional(),
+    utm_medium: z.string().max(100).optional(),
+    utm_campaign: z.string().max(100).optional(),
+    utm_term: z.string().max(100).optional(),
+    utm_content: z.string().max(100).optional(),
+  })
+  .optional();
 
 const BaseSchema = z.object({
   contact_name: z.string().min(1).max(100),
@@ -12,11 +19,8 @@ const BaseSchema = z.object({
   phone: z.string().min(7).max(30),
   email: z.string().email().max(254),
   message: z.string().max(2000).optional(),
+  utm: UtmSchema,
 });
-
-// ---------------------------------------------------------------------------
-// Per-form schemas
-// ---------------------------------------------------------------------------
 
 const ClaimReviewSchema = BaseSchema.extend({
   form_type: z.literal("claim_review").optional(),
@@ -25,6 +29,10 @@ const ClaimReviewSchema = BaseSchema.extend({
   network_status: z.enum(["oon", "partial", "in_network", "not_sure"]).optional(),
   state: z.string().max(50).optional(),
   monthly_oon_claims: z.string().max(50).optional(),
+  current_handling: z
+    .enum(["attorney", "in_house", "third_party", "nothing"])
+    .optional(),
+  best_time_to_reach: z.string().max(100).optional(),
 });
 
 const NSADisputeSchema = BaseSchema.extend({
@@ -61,7 +69,6 @@ const HospitalGroupSchema = BaseSchema.extend({
   annual_oon_volume: z.string().max(50).optional(),
 });
 
-// Legacy generic contact form (ContactForm.tsx on homepage / /contact page)
 const ContactSchema = z.object({
   name: z.string().min(1).max(100),
   phone: z.string().min(7).max(30),
@@ -69,11 +76,8 @@ const ContactSchema = z.object({
   organization: z.string().min(1).max(200),
   message: z.string().max(2000).optional(),
   source: z.string().max(50).optional(),
+  utm: UtmSchema,
 });
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
 
 function ts(): string {
   return (
@@ -92,9 +96,31 @@ function header(label: string) {
   return `${HDR}\nKRONOS REVENUE — ${label.toUpperCase()}\n${HDR}`;
 }
 
-// ---------------------------------------------------------------------------
-// Email builders
-// ---------------------------------------------------------------------------
+function utmBlock(utm?: z.infer<typeof UtmSchema>) {
+  if (!utm) return null;
+  const entries = Object.entries(utm).filter(([, v]) => v);
+  if (entries.length === 0) return null;
+  return [
+    `\n${DIV}\nATTRIBUTION\n${DIV}`,
+    ...entries.map(([k, v]) => `${k}: ${v}`),
+  ].join("\n");
+}
+
+function isHighVolume(monthlyClaims?: string | null): boolean {
+  if (!monthlyClaims) return false;
+  return ["51–200", "201–500", "Over 500"].includes(monthlyClaims);
+}
+
+function withHighVolumePrefix(subject: string, monthlyClaims?: string | null): string {
+  return isHighVolume(monthlyClaims) ? `[HIGH VOLUME] ${subject}` : subject;
+}
+
+const handlingLabels: Record<string, string> = {
+  attorney: "Currently using an attorney",
+  in_house: "In-house biller",
+  third_party: "Third-party RCM",
+  nothing: "Not disputing today",
+};
 
 function buildClaimReviewEmail(d: z.infer<typeof ClaimReviewSchema>) {
   const networkLabels: Record<string, string> = {
@@ -103,41 +129,53 @@ function buildClaimReviewEmail(d: z.infer<typeof ClaimReviewSchema>) {
     in_network: "In-network",
     not_sure: "Not sure",
   };
+
+  const highVolumeNote = isHighVolume(d.monthly_oon_claims)
+    ? "\n*** HIGH VOLUME LEAD — Flag Dr. Abrams for personal follow up within 24 hours ***"
+    : "";
+
   return {
-    subject: `[Kronos Revenue] Free Claim Review — ${d.practice_name} — ${d.contact_name}`,
+    subject: withHighVolumePrefix(
+      `[Kronos Revenue] Free Case Review — ${d.practice_name} — ${d.contact_name}`,
+      d.monthly_oon_claims
+    ),
     text: [
-      header("Free Claim Review"),
+      header("Free Case Review"),
+      highVolumeNote,
       `\nSUBMITTED:  ${ts()}\n`,
-      DIV, "CONTACT", DIV,
+      DIV,
+      "CONTACT",
+      DIV,
       `Name:              ${d.contact_name}`,
       d.title ? `Title:             ${d.title}` : null,
       `Practice:          ${d.practice_name}`,
       `Phone:             ${d.phone}`,
       `Email:             ${d.email}`,
+      d.best_time_to_reach ? `Best time to reach:  ${d.best_time_to_reach}` : null,
       d.state ? `State:             ${d.state}` : null,
       `\n${DIV}\nPRACTICE DETAILS\n${DIV}`,
-      `Specialty:          ${d.specialty}`,
-      `Network status:     ${networkLabels[d.network_status ?? ""] ?? d.network_status ?? "—"}`,
-      `Monthly OON claims: ${d.monthly_oon_claims ?? "—"}`,
-      d.message?.trim() ? `\n${DIV}\nNOTES\n${DIV}\n\n${d.message.trim()}` : null,
+      `Specialty:           ${d.specialty}`,
+      `Current handling:    ${handlingLabels[d.current_handling ?? ""] ?? d.current_handling ?? "—"}`,
+      `Network status:      ${networkLabels[d.network_status ?? ""] ?? d.network_status ?? "—"}`,
+      `Monthly OON claims:  ${d.monthly_oon_claims ?? "—"}`,
+      d.message?.trim() ? `\n${DIV}\nABOUT YOUR CLAIMS\n${DIV}\n\n${d.message.trim()}` : null,
+      utmBlock(d.utm),
       `\n${HDR}`,
-    ].filter(Boolean).join("\n"),
+    ]
+      .filter(Boolean)
+      .join("\n"),
   };
 }
 
 function buildNSADisputeEmail(d: z.infer<typeof NSADisputeSchema>) {
-  const processLabels: Record<string, string> = {
-    attorney: "Currently using an attorney",
-    in_house: "In-house biller",
-    third_party: "Third-party RCM",
-    nothing: "Not disputing today",
-  };
   return {
     subject: `[Kronos Revenue] NSA Dispute — ${d.practice_name} — ${d.contact_name}`,
     text: [
       header("NSA Dispute Inquiry"),
       `\nSUBMITTED:  ${ts()}\n`,
-      DIV, "CONTACT", DIV,
+      DIV,
+      "CONTACT",
+      DIV,
       `Name:         ${d.contact_name}`,
       d.title ? `Title:        ${d.title}` : null,
       `Practice:     ${d.practice_name}`,
@@ -147,10 +185,13 @@ function buildNSADisputeEmail(d: z.infer<typeof NSADisputeSchema>) {
       `Specialty:        ${d.specialty}`,
       `Payers:           ${d.payers?.join(", ") || "—"}`,
       `Dispute volume:   ${d.dispute_volume ?? "—"}`,
-      `Current process:  ${processLabels[d.current_process ?? ""] ?? d.current_process ?? "—"}`,
+      `Current process:  ${handlingLabels[d.current_process ?? ""] ?? d.current_process ?? "—"}`,
       d.message?.trim() ? `\n${DIV}\nNOTES\n${DIV}\n\n${d.message.trim()}` : null,
+      utmBlock(d.utm),
       `\n${HDR}`,
-    ].filter(Boolean).join("\n"),
+    ]
+      .filter(Boolean)
+      .join("\n"),
   };
 }
 
@@ -165,7 +206,9 @@ function buildASCProviderEmail(d: z.infer<typeof ASCProviderSchema>) {
     text: [
       header("ASC-Based Provider Inquiry"),
       `\nSUBMITTED:  ${ts()}\n`,
-      DIV, "CONTACT", DIV,
+      DIV,
+      "CONTACT",
+      DIV,
       `Name:         ${d.contact_name}`,
       d.title ? `Title:        ${d.title}` : null,
       `Practice:     ${d.practice_name}`,
@@ -177,8 +220,11 @@ function buildASCProviderEmail(d: z.infer<typeof ASCProviderSchema>) {
       `Network status:       ${statusLabels[d.facility_network_status ?? ""] ?? d.facility_network_status ?? "—"}`,
       `Monthly case volume:  ${d.monthly_case_volume ?? "—"}`,
       d.message?.trim() ? `\n${DIV}\nNOTES\n${DIV}\n\n${d.message.trim()}` : null,
+      utmBlock(d.utm),
       `\n${HDR}`,
-    ].filter(Boolean).join("\n"),
+    ]
+      .filter(Boolean)
+      .join("\n"),
   };
 }
 
@@ -193,7 +239,9 @@ function buildSynaptixBillingEmail(d: z.infer<typeof SynaptixBillingSchema>) {
     text: [
       header("Synaptix Licensee Inquiry"),
       `\nSUBMITTED:  ${ts()}\n`,
-      DIV, "CONTACT", DIV,
+      DIV,
+      "CONTACT",
+      DIV,
       `Name:         ${d.contact_name}`,
       d.title ? `Title:        ${d.title}` : null,
       `Practice:     ${d.practice_name}`,
@@ -204,8 +252,11 @@ function buildSynaptixBillingEmail(d: z.infer<typeof SynaptixBillingSchema>) {
       `Synaptix status:            ${statusLabels[d.synaptix_status ?? ""] ?? d.synaptix_status ?? "—"}`,
       `Monthly concussion volume:  ${d.monthly_concussion_volume ?? "—"}`,
       d.message?.trim() ? `\n${DIV}\nNOTES\n${DIV}\n\n${d.message.trim()}` : null,
+      utmBlock(d.utm),
       `\n${HDR}`,
-    ].filter(Boolean).join("\n"),
+    ]
+      .filter(Boolean)
+      .join("\n"),
   };
 }
 
@@ -220,7 +271,9 @@ function buildHospitalGroupEmail(d: z.infer<typeof HospitalGroupSchema>) {
     text: [
       header("Hospital / ASC Group Inquiry"),
       `\nSUBMITTED:  ${ts()}\n`,
-      DIV, "CONTACT", DIV,
+      DIV,
+      "CONTACT",
+      DIV,
       `Name:           ${d.contact_name}`,
       d.title ? `Title:          ${d.title}` : null,
       `Organization:   ${d.organization}`,
@@ -231,36 +284,40 @@ function buildHospitalGroupEmail(d: z.infer<typeof HospitalGroupSchema>) {
       `Facility count:     ${d.facility_count ?? "—"}`,
       `Annual OON volume:  ${d.annual_oon_volume ?? "—"}`,
       d.message?.trim() ? `\n${DIV}\nNOTES\n${DIV}\n\n${d.message.trim()}` : null,
+      utmBlock(d.utm),
       `\n${HDR}`,
-    ].filter(Boolean).join("\n"),
+    ]
+      .filter(Boolean)
+      .join("\n"),
   };
 }
 
 function buildContactEmail(d: z.infer<typeof ContactSchema>) {
   const isSydra = d.source === "sydra_waitlist";
-  const label = isSydra ? "Sydra Beta Waitlist" : "Revenue Review Request";
+  const label = isSydra ? "Sydra Beta Waitlist" : "Case Review Request";
   return {
     subject: isSydra
       ? `[Sydra] Beta Waitlist — ${d.organization} — ${d.name}`
-      : `[Kronos Revenue] Revenue Review Request — ${d.organization} — ${d.name}`,
+      : `[Kronos Revenue] Case Review Request — ${d.organization} — ${d.name}`,
     text: [
       header(label),
       `\nSITE:       ${isSydra ? "www.kronosrevenue.health/sydra" : "www.kronosrevenue.health"}`,
       `SUBMITTED:  ${ts()}\n`,
-      DIV, "CONTACT", DIV,
+      DIV,
+      "CONTACT",
+      DIV,
       `Name:         ${d.name}`,
       `Phone:        ${d.phone}`,
       `Email:        ${d.email}`,
       `Organization: ${d.organization}`,
       d.message?.trim() ? `\n${DIV}\nNOTES\n${DIV}\n\n${d.message.trim()}` : null,
+      utmBlock(d.utm),
       `\n${HDR}`,
-    ].filter(Boolean).join("\n"),
+    ]
+      .filter(Boolean)
+      .join("\n"),
   };
 }
-
-// ---------------------------------------------------------------------------
-// Route handler
-// ---------------------------------------------------------------------------
 
 export async function POST(request: NextRequest) {
   try {
@@ -279,33 +336,56 @@ export async function POST(request: NextRequest) {
 
     if (formType === "nsa_dispute") {
       const p = NSADisputeSchema.safeParse(body);
-      if (!p.success) return NextResponse.json({ error: "Invalid form data", details: p.error.flatten() }, { status: 400 });
+      if (!p.success)
+        return NextResponse.json(
+          { error: "Invalid form data", details: p.error.flatten() },
+          { status: 400 }
+        );
       emailPayload = buildNSADisputeEmail(p.data);
       replyTo = p.data.email;
     } else if (formType === "asc_provider") {
       const p = ASCProviderSchema.safeParse(body);
-      if (!p.success) return NextResponse.json({ error: "Invalid form data", details: p.error.flatten() }, { status: 400 });
+      if (!p.success)
+        return NextResponse.json(
+          { error: "Invalid form data", details: p.error.flatten() },
+          { status: 400 }
+        );
       emailPayload = buildASCProviderEmail(p.data);
       replyTo = p.data.email;
     } else if (formType === "synaptix_licensee") {
       const p = SynaptixBillingSchema.safeParse(body);
-      if (!p.success) return NextResponse.json({ error: "Invalid form data", details: p.error.flatten() }, { status: 400 });
+      if (!p.success)
+        return NextResponse.json(
+          { error: "Invalid form data", details: p.error.flatten() },
+          { status: 400 }
+        );
       emailPayload = buildSynaptixBillingEmail(p.data);
       replyTo = p.data.email;
     } else if (formType === "hospital_group") {
       const p = HospitalGroupSchema.safeParse(body);
-      if (!p.success) return NextResponse.json({ error: "Invalid form data", details: p.error.flatten() }, { status: 400 });
+      if (!p.success)
+        return NextResponse.json(
+          { error: "Invalid form data", details: p.error.flatten() },
+          { status: 400 }
+        );
       emailPayload = buildHospitalGroupEmail(p.data);
       replyTo = p.data.email;
     } else if (formType === "claim_review" || raw.contact_name !== undefined) {
       const p = ClaimReviewSchema.safeParse(body);
-      if (!p.success) return NextResponse.json({ error: "Invalid form data", details: p.error.flatten() }, { status: 400 });
+      if (!p.success)
+        return NextResponse.json(
+          { error: "Invalid form data", details: p.error.flatten() },
+          { status: 400 }
+        );
       emailPayload = buildClaimReviewEmail(p.data);
       replyTo = p.data.email;
     } else {
-      // Legacy ContactForm (name / organization / source fields)
       const p = ContactSchema.safeParse(body);
-      if (!p.success) return NextResponse.json({ error: "Invalid form data", details: p.error.flatten() }, { status: 400 });
+      if (!p.success)
+        return NextResponse.json(
+          { error: "Invalid form data", details: p.error.flatten() },
+          { status: 400 }
+        );
       emailPayload = buildContactEmail(p.data);
       replyTo = p.data.email;
     }
@@ -313,7 +393,7 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(apiKey);
     const { error: sendError } = await resend.emails.send({
       from: "Kronos Revenue <noreply@kronoshealth.co>",
-      to: ["info@kronoshealth.co"],
+      to: [INTAKE_EMAIL],
       replyTo,
       subject: emailPayload.subject,
       text: emailPayload.text,
