@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { Resend } from "resend";
-import { INTAKE_EMAIL } from "@/lib/site";
+import { INTAKE_EMAIL, SALES_EMAIL } from "@/lib/site";
 
 const UtmSchema = z
   .object({
@@ -16,7 +16,7 @@ const UtmSchema = z
 const BaseSchema = z.object({
   contact_name: z.string().min(1).max(100),
   title: z.string().max(100).optional(),
-  phone: z.string().min(7).max(30),
+  phone: z.string().max(30).optional(),
   email: z.string().email().max(254),
   message: z.string().max(2000).optional(),
   utm: UtmSchema,
@@ -25,14 +25,23 @@ const BaseSchema = z.object({
 const ClaimReviewSchema = BaseSchema.extend({
   form_type: z.literal("claim_review").optional(),
   practice_name: z.string().min(1).max(200),
-  specialty: z.string().max(100),
+  specialty: z.string().min(1).max(100),
+  state: z.string().min(1).max(50),
   network_status: z.enum(["oon", "partial", "in_network", "not_sure"]).optional(),
-  state: z.string().max(50).optional(),
-  monthly_oon_claims: z.string().max(50).optional(),
+  monthly_oon_claims: z
+    .enum(["fewer_than_5", "5_to_15", "15_to_30", "30_or_more"])
+    .optional(),
   current_handling: z
-    .enum(["attorney", "in_house", "third_party", "nothing"])
+    .enum(["not_filing", "attorney", "in_house", "mixed", "in_house_legacy", "third_party", "nothing"])
     .optional(),
   best_time_to_reach: z.string().max(100).optional(),
+});
+
+const ChecklistSchema = z.object({
+  form_type: z.literal("idr_checklist"),
+  email: z.string().email().max(254),
+  contact_name: z.string().max(100).optional(),
+  utm: UtmSchema,
 });
 
 const NSADisputeSchema = BaseSchema.extend({
@@ -108,19 +117,48 @@ function utmBlock(utm?: z.infer<typeof UtmSchema>) {
 
 function isHighVolume(monthlyClaims?: string | null): boolean {
   if (!monthlyClaims) return false;
-  return ["51–200", "201–500", "Over 500"].includes(monthlyClaims);
+  return monthlyClaims === "30_or_more" || ["51–200", "201–500", "Over 500"].includes(monthlyClaims);
 }
+
+const monthlyLabels: Record<string, string> = {
+  fewer_than_5: "Fewer than 5",
+  "5_to_15": "5 to 15",
+  "15_to_30": "15 to 30",
+  "30_or_more": "30 or more",
+};
 
 function withHighVolumePrefix(subject: string, monthlyClaims?: string | null): string {
   return isHighVolume(monthlyClaims) ? `[HIGH VOLUME] ${subject}` : subject;
 }
 
 const handlingLabels: Record<string, string> = {
-  attorney: "Currently using an attorney",
-  in_house: "In-house biller",
-  third_party: "Third-party RCM",
+  not_filing: "Not filing IDR",
+  attorney: "Contingency attorney",
+  in_house: "In house",
+  in_house_legacy: "In house",
+  mixed: "Mixed",
+  third_party: "Third party RCM",
   nothing: "Not disputing today",
 };
+
+function buildChecklistEmail(d: z.infer<typeof ChecklistSchema>) {
+  return {
+    subject: `[Kronos Revenue] NSA IDR Checklist Download — ${d.email}`,
+    text: [
+      header("IDR Checklist Lead"),
+      `\nSUBMITTED:  ${ts()}\n`,
+      DIV,
+      "LEAD",
+      DIV,
+      `Email:  ${d.email}`,
+      d.contact_name ? `Name:   ${d.contact_name}` : null,
+      utmBlock(d.utm),
+      `\n${HDR}`,
+    ]
+      .filter(Boolean)
+      .join("\n"),
+  };
+}
 
 function buildClaimReviewEmail(d: z.infer<typeof ClaimReviewSchema>) {
   const networkLabels: Record<string, string> = {
@@ -131,7 +169,7 @@ function buildClaimReviewEmail(d: z.infer<typeof ClaimReviewSchema>) {
   };
 
   const highVolumeNote = isHighVolume(d.monthly_oon_claims)
-    ? "\n*** HIGH VOLUME LEAD — Flag Dr. Abrams for personal follow up within 24 hours ***"
+    ? "\n*** HIGH VOLUME LEAD — Flag Dr. Abrahams for personal follow up within 24 hours ***"
     : "";
 
   return {
@@ -149,15 +187,15 @@ function buildClaimReviewEmail(d: z.infer<typeof ClaimReviewSchema>) {
       `Name:              ${d.contact_name}`,
       d.title ? `Title:             ${d.title}` : null,
       `Practice:          ${d.practice_name}`,
-      `Phone:             ${d.phone}`,
+      d.phone ? `Phone:             ${d.phone}` : null,
       `Email:             ${d.email}`,
       d.best_time_to_reach ? `Best time to reach:  ${d.best_time_to_reach}` : null,
-      d.state ? `State:             ${d.state}` : null,
+      `State:             ${d.state}`,
       `\n${DIV}\nPRACTICE DETAILS\n${DIV}`,
       `Specialty:           ${d.specialty}`,
       `Current handling:    ${handlingLabels[d.current_handling ?? ""] ?? d.current_handling ?? "—"}`,
       `Network status:      ${networkLabels[d.network_status ?? ""] ?? d.network_status ?? "—"}`,
-      `Monthly OON claims:  ${d.monthly_oon_claims ?? "—"}`,
+      `Monthly OON claims:  ${monthlyLabels[d.monthly_oon_claims ?? ""] ?? d.monthly_oon_claims ?? "—"}`,
       d.message?.trim() ? `\n${DIV}\nABOUT YOUR CLAIMS\n${DIV}\n\n${d.message.trim()}` : null,
       utmBlock(d.utm),
       `\n${HDR}`,
@@ -334,7 +372,19 @@ export async function POST(request: NextRequest) {
     let emailPayload: { subject: string; text: string };
     let replyTo: string;
 
-    if (formType === "nsa_dispute") {
+    let toEmail = INTAKE_EMAIL;
+
+    if (formType === "idr_checklist") {
+      const p = ChecklistSchema.safeParse(body);
+      if (!p.success)
+        return NextResponse.json(
+          { error: "Invalid form data", details: p.error.flatten() },
+          { status: 400 }
+        );
+      emailPayload = buildChecklistEmail(p.data);
+      replyTo = p.data.email;
+      toEmail = SALES_EMAIL;
+    } else if (formType === "nsa_dispute") {
       const p = NSADisputeSchema.safeParse(body);
       if (!p.success)
         return NextResponse.json(
@@ -379,6 +429,7 @@ export async function POST(request: NextRequest) {
         );
       emailPayload = buildClaimReviewEmail(p.data);
       replyTo = p.data.email;
+      toEmail = SALES_EMAIL;
     } else {
       const p = ContactSchema.safeParse(body);
       if (!p.success)
@@ -393,7 +444,7 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(apiKey);
     const { error: sendError } = await resend.emails.send({
       from: "Kronos Revenue <noreply@kronoshealth.co>",
-      to: [INTAKE_EMAIL],
+      to: [toEmail],
       replyTo,
       subject: emailPayload.subject,
       text: emailPayload.text,

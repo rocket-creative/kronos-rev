@@ -10,47 +10,37 @@ export type FaqCategory = {
   items: FaqItem[];
 };
 
-export const HOME_FAQS: FaqItem[] = [
+/** Schema + homepage FAQ (KRONOS-MASTER Part 1C). */
+export const SCHEMA_HOME_FAQS: FaqItem[] = [
   {
-    question: "What is the No Surprises Act and how does it affect my practice?",
+    question: "What is No Surprises Act independent dispute resolution?",
     answer:
-      "The No Surprises Act protects patients from surprise bills for out of network care and creates a federal Independent Dispute Resolution process. Providers can challenge low insurer payments through IDR. We manage that process for you.",
+      "The No Surprises Act established a federal Independent Dispute Resolution process allowing out of network providers to dispute underpaid claims against insurers. An independent certified IDR entity reviews both payment offers and issues a binding determination. Providers won 88% of IDR disputes in the first half of 2025, with 87% of award amounts exceeding the insurer qualifying payment amount, per CMS data released January 2026.",
   },
   {
-    question: "Why switch from an attorney to Kronos Revenue?",
+    question: "Why use Kronos Revenue instead of an attorney for NSA IDR?",
     answer:
-      "Attorneys take 20% of every recovery and batch CPT codes — a shortcut that loses at IDR. We quote a consultative fee to your volume, file one claim per CPT, and are built by a surgeon who knows your specialty coding.",
+      "Attorneys take 20% of every IDR recovery as a contingency fee, leaving providers roughly 80 cents on the dollar. Kronos Revenue quotes a consultative fee to your volume. Most practices keep approximately 90 cents or more per dollar won. Kronos files one claim per CPT code, the way federal IDR was designed, while generalist attorneys frequently batch codes in ways that reduce arbitration outcomes.",
     highlightAnswer: true,
   },
   {
-    question: "How long does the IDR process take?",
+    question: "Which surgical specialties does Kronos Revenue serve?",
     answer:
-      "Timelines vary by case complexity and portal volume. We track all deadlines and target under 5 days from EOB to IDR submission.",
+      "Kronos Revenue handles NSA IDR for orthopedic surgery, neurosurgery, spine surgery, plastic surgery, anesthesiology, and general surgery. Every federal IDR submission is prepared by a specialist trained in your CPT code set.",
   },
   {
-    question: "What types of cases do you handle?",
+    question: "How long does the NSA IDR process take?",
     answer:
-      "We handle out of network payment disputes across orthopedic, neurosurgery, spine, plastic, anesthesia, and general surgery. Our team manages negotiation, IDR submission, and post arbitration follow up.",
+      "After open negotiation ends without agreement, either party has 30 business days to initiate IDR. The certified IDR entity has 30 business days to issue a payment determination. Kronos Revenue targets under 5 business days from EOB receipt to IDR portal submission.",
   },
   {
-    question: "How do I get started with Kronos Revenue?",
+    question: "What states does Kronos Revenue support?",
     answer:
-      "Get a free NSA IDR review online or call (914) 705 6830. We assess your disputes and show you what you keep per dollar won — versus a 20% attorney contingency.",
-    highlightAnswer: true,
-  },
-  {
-    question: "How do I choose between Sydra and Kronos Full-Service?",
-    answer:
-      "Choose by who operates the workflow. Sydra fits teams that want to run NSA IDR software in house. Kronos Full-Service on this site handles every claim when you want zero biller time on IDR. Sydra + Kronos Support is the middle path — software plus a specialist backstop.",
-    highlightAnswer: true,
-  },
-  {
-    question: "How is Kronos Revenue priced for NSA IDR?",
-    answer:
-      "Quoted to your volume — not a contingency cut of every recovery. Most practices keep roughly nine in ten dollars won at IDR, plus more disputes won than with batched attorney filings. We quote on a consultation call.",
-    highlightAnswer: true,
+      "Kronos Revenue actively serves practices in Texas, California, New York, New Jersey, Florida, and Arizona. In states with bifurcated billing laws including TX, NY, CA, NJ, and FL, state law may govern disputes involving fully insured state regulated plans. Kronos Revenue navigates both federal and state pathways.",
   },
 ];
+
+export const HOME_FAQS: FaqItem[] = SCHEMA_HOME_FAQS;
 
 export const SWITCHING_FAQS: FaqItem[] = [
   {
@@ -149,7 +139,7 @@ export const PROCESS_FAQS: FaqItem[] = [
   {
     question: "Who is on my file?",
     answer:
-      "A dedicated RCM specialist trained by Dr. Abrams, with escalation to Heisha Rivera (Director of Revenue Cycle) and Dr. Abrams for high value cases.",
+      "A dedicated RCM specialist trained by Dr. Abrahams, with escalation to Heisha Rivera (Director of Revenue Cycle) and Dr. Abrahams for high value cases.",
     highlightAnswer: true,
   },
   {

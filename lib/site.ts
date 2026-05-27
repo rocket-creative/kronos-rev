@@ -8,9 +8,11 @@ export const LOGO_URL = `${SITE_URL}/logo.svg`;
 export const PHONE_DISPLAY = "(914) 705 6830";
 export const PHONE_TEL = "+19147056830";
 
-/** Single inbox for all form submissions. Update when alias is confirmed. */
+/** Single inbox for all form submissions. */
 export const INTAKE_EMAIL = "intake@kronosrevenue.com";
+export const SALES_EMAIL = "sales@kronosrevenue.com";
 export const EMAIL = INTAKE_EMAIL;
+export const FOUNDER_PERSON_ID = `${SITE_URL}/team#person-john-abrahams`;
 
 export const SYDRA_URL = "https://www.sydrahealth.com/";
 export const SYDRA_PLANS_URL = "https://www.sydrahealth.com/plans";

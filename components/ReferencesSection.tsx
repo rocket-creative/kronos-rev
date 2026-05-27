@@ -7,20 +7,9 @@ export type ReferenceItem = {
   href: string;
 };
 
-const DEFAULT_REFERENCES: ReferenceItem[] = [
-  {
-    label: "CMS No Surprises Act overview",
-    href: "https://www.cms.gov/nosurprises",
-  },
-  {
-    label: "Federal IDR regulations (45 CFR Part 149)",
-    href: "https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-F/part-149",
-  },
-  {
-    label: "HHS guidance on the No Surprises Act",
-    href: "https://www.hhs.gov/no-surprises",
-  },
-];
+import { MASTER_REFERENCES } from "@/lib/references";
+
+const DEFAULT_REFERENCES: ReferenceItem[] = MASTER_REFERENCES;
 
 type ReferencesSectionProps = {
   id?: string;

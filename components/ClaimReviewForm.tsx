@@ -15,19 +15,27 @@ const SPECIALTIES = [
 ];
 
 const CURRENT_HANDLING = [
-  { value: "attorney", label: "Currently using an attorney" },
-  { value: "in_house", label: "In-house biller" },
-  { value: "third_party", label: "Third-party RCM" },
-  { value: "nothing", label: "Not disputing today" },
+  { value: "not_filing", label: "Not filing IDR" },
+  { value: "attorney", label: "Contingency attorney" },
+  { value: "in_house", label: "In house" },
+  { value: "mixed", label: "Mixed" },
 ];
 
-const MONTHLY_CLAIMS = ["Under 10", "10–50", "51–200", "201–500", "Over 500"];
+const MONTHLY_CLAIMS = [
+  { value: "fewer_than_5", label: "Fewer than 5" },
+  { value: "5_to_15", label: "5 to 15" },
+  { value: "15_to_30", label: "15 to 30" },
+  { value: "30_or_more", label: "30 or more" },
+];
 
-const BEST_TIME_OPTIONS = [
-  { value: "morning", label: "Morning, 9am–12pm ET" },
-  { value: "afternoon", label: "Afternoon, 12pm–5pm ET" },
-  { value: "either", label: "Either works" },
-  { value: "email", label: "Email is fine — no call needed" },
+const US_STATES = [
+  "Texas",
+  "California",
+  "New York",
+  "New Jersey",
+  "Florida",
+  "Arizona",
+  "Other",
 ];
 
 type FormVariant = "light" | "dark";
@@ -70,9 +78,9 @@ function getFormStyles(variant: FormVariant) {
 interface FieldErrors {
   contact_name?: string;
   practice_name?: string;
-  phone?: string;
   email?: string;
   specialty?: string;
+  state?: string;
 }
 
 function ClaimReviewFormInner({ variant }: { variant: FormVariant }) {
@@ -88,12 +96,12 @@ function ClaimReviewFormInner({ variant }: { variant: FormVariant }) {
     if (!String(fd.get("contact_name") ?? "").trim()) errors.contact_name = "Name is required";
     if (!String(fd.get("practice_name") ?? "").trim())
       errors.practice_name = "Practice name is required";
-    if (!String(fd.get("phone") ?? "").trim()) errors.phone = "Phone number is required";
     const email = String(fd.get("email") ?? "").trim();
     if (!email) errors.email = "Email is required";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
       errors.email = "Please enter a valid email address";
     if (!String(fd.get("specialty") ?? "").trim()) errors.specialty = "Specialty is required";
+    if (!String(fd.get("state") ?? "").trim()) errors.state = "State is required";
     return errors;
   }
 
@@ -116,12 +124,12 @@ function ClaimReviewFormInner({ variant }: { variant: FormVariant }) {
           contact_name: fd.get("contact_name"),
           title: fd.get("title") || undefined,
           practice_name: fd.get("practice_name"),
-          phone: fd.get("phone"),
+          phone: fd.get("phone") || undefined,
           email: fd.get("email"),
           specialty: fd.get("specialty"),
           current_handling: fd.get("current_handling") || undefined,
           best_time_to_reach: fd.get("best_time_to_reach") || undefined,
-          state: fd.get("state") || undefined,
+          state: fd.get("state"),
           monthly_oon_claims: fd.get("monthly_oon_claims") || undefined,
           message: fd.get("message") || undefined,
           utm: Object.keys(utm).length > 0 ? utm : undefined,
@@ -143,8 +151,8 @@ function ClaimReviewFormInner({ variant }: { variant: FormVariant }) {
         <CheckCircle className="w-12 h-12 text-kronos-cyan mx-auto mb-4" aria-hidden="true" />
         <h3 className={styles.successTitle}>Request Received</h3>
         <p className={styles.successBody}>
-          We&apos;ve received your case review request. A Kronos specialist will reply within one
-          business day.
+          You will receive a confirmation email within a few minutes. A Kronos specialist will
+          respond within one business day.
         </p>
       </div>
     );
@@ -227,28 +235,17 @@ function ClaimReviewFormInner({ variant }: { variant: FormVariant }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="cr-phone" className={styles.label}>
-            Phone <span className="text-kronos-cyan" aria-hidden="true">*</span>
+            Phone (optional)
           </label>
           <input
             type="tel"
             id="cr-phone"
             name="phone"
-            required
-            aria-required="true"
             autoComplete="tel"
             inputMode="tel"
             style={{ fontSize: "16px" }}
-            aria-invalid={!!fieldErrors.phone}
-            aria-describedby={
-              fieldErrors.phone ? "cr-phone-error cr-required-legend" : "cr-required-legend"
-            }
-            className={`${styles.input} ${fieldErrors.phone ? "border-red-400" : ""} scroll-mt-28`}
+            className={styles.input}
           />
-          {fieldErrors.phone && (
-            <p id="cr-phone-error" className={styles.error} role="alert">
-              {fieldErrors.phone}
-            </p>
-          )}
         </div>
         <div>
           <label htmlFor="cr-email" className={styles.label}>
@@ -312,51 +309,66 @@ function ClaimReviewFormInner({ variant }: { variant: FormVariant }) {
           )}
         </div>
         <div>
-          <label htmlFor="cr-volume" className={styles.label}>
-            Monthly NSA volume (approx.)
+          <label htmlFor="cr-state" className={styles.label}>
+            State <span className="text-kronos-cyan" aria-hidden="true">*</span>
           </label>
-          <div className="relative">
-            <select id="cr-volume" name="monthly_oon_claims" className={styles.select} defaultValue="">
-              <option value="">Select range</option>
-              {MONTHLY_CLAIMS.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-          </div>
+          <select
+            id="cr-state"
+            name="state"
+            required
+            aria-required="true"
+            className={`${styles.select} ${fieldErrors.state ? "border-red-400" : ""}`}
+            defaultValue=""
+          >
+            <option value="" disabled>
+              Select state
+            </option>
+            {US_STATES.map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
+          {fieldErrors.state && (
+            <p className={styles.error} role="alert">
+              {fieldErrors.state}
+            </p>
+          )}
         </div>
       </div>
 
-      <div>
-        <label className={styles.label}>Current handling</label>
-        <div className="space-y-2.5 mt-1">
-          {CURRENT_HANDLING.map((opt) => (
-            <label
-              key={opt.value}
-              className="flex items-center min-h-[44px] gap-3 cursor-pointer group py-1"
-            >
-              <input
-                type="radio"
-                name="current_handling"
-                value={opt.value}
-                className="mt-0.5 accent-kronos-cyan shrink-0"
-              />
-              <span className={styles.radioLabel}>{opt.label}</span>
-            </label>
-          ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="cr-volume" className={styles.label}>
+            Monthly OON claim volume estimate <span className="text-kronos-cyan" aria-hidden="true">*</span>
+          </label>
+          <select
+            id="cr-volume"
+            name="monthly_oon_claims"
+            required
+            className={styles.select}
+            defaultValue=""
+          >
+            <option value="" disabled>
+              Select range
+            </option>
+            {MONTHLY_CLAIMS.map((c) => (
+              <option key={c.value} value={c.value}>
+                {c.label}
+              </option>
+            ))}
+          </select>
         </div>
-      </div>
-
-      <div>
-        <label htmlFor="cr-best-time" className={styles.label}>
-          Best time to reach you
-        </label>
-        <div className="relative">
-          <select id="cr-best-time" name="best_time_to_reach" className={styles.select} defaultValue="">
-            <option value="">Select a time (optional)</option>
-            {BEST_TIME_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.label}>
+        <div>
+          <label className={styles.label}>
+            Current IDR arrangement <span className="text-kronos-cyan" aria-hidden="true">*</span>
+          </label>
+          <select name="current_handling" required className={styles.select} defaultValue="">
+            <option value="" disabled>
+              Select arrangement
+            </option>
+            {CURRENT_HANDLING.map((opt) => (
+              <option key={opt.value} value={opt.value}>
                 {opt.label}
               </option>
             ))}
@@ -366,7 +378,7 @@ function ClaimReviewFormInner({ variant }: { variant: FormVariant }) {
 
       <div>
         <label htmlFor="cr-claims" className={styles.label}>
-          Tell us about your claims
+          Describe your current IDR situation (optional)
         </label>
         <textarea
           id="cr-claims"
@@ -396,7 +408,7 @@ function ClaimReviewFormInner({ variant }: { variant: FormVariant }) {
           </>
         ) : (
           <>
-            Get a free NSA IDR review
+            Send my IDR review request
             <ArrowRight className="w-3 h-3" aria-hidden="true" />
           </>
         )}

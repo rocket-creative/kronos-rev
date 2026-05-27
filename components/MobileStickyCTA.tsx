@@ -24,7 +24,7 @@ export function MobileStickyCTA() {
           className="flex-1 inline-flex items-center justify-center min-h-[56px] text-[13px] uppercase tracking-widest bg-kronos-cyan text-white font-body hover:bg-kronos-green-dark transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white select-none"
           aria-label={CTA.caseReview.ariaLabel}
         >
-          IDR review
+          Free IDR review
         </Link>
       </div>
     </div>

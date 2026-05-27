@@ -14,7 +14,7 @@ const ICONS: Record<SpecialtySlug, LucideIcon> = {
   orthopedic: Bone,
   neurosurgery: Brain,
   spine: Activity,
-  plastic: Sparkles,
+  "plastic-surgery": Sparkles,
   anesthesia: Syringe,
   "general-surgery": Scissors,
 };
@@ -80,7 +80,7 @@ export function PrimarySpecialties({
               <li key={specialty.slug}>
                 {linked ? (
                   <Link
-                    href={`/specialties#${specialty.slug}`}
+                    href={`/specialties/${specialty.slug}`}
                     className={`block p-4 border transition-colors min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan ${
                       isDark
                         ? "border-white/10 hover:border-kronos-cyan/50 hover:bg-white/5"

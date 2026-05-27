@@ -2,6 +2,11 @@ import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { LogoImage } from "@/components/LogoImage";
 import { mainNavLinks } from "@/lib/navigation";
+import {
+  footerResourceLinks,
+  footerSpecialtyLinks,
+  footerStateLinks,
+} from "@/lib/footer-links";
 import { CTA } from "@/lib/ctas";
 import { MOBILE_CTA_CLEARANCE, PAGE_CONTAINER } from "@/lib/layout";
 import {
@@ -73,7 +78,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <nav className="lg:col-span-4" aria-label="Footer navigation">
+          <nav className="lg:col-span-3" aria-label="Footer navigation">
             <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/80 mb-4">
               Explore
             </p>
@@ -83,6 +88,52 @@ export default function Footer() {
                   <Link
                     href={link.href}
                     className="font-body text-[10px] sm:text-xs text-white/60 hover:text-white uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              {footerResourceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="font-body text-[10px] sm:text-xs text-white/60 hover:text-white uppercase tracking-widest transition-colors min-h-[44px] inline-flex items-center"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav className="lg:col-span-2" aria-label="Specialties">
+            <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/80 mb-4">
+              Specialties
+            </p>
+            <ul className="flex flex-col gap-2" role="list">
+              {footerSpecialtyLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="font-body text-[10px] sm:text-xs text-white/60 hover:text-white transition-colors min-h-[44px] inline-flex items-center"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav className="lg:col-span-2" aria-label="States served">
+            <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/80 mb-4">
+              States
+            </p>
+            <ul className="flex flex-col gap-2" role="list">
+              {footerStateLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="font-body text-[10px] sm:text-xs text-white/60 hover:text-white transition-colors min-h-[44px] inline-flex items-center"
                   >
                     {link.label}
                   </Link>

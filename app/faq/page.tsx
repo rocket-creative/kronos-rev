@@ -24,8 +24,8 @@ export default function FaqPage() {
       showReferences={false}
       bottomCta={false}
       eyebrow="NSA · Federal IDR"
-      h1="Questions about switching your NSA IDR from an attorney."
-      intro="Switching from an attorney, pricing, contracts, process, recovery, and security. Honest answers before you book a consultation."
+      h1="Questions about Kronos Revenue. Answered the way a specialist would answer them."
+      intro="These are the questions practices actually ask before switching. If your question is not here, call (914) 705 6830 or email intake@kronosrevenue.com."
     >
       <FAQPageSchema items={ALL_FAQS} />
 

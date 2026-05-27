@@ -1,8 +1,10 @@
+import type { PAGE_SEO } from "@/lib/page-seo";
+
 export type SpecialtySlug =
   | "orthopedic"
   | "neurosurgery"
   | "spine"
-  | "plastic"
+  | "plastic-surgery"
   | "anesthesia"
   | "general-surgery";
 
@@ -10,98 +12,170 @@ export type Specialty = {
   slug: SpecialtySlug;
   name: string;
   shortName: string;
-  credibility: string;
-  caseProfile: string;
-  attorneyShortcuts: string;
-  kronosApproach: string;
-  quote: string;
+  hubAnchor: string;
+  seoKey: keyof typeof PAGE_SEO.specialty;
+  intro: string;
+  body: string;
+  cptSections: { title: string; codes: string }[];
+  claimRange: string;
+  ctaLabel: string;
 };
 
 export const SPECIALTIES: Specialty[] = [
   {
     slug: "orthopedic",
     name: "Orthopedic Surgery",
-    shortName: "Ortho",
-    credibility:
-      "Orthopedic CPT sets are among the most batched at IDR. We file each code individually with operative detail that wins.",
-    caseProfile: "Typical claim range $2,000 to $8,000 per CPT. Win rates shared on your free review.",
-    attorneyShortcuts:
-      "Generalists batch multiple arthroscopy codes into a single IDR submission, which arbiters reject under federal rules.",
-    kronosApproach:
-      "Every orthopedic CPT is coded by a specialist who knows your procedure set. One claim per code, every time.",
-    quote:
-      "Practices switching from batched attorney filings report higher retention per dollar won after the first quarter with Kronos.",
+    shortName: "orthopedic",
+    hubAnchor: "orthopedic",
+    seoKey: "orthopedic",
+    intro:
+      "Orthopedic surgery generates some of the highest volumes of NSA IDR disputes in the federal system. CPT codes are procedure specific, laterality dependent, and modifier sensitive.",
+    body: "CPT 27447 (total knee arthroplasty) and 27446 (hemicondylar replacement) are not interchangeable. A bilateral modifier changes the payment calculation. A staged procedure filed without the correct modifier triggers an eligibility challenge before arbitration begins.",
+    cptSections: [
+      {
+        title: "Knee",
+        codes:
+          "27447 total knee arthroplasty · 27446 hemicondylar replacement · 29881 meniscectomy medial or lateral · 29882 meniscus repair · 27570 manipulation under anesthesia",
+      },
+      {
+        title: "Shoulder",
+        codes:
+          "23412 rotator cuff repair chronic · 23420 complete rotator cuff repair · 29806 SLAP repair · 29827 biceps tenodesis · 23470 total shoulder arthroplasty unconstrained",
+      },
+      {
+        title: "Hip",
+        codes:
+          "27130 total hip arthroplasty · 27132 conversion to total hip · 27137 revision acetabular · 27138 revision femoral · 29914 hip arthroscopy femoroplasty",
+      },
+    ],
+    claimRange: "Typical claim range: $2,000 to $8,000 per CPT. Confirmed on your free review.",
+    ctaLabel: "Get a free IDR review for your orthopedic practice",
   },
   {
     slug: "neurosurgery",
     name: "Neurosurgery",
-    shortName: "Neuro",
-    credibility:
-      "Complex cranial and spine neurosurgery requires clinical depth in every IDR submission, not boilerplate attorney letters.",
-    caseProfile: "Typical claim range $5,000 to $25,000 per CPT. Win rates shared on your free review.",
-    attorneyShortcuts:
-      "Attorney shops treat high value neuro cases like personal injury, missing the administrative precision IDR requires.",
-    kronosApproach:
-      "Built by a board certified neurosurgeon. Every submission reflects real clinical complexity and market benchmarks.",
-    quote:
-      "Neurosurgery groups often see materially higher retention after the first twelve months versus contingency counsel.",
+    shortName: "neurosurgery",
+    hubAnchor: "neurosurgery",
+    seoKey: "neurosurgery",
+    intro:
+      "Neurosurgery produces some of the highest per case IDR dispute amounts in the federal system. Kronos Revenue was built by Dr. John M. Abrahams, a board certified practicing neurosurgeon.",
+    body: "Neurosurgical CPT coding involves add on codes, intraoperative procedure codes, and staged billing structures. A generalist who batches CPT 61510 with 61517 into one IDR submission has created an unfiled claim for the chemotherapy implantation.",
+    cptSections: [
+      {
+        title: "Cranial",
+        codes:
+          "61510 craniotomy excision of brain tumor · 61512 excision of meningioma · 61518 intracranial abscess · 61520 posterior fossa tumor removal · 61576 skull base lesion",
+      },
+      {
+        title: "Spinal (neurosurgical)",
+        codes:
+          "63030 lumbar discectomy one level · 63047 lumbar laminectomy · 63048 laminectomy each additional segment · 63055 transpedicular decompression · 63081 vertebral corpectomy anterior one level",
+      },
+    ],
+    claimRange: "Typical claim range: $5,000 to $25,000 per CPT for major cranial procedures.",
+    ctaLabel: "Get a free IDR review for your neurosurgery practice",
   },
   {
     slug: "spine",
     name: "Spine Surgery",
-    shortName: "Spine",
-    credibility:
-      "Twelve of the most common spinal CPT codes are over batched by generalists. Here is how we file them.",
-    caseProfile: "Typical claim range $4,000 to $15,000 per CPT. Win rates shared on your free review.",
-    attorneyShortcuts:
-      "Fusion and instrumentation codes bundled incorrectly lose at IDR. Attorneys rarely know which codes must stand alone.",
-    kronosApproach:
-      "Spine specific coding review on every EOB. Instrumentation, fusion, and decompression filed as separate eligible claims.",
-    quote:
-      "Spine practices report win rate lifts after switching from batched claim filing to one CPT per dispute.",
+    shortName: "spine",
+    hubAnchor: "spine",
+    seoKey: "spine",
+    intro:
+      "Spine surgery is the specialty most actively using the NSA IDR system, and the specialty where batched CPT filings cause the most damage.",
+    body: "A multi level lumbar fusion involves CPT 22612, 22632, 22840, and 63030. Those are four separately eligible IDR claims. An attorney who batches them into one submission creates a composite offer that does not match any prior determination cleanly.",
+    cptSections: [
+      {
+        title: "Cervical",
+        codes:
+          "22551 ACDF single level · 22552 ACDF each additional level · 22845 anterior instrumentation · 63001 cervical laminectomy · 22600 posterior cervical fusion",
+      },
+      {
+        title: "Lumbar",
+        codes:
+          "22612 posterior lumbar fusion single level · 22632 each additional level · 22630 PLIF · 22633 TLIF · 22840 instrumentation 3 to 6 segments · 22842 instrumentation 7 or more segments · 63030 lumbar discectomy · 63047 lumbar laminectomy",
+      },
+      {
+        title: "Disc arthroplasty",
+        codes:
+          "22856 cervical total disc single level · 22857 lumbar total disc · 22861 revision of cervical arthroplasty",
+      },
+    ],
+    claimRange:
+      "Typical claim range: $4,000 to $15,000 per CPT. Multi level fusion cases can generate $40,000 or more in total IDR eligible disputed amounts from a single surgery.",
+    ctaLabel: "Get a free IDR review for your spine surgery group",
   },
   {
-    slug: "plastic",
+    slug: "plastic-surgery",
     name: "Plastic Surgery",
-    shortName: "Plastic",
-    credibility:
-      "Reconstructive and hand surgery CPT codes require specialty documentation that generalist IDR firms do not provide.",
-    caseProfile: "Typical claim range $3,000 to $10,000 per CPT. Win rates shared on your free review.",
-    attorneyShortcuts:
-      "Hand and microsurgery codes treated as cosmetic by generalist filers, losing recoverable OON disputes.",
-    kronosApproach:
-      "Operative report review on every claim. Reconstructive complexity documented the way arbiters expect.",
-    quote:
-      "Plastics groups cite time savings and recovery lift after moving IDR to Kronos Full-Service.",
+    shortName: "plastic surgery",
+    hubAnchor: "plastic",
+    seoKey: "plasticSurgery",
+    intro:
+      "Reconstructive procedures are frequently coded as cosmetic by insurers unfamiliar with the clinical distinction.",
+    body: "Getting an arbitrator to understand why a complex free flap reconstruction bills at $18,000 requires documentation that explains the procedure, the clinical necessity, and the market benchmark for that specific technique.",
+    cptSections: [
+      {
+        title: "Reconstruction",
+        codes:
+          "19364 breast reconstruction free flap · 19368 TRAM reconstruction · 15756 free muscle flap · 15757 free skin flap with microvascular anastomosis",
+      },
+      {
+        title: "Hand and microsurgery",
+        codes:
+          "25447 wrist arthroplasty · 26115 excision tendon sheath tumor · 26356 flexor tendon repair · 64716 nerve decompression hand",
+      },
+    ],
+    claimRange: "Typical claim range: $3,000 to $12,000 per CPT for primary reconstruction.",
+    ctaLabel: "Get a free IDR review for your plastic surgery practice",
   },
   {
     slug: "anesthesia",
     name: "Anesthesia",
-    shortName: "Anesthesia",
-    credibility:
-      "Anesthesia NSA disputes require time unit precision and facility context that batched filings consistently miss.",
-    caseProfile: "Typical claim range $800 to $4,000 per CPT. Win rates shared on your free review.",
-    attorneyShortcuts:
-      "Attorneys batch anesthesia time units across cases, triggering IDR rejections before arbitration even begins.",
-    kronosApproach:
-      "Each anesthesia claim filed with accurate time units, base units, and modifier documentation per federal IDR rules.",
-    quote:
-      "Anesthesia groups report recovery improvements versus prior attorney handling after specialty coded filings.",
+    shortName: "anesthesia",
+    hubAnchor: "anesthesia",
+    seoKey: "anesthesia",
+    intro:
+      "Anesthesia NSA IDR has specific rules that differ from surgical specialty filing. Anesthesia claims bill on base units plus time units.",
+    body: "Federal IDR rules currently permit anesthesia services under the same CPT code to be bundled. Rules on bundling across related CPT codes remain under active regulatory development. Kronos Revenue files anesthesia claims under current regulatory requirements, not assumptions about what the rules will become.",
+    cptSections: [
+      {
+        title: "Filing approach",
+        codes:
+          "Time unit precision, base units, and modifier documentation on every claim. Eligibility review before submission.",
+      },
+    ],
+    claimRange: "Typical claim range: $800 to $4,000 per CPT depending on case length and base units.",
+    ctaLabel: "Get a free IDR review for your anesthesia group",
   },
   {
     slug: "general-surgery",
     name: "General Surgery",
-    shortName: "General Surgery",
-    credibility:
-      "General surgery OON claims at in network ASCs and hospitals are systematically underpaid and systematically winnable at IDR.",
-    caseProfile: "Typical claim range $1,500 to $6,000 per CPT. Win rates shared on your free review.",
-    attorneyShortcuts:
-      "Volume practices get templated attorney filings with no procedure specific documentation.",
-    kronosApproach:
-      "Selective general surgery coverage with the same one CPT per claim standard. Operative detail on every submission.",
-    quote:
-      "General surgery practices recover billing team time after full handover to Kronos Revenue.",
+    shortName: "general surgery",
+    hubAnchor: "general-surgery",
+    seoKey: "generalSurgery",
+    intro:
+      "General surgery out of network claims at in network ASCs and hospitals are systematically underpaid and systematically winnable at IDR when filed correctly.",
+    body: "Kronos Revenue applies the same one CPT per claim standard to general surgery that it applies to neurosurgery and orthopedics.",
+    cptSections: [
+      {
+        title: "Abdominal",
+        codes:
+          "44950 appendectomy · 44970 laparoscopic appendectomy · 44140 colectomy partial · 43239 upper GI endoscopy with biopsy",
+      },
+      {
+        title: "Hernia",
+        codes:
+          "49505 inguinal hernia repair reducible age 5 or over · 49560 ventral hernia repair incarcerated · 49650 laparoscopic inguinal hernia repair",
+      },
+    ],
+    claimRange: "Typical claim range: $1,500 to $6,000 per CPT.",
+    ctaLabel: "Get a free IDR review for your general surgery practice",
   },
 ];
+
+export function getSpecialtyBySlug(slug: string): Specialty | undefined {
+  return SPECIALTIES.find((s) => s.slug === slug);
+}
 
 export const PRIMARY_SPECIALTY_LABELS = SPECIALTIES.map((s) => s.name);

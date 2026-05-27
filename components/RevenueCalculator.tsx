@@ -12,7 +12,7 @@ const AMOUNT_BANDS = [
   { label: "Over $100K", midpoint: 125000 },
 ] as const;
 
-const WIN_RATE = 0.7;
+const WIN_RATE = 0.88;
 const MANUAL_HOURS = 3;
 const SYDRA_HOURS = 0.25;
 const HOURLY_RATE = 65;
@@ -105,7 +105,7 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
             <p className="font-heading text-2xl sm:text-3xl text-white leading-none">
               {formatDollars(results.recovery)}
             </p>
-            <p className="font-body text-[9px] text-white/40 mt-1">at 70% win rate</p>
+            <p className="font-body text-[9px] text-white/40 mt-1">at 88% win rate (CMS)</p>
           </div>
           <div className="bg-white/10 border border-white/15 p-4">
             <p className="font-body text-[9px] uppercase tracking-widest text-white/50 mb-1">
@@ -129,10 +129,11 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
           Recovery Calculator
         </p>
         <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-gray-900">
-          How much are you leaving on the table?
+          What 20% of every award actually costs over time.
         </h2>
         <p className="font-body text-sm text-gray-500 font-light mt-4 max-w-2xl">
-          Adjust the inputs to estimate your annual IDR recovery potential and the time your billing team spends on manual submissions.
+          Uses CMS published win rates (88%) and Georgetown CHIR median award benchmarks. Not a
+          Kronos performance claim.
         </p>
       </header>
 
@@ -198,7 +199,7 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
 
           {/* Assumptions note */}
           <p className="font-body text-[10px] text-gray-400 font-light leading-relaxed border-t border-gray-100 pt-4">
-            Assumes 70% win rate (CMS IDR data), 3 hrs manual submission vs 15 min with Sydra, $65/hr billing specialist rate. Recovery estimate based on disputed amount midpoints. Not a guarantee of results.
+            Assumes 88% win rate (CMS Q1/Q2 2025 Public Use File), 3 hrs manual submission vs 15 min with Sydra, $65/hr billing specialist rate. Recovery estimate based on disputed amount midpoints. Not a guarantee of results.
           </p>
         </div>
 
@@ -217,7 +218,7 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
                   {formatDollars(results.recovery)}
                 </p>
                 <p className="font-body text-xs text-gray-400 font-light">
-                  {results.annual} cases × 70% win rate × {AMOUNT_BANDS[bandIndex].label}
+                  {results.annual} cases × 88% win rate × {AMOUNT_BANDS[bandIndex].label}
                 </p>
               </div>
             </div>

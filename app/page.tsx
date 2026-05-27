@@ -4,13 +4,12 @@ import { createPageMetadata } from "@/lib/metadata";
 import { PAGE_SEO } from "@/lib/page-seo";
 import {
   OrganizationSchema,
-  WebSiteSchema,
   ServiceSchema,
   FAQPageSchema,
   PersonSchema,
   TEAM_MEMBERS,
 } from "@/components/JsonLd";
-import { HOME_FAQS } from "@/lib/faqs";
+import { SCHEMA_HOME_FAQS } from "@/lib/faqs";
 import { marketingServiceSchema } from "@/lib/service-schema";
 
 export const metadata: Metadata = createPageMetadata({
@@ -30,9 +29,8 @@ export default function HomePage() {
   return (
     <>
       <OrganizationSchema />
-      <WebSiteSchema />
       <ServiceSchema {...homeService} />
-      <FAQPageSchema items={HOME_FAQS} />
+      <FAQPageSchema items={SCHEMA_HOME_FAQS} />
       {TEAM_MEMBERS.map((person) => (
         <PersonSchema key={person.id} person={person} />
       ))}

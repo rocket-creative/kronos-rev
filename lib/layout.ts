@@ -8,5 +8,5 @@ export const PAGE_CONTAINER_WIDE = `max-w-7xl mx-auto ${PAGE_GUTTERS}`;
 /** Clears fixed mobile sticky CTA (56px) + iOS home indicator safe area. */
 export const MOBILE_CTA_CLEARANCE = "pb-[calc(3.5rem+env(safe-area-inset-bottom))] lg:pb-0";
 
-/** Matches fixed nav height: h-14 until lg, then scales up at xl. */
-export const MAIN_TOP_OFFSET = "pt-14 lg:pt-16 xl:pt-20";
+/** Matches fixed nav height: single row until xl, then 2–3 row desktop nav. */
+export const MAIN_TOP_OFFSET = "pt-14 lg:pt-16 xl:pt-40 2xl:pt-28";

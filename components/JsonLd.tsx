@@ -1,7 +1,7 @@
 import type { FaqItem } from "@/lib/faqs";
 import {
   EMAIL,
-  KRONOS_HEALTH_BASE_URL,
+  FOUNDER_PERSON_ID,
   LINKEDIN_URL,
   LOGO_URL,
   ORG_ID,
@@ -22,96 +22,67 @@ function JsonLdScript({ data }: { data: object }) {
 
 export type BreadcrumbItem = { name: string; url: string };
 
+/** KRONOS-MASTER Part 1A: MedicalOrganization + WebSite @graph */
 export function OrganizationSchema() {
   return (
     <JsonLdScript
       data={{
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "@id": ORG_ID,
-        name: "Kronos Revenue",
-        url: SITE_URL,
-        logo: {
-          "@type": "ImageObject",
-          url: LOGO_URL,
-        },
-        description:
-          "Specialty trained revenue cycle management and No Surprises Act IDR for orthopedic, neurosurgery, spine, and plastic surgery practices.",
-        telephone: PHONE_TEL,
-        email: EMAIL,
-        sameAs: [LINKEDIN_URL],
-        contactPoint: {
-          "@type": "ContactPoint",
-          telephone: PHONE_TEL,
-          email: EMAIL,
-          contactType: "customer service",
-          areaServed: "US",
-          availableLanguage: "English",
-        },
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "244 Westchester Avenue, Suite 209",
-          addressLocality: "West Harrison",
-          addressRegion: "NY",
-          postalCode: "10604",
-          addressCountry: "US",
-        },
-        parentOrganization: {
-          "@type": "Organization",
-          name: "Kronos Health",
-          url: KRONOS_HEALTH_BASE_URL,
-          subOrganization: [
-            {
-              "@type": "Organization",
-              "@id": ORG_ID,
-              name: "Kronos Revenue",
-              url: SITE_URL,
-              description:
-                "Full service No Surprises Act IDR and revenue cycle management for surgical practices.",
+        "@graph": [
+          {
+            "@type": "MedicalOrganization",
+            "@id": ORG_ID,
+            name: "Kronos Revenue",
+            alternateName: "Kronos Health",
+            url: SITE_URL,
+            logo: LOGO_URL,
+            description:
+              "No Surprises Act independent dispute resolution, done for you. Specialty trained NSA IDR for orthopedic, neurosurgery, spine, and plastic surgery practices. Quoted to your volume, not a 20% attorney contingency.",
+            telephone: PHONE_TEL,
+            email: EMAIL,
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "244 Westchester Ave, Suite 209",
+              addressLocality: "West Harrison",
+              addressRegion: "NY",
+              postalCode: "10604",
+              addressCountry: "US",
             },
-            {
-              "@type": "SoftwareApplication",
-              name: "Sydra",
-              url: SYDRA_URL,
-              applicationCategory: "BusinessApplication",
-              operatingSystem: "Web",
-              description:
-                "AI software for federal and state No Surprises Act IDR disputes, built by Kronos Health.",
+            areaServed: ["TX", "CA", "NY", "NJ", "FL", "AZ"],
+            medicalSpecialty: [
+              "Orthopedic Surgery",
+              "Neurosurgery",
+              "Spine Surgery",
+              "Plastic Surgery",
+              "Anesthesiology",
+              "General Surgery",
+            ],
+            sameAs: [LINKEDIN_URL, SYDRA_URL],
+            foundingDate: "2022",
+            founder: {
+              "@type": "Physician",
+              "@id": FOUNDER_PERSON_ID,
+              name: "Dr. John M. Abrahams, MD",
+              jobTitle: "Founder, Board Certified Neurosurgeon",
+              medicalSpecialty: "Neurosurgery",
             },
-          ],
-        },
-        founder: {
-          "@id": `${SITE_URL}/team#person-john-abrahams`,
-        },
-        knowsAbout: [
-          "Revenue Cycle Management",
-          "No Surprises Act",
-          "Independent Dispute Resolution",
-          "Healthcare Arbitration",
-          "Out of Network Billing",
-          "Orthopedic Surgery Billing",
-          "Neurosurgery Billing",
-          "Spine Surgery Billing",
-          "Plastic Surgery Billing",
+          },
+          {
+            "@type": "WebSite",
+            "@id": WEBSITE_ID,
+            url: SITE_URL,
+            name: "Kronos Revenue",
+            publisher: { "@id": ORG_ID },
+          },
         ],
       }}
     />
   );
 }
 
+/** @deprecated Use OrganizationSchema (includes WebSite in @graph). */
 export function WebSiteSchema() {
-  return (
-    <JsonLdScript
-      data={{
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "@id": WEBSITE_ID,
-        name: "Kronos Revenue",
-        url: SITE_URL,
-        publisher: { "@id": ORG_ID },
-      }}
-    />
-  );
+  return null;
 }
 
 export function BreadcrumbListSchema({ items }: { items: BreadcrumbItem[] }) {
@@ -306,7 +277,7 @@ export const TEAM_MEMBERS: PersonSchemaMember[] = [
   {
     id: `${SITE_URL}/team#person-john-abrahams`,
     name: "Dr. John M. Abrahams",
-    jobTitle: "Founder",
+    jobTitle: "Founder, Board Certified Neurosurgeon",
     description:
       "Board certified neurosurgeon and founder of Kronos Health. Past President of Brain and Spine Surgeons of New York.",
     isPhysician: true,

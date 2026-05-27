@@ -28,7 +28,7 @@ const ROWS = [
   {
     label: "Who's on the file",
     attorney: "Junior associates",
-    kronos: "RCM specialists trained by Dr. Abrams (surgeon founder)",
+    kronos: "RCM specialists trained by Dr. Abrahams (surgeon founder)",
   },
   {
     label: "Communication",

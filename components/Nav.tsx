@@ -58,7 +58,8 @@ export default function Nav() {
         className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm pt-safe-top"
       >
         <nav className={PAGE_CONTAINER_WIDE} aria-label="Main navigation">
-          <div className="flex items-center h-14 lg:h-16 xl:h-20 gap-4">
+          {/* Mobile / tablet: single row */}
+          <div className="flex xl:hidden items-center h-14 lg:h-16 gap-4">
             <Link
               href="/"
               className="shrink-0 flex items-center hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white min-h-[44px] min-w-[44px]"
@@ -72,10 +73,57 @@ export default function Nav() {
               />
             </Link>
 
-            <div className="hidden xl:flex flex-1 min-w-0 items-center justify-center gap-x-5 2xl:gap-x-8">
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0 ml-auto">
+              <Link
+                href={CTA.caseReview.href}
+                className="hidden lg:inline-flex items-center gap-2 bg-kronos-cyan text-white py-2.5 px-4 text-xs uppercase tracking-widest font-light hover:bg-kronos-green-dark hover:gap-3 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white min-h-[44px] whitespace-nowrap"
+              >
+                Free IDR review
+                <ArrowRight className="w-3 h-3" aria-hidden="true" />
+              </Link>
+
+              <button
+                ref={menuButtonRef}
+                type="button"
+                className="flex items-center justify-center w-11 h-11 text-gray-500 hover:text-gray-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white select-none"
+                onClick={() => setMobileMenuOpen(true)}
+                aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-menu-overlay"
+                aria-label="Open menu"
+              >
+                <Menu size={22} aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+
+          {/* Desktop: logo + CTA row, then wrapping nav links */}
+          <div className="hidden xl:block">
+            <div className="flex items-center justify-between gap-4 py-3">
+              <Link
+                href="/"
+                className="shrink-0 flex items-center hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white min-h-[44px]"
+                aria-label="Kronos Revenue home"
+              >
+                <LogoImage
+                  width={160}
+                  textSize="text-2xl"
+                  priority
+                  className="logo-dark-green h-auto"
+                />
+              </Link>
+
+              <Link
+                href={CTA.caseReview.href}
+                className="inline-flex items-center gap-2 bg-kronos-cyan text-white py-2.5 px-5 text-xs uppercase tracking-widest font-light hover:bg-kronos-green-dark hover:gap-3 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white min-h-[44px] whitespace-nowrap shrink-0"
+              >
+                {CTA.caseReview.label}
+                <ArrowRight className="w-3 h-3" aria-hidden="true" />
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-x-5 2xl:gap-x-8 gap-y-1 border-t border-gray-100 py-3">
               <Link href="/" className={linkClass("/")} aria-label="Home">
-                <span className="2xl:hidden">Home</span>
-                <span className="hidden 2xl:inline">Home</span>
+                Home
               </Link>
               {headerNavLinks.map((link) => (
                 <Link
@@ -84,8 +132,7 @@ export default function Nav() {
                   className={linkClass(link.href)}
                   aria-label={link.ariaLabel ?? link.label}
                 >
-                  <span className="2xl:hidden">{link.shortLabel ?? link.label}</span>
-                  <span className="hidden 2xl:inline">{link.label}</span>
+                  {link.label}
                 </Link>
               ))}
               <a
@@ -93,33 +140,10 @@ export default function Nav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={CTA.seeSydra.ariaLabel}
-                className="font-body text-xs text-kronos-cyan hover:text-kronos-green-dark uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan border-l border-gray-200 pl-5 2xl:pl-8 flex items-center min-h-[44px] shrink-0 whitespace-nowrap"
+                className="font-body text-xs text-kronos-cyan hover:text-kronos-green-dark uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan flex items-center min-h-[44px] shrink-0 whitespace-nowrap"
               >
                 Sydra
               </a>
-            </div>
-
-            <div className="flex items-center gap-2 sm:gap-3 shrink-0 ml-auto xl:ml-0">
-              <Link
-                href={CTA.caseReview.href}
-                className="hidden lg:inline-flex items-center gap-2 bg-kronos-cyan text-white py-2.5 px-4 xl:px-5 text-xs uppercase tracking-widest font-light hover:bg-kronos-green-dark hover:gap-3 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white min-h-[44px] whitespace-nowrap"
-              >
-                <span className="hidden xl:inline">{CTA.caseReview.label}</span>
-                <span className="xl:hidden">Free IDR review</span>
-                <ArrowRight className="w-3 h-3" aria-hidden="true" />
-              </Link>
-
-              <button
-                ref={menuButtonRef}
-                type="button"
-                className="xl:hidden flex items-center justify-center w-11 h-11 text-gray-500 hover:text-gray-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white select-none"
-                onClick={() => setMobileMenuOpen(true)}
-                aria-expanded={mobileMenuOpen}
-                aria-controls="mobile-menu-overlay"
-                aria-label="Open menu"
-              >
-                <Menu size={22} aria-hidden="true" />
-              </button>
             </div>
           </div>
         </nav>
