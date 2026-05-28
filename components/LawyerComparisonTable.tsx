@@ -56,7 +56,7 @@ export function LawyerComparisonTable({
   return (
     <div className={className}>
       <p
-        className={`font-body text-xs mb-2 sm:hidden ${isDark ? "text-white/50" : "text-gray-400"}`}
+        className={`font-body text-xs mb-2 sm:hidden ${isDark ? "text-white/70" : "text-gray-600"}`}
       >
         Scroll horizontally to compare
       </p>
@@ -87,7 +87,7 @@ export function LawyerComparisonTable({
             <th
               scope="col"
               className={`py-4 px-4 font-heading text-sm sm:text-base uppercase tracking-wide ${
-                isDark ? "text-white/50" : "text-gray-400"
+                isDark ? "text-white/70" : "text-gray-600"
               }`}
             >
               Your attorney
@@ -113,14 +113,14 @@ export function LawyerComparisonTable({
               <th
                 scope="row"
                 className={`py-4 pr-4 font-body text-xs uppercase tracking-widest align-top ${
-                  isDark ? "text-white/50" : "text-gray-400"
+                  isDark ? "text-white/70" : "text-gray-600"
                 }`}
               >
                 {row.label}
               </th>
               <td
                 className={`py-4 px-4 font-body text-sm font-light align-top ${
-                  isDark ? "text-white/60" : "text-gray-500"
+                  isDark ? "text-white/70" : "text-gray-600"
                 }`}
               >
                 {row.attorney}

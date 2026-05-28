@@ -52,7 +52,7 @@ export default function CaseReviewPage() {
           >
             Free NSA IDR case review. We run the math on your actual claims.
           </h1>
-          <p className="font-body text-sm sm:text-base text-white/80 font-light leading-relaxed max-w-2xl">
+          <p className="font-body text-sm sm:text-base text-white/90 font-light leading-relaxed max-w-2xl">
             Send us 3 to 5 recent EOBs. We review eligibility, calculate your IDR recovery potential,
             and compare it against your current arrangement. One business day. No commitment.
           </p>
@@ -83,7 +83,7 @@ export default function CaseReviewPage() {
             <div className="lg:col-span-7">
               <div id="form" className="scroll-mt-28">
                 <h2 className="font-heading text-2xl text-gray-900 mb-2">Request your review</h2>
-                <p className="font-body text-gray-500 text-xs mb-6">
+                <p className="font-body text-gray-600 text-xs mb-6">
                   Fields marked with <span className="text-kronos-cyan">*</span> are required. Attach
                   EOBs through the form or email {SALES_EMAIL}.
                 </p>
@@ -99,7 +99,7 @@ export default function CaseReviewPage() {
                 </p>
                 <dl className="space-y-4">
                   <div>
-                    <dt className="font-body text-xs uppercase tracking-widest text-gray-500 mb-1">
+                    <dt className="font-body text-xs uppercase tracking-widest text-gray-600 mb-1">
                       Phone
                     </dt>
                     <dd>
@@ -109,7 +109,7 @@ export default function CaseReviewPage() {
                     </dd>
                   </div>
                   <div>
-                    <dt className="font-body text-xs uppercase tracking-widest text-gray-500 mb-1">
+                    <dt className="font-body text-xs uppercase tracking-widest text-gray-600 mb-1">
                       Email
                     </dt>
                     <dd>
@@ -119,7 +119,7 @@ export default function CaseReviewPage() {
                     </dd>
                   </div>
                   <div>
-                    <dt className="font-body text-xs uppercase tracking-widest text-gray-500 mb-1">
+                    <dt className="font-body text-xs uppercase tracking-widest text-gray-600 mb-1">
                       Intake
                     </dt>
                     <dd>
@@ -129,7 +129,7 @@ export default function CaseReviewPage() {
                     </dd>
                   </div>
                   <div>
-                    <dt className="font-body text-xs uppercase tracking-widest text-gray-500 mb-1">
+                    <dt className="font-body text-xs uppercase tracking-widest text-gray-600 mb-1">
                       Office
                     </dt>
                     <dd className="font-body text-gray-700 font-light text-sm">

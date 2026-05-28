@@ -38,7 +38,7 @@ export function IdrChecklistGate() {
   if (unlocked) {
     return (
       <div className="max-w-3xl">
-        <p className="font-body text-xs uppercase tracking-widest text-gray-400 mb-2">
+        <p className="font-body text-xs uppercase tracking-widest text-gray-500 mb-2">
           NSA IDR filing checklist · May 2026
         </p>
         <p className="font-body text-sm text-gray-600 mb-8">

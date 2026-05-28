@@ -48,7 +48,7 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
   if (compact) {
     return (
       <div className="w-full">
-        <p className="font-body text-[10px] uppercase tracking-widest text-white/50 mb-4">
+        <p className="font-body text-[10px] uppercase tracking-widest text-white/70 mb-4">
           Estimate your upside
         </p>
 
@@ -99,22 +99,22 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
         {/* Outputs */}
         <div className="grid grid-cols-2 gap-3">
           <div className="bg-white/10 border border-white/15 p-4">
-            <p className="font-body text-[9px] uppercase tracking-widest text-white/50 mb-1">
+            <p className="font-body text-[9px] uppercase tracking-widest text-white/70 mb-1">
               Est. annual recovery
             </p>
             <p className="font-heading text-2xl sm:text-3xl text-white leading-none">
               {formatDollars(results.recovery)}
             </p>
-            <p className="font-body text-[9px] text-white/40 mt-1">at 88% win rate (CMS)</p>
+            <p className="font-body text-[9px] text-white/55 mt-1">at 88% win rate (CMS)</p>
           </div>
           <div className="bg-white/10 border border-white/15 p-4">
-            <p className="font-body text-[9px] uppercase tracking-widest text-white/50 mb-1">
+            <p className="font-body text-[9px] uppercase tracking-widest text-white/70 mb-1">
               Labor hours saved
             </p>
             <p className="font-heading text-2xl sm:text-3xl text-white leading-none">
               {formatHours(results.hoursSaved)}
             </p>
-            <p className="font-body text-[9px] text-white/40 mt-1">vs manual submission</p>
+            <p className="font-body text-[9px] text-white/55 mt-1">vs manual submission</p>
           </div>
         </div>
       </div>
@@ -125,13 +125,13 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
   return (
     <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
       <header className="mb-10 sm:mb-14">
-        <p className="text-xs tracking-widest uppercase text-gray-400 mb-4">
+        <p className="text-xs tracking-widest uppercase text-gray-600 mb-4">
           Recovery Calculator
         </p>
         <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-gray-900">
           What 20% of every award actually costs over time.
         </h2>
-        <p className="font-body text-sm text-gray-500 font-light mt-4 max-w-2xl">
+        <p className="font-body text-sm text-gray-600 font-light mt-4 max-w-2xl">
           Uses CMS published win rates (88%) and Georgetown CHIR median award benchmarks. Not a
           Kronos performance claim.
         </p>
@@ -163,8 +163,8 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
               className="w-full h-3 bg-gray-200 appearance-none cursor-pointer accent-kronos-cyan [&::-webkit-slider-thumb]:w-11 [&::-webkit-slider-thumb]:h-11 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:bg-kronos-cyan [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-sm [&::-webkit-slider-thumb]:rounded-full"
             />
             <div className="flex justify-between mt-2">
-              <span className="font-body text-[10px] text-gray-400">1 / month</span>
-              <span className="font-body text-[10px] text-gray-400">100 / month</span>
+              <span className="font-body text-[10px] text-gray-600">1 / month</span>
+              <span className="font-body text-[10px] text-gray-600">100 / month</span>
             </div>
           </div>
 
@@ -184,7 +184,7 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
                   className={`flex items-center justify-between min-h-[44px] px-4 py-3 border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan ${
                     bandIndex === i
                       ? "border-kronos-cyan bg-kronos-cyan/8 text-gray-900"
-                      : "border-gray-200 bg-white text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                      : "border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:text-gray-700"
                   }`}
                   aria-pressed={bandIndex === i}
                 >
@@ -198,7 +198,7 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
           </div>
 
           {/* Assumptions note */}
-          <p className="font-body text-[10px] text-gray-400 font-light leading-relaxed border-t border-gray-100 pt-4">
+          <p className="font-body text-[10px] text-gray-600 font-light leading-relaxed border-t border-gray-100 pt-4">
             Assumes 88% win rate (CMS Q1/Q2 2025 Public Use File), 3 hrs manual submission vs 15 min with Sydra, $65/hr billing specialist rate. Recovery estimate based on disputed amount midpoints. Not a guarantee of results.
           </p>
         </div>
@@ -211,13 +211,13 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
                 <TrendingUp className="w-4 h-4 text-kronos-cyan" strokeWidth={1.5} aria-hidden="true" />
               </div>
               <div className="flex-1">
-                <p className="font-body text-[10px] uppercase tracking-widest text-gray-400 mb-1">
+                <p className="font-body text-[10px] uppercase tracking-widest text-gray-600 mb-1">
                   Annual recovery potential
                 </p>
                 <p className="font-heading text-4xl sm:text-5xl text-kronos-cyan leading-none mb-1">
                   {formatDollars(results.recovery)}
                 </p>
-                <p className="font-body text-xs text-gray-400 font-light">
+                <p className="font-body text-xs text-gray-600 font-light">
                   {results.annual} cases × 88% win rate × {AMOUNT_BANDS[bandIndex].label}
                 </p>
               </div>
@@ -229,39 +229,39 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
               <div className="w-8 h-8 bg-kronos-cyan/10 flex items-center justify-center mb-3">
                 <FileText className="w-3.5 h-3.5 text-kronos-cyan" strokeWidth={1.5} aria-hidden="true" />
               </div>
-              <p className="font-body text-[9px] uppercase tracking-widest text-gray-400 mb-1">
+              <p className="font-body text-[9px] uppercase tracking-widest text-gray-600 mb-1">
                 Annual cases
               </p>
               <p className="font-heading text-3xl text-gray-900 leading-none">
                 {results.annual}
               </p>
-              <p className="font-body text-[9px] text-gray-400 mt-1">eligible to file</p>
+              <p className="font-body text-[9px] text-gray-600 mt-1">eligible to file</p>
             </div>
 
             <div className="bg-gray-50 border border-gray-100 p-5 sm:p-6">
               <div className="w-8 h-8 bg-kronos-cyan/10 flex items-center justify-center mb-3">
                 <Clock className="w-3.5 h-3.5 text-kronos-cyan" strokeWidth={1.5} aria-hidden="true" />
               </div>
-              <p className="font-body text-[9px] uppercase tracking-widest text-gray-400 mb-1">
+              <p className="font-body text-[9px] uppercase tracking-widest text-gray-600 mb-1">
                 Hours saved
               </p>
               <p className="font-heading text-3xl text-gray-900 leading-none">
                 {formatHours(results.hoursSaved)}
               </p>
-              <p className="font-body text-[9px] text-gray-400 mt-1">vs manual</p>
+              <p className="font-body text-[9px] text-gray-600 mt-1">vs manual</p>
             </div>
 
             <div className="bg-gray-50 border border-gray-100 p-5 sm:p-6">
               <div className="w-8 h-8 bg-kronos-cyan/10 flex items-center justify-center mb-3">
                 <DollarSign className="w-3.5 h-3.5 text-kronos-cyan" strokeWidth={1.5} aria-hidden="true" />
               </div>
-              <p className="font-body text-[9px] uppercase tracking-widest text-gray-400 mb-1">
+              <p className="font-body text-[9px] uppercase tracking-widest text-gray-600 mb-1">
                 Labor saved
               </p>
               <p className="font-heading text-3xl text-gray-900 leading-none">
                 {formatDollars(results.laborSaved)}
               </p>
-              <p className="font-body text-[9px] text-gray-400 mt-1">in billing time</p>
+              <p className="font-body text-[9px] text-gray-600 mt-1">in billing time</p>
             </div>
           </div>
 
@@ -271,7 +271,7 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
               <p className="font-heading text-xl sm:text-2xl text-white leading-tight mb-1">
                 Ready to start recovering?
               </p>
-              <p className="font-body text-xs text-white/60 font-light">
+              <p className="font-body text-xs text-white/70 font-light">
                 Get a free NSA IDR review — no commitment.
               </p>
             </div>

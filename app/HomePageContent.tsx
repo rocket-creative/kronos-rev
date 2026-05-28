@@ -80,7 +80,7 @@ export default function HomePageContent() {
 
               <div
                 data-hero-description
-                className="font-body text-sm sm:text-base text-white/80 font-light leading-relaxed mb-6 sm:mb-8 space-y-3"
+                className="font-body text-sm sm:text-base text-white/90 font-light leading-relaxed mb-6 sm:mb-8 space-y-3"
               >
                 {HERO_SUBHEAD.map((p) => (
                   <p key={p.slice(0, 40)}>{p}</p>
@@ -104,8 +104,8 @@ export default function HomePageContent() {
                   {CTA.howWeWork.label}
                 </Link>
               </div>
-              <p className="text-xs text-white/60 font-body mb-4">{HERO_CTA_SUBLABEL}</p>
-              <ul className="space-y-1 text-xs text-white/50 font-body">
+              <p className="text-xs text-white/70 font-body mb-4">{HERO_CTA_SUBLABEL}</p>
+              <ul className="space-y-1 text-xs text-white/70 font-body">
                 {HERO_TRUST_BADGES.map((line) => (
                   <li key={line}>{line}</li>
                 ))}
@@ -209,7 +209,7 @@ export default function HomePageContent() {
               <li key={stat.value}>
                 <p className="font-heading text-3xl sm:text-4xl text-kronos-cyan mb-2">{stat.value}</p>
                 <p className="font-body text-sm text-gray-900 mb-2">{stat.label}</p>
-                <p className="font-body text-xs text-gray-500 font-light mb-2">{stat.source}</p>
+                <p className="font-body text-xs text-gray-600 font-light mb-2">{stat.source}</p>
                 <a
                   href={stat.href}
                   target="_blank"
@@ -263,7 +263,7 @@ export default function HomePageContent() {
 
       <section className="py-12 sm:py-16 bg-gray-50" aria-labelledby="sydra-bridge-heading">
         <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
-          <p className="font-body text-xs uppercase tracking-widest text-gray-400 mb-3">
+          <p className="font-body text-xs uppercase tracking-widest text-gray-600 mb-3">
             Part of Kronos Health
           </p>
           <h2 id="sydra-bridge-heading" className="font-heading text-2xl sm:text-3xl text-gray-900 mb-4">
@@ -338,7 +338,7 @@ export default function HomePageContent() {
             <h3 className="font-heading text-xl sm:text-2xl text-gray-900 mb-2">
               Request your review
             </h3>
-            <p className="font-body text-gray-500 text-xs mb-6">
+            <p className="font-body text-gray-600 text-xs mb-6">
               Fields marked with <span className="text-kronos-cyan">*</span> are required.
             </p>
             <ClaimReviewForm variant="light" />
@@ -357,7 +357,7 @@ export default function HomePageContent() {
                 Providers won 88% of federal IDR disputes in the first half of 2025. 87% of award
                 amounts exceeded the insurer qualifying payment amount.
               </p>
-              <footer className="text-xs text-gray-500">
+              <footer className="text-xs text-gray-600">
                 CMS Federal IDR Q1/Q2 2025 Public Use File · January 21, 2026 ·{" "}
                 <a
                   href="https://www.cms.gov/nosurprises/policies-and-resources/reports"
@@ -374,7 +374,7 @@ export default function HomePageContent() {
                 In 2.5 years through 2024, providers recovered more than $2.2 billion from the NSA IDR
                 process relative to applicable in network payment rates.
               </p>
-              <footer className="text-xs text-gray-500">
+              <footer className="text-xs text-gray-600">
                 HFMA citing Brookings Institution NSA Arbitration Databook · October 2025
               </footer>
             </blockquote>
@@ -382,11 +382,11 @@ export default function HomePageContent() {
               <p className="mb-2">
                 The median provider win at IDR represents approximately 4.5 times the in network rate.
               </p>
-              <footer className="text-xs text-gray-500">
+              <footer className="text-xs text-gray-600">
                 Georgetown University CHIR · Health Affairs · March 2026
               </footer>
             </blockquote>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-600">
               Sydra reference library: 213+ ingested IDR determinations, over 90% provider wins,
               weighted toward spine and orthopedic CPT codes. Library statistics describe
               determinations ingested, not a guarantee of future results.
@@ -420,7 +420,7 @@ export default function HomePageContent() {
           <h2 id="cta-heading" className="font-heading text-2xl sm:text-3xl text-white mb-4">
             {CTA.caseReview.label}
           </h2>
-          <p className="font-body text-sm text-white/60 font-light mb-8 max-w-xl mx-auto">
+          <p className="font-body text-sm text-white/70 font-light mb-8 max-w-xl mx-auto">
             {HERO_CTA_SUBLABEL}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

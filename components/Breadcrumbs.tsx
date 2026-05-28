@@ -18,7 +18,7 @@ export function Breadcrumbs({ items, variant = "dark" }: BreadcrumbsProps) {
     >
       <ol
         className={`flex flex-wrap items-center gap-2 font-body text-xs ${
-          isLight ? "text-gray-500" : "text-white/50"
+          isLight ? "text-gray-600" : "text-white/60"
         }`}
       >
         {items.map((item, index) => {
@@ -36,7 +36,7 @@ export function Breadcrumbs({ items, variant = "dark" }: BreadcrumbsProps) {
               {isLast ? (
                 <span
                   className={`inline-flex items-center min-h-[44px] ${
-                    isLight ? "text-gray-900" : "text-white/80"
+                    isLight ? "text-gray-900" : "text-white/90"
                   }`}
                   aria-current="page"
                 >

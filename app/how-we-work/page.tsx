@@ -110,7 +110,7 @@ export default function HowWeWorkPage() {
         >
           The federal IDR regulatory framework.
         </ReviewHeading>
-        <p className="font-body text-sm text-gray-500 mb-8">
+        <p className="font-body text-sm text-gray-600 mb-8">
           Governing law: No Surprises Act, Public Law 116-260, Division BB, Title I · Implementing
           regulations: 45 CFR Part 149
         </p>

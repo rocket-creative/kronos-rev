@@ -4,10 +4,10 @@ import { useState } from "react";
 import { ArrowRight, CheckCircle, Loader2 } from "lucide-react";
 
 const inputClass =
-  "w-full h-12 bg-black/20 border border-white/10 px-4 text-white placeholder:text-white/40 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors";
+  "w-full h-12 bg-black/20 border border-white/10 px-4 text-white placeholder:text-white/55 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors";
 const selectClass =
   "w-full h-12 bg-kronos-bg border border-white/10 px-4 text-white font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors appearance-none";
-const labelClass = "block font-body text-xs text-white/60 uppercase tracking-widest mb-1.5";
+const labelClass = "block font-body text-xs text-white/70 uppercase tracking-widest mb-1.5";
 const errorClass = "text-red-400 text-xs mt-1";
 
 const SPECIALTIES = [
@@ -110,7 +110,7 @@ export function ASCProviderForm() {
       <div className="bg-black/20 p-8 text-center">
         <CheckCircle className="w-12 h-12 text-kronos-cyan mx-auto mb-4" aria-hidden="true" />
         <h3 className="font-heading text-2xl text-white mb-2">Inquiry Received</h3>
-        <p className="font-body text-white/60 text-sm font-light">
+        <p className="font-body text-white/70 text-sm font-light">
           Thank you. We will review your facility details and reach out shortly.
         </p>
       </div>
@@ -189,7 +189,7 @@ export function ASCProviderForm() {
               {SPECIALTIES.map((s) => <option key={s} value={s}>{s}</option>)}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-              <svg className="w-4 h-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              <svg className="w-4 h-4 text-white/55" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
             </div>
           </div>
           {fieldErrors.specialty && <p className={errorClass} role="alert">{fieldErrors.specialty}</p>}
@@ -202,7 +202,7 @@ export function ASCProviderForm() {
               {FACILITY_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-              <svg className="w-4 h-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              <svg className="w-4 h-4 text-white/55" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
             </div>
           </div>
         </div>
@@ -228,7 +228,7 @@ export function ASCProviderForm() {
             {MONTHLY_VOLUMES.map((v) => <option key={v} value={v}>{v}</option>)}
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-            <svg className="w-4 h-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+            <svg className="w-4 h-4 text-white/55" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
           </div>
         </div>
       </div>
@@ -238,7 +238,7 @@ export function ASCProviderForm() {
         <textarea
           id="asc-message" name="message" rows={3}
           style={{ fontSize: "16px" }}
-          className="w-full bg-black/20 border border-white/10 px-4 py-3 text-white placeholder:text-white/40 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors resize-none"
+          className="w-full bg-black/20 border border-white/10 px-4 py-3 text-white placeholder:text-white/55 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors resize-none"
         />
       </div>
 

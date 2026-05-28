@@ -44,14 +44,14 @@ function getFormStyles(variant: FormVariant) {
   const isLight = variant === "light";
   return {
     input: isLight
-      ? "w-full h-12 bg-white border border-gray-200 px-4 text-gray-900 placeholder:text-gray-400 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors"
-      : "w-full h-12 bg-black/20 border border-white/10 px-4 text-white placeholder:text-white/40 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors",
+      ? "w-full h-12 bg-white border border-gray-200 px-4 text-gray-900 placeholder:text-gray-500 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors"
+      : "w-full h-12 bg-black/20 border border-white/10 px-4 text-white placeholder:text-white/55 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors",
     select: isLight
       ? "w-full h-12 bg-white border border-gray-200 px-4 text-base text-gray-900 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors"
       : "w-full h-12 bg-black/20 border border-white/10 px-4 text-base text-white font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors",
     textarea: isLight
-      ? "w-full bg-white border border-gray-200 px-4 py-3 text-gray-900 placeholder:text-gray-400 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors resize-none"
-      : "w-full bg-black/20 border border-white/10 px-4 py-3 text-white placeholder:text-white/40 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors resize-none",
+      ? "w-full bg-white border border-gray-200 px-4 py-3 text-gray-900 placeholder:text-gray-500 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors resize-none"
+      : "w-full bg-black/20 border border-white/10 px-4 py-3 text-white placeholder:text-white/55 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors resize-none",
     label: isLight
       ? "block font-body text-xs text-gray-700 uppercase tracking-widest mb-1.5"
       : "block font-body text-xs text-white/80 uppercase tracking-widest mb-1.5",
@@ -65,12 +65,12 @@ function getFormStyles(variant: FormVariant) {
     successTitle: isLight ? "font-heading text-2xl text-gray-900 mb-2" : "font-heading text-2xl text-white mb-2",
     successBody: isLight
       ? "font-body text-gray-600 text-sm font-light"
-      : "font-body text-white/60 text-sm font-light",
+      : "font-body text-white/70 text-sm font-light",
     submitFocus: isLight
       ? "focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan"
       : "focus:outline-none focus-visible:ring-2 focus-visible:ring-white",
-    loadingText: isLight ? "text-gray-500 text-sm font-body" : "text-white/50 text-sm font-body",
-    legend: isLight ? "font-body text-gray-500 text-xs sr-only" : "font-body text-white/50 text-xs sr-only",
+    loadingText: isLight ? "text-gray-600 text-sm font-body" : "text-white/70 text-sm font-body",
+    legend: isLight ? "font-body text-gray-600 text-xs sr-only" : "font-body text-white/60 text-xs sr-only",
     formError: isLight ? "text-red-600 text-sm font-body" : "text-red-400 text-sm font-body",
   };
 }

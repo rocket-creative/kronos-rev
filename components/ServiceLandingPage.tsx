@@ -92,7 +92,7 @@ export function ServiceLandingPage({
             >
               {h1}
             </h1>
-            <div className="font-body text-white/70 text-sm font-light leading-relaxed mb-8">
+            <div className="font-body text-white/80 text-sm font-light leading-relaxed mb-8">
               {intro}
             </div>
             <ul className="space-y-3 mb-8">
@@ -104,7 +104,7 @@ export function ServiceLandingPage({
                   >
                     <span className="w-1.5 h-1.5 bg-kronos-cyan" />
                   </span>
-                  <span className="font-body text-sm text-white/70 font-light">
+                  <span className="font-body text-sm text-white/80 font-light">
                     {item}
                   </span>
                 </li>
@@ -128,7 +128,7 @@ export function ServiceLandingPage({
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
             {footnote && (
-              <p className="font-body text-xs text-white/40 font-light">{footnote}</p>
+              <p className="font-body text-xs text-white/55 font-light">{footnote}</p>
             )}
           </div>
 

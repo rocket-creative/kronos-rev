@@ -20,7 +20,7 @@ export default function SydraBridgeContent() {
         >
           Sydra is Kronos Health&apos;s NSA IDR software
         </h1>
-        <p className="font-body text-sm sm:text-base text-white/80 font-light leading-relaxed mb-8">
+        <p className="font-body text-sm sm:text-base text-white/90 font-light leading-relaxed mb-8">
           Run federal and state IDR in house with specialty trained AI — one claim per CPT, prep in
           under 5 minutes per claim. Choose Self-Serve or add Kronos Support for live specialists on
           tricky cases. Kronos Revenue on this site is the full service option when you want every
@@ -48,7 +48,7 @@ export default function SydraBridgeContent() {
             <ExternalLink className="w-3 h-3" aria-hidden="true" />
           </a>
         </div>
-        <p className="font-body text-sm text-white/60 font-light">
+        <p className="font-body text-sm text-white/70 font-light">
           Prefer full service?{" "}
           <Link
             href={CTA.caseReview.href}

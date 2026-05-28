@@ -53,7 +53,7 @@ function ContactFormInner({ source = "revenue_review_request" }: { source?: stri
           <Send className="w-8 h-8 text-kronos-cyan" aria-hidden="true" />
         </div>
         <h3 className="font-heading text-2xl text-white mb-2">Request Received</h3>
-        <p className="font-body text-white/60 text-sm font-light">
+        <p className="font-body text-white/80 text-sm font-light">
           We&apos;ve received your case review request. A Kronos specialist will reply within one
           business day.
         </p>
@@ -64,7 +64,7 @@ function ContactFormInner({ source = "revenue_review_request" }: { source?: stri
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
       <div>
-        <label htmlFor="contact-name" className="block font-body text-xs text-white/70 mb-1">
+        <label htmlFor="contact-name" className="block font-body text-xs text-white/80 mb-1">
           Your Name
         </label>
         <input
@@ -77,11 +77,11 @@ function ContactFormInner({ source = "revenue_review_request" }: { source?: stri
           autoComplete="name"
           inputMode="text"
           style={{ fontSize: "16px" }}
-          className="w-full h-12 bg-kronos-card border border-white/10 px-4 text-white placeholder:text-white/40 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
+          className="w-full h-12 bg-kronos-card border border-white/10 px-4 text-white placeholder:text-white/55 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
         />
       </div>
       <div>
-        <label htmlFor="contact-phone" className="block font-body text-xs text-white/70 mb-1">
+        <label htmlFor="contact-phone" className="block font-body text-xs text-white/80 mb-1">
           Phone Number
         </label>
         <input
@@ -94,11 +94,11 @@ function ContactFormInner({ source = "revenue_review_request" }: { source?: stri
           autoComplete="tel"
           inputMode="tel"
           style={{ fontSize: "16px" }}
-          className="w-full h-12 bg-kronos-card border border-white/10 px-4 text-white placeholder:text-white/40 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
+          className="w-full h-12 bg-kronos-card border border-white/10 px-4 text-white placeholder:text-white/55 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
         />
       </div>
       <div>
-        <label htmlFor="contact-email" className="block font-body text-xs text-white/70 mb-1">
+        <label htmlFor="contact-email" className="block font-body text-xs text-white/80 mb-1">
           Email Address
         </label>
         <input
@@ -111,11 +111,11 @@ function ContactFormInner({ source = "revenue_review_request" }: { source?: stri
           autoComplete="email"
           inputMode="email"
           style={{ fontSize: "16px" }}
-          className="w-full h-12 bg-kronos-card border border-white/10 px-4 text-white placeholder:text-white/40 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
+          className="w-full h-12 bg-kronos-card border border-white/10 px-4 text-white placeholder:text-white/55 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
         />
       </div>
       <div>
-        <label htmlFor="contact-org" className="block font-body text-xs text-white/70 mb-1">
+        <label htmlFor="contact-org" className="block font-body text-xs text-white/80 mb-1">
           Organization / Practice Name
         </label>
         <input
@@ -128,11 +128,11 @@ function ContactFormInner({ source = "revenue_review_request" }: { source?: stri
           autoComplete="organization"
           inputMode="text"
           style={{ fontSize: "16px" }}
-          className="w-full h-12 bg-kronos-card border border-white/10 px-4 text-white placeholder:text-white/40 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
+          className="w-full h-12 bg-kronos-card border border-white/10 px-4 text-white placeholder:text-white/55 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors"
         />
       </div>
       <div>
-        <label htmlFor="contact-message" className="block font-body text-xs text-white/70 mb-1">
+        <label htmlFor="contact-message" className="block font-body text-xs text-white/80 mb-1">
           Message (optional)
         </label>
         <textarea
@@ -141,11 +141,11 @@ function ContactFormInner({ source = "revenue_review_request" }: { source?: stri
           placeholder="Message (optional)"
           rows={3}
           style={{ fontSize: "16px" }}
-          className="w-full bg-kronos-card border border-white/10 px-4 py-3 text-white placeholder:text-white/40 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors resize-none"
+          className="w-full bg-kronos-card border border-white/10 px-4 py-3 text-white placeholder:text-white/55 font-body hover:border-white/20 focus:outline-none focus:border-kronos-cyan transition-colors resize-none"
         />
       </div>
       {error && (
-        <p className="text-white/70 text-sm font-body" role="alert">
+        <p className="text-white/80 text-sm font-body" role="alert">
           {error}
         </p>
       )}
@@ -162,7 +162,7 @@ function ContactFormInner({ source = "revenue_review_request" }: { source?: stri
 
 export function ContactForm(props: { source?: string } = {}) {
   return (
-    <Suspense fallback={<p className="text-white/50 text-sm font-body">Loading form…</p>}>
+    <Suspense fallback={<p className="text-white/60 text-sm font-body">Loading form…</p>}>
       <ContactFormInner {...props} />
     </Suspense>
   );

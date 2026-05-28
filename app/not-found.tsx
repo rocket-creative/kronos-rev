@@ -15,7 +15,7 @@ export default function NotFound() {
   return (
     <div className="min-h-[60vh] bg-kronos-bg flex flex-col items-center justify-center px-4">
       <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-white mb-4">404</h1>
-      <p className="font-body text-white/60 font-light mb-8 text-center max-w-md">
+      <p className="font-body text-white/70 font-light mb-8 text-center max-w-md">
         The page you are looking for does not exist.
       </p>
       <Link
@@ -29,7 +29,7 @@ export default function NotFound() {
           <Link
             key={link.href}
             href={link.href}
-            className="font-body text-xs text-white/50 hover:text-white uppercase tracking-widest focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan rounded"
+            className="font-body text-xs text-white/60 hover:text-white uppercase tracking-widest focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan rounded"
           >
             {link.label}
           </Link>

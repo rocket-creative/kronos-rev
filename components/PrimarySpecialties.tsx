@@ -42,7 +42,7 @@ export function PrimarySpecialties({
       <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
         <p
           className={`font-body text-[10px] sm:text-xs tracking-widest uppercase mb-6 sm:mb-8 ${
-            isDark ? "text-white/50" : "text-gray-400"
+            isDark ? "text-white/70" : "text-gray-600"
           }`}
         >
           {label}

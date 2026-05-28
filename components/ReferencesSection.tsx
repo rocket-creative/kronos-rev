@@ -1,7 +1,5 @@
 "use client";
 
-import { ReviewHighlight } from "@/components/ReviewHighlight";
-
 export type ReferenceItem = {
   label: string;
   href: string;
@@ -41,23 +39,21 @@ export function ReferencesSection({
         </h2>
         <ol
           className={`list-decimal list-inside space-y-2 font-body text-sm font-light ${
-            isDark ? "text-white/70" : "text-gray-600"
+            isDark ? "text-white/80" : "text-gray-700"
           }`}
         >
           {items.map((ref) => (
             <li key={ref.href}>
-              <ReviewHighlight>
-                <a
-                  href={ref.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`underline hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan rounded ${
-                    isDark ? "text-kronos-cyan" : "text-kronos-green-dark"
-                  }`}
-                >
-                  {ref.label}
-                </a>
-              </ReviewHighlight>
+              <a
+                href={ref.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`underline hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan rounded ${
+                  isDark ? "text-kronos-cyan" : "text-kronos-green-dark"
+                }`}
+              >
+                {ref.label}
+              </a>
             </li>
           ))}
         </ol>

@@ -1,5 +1,3 @@
-import { ReviewHighlight } from "@/components/ReviewHighlight";
-
 interface TrustSignalProps {
   author?: string;
   credentials?: string;
@@ -33,15 +31,13 @@ export function TrustSignal({
           </p>
         )}
         {reviewedBy && (
-          <p className="font-body text-sm text-gray-600 mt-0.5">
+          <p className="font-body text-sm text-gray-700 mt-0.5">
             Medically reviewed by{" "}
-            <ReviewHighlight>
-              <span className="font-semibold text-gray-900">{reviewedBy}</span>
-            </ReviewHighlight>
+            <span className="font-semibold text-gray-900">{reviewedBy}</span>
           </p>
         )}
         {lastUpdated && (
-          <p className="font-body text-xs text-gray-400 mt-1">
+          <p className="font-body text-xs text-gray-600 mt-1">
             Last updated{" "}
             <time dateTime={lastUpdated}>
               {new Date(lastUpdated).toLocaleDateString("en-US", {
@@ -61,10 +57,10 @@ export function TrustSignal({
       className={`p-0 text-xs ${className}`}
       aria-label="Content trust signals"
     >
-      <div className="flex flex-wrap gap-4 text-white/50">
+      <div className="flex flex-wrap gap-4 text-white/70">
         {author && (
           <div>
-            <span className="text-white/60">Author:</span>{" "}
+            <span className="text-white/70">Author:</span>{" "}
             <span className="text-white">{author}</span>
             {credentials && (
               <span className="text-white">, {credentials}</span>
@@ -73,15 +69,13 @@ export function TrustSignal({
         )}
         {reviewedBy && (
           <div>
-            <span className="text-white/60">Medically reviewed by:</span>{" "}
-            <ReviewHighlight>
-              <span className="text-white">{reviewedBy}</span>
-            </ReviewHighlight>
+            <span className="text-white/70">Medically reviewed by:</span>{" "}
+            <span className="text-white">{reviewedBy}</span>
           </div>
         )}
         {lastUpdated && (
           <div>
-            <span className="text-white/60">Last updated:</span>{" "}
+            <span className="text-white/70">Last updated:</span>{" "}
             <time dateTime={lastUpdated} className="text-white">
               {new Date(lastUpdated).toLocaleDateString("en-US", {
                 year: "numeric",

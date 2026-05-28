@@ -89,7 +89,7 @@ export function MarketingPage({
           >
             {h1}
           </h1>
-          <div className="font-body text-sm sm:text-base text-white/80 font-light leading-relaxed mb-8 max-w-2xl">
+          <div className="font-body text-sm sm:text-base text-white/90 font-light leading-relaxed mb-8 max-w-2xl">
             {intro}
           </div>
           <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
@@ -155,8 +155,7 @@ export function MarketingPage({
 
       {bottomCta && (
         <section
-          className="py-12 sm:py-16"
-          style={{ background: "linear-gradient(135deg, #00542A 0%, #00843D 100%)" }}
+          className="py-12 sm:py-16 bg-kronos-gray-800"
           aria-labelledby="marketing-bottom-cta"
         >
           <div className={`${PAGE_CONTAINER} text-center`}>
@@ -169,14 +168,14 @@ export function MarketingPage({
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               <Link
                 href={primary.href}
-                className="inline-flex items-center gap-3 bg-white text-[#00542A] py-3 px-8 uppercase tracking-widest text-xs font-bold hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px] scroll-mt-28"
+                className="inline-flex items-center gap-3 bg-white text-kronos-gray-900 py-3 px-8 uppercase tracking-widest text-xs font-bold hover:bg-white/95 hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px] scroll-mt-28"
               >
                 {primary.label}
                 <ArrowRight className="w-3 h-3" aria-hidden="true" />
               </Link>
               <a
                 href={`tel:${PHONE_TEL}`}
-                className="inline-flex items-center gap-2 border border-white/40 text-white py-3 px-8 uppercase tracking-widest text-xs font-light hover:bg-white/10 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px] scroll-mt-28"
+                className="inline-flex items-center gap-2 border border-white/40 text-white/90 py-3 px-8 uppercase tracking-widest text-xs font-light hover:bg-white/10 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px] scroll-mt-28"
                 aria-label={`Call ${PHONE_DISPLAY}`}
               >
                 <Phone className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
@@ -233,7 +232,7 @@ export function SydraCrossLink({ variant = "light" }: { variant?: "light" | "dar
     >
       <p
         className={`font-body text-sm font-light leading-relaxed mb-4 ${
-          isDark ? "text-white/70" : "text-gray-600"
+          isDark ? "text-white/90" : "text-gray-700"
         }`}
       >
         {SYDRA_CROSS_LINK_COPY}

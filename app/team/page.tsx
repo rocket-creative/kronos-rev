@@ -78,7 +78,7 @@ export default function TeamPage() {
             <ReviewHeading review id="founder-heading" className="font-heading text-3xl sm:text-4xl text-gray-900 mb-4">
               Dr. John M. Abrahams, MD — Founder
             </ReviewHeading>
-            <p className="font-body text-sm text-gray-500 mb-4">
+            <p className="font-body text-sm text-gray-600 mb-4">
               Board Certified Neurosurgeon · Fellow, American Association of Neurological Surgeons (FAANS)
               · Past President, Brain and Spine Surgeons of New York · Founder, Kronos Health
             </p>
@@ -120,7 +120,7 @@ export default function TeamPage() {
                 />
               </div>
               <h3 className="font-heading text-lg text-gray-900 mb-1">{member.name}</h3>
-              <p className="font-body text-xs uppercase tracking-widest text-gray-400 mb-3">
+              <p className="font-body text-xs uppercase tracking-widest text-gray-500 mb-3">
                 {member.title}
               </p>
               <p className="font-body text-sm text-gray-600 font-light">{member.bio}</p>

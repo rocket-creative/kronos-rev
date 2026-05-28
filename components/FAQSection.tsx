@@ -1,7 +1,6 @@
 "use client";
 
 import type { FaqItem } from "@/lib/faqs";
-import { ReviewHighlight } from "@/components/ReviewHighlight";
 
 type FAQSectionProps = {
   id?: string;
@@ -43,22 +42,14 @@ export function FAQSection({
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                {item.highlightAnswer ? (
-                  <ReviewHighlight>{item.question}</ReviewHighlight>
-                ) : (
-                  item.question
-                )}
+                {item.question}
               </dt>
               <dd
                 className={`font-body text-sm font-light leading-relaxed ${
-                  isDark ? "text-white/60" : "text-gray-500"
+                  isDark ? "text-white/70" : "text-gray-600"
                 }`}
               >
-                {item.highlightAnswer ? (
-                  <ReviewHighlight>{item.answer}</ReviewHighlight>
-                ) : (
-                  item.answer
-                )}
+                {item.answer}
               </dd>
             </div>
           ))}

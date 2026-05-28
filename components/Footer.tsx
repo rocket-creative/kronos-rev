@@ -29,7 +29,7 @@ export default function Footer() {
         <div
           className={`${PAGE_CONTAINER} py-8 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-8`}
         >
-          <p className="font-body text-sm text-white/70 font-light max-w-lg leading-relaxed">
+          <p className="font-body text-sm text-white/80 font-light max-w-lg leading-relaxed">
             {FOOTER_SYDRA_COPY}
           </p>
           <a
@@ -55,22 +55,22 @@ export default function Footer() {
             >
               <LogoImage width={120} textSize="text-lg" className="brightness-0 invert" />
             </Link>
-            <p className="font-body text-xs sm:text-sm text-white/60 font-light leading-relaxed max-w-sm">
+            <p className="font-body text-xs sm:text-sm text-white/75 font-light leading-relaxed max-w-sm">
               No Surprises Act IDR for orthopedic, neurosurgery, spine, and plastic surgery
               practices. Quoted to your volume — not a 20% contingency cut. More won disputes,
               vastly more kept.
             </p>
-            <p className="font-body text-[10px] sm:text-xs text-white/50 font-light leading-relaxed max-w-sm mt-4">
+            <p className="font-body text-[10px] sm:text-xs text-white/70 font-light leading-relaxed max-w-sm mt-4">
               We actively support practices in Texas, California, New York, New Jersey, Florida, and
               Arizona.
             </p>
-            <p className="font-body text-[10px] sm:text-xs text-white/40 font-light mt-4 leading-relaxed max-w-sm">
+            <p className="font-body text-[10px] sm:text-xs text-white/55 font-light mt-4 leading-relaxed max-w-sm">
               Part of{" "}
               <a
                 href={KRONOS_HEALTH_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white/70 transition-colors underline underline-offset-2"
+                className="hover:text-white/90 transition-colors underline underline-offset-2"
               >
                 Kronos Health
               </a>
@@ -79,7 +79,7 @@ export default function Footer() {
           </div>
 
           <nav className="lg:col-span-3" aria-label="Footer navigation">
-            <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/80 mb-4">
+            <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/85 mb-4">
               Explore
             </p>
             <ul className="flex flex-col gap-2" role="list">
@@ -87,7 +87,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-body text-[10px] sm:text-xs text-white/60 hover:text-white uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
+                    className="font-body text-[10px] sm:text-xs text-white/75 hover:text-white uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
                   >
                     {link.label}
                   </Link>
@@ -97,7 +97,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-body text-[10px] sm:text-xs text-white/60 hover:text-white uppercase tracking-widest transition-colors min-h-[44px] inline-flex items-center"
+                    className="font-body text-[10px] sm:text-xs text-white/75 hover:text-white uppercase tracking-widest transition-colors min-h-[44px] inline-flex items-center"
                   >
                     {link.label}
                   </Link>
@@ -107,7 +107,7 @@ export default function Footer() {
           </nav>
 
           <nav className="lg:col-span-2" aria-label="Specialties">
-            <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/80 mb-4">
+            <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/85 mb-4">
               Specialties
             </p>
             <ul className="flex flex-col gap-2" role="list">
@@ -115,7 +115,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-body text-[10px] sm:text-xs text-white/60 hover:text-white transition-colors min-h-[44px] inline-flex items-center"
+                    className="font-body text-[10px] sm:text-xs text-white/75 hover:text-white transition-colors min-h-[44px] inline-flex items-center"
                   >
                     {link.label}
                   </Link>
@@ -125,7 +125,7 @@ export default function Footer() {
           </nav>
 
           <nav className="lg:col-span-2" aria-label="States served">
-            <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/80 mb-4">
+            <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/85 mb-4">
               States
             </p>
             <ul className="flex flex-col gap-2" role="list">
@@ -133,7 +133,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-body text-[10px] sm:text-xs text-white/60 hover:text-white transition-colors min-h-[44px] inline-flex items-center"
+                    className="font-body text-[10px] sm:text-xs text-white/75 hover:text-white transition-colors min-h-[44px] inline-flex items-center"
                   >
                     {link.label}
                   </Link>
@@ -143,10 +143,10 @@ export default function Footer() {
           </nav>
 
           <div className="lg:col-span-3">
-            <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/80 mb-4">
+            <p className="text-[10px] sm:text-xs tracking-widest uppercase text-white/85 mb-4">
               Contact
             </p>
-            <address className="not-italic space-y-1 sm:space-y-2 font-body text-[10px] sm:text-xs text-white/60 font-light">
+            <address className="not-italic space-y-1 sm:space-y-2 font-body text-[10px] sm:text-xs text-white/75 font-light">
               <p>{OFFICE_ADDRESS.street}</p>
               <p>
                 {OFFICE_ADDRESS.city}, {OFFICE_ADDRESS.state} {OFFICE_ADDRESS.zip}
@@ -180,7 +180,7 @@ export default function Footer() {
                   href={LINKEDIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/60 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
+                  className="text-white/75 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
                   aria-label="Follow us on LinkedIn"
                 >
                   LinkedIn
@@ -189,7 +189,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/sydra"
-                  className="text-white/60 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
+                  className="text-white/75 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
                 >
                   Sydra on Kronos
                 </Link>
@@ -199,7 +199,7 @@ export default function Footer() {
                   href={SYDRA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/60 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
+                  className="text-white/75 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
                 >
                   Sydra Software
                 </a>
@@ -209,23 +209,23 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-4 sm:pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-body text-white/40 text-[10px] sm:text-xs">
+          <p className="font-body text-white/55 text-[10px] sm:text-xs">
             © 2026 Kronos Revenue. All rights reserved.
           </p>
           <nav className="flex flex-wrap items-center justify-center gap-4 sm:gap-6" aria-label="Legal links">
             <a
               href="https://www.kronosgroup.health/privacy"
-              className="font-body text-white/40 text-[10px] sm:text-xs hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
+              className="font-body text-white/55 text-[10px] sm:text-xs hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
             >
               Privacy Policy
             </a>
             <a
               href="https://www.kronosgroup.health/terms"
-              className="font-body text-white/40 text-[10px] sm:text-xs hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
+              className="font-body text-white/55 text-[10px] sm:text-xs hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
             >
               Terms of Service
             </a>
-            <span className="font-body text-white/40 text-[10px] sm:text-xs">
+            <span className="font-body text-white/55 text-[10px] sm:text-xs">
               HIPAA / BAA on request
             </span>
           </nav>

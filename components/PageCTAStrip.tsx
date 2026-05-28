@@ -5,25 +5,20 @@ import { CTA } from "@/lib/ctas";
 type PageCTAStripProps = {
   heading?: string;
   primaryOnly?: boolean;
-  variant?: "green" | "dark";
+  /** @deprecated Use "grey" (default) or "dark". "green" maps to grey. */
+  variant?: "green" | "grey" | "dark";
 };
 
 export function PageCTAStrip({
   heading = "Ready to keep the greater share of every NSA IDR award?",
   primaryOnly = false,
-  variant = "green",
+  variant = "grey",
 }: PageCTAStripProps) {
-  const bg =
-    variant === "green"
-      ? "linear-gradient(135deg, #00542A 0%, #00843D 100%)"
-      : "#001A0A";
+  const sectionClass =
+    variant === "dark" ? "py-12 sm:py-16 bg-kronos-bg" : "py-12 sm:py-16 bg-kronos-gray-800";
 
   return (
-    <section
-      className="py-12 sm:py-16"
-      style={{ background: bg }}
-      aria-labelledby="page-cta-heading"
-    >
+    <section className={sectionClass} aria-labelledby="page-cta-heading">
       <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
         <h2
           id="page-cta-heading"
@@ -34,7 +29,7 @@ export function PageCTAStrip({
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <Link
             href={CTA.caseReview.href}
-            className="inline-flex items-center justify-center gap-3 bg-white text-[#00542A] py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-bold hover:bg-white/95 hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px] w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-3 bg-white text-kronos-gray-900 py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-bold hover:bg-white/95 hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px] w-full sm:w-auto"
             aria-label={CTA.caseReview.ariaLabel}
           >
             {CTA.caseReview.label}
@@ -43,7 +38,7 @@ export function PageCTAStrip({
           {!primaryOnly && (
             <Link
               href={CTA.consultation.href}
-              className="inline-flex items-center justify-center gap-3 border border-white/50 text-white py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-light hover:bg-white/10 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px] w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-3 border border-white/40 text-white/90 py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-light hover:bg-white/10 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px] w-full sm:w-auto"
               aria-label={CTA.consultation.ariaLabel}
             >
               {CTA.consultation.label}

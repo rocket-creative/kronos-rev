@@ -48,7 +48,7 @@ export default function Nav() {
 
   const linkClass = (href: string) =>
     `font-body text-xs uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan min-h-[44px] inline-flex items-center whitespace-nowrap ${
-      pathname === href ? "text-gray-900 font-medium" : "text-gray-500 hover:text-gray-900"
+      pathname === href ? "text-gray-900 font-medium" : "text-gray-600 hover:text-gray-900"
     }`;
 
   return (
@@ -85,7 +85,7 @@ export default function Nav() {
               <button
                 ref={menuButtonRef}
                 type="button"
-                className="flex items-center justify-center w-11 h-11 text-gray-500 hover:text-gray-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white select-none"
+                className="flex items-center justify-center w-11 h-11 text-gray-600 hover:text-gray-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white select-none"
                 onClick={() => setMobileMenuOpen(true)}
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-menu-overlay"
@@ -227,7 +227,7 @@ export default function Nav() {
                 href={KRONOS_HEALTH_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body text-xs text-gray-400 hover:text-gray-600 uppercase tracking-widest min-h-[44px] inline-flex items-center"
+                className="font-body text-xs text-gray-500 hover:text-gray-700 uppercase tracking-widest min-h-[44px] inline-flex items-center"
               >
                 ← Kronos Health
               </a>

@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { ReviewHighlight } from "@/components/ReviewHighlight";
-
 type MedicallyReviewedBlockProps = {
   variant?: "light" | "dark";
   lastReviewed?: string;
@@ -21,21 +19,19 @@ export function MedicallyReviewedBlock({
     >
       <p
         className={`font-body text-sm font-light leading-relaxed ${
-          isDark ? "text-white/70" : "text-gray-600"
+          isDark ? "text-white/80" : "text-gray-700"
         }`}
       >
-        <ReviewHighlight>
-          Medically reviewed by{" "}
-          <Link
-            href="/team#person-john-abrahams"
-            className={`underline underline-offset-2 hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan ${
-              isDark ? "text-kronos-cyan" : "text-kronos-green-dark"
-            }`}
-          >
-            Dr. John M. Abrahams, MD
-          </Link>
-          , board certified neurosurgeon and founder of Kronos Health. Last reviewed: {lastReviewed}.
-        </ReviewHighlight>
+        Medically reviewed by{" "}
+        <Link
+          href="/team#person-john-abrahams"
+          className={`underline underline-offset-2 hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan ${
+            isDark ? "text-kronos-cyan" : "text-kronos-green-dark"
+          }`}
+        >
+          Dr. John M. Abrahams, MD
+        </Link>
+        , board certified neurosurgeon and founder of Kronos Health. Last reviewed: {lastReviewed}.
       </p>
     </aside>
   );

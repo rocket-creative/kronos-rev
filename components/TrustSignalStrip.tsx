@@ -1,5 +1,3 @@
-import { ReviewHighlight } from "@/components/ReviewHighlight";
-
 type TrustSignalStripProps = {
   variant?: "hero" | "cta";
 };
@@ -24,10 +22,10 @@ export function TrustSignalStrip({ variant = "hero" }: TrustSignalStripProps) {
         <li
           key={signal}
           className={`font-body text-[10px] sm:text-xs uppercase tracking-widest ${
-            isHero ? "text-white/50" : "text-white/70"
+            isHero ? "text-white/60" : "text-white/80"
           }`}
         >
-          <ReviewHighlight>{signal}</ReviewHighlight>
+          {signal}
         </li>
       ))}
     </ul>

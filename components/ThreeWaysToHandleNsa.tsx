@@ -17,7 +17,7 @@ export function ThreeWaysToHandleNsa({
     <div className={bg}>
       {showIntro && (
         <header className="mb-8 sm:mb-10 max-w-3xl">
-          <p className="font-body text-xs uppercase tracking-widest text-gray-400 mb-3">
+          <p className="font-body text-xs uppercase tracking-widest text-gray-600 mb-3">
             Choose your path
           </p>
           <h2 id="three-ways-heading" className="font-heading text-2xl sm:text-3xl text-gray-900 mb-4">
@@ -52,7 +52,7 @@ export function ThreeWaysToHandleNsa({
             <p className="font-body text-sm text-gray-600 font-light leading-relaxed mb-4 flex-1">
               {tier.description}
             </p>
-            <p className="font-body text-xs text-gray-500 font-light mb-6">{tier.fit}</p>
+            <p className="font-body text-xs text-gray-600 font-light mb-6">{tier.fit}</p>
             {tier.external ? (
               <a
                 href={tier.href}

@@ -52,13 +52,13 @@ export default function ResultsPage() {
         <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {RESULT_METRICS.map(({ label, value, source, href }) => (
             <div key={label} className="border border-gray-200 p-6">
-              <dt className="font-body text-xs uppercase tracking-widest text-gray-400 mb-2">
+              <dt className="font-body text-xs uppercase tracking-widest text-gray-600 mb-2">
                 {label}
               </dt>
               <dd className="font-heading text-2xl sm:text-3xl text-kronos-green-dark mb-2">
                 {value}
               </dd>
-              <dd className="font-body text-xs text-gray-500 font-light mb-2">{source}</dd>
+              <dd className="font-body text-xs text-gray-600 font-light mb-2">{source}</dd>
               <a
                 href={href}
                 target="_blank"
@@ -76,7 +76,7 @@ export default function ResultsPage() {
         <h2 id="results-calculator-heading" className="font-heading text-2xl sm:text-3xl text-gray-900 mb-2">
           What is your practice leaving on the table?
         </h2>
-        <p className="font-body text-sm text-gray-500 font-light mb-8 max-w-2xl">
+        <p className="font-body text-sm text-gray-600 font-light mb-8 max-w-2xl">
           Uses CMS win rates and Georgetown CHIR median award benchmarks. Not a Kronos performance
           claim.
         </p>
@@ -91,7 +91,7 @@ export default function ResultsPage() {
         >
           Case illustrations
         </ReviewHeading>
-        <p className="font-body text-xs text-gray-500 mb-8">
+        <p className="font-body text-xs text-gray-600 mb-8">
           CPT codes, specialty, outcome mechanism. No patient names without consent.
         </p>
         <div className="space-y-8 max-w-4xl">
