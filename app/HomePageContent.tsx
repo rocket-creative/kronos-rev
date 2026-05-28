@@ -335,7 +335,13 @@ export default function HomePageContent() {
             </li>
           </ul>
           <div className="bg-white border border-gray-200 p-6 sm:p-8">
-            <ClaimReviewForm />
+            <h3 className="font-heading text-xl sm:text-2xl text-gray-900 mb-2">
+              Request your review
+            </h3>
+            <p className="font-body text-gray-500 text-xs mb-6">
+              Fields marked with <span className="text-kronos-cyan">*</span> are required.
+            </p>
+            <ClaimReviewForm variant="light" />
           </div>
         </div>
       </section>
@@ -407,28 +413,27 @@ export default function HomePageContent() {
 
       <section
         id="contact"
-        className="py-12 sm:py-16 lg:py-24"
-        style={{ background: "linear-gradient(135deg, #00542A 0%, #00843D 100%)" }}
+        className="py-12 sm:py-16 lg:py-24 bg-kronos-gray-800"
         aria-labelledby="cta-heading"
       >
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
           <h2 id="cta-heading" className="font-heading text-2xl sm:text-3xl text-white mb-4">
             {CTA.caseReview.label}
           </h2>
-          <p className="font-body text-sm text-white/80 font-light mb-8 max-w-xl mx-auto">
+          <p className="font-body text-sm text-white/60 font-light mb-8 max-w-xl mx-auto">
             {HERO_CTA_SUBLABEL}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href={CTA.caseReview.href}
-              className="inline-flex items-center justify-center gap-3 bg-white text-[#00542A] py-3 px-8 uppercase tracking-widest text-xs font-bold min-h-[48px]"
+              className="inline-flex items-center justify-center gap-3 bg-white text-kronos-gray-900 py-3 px-8 uppercase tracking-widest text-xs font-bold min-h-[48px] hover:bg-white/95 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               Request your free IDR review
               <ArrowRight className="w-3 h-3" aria-hidden="true" />
             </Link>
             <a
               href={`tel:${PHONE_TEL}`}
-              className="inline-flex items-center justify-center border border-white/50 text-white py-3 px-8 uppercase tracking-widest text-xs font-light min-h-[48px]"
+              className="inline-flex items-center justify-center border border-white/40 text-white/90 py-3 px-8 uppercase tracking-widest text-xs font-light min-h-[48px] hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               {PHONE_DISPLAY}
             </a>

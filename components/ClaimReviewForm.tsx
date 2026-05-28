@@ -47,14 +47,14 @@ function getFormStyles(variant: FormVariant) {
       ? "w-full h-12 bg-white border border-gray-200 px-4 text-gray-900 placeholder:text-gray-400 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors"
       : "w-full h-12 bg-black/20 border border-white/10 px-4 text-white placeholder:text-white/40 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors",
     select: isLight
-      ? "w-full h-12 bg-white border border-gray-200 px-4 text-base text-gray-900 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors appearance-none"
-      : "w-full h-12 bg-kronos-bg border border-white/10 px-4 text-base text-white font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors appearance-none",
+      ? "w-full h-12 bg-white border border-gray-200 px-4 text-base text-gray-900 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors"
+      : "w-full h-12 bg-black/20 border border-white/10 px-4 text-base text-white font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors",
     textarea: isLight
       ? "w-full bg-white border border-gray-200 px-4 py-3 text-gray-900 placeholder:text-gray-400 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors resize-none"
       : "w-full bg-black/20 border border-white/10 px-4 py-3 text-white placeholder:text-white/40 font-body font-light focus:outline-none focus:border-kronos-cyan transition-colors resize-none",
     label: isLight
-      ? "block font-body text-xs text-gray-600 uppercase tracking-widest mb-1.5"
-      : "block font-body text-xs text-white/60 uppercase tracking-widest mb-1.5",
+      ? "block font-body text-xs text-gray-700 uppercase tracking-widest mb-1.5"
+      : "block font-body text-xs text-white/80 uppercase tracking-widest mb-1.5",
     error: isLight ? "text-red-600 text-xs mt-1" : "text-red-400 text-xs mt-1",
     radioLabel: isLight
       ? "font-body text-sm text-gray-700 group-hover:text-gray-900 transition-colors leading-snug"
@@ -330,7 +330,7 @@ function ClaimReviewFormInner({ variant }: { variant: FormVariant }) {
             ))}
           </select>
           {fieldErrors.state && (
-            <p className={styles.error} role="alert">
+            <p id="cr-state-error" className={styles.error} role="alert">
               {fieldErrors.state}
             </p>
           )}
@@ -360,10 +360,16 @@ function ClaimReviewFormInner({ variant }: { variant: FormVariant }) {
           </select>
         </div>
         <div>
-          <label className={styles.label}>
+          <label htmlFor="cr-arrangement" className={styles.label}>
             Current IDR arrangement <span className="text-kronos-cyan" aria-hidden="true">*</span>
           </label>
-          <select name="current_handling" required className={styles.select} defaultValue="">
+          <select
+            id="cr-arrangement"
+            name="current_handling"
+            required
+            className={styles.select}
+            defaultValue=""
+          >
             <option value="" disabled>
               Select arrangement
             </option>
@@ -417,7 +423,7 @@ function ClaimReviewFormInner({ variant }: { variant: FormVariant }) {
   );
 }
 
-export function ClaimReviewForm({ variant = "dark" }: { variant?: FormVariant }) {
+export function ClaimReviewForm({ variant = "light" }: { variant?: FormVariant }) {
   return (
     <Suspense fallback={<p className={getFormStyles(variant).loadingText}>Loading form…</p>}>
       <ClaimReviewFormInner variant={variant} />
