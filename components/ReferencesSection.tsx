@@ -25,7 +25,7 @@ export function ReferencesSection({
   return (
     <section
       id={id}
-      className={isDark ? "bg-kronos-bg" : "bg-gray-50"}
+      className={isDark ? "bg-kronos-bg" : "bg-kronos-gray-200"}
       aria-labelledby={`${id}-heading`}
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-10 sm:py-12">

@@ -13,7 +13,7 @@ export function MedicallyReviewedBlock({
   return (
     <aside
       className={`p-4 sm:p-5 border ${
-        isDark ? "border-white/15 bg-white/5" : "border-gray-200 bg-gray-50"
+        isDark ? "border-white/15 bg-white/5" : "border-kronos-gray-300 bg-white"
       }`}
       aria-label="Medical review attribution"
     >

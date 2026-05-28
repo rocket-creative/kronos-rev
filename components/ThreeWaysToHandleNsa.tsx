@@ -11,7 +11,7 @@ export function ThreeWaysToHandleNsa({
   variant = "light",
   showIntro = true,
 }: ThreeWaysToHandleNsaProps) {
-  const bg = variant === "neutral" ? "bg-gray-50" : "bg-white";
+  const bg = variant === "neutral" ? "bg-kronos-gray-200" : "bg-white";
 
   return (
     <div className={bg}>

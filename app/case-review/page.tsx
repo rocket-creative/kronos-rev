@@ -92,7 +92,7 @@ export default function CaseReviewPage() {
             </div>
 
             <div className="lg:col-span-5">
-              <div className="border border-gray-200 bg-gray-50 p-6 sm:p-8 lg:sticky lg:top-28">
+              <div className="border border-kronos-gray-300 bg-kronos-gray-200 p-6 sm:p-8 lg:sticky lg:top-28">
                 <h2 className="font-heading text-xl text-gray-900 mb-4">Direct contact</h2>
                 <p className="font-body text-gray-600 text-sm font-light mb-6">
                   Phone: (914) 705 6830 · Hours: 9 to 5 ET, Monday through Friday
@@ -147,7 +147,7 @@ export default function CaseReviewPage() {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-12 sm:py-16" aria-labelledby="case-review-faq-heading">
+      <section className="bg-kronos-gray-200 py-12 sm:py-16" aria-labelledby="case-review-faq-heading">
         <div className={PAGE_CONTAINER}>
           <FAQSection
             heading="Pre submission FAQ"

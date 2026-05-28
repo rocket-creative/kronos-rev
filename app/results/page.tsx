@@ -51,7 +51,7 @@ export default function ResultsPage() {
         </ReviewHeading>
         <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {RESULT_METRICS.map(({ label, value, source, href }) => (
-            <div key={label} className="border border-gray-200 p-6">
+            <div key={label} className="border border-kronos-gray-300 bg-white p-6 shadow-sm">
               <dt className="font-body text-xs uppercase tracking-widest text-gray-600 mb-2">
                 {label}
               </dt>

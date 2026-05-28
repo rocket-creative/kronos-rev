@@ -60,7 +60,7 @@ function getFormStyles(variant: FormVariant) {
       ? "font-body text-sm text-gray-700 group-hover:text-gray-900 transition-colors leading-snug"
       : "font-body text-sm text-white/70 group-hover:text-white transition-colors leading-snug",
     successBox: isLight
-      ? "bg-gray-50 border border-gray-200 p-8 text-center"
+      ? "bg-white border border-kronos-gray-300 p-8 text-center"
       : "bg-black/20 p-8 text-center",
     successTitle: isLight ? "font-heading text-2xl text-gray-900 mb-2" : "font-heading text-2xl text-white mb-2",
     successBody: isLight

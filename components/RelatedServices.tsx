@@ -21,7 +21,7 @@ export function RelatedServices({
 
   return (
     <section
-      className={isLight ? "bg-gray-50 border-t border-gray-200" : "bg-kronos-bg border-t border-white/10"}
+      className={isLight ? "bg-kronos-gray-200 border-t border-kronos-gray-300" : "bg-kronos-bg border-t border-white/10"}
       aria-labelledby="related-services-heading"
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-10">

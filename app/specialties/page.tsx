@@ -41,7 +41,7 @@ export default function SpecialtiesPage() {
       bottomCtaHeading="Get a free NSA IDR review for your specialty"
     >
       <MarketingSection variant="white" labelledById="specialty-index">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10 border border-gray-200 p-6 bg-gray-50">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10 border border-kronos-gray-300 p-6 bg-white shadow-sm">
           <p className="font-body text-sm text-gray-600 font-light">
             Tier 1: Download the NSA IDR checklist before you file.
           </p>

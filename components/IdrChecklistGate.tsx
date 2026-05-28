@@ -72,7 +72,7 @@ export function IdrChecklistGate() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md border border-gray-200 p-6 sm:p-8 bg-gray-50">
+    <form onSubmit={handleSubmit} className="max-w-md border border-kronos-gray-300 p-6 sm:p-8 bg-white shadow-sm">
       <label htmlFor="checklist-email" className="block font-body text-xs uppercase tracking-widest text-gray-600 mb-2">
         Work email
       </label>

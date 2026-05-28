@@ -57,7 +57,7 @@ export function PrimarySpecialties({
               <>
                 <div
                   className={`w-10 h-10 flex items-center justify-center mb-3 ${
-                    isDark ? "bg-kronos-cyan/10" : "bg-gray-100"
+                    isDark ? "bg-kronos-cyan/10" : "bg-kronos-gray-200"
                   }`}
                 >
                   <Icon
@@ -84,7 +84,7 @@ export function PrimarySpecialties({
                     className={`block p-4 border transition-colors min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan ${
                       isDark
                         ? "border-white/10 hover:border-kronos-cyan/50 hover:bg-white/5"
-                        : "border-gray-200 hover:border-kronos-cyan hover:bg-gray-50"
+                        : "border-kronos-gray-300 hover:border-kronos-cyan hover:bg-white"
                     }`}
                   >
                     {content}

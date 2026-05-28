@@ -170,7 +170,7 @@ export default function HomePageContent() {
               , Board Certified Neurosurgeon, Founder, Kronos Health
             </p>
           </div>
-          <div className="relative aspect-[4/5] max-w-md mx-auto lg:mx-0 bg-gray-100">
+          <div className="relative aspect-[4/5] max-w-md mx-auto lg:mx-0 bg-kronos-gray-200">
             <Image
               src="/hero.jpg"
               alt="Dr. John M. Abrahams, MD, board certified neurosurgeon and founder of Kronos Health"
@@ -182,7 +182,7 @@ export default function HomePageContent() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 lg:py-24 bg-gray-50" aria-labelledby="math-heading">
+      <section className="py-12 sm:py-16 lg:py-24 bg-kronos-gray-200" aria-labelledby="math-heading">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 mb-10">
           <h2 id="math-heading" className="font-heading text-2xl sm:text-3xl text-gray-900 mb-4">
             What 20% of every award actually costs over time.
@@ -224,7 +224,7 @@ export default function HomePageContent() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50" aria-labelledby="batching-heading">
+      <section className="py-12 sm:py-16 lg:py-20 bg-kronos-gray-200" aria-labelledby="batching-heading">
         <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12">
           <h2 id="batching-heading" className="font-heading text-2xl sm:text-3xl text-gray-900 mb-6">
             Why attorneys lose IDR cases.
@@ -261,7 +261,7 @@ export default function HomePageContent() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 bg-gray-50" aria-labelledby="sydra-bridge-heading">
+      <section className="py-12 sm:py-16 bg-kronos-gray-200" aria-labelledby="sydra-bridge-heading">
         <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
           <p className="font-body text-xs uppercase tracking-widest text-gray-600 mb-3">
             Part of Kronos Health
@@ -313,7 +313,7 @@ export default function HomePageContent() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 lg:py-24 bg-gray-50" aria-labelledby="review-offer-heading">
+      <section className="py-12 sm:py-16 lg:py-24 bg-kronos-gray-200" aria-labelledby="review-offer-heading">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <h2 id="review-offer-heading" className="font-heading text-2xl sm:text-3xl text-gray-900 mb-6">
             What you actually get on a free IDR review.
@@ -334,7 +334,7 @@ export default function HomePageContent() {
               that. No contract on the first call.
             </li>
           </ul>
-          <div className="bg-white border border-gray-200 p-6 sm:p-8">
+          <div className="bg-white border border-kronos-gray-300 p-6 sm:p-8 shadow-sm">
             <h3 className="font-heading text-xl sm:text-2xl text-gray-900 mb-2">
               Request your review
             </h3>

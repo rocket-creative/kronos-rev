@@ -47,6 +47,18 @@
   --color-kronos-lavender: var(--kronos-lavender);
   --color-kronos-green: var(--kronos-green);
 
+  /* Map Tailwind gray utilities to Kronos palette (avoids missing/default gray in v4 theme). */
+  --color-gray-50: var(--kronos-gray-100);
+  --color-gray-100: var(--kronos-gray-100);
+  --color-gray-200: var(--kronos-gray-200);
+  --color-gray-300: var(--kronos-gray-300);
+  --color-gray-400: var(--kronos-gray-400);
+  --color-gray-500: var(--kronos-gray-500);
+  --color-gray-600: var(--kronos-gray-600);
+  --color-gray-700: var(--kronos-gray-700);
+  --color-gray-800: var(--kronos-gray-800);
+  --color-gray-900: var(--kronos-gray-900);
+
   --font-heading: var(--font-bebas-neue);
   --font-body: var(--font-ibm-plex-sans);
   --font-nav: var(--font-open-sans);

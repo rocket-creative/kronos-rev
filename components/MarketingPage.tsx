@@ -207,7 +207,7 @@ export function MarketingSection({
     variant === "white"
       ? "bg-white"
       : variant === "neutral"
-        ? "bg-gray-50"
+        ? "bg-kronos-gray-200"
         : "bg-[#001A0A] text-white";
 
   return (
@@ -227,7 +227,7 @@ export function SydraCrossLink({ variant = "light" }: { variant?: "light" | "dar
   return (
     <div
       className={`p-6 sm:p-8 border ${
-        isDark ? "border-white/15 bg-white/5" : "border-gray-200 bg-gray-50"
+        isDark ? "border-white/15 bg-white/5" : "border-kronos-gray-300 bg-white"
       }`}
     >
       <p

@@ -88,7 +88,7 @@ export default function HowWeWorkPage() {
       bottomCtaHeading="Get a free NSA IDR review"
     >
       <MarketingSection variant="white" labelledById="checklist-cta">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border border-gray-200 p-6 bg-gray-50">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border border-kronos-gray-300 p-6 bg-white shadow-sm">
           <p className="font-body text-sm text-gray-600 font-light">
             Download the NSA IDR filing checklist before you initiate a dispute.
           </p>
