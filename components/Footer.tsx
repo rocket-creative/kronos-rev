@@ -10,7 +10,6 @@ import {
 import { CTA } from "@/lib/ctas";
 import { MOBILE_CTA_CLEARANCE, PAGE_CONTAINER } from "@/lib/layout";
 import {
-  EMAIL,
   KRONOS_HEALTH_URL,
   LINKEDIN_URL,
   OFFICE_ADDRESS,
@@ -160,14 +159,13 @@ export default function Footer() {
                   {PHONE_DISPLAY}
                 </a>
               </p>
-              <p>
-                <a
-                  href={`mailto:${EMAIL}`}
+              <p className="pt-2">
+                <Link
+                  href="/case-review#form"
                   className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                  aria-label={`Email us at ${EMAIL}`}
                 >
-                  {EMAIL}
-                </a>
+                  Request a free IDR review
+                </Link>
               </p>
             </address>
 

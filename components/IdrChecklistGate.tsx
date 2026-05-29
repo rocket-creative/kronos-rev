@@ -24,7 +24,7 @@ export function IdrChecklistGate() {
         }),
       });
       if (!res.ok) {
-        setError("Something went wrong. Email intake@kronosrevenue.com for the checklist.");
+        setError("Something went wrong. Please try again or call (914) 705 6830.");
         return;
       }
       setUnlocked(true);

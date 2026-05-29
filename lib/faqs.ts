@@ -221,7 +221,7 @@ export const CONTACT_FAQS: FaqItem[] = [
   {
     question: "How do I request a free case review?",
     answer:
-      "Use the form on this page, call (914) 705 6830, or email intake@kronosrevenue.com. We respond within one business day.",
+      "Use the form on this page or call (914) 705 6830. We respond within one business day.",
   },
   {
     question: "What should I prepare for the first call?",

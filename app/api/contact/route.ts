@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { Resend } from "resend";
-import { INTAKE_EMAIL, SALES_EMAIL } from "@/lib/site";
+import { CONTACT_EMAIL, FROM_EMAIL } from "@/lib/site";
 
 const UtmSchema = z
   .object({
@@ -335,7 +335,7 @@ function buildContactEmail(d: z.infer<typeof ContactSchema>) {
   const label = isSydra ? "Sydra Beta Waitlist" : "Case Review Request";
   return {
     subject: isSydra
-      ? `[Sydra] Beta Waitlist — ${d.organization} — ${d.name}`
+      ? `[Kronos Revenue] Sydra Beta Waitlist — ${d.organization} — ${d.name}`
       : `[Kronos Revenue] Case Review Request — ${d.organization} — ${d.name}`,
     text: [
       header(label),
@@ -372,7 +372,7 @@ export async function POST(request: NextRequest) {
     let emailPayload: { subject: string; text: string };
     let replyTo: string;
 
-    let toEmail = INTAKE_EMAIL;
+    const toEmail = CONTACT_EMAIL;
 
     if (formType === "idr_checklist") {
       const p = ChecklistSchema.safeParse(body);
@@ -383,7 +383,6 @@ export async function POST(request: NextRequest) {
         );
       emailPayload = buildChecklistEmail(p.data);
       replyTo = p.data.email;
-      toEmail = SALES_EMAIL;
     } else if (formType === "nsa_dispute") {
       const p = NSADisputeSchema.safeParse(body);
       if (!p.success)
@@ -429,7 +428,6 @@ export async function POST(request: NextRequest) {
         );
       emailPayload = buildClaimReviewEmail(p.data);
       replyTo = p.data.email;
-      toEmail = SALES_EMAIL;
     } else {
       const p = ContactSchema.safeParse(body);
       if (!p.success)
@@ -443,7 +441,7 @@ export async function POST(request: NextRequest) {
 
     const resend = new Resend(apiKey);
     const { error: sendError } = await resend.emails.send({
-      from: "Kronos Revenue <noreply@kronoshealth.co>",
+      from: FROM_EMAIL,
       to: [toEmail],
       replyTo,
       subject: emailPayload.subject,

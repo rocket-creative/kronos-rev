@@ -25,7 +25,7 @@ export default function FaqPage() {
       bottomCta={false}
       eyebrow="NSA · Federal IDR"
       h1="Questions about Kronos Revenue. Answered the way a specialist would answer them."
-      intro="These are the questions practices actually ask before switching. If your question is not here, call (914) 705 6830 or email intake@kronosrevenue.com."
+      intro="These are the questions practices actually ask before switching. If your question is not here, call (914) 705 6830 or use the form on our free review page."
     >
       <FAQPageSchema items={ALL_FAQS} />
 

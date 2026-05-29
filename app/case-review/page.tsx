@@ -14,7 +14,7 @@ import { breadcrumbItems, mainNavLinks } from "@/lib/navigation";
 import { FREE_CLAIM_FAQS } from "@/lib/faqs";
 import { PAGE_SEO } from "@/lib/page-seo";
 import { PAGE_CONTAINER } from "@/lib/layout";
-import { EMAIL, OFFICE_ADDRESS, PHONE_DISPLAY, PHONE_TEL, SALES_EMAIL } from "@/lib/site";
+import { OFFICE_ADDRESS, PHONE_DISPLAY, PHONE_TEL } from "@/lib/site";
 
 export const metadata: Metadata = createPageMetadata({
   title: PAGE_SEO.caseReview.title,
@@ -85,7 +85,7 @@ export default function CaseReviewPage() {
                 <h2 className="font-heading text-2xl text-gray-900 mb-2">Request your review</h2>
                 <p className="font-body text-gray-600 text-xs mb-6">
                   Fields marked with <span className="text-kronos-cyan">*</span> are required. Attach
-                  EOBs through the form or email {SALES_EMAIL}.
+                  EOBs through the form.
                 </p>
                 <ClaimReviewForm variant="light" />
               </div>
@@ -105,26 +105,6 @@ export default function CaseReviewPage() {
                     <dd>
                       <a href={`tel:${PHONE_TEL}`} className="font-body text-gray-900 hover:text-kronos-cyan">
                         {PHONE_DISPLAY}
-                      </a>
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="font-body text-xs uppercase tracking-widest text-gray-600 mb-1">
-                      Email
-                    </dt>
-                    <dd>
-                      <a href={`mailto:${SALES_EMAIL}`} className="font-body text-gray-900 hover:text-kronos-cyan">
-                        {SALES_EMAIL}
-                      </a>
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="font-body text-xs uppercase tracking-widest text-gray-600 mb-1">
-                      Intake
-                    </dt>
-                    <dd>
-                      <a href={`mailto:${EMAIL}`} className="font-body text-gray-900 hover:text-kronos-cyan">
-                        {EMAIL}
                       </a>
                     </dd>
                   </div>
