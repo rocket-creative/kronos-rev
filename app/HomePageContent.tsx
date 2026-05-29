@@ -15,7 +15,7 @@ import { useHeroAnimation } from "@/components/animations";
 import { MedicallyReviewedBlock } from "@/components/MedicallyReviewedBlock";
 import { CTA } from "@/lib/ctas";
 import { PHONE_DISPLAY, PHONE_TEL, SYDRA_URL } from "@/lib/site";
-import { HERO_H1, HERO_SUBHEAD } from "@/lib/hero-copy";
+import { HERO_H1, HERO_SUBHEAD, HERO_CTA_SUBLABEL } from "@/lib/hero-copy";
 import { HOME_STAT_BAR } from "@/lib/home-stats";
 
 export default function HomePageContent() {
