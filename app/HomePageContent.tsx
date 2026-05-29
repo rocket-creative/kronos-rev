@@ -87,7 +87,7 @@ export default function HomePageContent() {
                 ))}
               </div>
 
-              <div data-hero-cta className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-2">
+              <div data-hero-cta className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10 mb-4 sm:mb-6">
                 <Link
                   href={CTA.heroCaseReview.href}
                   className="inline-flex items-center justify-center gap-3 bg-kronos-cyan text-kronos-bg py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-bold hover:opacity-90 hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px]"
