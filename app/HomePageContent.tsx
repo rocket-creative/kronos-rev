@@ -35,7 +35,7 @@ export default function HomePageContent() {
       >
         <div data-hero-image className="absolute inset-0" aria-hidden="true">
           <Image
-            src="/hero.jpg"
+            src="/hero-bg.jpg"
             alt=""
             fill
             priority
