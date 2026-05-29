@@ -7,7 +7,7 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import { LogoImage } from "@/components/LogoImage";
 import { useNavScrollEffect } from "@/components/animations";
 import { headerNavLinks, mainNavLinks } from "@/lib/navigation";
-import { PAGE_CONTAINER_WIDE } from "@/lib/layout";
+import { PAGE_CONTAINER_WIDE, SHELL_MAX } from "@/lib/layout";
 import { CTA } from "@/lib/ctas";
 import { KRONOS_HEALTH_URL, SYDRA_URL } from "@/lib/site";
 
@@ -55,7 +55,7 @@ export default function Nav() {
     <>
       <header
         ref={navRef}
-        className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm pt-safe-top"
+        className={`fixed top-0 left-0 right-0 mx-auto w-full ${SHELL_MAX} z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm pt-safe-top`}
       >
         <nav className={PAGE_CONTAINER_WIDE} aria-label="Main navigation">
           {/* Mobile / tablet: single row */}

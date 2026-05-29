@@ -3,11 +3,12 @@
 import Link from "next/link";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/site";
 import { CTA } from "@/lib/ctas";
+import { SHELL_MAX } from "@/lib/layout";
 
 export function MobileStickyCTA() {
   return (
     <div
-      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 pb-safe-bottom"
+      className={`lg:hidden fixed bottom-0 left-0 right-0 mx-auto w-full ${SHELL_MAX} z-40 pb-safe-bottom`}
       role="complementary"
       aria-label="Call to action"
     >

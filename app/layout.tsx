@@ -6,7 +6,7 @@ import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 import { PageTransition } from "@/components/animations";
 import SkipLink from "@/components/SkipLink";
 import { createPageMetadata } from "@/lib/metadata";
-import { MAIN_TOP_OFFSET, MOBILE_CTA_CLEARANCE } from "@/lib/layout";
+import { MAIN_TOP_OFFSET, MOBILE_CTA_CLEARANCE, SHELL_MAX } from "@/lib/layout";
 import { PAGE_SEO } from "@/lib/page-seo";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -71,19 +71,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bebasNeue.variable} ${ibmPlexSans.variable} ${openSans.variable} antialiased bg-white text-kronos-text-dark`}
+        className={`${bebasNeue.variable} ${ibmPlexSans.variable} ${openSans.variable} antialiased bg-kronos-frame text-kronos-text-dark`}
       >
         <SkipLink />
-        <Nav />
-        <main
-          id="main-content"
-          className={`${MAIN_TOP_OFFSET} ${MOBILE_CTA_CLEARANCE} scroll-mt-28`}
-          role="main"
+        <div
+          className={`relative mx-auto w-full ${SHELL_MAX} min-h-dvh bg-white shadow-[0_0_50px_rgba(0,0,0,0.12)]`}
         >
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
-        <MobileStickyCTA />
+          <Nav />
+          <main
+            id="main-content"
+            className={`${MAIN_TOP_OFFSET} ${MOBILE_CTA_CLEARANCE} scroll-mt-28`}
+            role="main"
+          >
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <Footer />
+          <MobileStickyCTA />
+        </div>
       </body>
     </html>
   );

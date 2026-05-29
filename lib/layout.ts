@@ -1,3 +1,8 @@
+/** Magazine shell: fixed-width white page centered over the muted body frame.
+ *  Width sourced from --shell-max in globals.css so fixed elements (nav, sticky
+ *  CTA) stay aligned with the page edges. */
+export const SHELL_MAX = "max-w-[var(--shell-max)]";
+
 /** Mobile-first page gutters (375px floor = px-5 / 20px each side). */
 export const PAGE_GUTTERS = "px-5 sm:px-8 lg:px-12 xl:px-16";
 

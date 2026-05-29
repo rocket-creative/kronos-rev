@@ -22,6 +22,10 @@
   --kronos-text-dark: #171717;
   --kronos-lavender: #D4B8E8;
   --kronos-green: #00843D;
+
+  /* Magazine shell: fixed-width white page centered over a muted frame. */
+  --kronos-frame: #E9E7E2;
+  --shell-max: 1440px;
 }
 
 @theme inline {
@@ -46,6 +50,7 @@
   --color-kronos-text-dark: var(--kronos-text-dark);
   --color-kronos-lavender: var(--kronos-lavender);
   --color-kronos-green: var(--kronos-green);
+  --color-kronos-frame: var(--kronos-frame);
 
   /* Map Tailwind gray utilities to Kronos palette (avoids missing/default gray in v4 theme). */
   --color-gray-50: var(--kronos-gray-100);
@@ -108,7 +113,7 @@ html {
 }
 
 body {
-  background: var(--background);
+  background: var(--kronos-frame);
   color: var(--foreground);
   font-family: var(--font-body, 'IBM Plex Sans', system-ui, sans-serif);
   overflow-x: hidden;
