@@ -30,7 +30,7 @@ export default function HomePageContent() {
     <>
       <section
         ref={heroRef}
-        className="relative min-h-dvh overflow-hidden pt-safe-top bg-kronos-bg"
+        className="relative min-h-dvh lg:min-h-[640px] lg:h-[82vh] lg:max-h-[760px] overflow-hidden pt-safe-top bg-kronos-bg"
         aria-labelledby="hero-heading"
       >
         <div data-hero-image className="absolute inset-0" aria-hidden="true">
@@ -52,9 +52,9 @@ export default function HomePageContent() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 min-h-dvh flex items-center">
+        <div className="relative z-10 min-h-dvh lg:min-h-0 lg:h-full flex items-center">
           <div className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-0">
-            <div className="bg-white/5 border border-white/20 p-8 sm:p-10 lg:p-14 max-w-2xl">
+            <div className="bg-black/45 backdrop-blur-md border border-white/15 p-8 sm:p-10 lg:p-14 max-w-2xl shadow-2xl">
               <div data-hero-eyebrow className="mb-6 sm:mb-8">
                 <p className="font-body text-xs text-kronos-cyan uppercase tracking-widest mb-4">
                   No Surprises Act · Federal IDR
@@ -98,7 +98,7 @@ export default function HomePageContent() {
                 </Link>
                 <Link
                   href={CTA.howWeWork.href}
-                  className="inline-flex items-center justify-center gap-3 border border-white/40 text-white py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-light hover:bg-white/10 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px]"
+                  className="inline-flex items-center justify-center gap-3 border border-white/70 bg-white/5 text-white py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-normal hover:bg-white/15 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px]"
                   aria-label={CTA.howWeWork.ariaLabel}
                 >
                   {CTA.howWeWork.label}
