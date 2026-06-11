@@ -37,23 +37,23 @@ export default function HomePageContent() {
             priority
             quality={90}
             sizes="100vw"
-            className="object-cover object-[38%_28%] lg:object-[42%_26%]"
+            className="object-cover object-left lg:object-[38%_35%]"
           />
         </div>
         <div
-          className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent pointer-events-none"
+          className="absolute inset-0 bg-gradient-to-r from-white/30 via-transparent to-transparent pointer-events-none"
           aria-hidden="true"
         />
         <div
-          className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"
+          className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none"
           aria-hidden="true"
         />
 
         <div className="relative z-10 min-h-dvh lg:min-h-0 lg:h-full flex items-center">
           <div className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-0">
-            <div className="bg-black/45 backdrop-blur-md border border-white/15 p-8 sm:p-10 lg:p-14 max-w-2xl shadow-2xl">
+            <div className="bg-white/70 backdrop-blur-xl backdrop-saturate-150 border border-white/80 p-8 sm:p-10 lg:p-14 max-w-2xl shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
               <div data-hero-eyebrow className="mb-6 sm:mb-8">
-                <p className="font-body text-xs text-kronos-cyan uppercase tracking-widest mb-4">
+                <p className="font-body text-xs text-kronos-green-dark uppercase tracking-widest mb-4">
                   No Surprises Act · Federal IDR
                 </p>
                 <span className="sr-only">Kronos Revenue</span>
@@ -62,7 +62,8 @@ export default function HomePageContent() {
                     width={200}
                     textSize="text-2xl"
                     priority
-                    className="max-w-full brightness-0 invert"
+                    dark
+                    className="max-w-full"
                   />
                 </span>
               </div>
@@ -70,14 +71,14 @@ export default function HomePageContent() {
               <h1
                 data-hero-title
                 id="hero-heading"
-                className="font-heading text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white leading-tight mb-5 sm:mb-7"
+                className="font-heading text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-gray-900 leading-tight mb-5 sm:mb-7"
               >
                 {HERO_H1}
               </h1>
 
               <div
                 data-hero-description
-                className="font-body text-sm sm:text-base text-white/90 font-light leading-relaxed mb-6 sm:mb-8 space-y-3"
+                className="font-body text-sm sm:text-base text-gray-700 font-light leading-relaxed mb-6 sm:mb-8 space-y-3"
               >
                 {HERO_SUBHEAD.map((p) => (
                   <p key={p.slice(0, 40)}>{p}</p>
@@ -87,7 +88,7 @@ export default function HomePageContent() {
               <div data-hero-cta className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10 mb-4 sm:mb-6">
                 <Link
                   href={CTA.heroCaseReview.href}
-                  className="inline-flex items-center justify-center gap-3 bg-kronos-cyan text-kronos-bg py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-bold hover:opacity-90 hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px]"
+                  className="inline-flex items-center justify-center gap-3 bg-kronos-cyan text-kronos-bg py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-bold hover:opacity-90 hover:gap-5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan min-h-[48px]"
                   aria-label={CTA.heroCaseReview.ariaLabel}
                 >
                   {CTA.heroCaseReview.label}
@@ -95,7 +96,7 @@ export default function HomePageContent() {
                 </Link>
                 <Link
                   href={CTA.howWeWork.href}
-                  className="inline-flex items-center justify-center gap-3 border border-white/70 bg-white/5 text-white py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-normal hover:bg-white/15 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px]"
+                  className="inline-flex items-center justify-center gap-3 border border-gray-300 bg-white/60 text-gray-900 py-3 sm:py-4 px-6 sm:px-8 uppercase tracking-widest text-xs font-normal hover:bg-white/90 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan min-h-[48px]"
                   aria-label={CTA.howWeWork.ariaLabel}
                 >
                   {CTA.howWeWork.label}

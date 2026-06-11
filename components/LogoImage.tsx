@@ -33,7 +33,7 @@ export function LogoImage({
 
   return (
     <Image
-      src="/logo.svg"
+      src={dark ? "/kronos-rev-black.svg" : "/logo.svg"}
       alt="Kronos Revenue logo"
       width={width}
       height={height}
