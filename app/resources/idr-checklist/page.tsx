@@ -13,7 +13,7 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function IdrChecklistPage() {
   const crumbs = breadcrumbItems([
-    { name: "Resources", path: "/resources/idr-checklist" },
+    { name: "Resources", path: "/resources" },
     { name: "IDR Checklist", path: "/resources/idr-checklist" },
   ]);
 

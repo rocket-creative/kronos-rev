@@ -12,6 +12,7 @@ export const footerStateLinks = STATES.map((s) => ({
 }));
 
 export const footerResourceLinks = [
+  { href: "/resources", label: "All resources" },
   { href: "/what-is-idr", label: "What is federal IDR?" },
   { href: "/resources/idr-checklist", label: "NSA IDR checklist" },
   { href: "/resources/articles", label: "IDR articles" },

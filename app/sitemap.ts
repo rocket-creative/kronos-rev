@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/case-review`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.95 },
     { url: `${SITE_URL}/what-is-idr`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.95 },
     { url: `${SITE_URL}/sydra`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${SITE_URL}/resources`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.85 },
     { url: `${SITE_URL}/resources/articles`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.75 },
     { url: `${SITE_URL}/resources/idr-checklist`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.7 },
   ];

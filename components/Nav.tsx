@@ -46,10 +46,13 @@ export default function Nav() {
 
   const handleNavClick = () => setMobileMenuOpen(false);
 
-  const linkClass = (href: string) =>
-    `font-body text-xs uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan min-h-[44px] inline-flex items-center whitespace-nowrap ${
-      pathname === href ? "text-gray-900 font-medium" : "text-gray-600 hover:text-gray-900"
+  const linkClass = (href: string) => {
+    const isActive =
+      pathname === href || (href === "/resources" && pathname.startsWith("/resources"));
+    return `font-body text-xs uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-kronos-cyan min-h-[44px] inline-flex items-center whitespace-nowrap ${
+      isActive ? "text-gray-900 font-medium" : "text-gray-600 hover:text-gray-900"
     }`;
+  };
 
   return (
     <>

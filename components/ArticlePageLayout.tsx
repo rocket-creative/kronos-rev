@@ -28,7 +28,7 @@ export function ArticlePageLayout({ article }: ArticlePageProps) {
   const path = `/resources/articles/${article.slug}`;
   const pageUrl = absoluteUrl(path);
   const crumbs = breadcrumbItems([
-    { name: "Resources", path: "/resources/articles" },
+    { name: "Resources", path: "/resources" },
     { name: "Articles", path: "/resources/articles" },
     { name: article.title, path },
   ]);

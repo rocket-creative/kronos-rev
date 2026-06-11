@@ -22,6 +22,11 @@ export const mainNavLinks: NavLink[] = [
     ariaLabel: "NSA IDR Process",
   },
   { href: "/specialties", label: "Specialties" },
+  {
+    href: "/resources",
+    label: "Resources",
+    ariaLabel: "NSA IDR resources, guides, and articles",
+  },
   { href: "/results", label: "IDR Results" },
   { href: "/pricing", label: "Pricing" },
   { href: "/team", label: "Team" },

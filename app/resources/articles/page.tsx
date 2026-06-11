@@ -17,7 +17,10 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function ArticlesIndexPage() {
   const pageUrl = absoluteUrl("/resources/articles");
-  const crumbs = breadcrumbItems([{ name: "Articles", path: "/resources/articles" }]);
+  const crumbs = breadcrumbItems([
+    { name: "Resources", path: "/resources" },
+    { name: "Articles", path: "/resources/articles" },
+  ]);
 
   return (
     <div className="bg-stone-100 min-h-dvh">

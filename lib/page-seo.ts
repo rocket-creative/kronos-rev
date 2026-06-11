@@ -48,6 +48,11 @@ export const PAGE_SEO = {
     description:
       "Send us 3 to 5 EOBs. We review eligibility, calculate your IDR recovery potential, and compare it against your current arrangement. One business day. No commitment.",
   },
+  resources: {
+    title: "NSA IDR Resources — Guides, Checklist, and Articles | Kronos Revenue",
+    description:
+      "Free NSA IDR resources for surgical practices: federal IDR guide, filing checklist, and ten educational articles on deadlines, evidence, attorney fees, and state pathways.",
+  },
   idrChecklist: {
     title: "NSA IDR Checklist | Free IDR Filing Checklist | Kronos Revenue",
     description:

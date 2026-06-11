@@ -110,9 +110,17 @@ export default function HomePageContent() {
       <section className="py-6 bg-white border-b border-gray-100" aria-label="Early resources">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <p className="font-body text-sm text-gray-600 font-light">
-            New to federal IDR? Start with what IDR is, or download the filing checklist before you initiate a dispute.
+            New to federal IDR? Browse resources, start with what IDR is, or download the filing
+            checklist before you initiate a dispute.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <Link
+              href="/resources"
+              className="inline-flex items-center gap-2 text-kronos-green-dark uppercase tracking-widest text-xs font-bold hover:gap-3 transition-all"
+            >
+              All resources
+              <ArrowRight className="w-3 h-3" aria-hidden="true" />
+            </Link>
             <Link
               href="/what-is-idr"
               className="inline-flex items-center gap-2 text-kronos-green-dark uppercase tracking-widest text-xs font-bold hover:gap-3 transition-all"
