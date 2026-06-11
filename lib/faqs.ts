@@ -1,3 +1,6 @@
+import { IDR_PROCESS_FAQS } from "@/lib/education-faqs";
+import { IDR_TIMELINE_FAQ_ANSWER } from "@/lib/idr-timeline";
+
 export type FaqItem = {
   question: string;
   answer: string;
@@ -28,8 +31,7 @@ export const SCHEMA_HOME_FAQS: FaqItem[] = [
   },
   {
     question: "How long does the NSA IDR process take?",
-    answer:
-      "After open negotiation ends without agreement, either party has 30 business days to initiate IDR. The certified IDR entity has 30 business days to issue a payment determination. Kronos Revenue targets under 5 business days from EOB receipt to IDR portal submission.",
+    answer: IDR_TIMELINE_FAQ_ANSWER,
   },
   {
     question: "What states does Kronos Revenue support?",
@@ -44,7 +46,7 @@ export const SWITCHING_FAQS: FaqItem[] = [
   {
     question: "How does the handover from my attorney work?",
     answer:
-      "We handle transition documentation and coordinate in flight cases. Most NSA attorneys are happy to step back from IDR work — it is a low margin side practice for them.",
+      "We handle transition documentation and coordinate in flight cases. Most NSA attorneys are happy to step back from IDR work. It is a low margin side practice for them.",
   },
   {
     question: "Will my attorney push back?",
@@ -82,7 +84,7 @@ export const PRICING_FAQS: FaqItem[] = [
   {
     question: "How does Kronos pricing compare to a 20% attorney?",
     answer:
-      "Attorneys take twenty cents on every dollar you recover — indefinitely. We quote a consultative fee to your volume. Most clients keep about ninety cents per dollar won, not eighty — before counting IDR disputes we win that contingency firms lose.",
+      "Attorneys take twenty cents on every dollar you recover, indefinitely. We quote a consultative fee to your volume. Most clients keep about ninety cents per dollar won, not eighty, before counting IDR disputes we win that contingency firms lose.",
   },
 ];
 
@@ -151,7 +153,7 @@ export const RECOVERY_FAQS: FaqItem[] = [
   {
     question: "How is Kronos different from batched attorney filing?",
     answer:
-      "We file one claim per CPT code — the way federal IDR was designed. Batched filings are the most common reason generalist firms lose.",
+      "We file one claim per CPT code, the way federal IDR was designed. Batched filings are the most common reason generalist firms lose.",
   },
 ];
 
@@ -179,11 +181,12 @@ export const SECURITY_FAQS: FaqItem[] = [
   {
     question: "Is Sydra a better fit if we want to run claims in house?",
     answer:
-      "If your team wants to operate NSA IDR software themselves, Sydra offers the same specialty depth as a self serve platform — prep in under 5 minutes per claim instead of 30. For software plus a Kronos specialist on call, see Sydra + Kronos Support at sydrahealth.com.",
+      "If your team wants to operate NSA IDR software themselves, Sydra offers the same specialty depth as a self serve platform, prep in under 5 minutes per claim instead of 30. For software plus a Kronos specialist on call, see Sydra + Kronos Support at sydrahealth.com.",
   },
 ];
 
 export const FAQ_CATEGORIES: FaqCategory[] = [
+  { id: "idr-process", title: "IDR process", items: IDR_PROCESS_FAQS },
   { id: "switching", title: "Switching from an attorney", items: SWITCHING_FAQS },
   { id: "pricing", title: "Pricing", items: PRICING_FAQS },
   { id: "contracts", title: "Contracts", items: CONTRACT_FAQS },

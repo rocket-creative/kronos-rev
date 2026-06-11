@@ -7,7 +7,8 @@ import { createPageMetadata } from "@/lib/metadata";
 import { breadcrumbItems } from "@/lib/navigation";
 import { PAGE_SEO } from "@/lib/page-seo";
 import { marketingServiceSchema } from "@/lib/service-schema";
-import { getStateBySlug, STATES } from "@/lib/states";
+import { getStateBySlug, STATES, type StateSlug } from "@/lib/states";
+import { stateRelatedLinks } from "@/lib/internal-links";
 import { CTA } from "@/lib/ctas";
 
 type Props = { params: Promise<{ state: string }> };
@@ -51,11 +52,11 @@ export default async function StateLandingPage({ params }: Props) {
       breadcrumbs={crumbs}
       currentPath={path}
       service={service}
+      relatedLinks={stateRelatedLinks(slug as StateSlug)}
       eyebrow={`NSA · ${state.name}`}
       h1={state.h1}
       intro={state.paragraphs[0]}
       bottomCtaHeading={state.ctaLabel}
-      showRelated={false}
     >
       <MarketingSection variant="white" labelledById="state-detail">
         <div className="max-w-3xl space-y-4 font-body text-gray-600 font-light leading-relaxed">

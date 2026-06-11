@@ -14,9 +14,10 @@ import { HomeDiagnostic } from "@/components/HomeDiagnostic";
 import { useHeroAnimation } from "@/components/animations";
 import { MedicallyReviewedBlock } from "@/components/MedicallyReviewedBlock";
 import { CTA } from "@/lib/ctas";
-import { PHONE_DISPLAY, PHONE_TEL, SYDRA_URL } from "@/lib/site";
+import { PHONE_DISPLAY, PHONE_TEL, SYDRA_UTM_URL } from "@/lib/site";
 import { HERO_H1, HERO_SUBHEAD, HERO_CTA_SUBLABEL } from "@/lib/hero-copy";
-import { HOME_STAT_BAR } from "@/lib/home-stats";
+import { HOME_STAT_BAR, MEDIAN_AWARD_MULTIPLE_PROSE } from "@/lib/home-stats";
+import { PER_SUBMISSION_COPY } from "@/lib/time-savings";
 
 export default function HomePageContent() {
   const heroRef = useHeroAnimation();
@@ -34,8 +35,9 @@ export default function HomePageContent() {
             alt=""
             fill
             priority
+            quality={90}
             sizes="100vw"
-            className="object-cover object-[65%_center] lg:object-right"
+            className="object-cover object-[38%_28%] lg:object-[42%_26%]"
           />
         </div>
         <div
@@ -107,15 +109,24 @@ export default function HomePageContent() {
       <section className="py-6 bg-white border-b border-gray-100" aria-label="Early resources">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <p className="font-body text-sm text-gray-600 font-light">
-            New to federal IDR? Start with the filing checklist before you initiate a dispute.
+            New to federal IDR? Start with what IDR is, or download the filing checklist before you initiate a dispute.
           </p>
-          <Link
-            href={CTA.idrChecklist.href}
-            className="inline-flex items-center gap-2 text-kronos-green-dark uppercase tracking-widest text-xs font-bold hover:gap-3 transition-all shrink-0"
-          >
-            {CTA.idrChecklist.label}
-            <ArrowRight className="w-3 h-3" aria-hidden="true" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <Link
+              href="/what-is-idr"
+              className="inline-flex items-center gap-2 text-kronos-green-dark uppercase tracking-widest text-xs font-bold hover:gap-3 transition-all"
+            >
+              What is federal IDR?
+              <ArrowRight className="w-3 h-3" aria-hidden="true" />
+            </Link>
+            <Link
+              href={CTA.idrChecklist.href}
+              className="inline-flex items-center gap-2 text-kronos-green-dark uppercase tracking-widest text-xs font-bold hover:gap-3 transition-all"
+            >
+              {CTA.idrChecklist.label}
+              <ArrowRight className="w-3 h-3" aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -132,8 +143,8 @@ export default function HomePageContent() {
               </p>
               <p>
                 The first: most out of network claims that should go to federal IDR never get filed.
-                Each submission takes 30 minutes. Billing teams do not have that time at scale. So
-                the insurer underpayment becomes the accepted rate. The money disappears quietly.
+                {PER_SUBMISSION_COPY} Billing teams do not have that time at scale. So the insurer
+                underpayment becomes the accepted rate. The money disappears quietly.
               </p>
               <p>
                 The second: practices that do file are paying attorneys 20% of every recovery. In
@@ -142,14 +153,12 @@ export default function HomePageContent() {
               </p>
               <p>
                 The federal data is not ambiguous. Providers win 88% of properly filed IDR disputes.
-                Median awards come in at approximately 4.5 times the insurer qualifying payment
-                amount. Georgetown CHIR, March 2026. The money is there. The system works when it is
-                used correctly.
+                Median awards come in at {MEDIAN_AWARD_MULTIPLE_PROSE}. The money is there. The
+                system works when it is used correctly.
               </p>
               <p className="font-medium text-gray-800">Kronos Revenue uses it correctly.</p>
             </div>
             <p className="mt-6 font-body text-sm text-gray-800">
-              —{" "}
               <Link
                 href="/team#person-john-abrahams"
                 className="text-kronos-green-dark underline hover:opacity-80"
@@ -171,6 +180,15 @@ export default function HomePageContent() {
         </div>
       </section>
 
+      <section
+        className="py-12 sm:py-16 lg:py-20 bg-white border-t border-gray-100"
+        aria-labelledby="diagnostic-heading"
+      >
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
+          <HomeDiagnostic />
+        </div>
+      </section>
+
       <section className="py-12 sm:py-16 lg:py-24 bg-kronos-gray-200" aria-labelledby="math-heading">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 mb-10">
           <h2 id="math-heading" className="font-heading text-2xl sm:text-3xl text-gray-900 mb-4">
@@ -185,7 +203,7 @@ export default function HomePageContent() {
             numbers below.
           </p>
         </div>
-        <RevenueCalculator />
+        <RevenueCalculator showHeader={false} />
       </section>
 
       <section className="py-12 sm:py-16 bg-white border-y border-gray-100" aria-labelledby="stats-heading">
@@ -241,15 +259,6 @@ export default function HomePageContent() {
         </div>
       </section>
 
-      <section
-        className="py-12 sm:py-16 lg:py-20 bg-white border-t border-gray-100"
-        aria-labelledby="diagnostic-heading"
-      >
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
-          <HomeDiagnostic />
-        </div>
-      </section>
-
       <section className="py-12 sm:py-16 bg-kronos-gray-200" aria-labelledby="sydra-bridge-heading">
         <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
           <p className="font-body text-xs uppercase tracking-widest text-gray-600 mb-3">
@@ -265,7 +274,7 @@ export default function HomePageContent() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={SYDRA_URL}
+              href={SYDRA_UTM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 border border-gray-300 py-3 px-6 uppercase tracking-widest text-xs font-bold text-gray-900 hover:border-kronos-cyan transition-colors"
@@ -369,7 +378,7 @@ export default function HomePageContent() {
             </blockquote>
             <blockquote className="border-l-4 border-kronos-cyan pl-6">
               <p className="mb-2">
-                The median provider win at IDR represents approximately 4.5 times the in network rate.
+                The median provider win at IDR represents {MEDIAN_AWARD_MULTIPLE_PROSE}.
               </p>
               <footer className="text-xs text-gray-600">
                 Georgetown University CHIR · Health Affairs · March 2026

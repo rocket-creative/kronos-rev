@@ -39,7 +39,7 @@ export const CTA = {
   },
   seeSydra: {
     label: "See Sydra",
-    href: "https://www.sydrahealth.com/",
+    href: "https://www.sydrahealth.com/?utm_source=kronosrev&utm_medium=site&utm_campaign=group3",
     ariaLabel: "See Sydra NSA IDR software on sydrahealth.com",
     external: true,
   },

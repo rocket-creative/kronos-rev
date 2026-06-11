@@ -15,11 +15,13 @@ import {
   OFFICE_ADDRESS,
   PHONE_DISPLAY,
   PHONE_TEL,
-  SYDRA_URL,
+  PUBLIC_EMAIL,
+  SYDRA_UTM_URL,
 } from "@/lib/site";
 
 const FOOTER_SYDRA_COPY =
   "Run NSA IDR in house with Sydra, Kronos Health's AI platform. Same specialty depth, your team operates it.";
+// TODO: Add "Sydra runs on Claude via Amazon Bedrock" once Sydra site ships naming.
 
 export default function Footer() {
   return (
@@ -32,7 +34,7 @@ export default function Footer() {
             {FOOTER_SYDRA_COPY}
           </p>
           <a
-            href={SYDRA_URL}
+            href={SYDRA_UTM_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 uppercase tracking-widest text-xs font-bold text-white hover:gap-3 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white shrink-0"
@@ -56,7 +58,7 @@ export default function Footer() {
             </Link>
             <p className="font-body text-xs sm:text-sm text-white/75 font-light leading-relaxed max-w-sm">
               No Surprises Act IDR for orthopedic, neurosurgery, spine, and plastic surgery
-              practices. Quoted to your volume — not a 20% contingency cut. More won disputes,
+              practices. Quoted to your volume, not a 20% contingency cut. More won disputes,
               vastly more kept.
             </p>
             <p className="font-body text-[10px] sm:text-xs text-white/70 font-light leading-relaxed max-w-sm mt-4">
@@ -160,6 +162,14 @@ export default function Footer() {
                 </a>
               </p>
               <p className="pt-2">
+                <a
+                  href={`mailto:${PUBLIC_EMAIL}`}
+                  className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"
+                >
+                  {PUBLIC_EMAIL}
+                </a>
+              </p>
+              <p className="pt-2">
                 <Link
                   href="/case-review#form"
                   className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
@@ -194,7 +204,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href={SYDRA_URL}
+                  href={SYDRA_UTM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/75 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] inline-flex items-center"

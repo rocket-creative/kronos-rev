@@ -57,7 +57,9 @@ export default function LawyerProblemPage() {
           A practice that recovers $400,000 per year through a 20% contingency attorney pays $80,000 in
           annual fees. Over five years, that is $400,000 paid to a firm that may not specialize in surgical
           CPT coding and may be batching codes in ways that reduce the number of disputes your practice wins.
-          The contingency fee is the visible cost. The lost disputes from batched filings are the invisible one.
+          The contingency fee is only half the story. Batched filings lose awards your practice earned.
+          Kronos quotes a consultative fee to your volume and files one claim per CPT, so you keep more of
+          every award and win more awards to keep.
         </>
       }
       bottomCtaHeading="Request your free IDR review"
@@ -83,6 +85,34 @@ export default function LawyerProblemPage() {
             </div>
           ))}
         </div>
+      </MarketingSection>
+
+      <MarketingSection variant="white" labelledById="lawyer-unfiled-heading">
+        <ReviewHeading
+          review
+          id="lawyer-unfiled-heading"
+          className="font-heading text-2xl sm:text-3xl text-gray-900 mb-6"
+        >
+          The claims your attorney never files.
+        </ReviewHeading>
+        <p className="font-body text-gray-600 font-light leading-relaxed max-w-3xl mb-4">
+          Contingency economics only justify big claims. An attorney&apos;s hour cannot be spent on a
+          $1,500 underpayment, so your small claims never get filed at all. Across a year of surgical
+          volume, the unfiled small claims usually exceed the contingency fee itself. The practice pays
+          20 percent and still leaves money on the table.
+        </p>
+        <p className="font-body text-gray-600 font-light leading-relaxed max-w-3xl mb-4">
+          Kronos files every eligible claim regardless of size, one claim per CPT, because our model
+          has no minimum billable hour.
+        </p>
+        <p className="font-body text-sm">
+          <Link
+            href="/resources/articles/claims-your-attorney-never-files"
+            className="text-kronos-green-dark underline hover:opacity-80"
+          >
+            Read why small claims add up to more than the contingency fee
+          </Link>
+        </p>
       </MarketingSection>
 
       <MarketingSection variant="neutral" labelledById="lawyer-different-heading">
@@ -127,6 +157,11 @@ export default function LawyerProblemPage() {
           Send us 3 to 5 recent EOBs. We calculate: what you recovered under your current arrangement,
           what you would have recovered through Kronos, what our fee would be, the net difference. If our
           number is worse than staying with your attorney, we tell you.
+        </p>
+        <p className="font-body text-gray-600 font-light leading-relaxed max-w-3xl mb-8">
+          Bring your last 12 months of recoveries to the free review. We show what the same year would
+          have cost under Kronos, including the small claims that were never filed. If your firm comes
+          out ahead, we tell you that.
         </p>
         <Link
           href={CTA.caseReview.href}

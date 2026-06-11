@@ -25,38 +25,38 @@ const service = marketingServiceSchema(
 
 const federalPhases = [
   {
-    title: "Phase 1 — Initial payment or denial",
+    title: "Phase 1, Initial payment or denial",
     body: "The insurer must issue an initial payment or denial within 30 calendar days of a claim for an out of network service covered under the NSA. This initial payment is almost always based on the insurer qualifying payment amount (QPA), which CMS data shows running more than 30% below historical in network rates for surgical services.",
   },
   {
-    title: "Phase 2 — Open negotiation",
+    title: "Phase 2, Open negotiation",
     body: "Either party sends a written Open Negotiation Notice. The 30 business day negotiation period begins. Most do not reach agreement. The notice must be sent within 30 business days of the initial payment or denial. Missing that window closes the IDR pathway for that claim.",
   },
   {
-    title: "Phase 3 — IDR initiation",
+    title: "Phase 3, IDR initiation",
     body: "If negotiation fails, either party has 4 business days after the negotiation period closes to send a Notice of IDR Initiation and file with a certified IDR entity (IDRE). The IDRE is selected by agreement within 3 business days, or assigned by CMS.",
   },
   {
-    title: "Phase 4 — Payment determination",
-    body: "The IDRE reviews both parties payment offers and supporting documentation. Final offer arbitration: the IDRE picks one offer. No splits. The losing party pays the IDRE administrative fee (currently $50 per dispute — confirm before filing). The IDRE has 30 business days to issue a determination.",
+    title: "Phase 4, Payment determination",
+    body: "The IDRE reviews both parties payment offers and supporting documentation. Final offer arbitration: the IDRE picks one offer. No splits. The losing party pays the IDRE administrative fee (currently $50 per dispute, confirm before filing). The IDRE issues a binding determination. Payment is due within 30 calendar days.",
   },
 ];
 
 const kronosPhases = [
   {
-    title: "Phase 1 — EOB intake and eligibility review",
+    title: "Phase 1, EOB intake and eligibility review",
     body: "You forward the EOB. We review within one business day. We confirm: NSA eligibility, plan type coverage, active cooling off period, open negotiation window status. 44% of 2024 IDR disputes were challenged as ineligible by payers (CMS data, Zelis analysis, March 2026). We catch eligibility errors before submitting, not after.",
   },
   {
-    title: "Phase 2 — Open negotiation",
+    title: "Phase 2, Open negotiation",
     body: "We send the Open Negotiation Notice on your behalf, document delivery with timestamps, and manage all insurer communications during the negotiation window.",
   },
   {
-    title: "Phase 3 — IDR submission",
+    title: "Phase 3, IDR submission",
     body: "CPT coded payment offer: one claim per CPT code. Never batched. Clinical necessity narrative built from your operative note. Market rate comparisons from Sydra library of 213+ ingested determinations. Provider credentials: CV, training, procedure volume, board certifications.",
   },
   {
-    title: "Phase 4 — Determination and follow up",
+    title: "Phase 4, Determination and follow up",
     body: "We submit to the IDRE portal, track the determination timeline, receive the outcome. Favorable: follow up on payment. Adverse: review reasoning, advise on re filing eligibility. Quarterly recovery review covering all active and closed cases.",
   },
 ];

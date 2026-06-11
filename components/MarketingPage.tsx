@@ -18,7 +18,7 @@ import { CTA } from "@/lib/ctas";
 import type { FaqItem } from "@/lib/faqs";
 import { SYDRA_CROSS_LINK_COPY } from "@/lib/nsa-tiers";
 import { PAGE_CONTAINER } from "@/lib/layout";
-import { mainNavLinks } from "@/lib/navigation";
+import { mainNavLinks, type NavLink } from "@/lib/navigation";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/site";
 
 export type MarketingPageProps = {
@@ -38,6 +38,7 @@ export type MarketingPageProps = {
   showReferences?: boolean;
   showMedicallyReviewed?: boolean;
   showRelated?: boolean;
+  relatedLinks?: NavLink[];
 };
 
 export function MarketingPage({
@@ -57,6 +58,7 @@ export function MarketingPage({
   showReferences = true,
   showMedicallyReviewed = true,
   showRelated = true,
+  relatedLinks,
 }: MarketingPageProps) {
   const primary = primaryCta === "consultation" ? CTA.consultation : CTA.caseReview;
   const secondary = primaryCta === "consultation" ? CTA.caseReview : CTA.consultation;
@@ -147,7 +149,7 @@ export function MarketingPage({
 
       {showRelated && (
         <RelatedServices
-          links={mainNavLinks}
+          links={relatedLinks ?? mainNavLinks}
           currentPath={currentPath}
           variant="light"
         />

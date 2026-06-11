@@ -8,9 +8,9 @@ export const PAGE_SEO = {
       "No Surprises Act IDR handled end to end for orthopedic, neurosurgery, spine, and plastic surgery. One claim per CPT. Quoted to your volume, not 20% of every award. Free review.",
   },
   lawyerProblem: {
-    title: "NSA IDR vs Attorneys — Stop Paying 20% of Every Recovery | Kronos Revenue",
+    title: "IDR Attorney Alternative: Keep More Per Award Without the 20% Fee | Kronos Revenue",
     description:
-      "Contingency attorneys take 20% of every NSA IDR award and batch CPT codes that should be filed individually. Kronos Revenue quotes to your volume. Keep more per dollar won.",
+      "Attorneys take 20% of every NSA IDR recovery and skip your small claims. Kronos files every eligible claim, one per CPT, quoted to your volume. Free comparison against your current arrangement.",
   },
   howWeWork: {
     title: "How NSA IDR Works — And How Kronos Revenue Handles It for You | Kronos Revenue",
@@ -49,9 +49,19 @@ export const PAGE_SEO = {
       "Send us 3 to 5 EOBs. We review eligibility, calculate your IDR recovery potential, and compare it against your current arrangement. One business day. No commitment.",
   },
   idrChecklist: {
-    title: "Free NSA IDR Filing Checklist | Kronos Revenue",
+    title: "NSA IDR Checklist | Free IDR Filing Checklist | Kronos Revenue",
     description:
-      "Download the NSA IDR filing checklist. Every document, deadline, and CPT rule you need before submitting to the IDRE portal.",
+      "Download the free NSA IDR checklist and IDR filing checklist. Every document, deadline, and CPT rule you need before submitting to the federal IDRE portal.",
+  },
+  whatIsIdr: {
+    title: "What Is Federal IDR? The No Surprises Act Explained for Surgeons | Kronos Revenue",
+    description:
+      "Federal IDR lets out of network providers dispute underpayments and win 88% of the time. Plain English guide for surgical practices, deadlines, eligibility, and what claims are worth.",
+  },
+  sydra: {
+    title: "In House IDR vs Outsourcing | Sydra Software + Kronos Full Service | Kronos Revenue",
+    description:
+      "Compare running NSA IDR in house with Sydra software versus Kronos Full Service. Same specialty depth, one claim per CPT. Hybrid model with escalation when cases are too big to risk.",
   },
   specialty: {
     orthopedic: {

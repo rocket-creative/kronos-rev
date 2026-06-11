@@ -34,6 +34,10 @@ export function OrganizationSchema() {
             "@id": ORG_ID,
             name: "Kronos Revenue",
             alternateName: "Kronos Health",
+            parentOrganization: {
+              "@type": "Organization",
+              name: "Kronos Health",
+            },
             url: SITE_URL,
             logo: LOGO_URL,
             description:
@@ -286,3 +290,76 @@ export const TEAM_MEMBERS: PersonSchemaMember[] = [
     hospitalAffiliations: ["Brain and Spine Surgeons of New York"],
   },
 ];
+
+export function ArticleSchema({
+  title,
+  description,
+  url,
+  datePublished = "2026-06-01",
+  authorName = "Kronos Revenue",
+  authorUrl,
+}: {
+  title: string;
+  description: string;
+  url: string;
+  datePublished?: string;
+  authorName?: string;
+  authorUrl?: string;
+}) {
+  const author = authorUrl
+    ? {
+        "@type": "Person",
+        name: authorName,
+        url: authorUrl,
+      }
+    : {
+        "@type": "Organization",
+        name: authorName,
+        url: SITE_URL,
+      };
+
+  return (
+    <JsonLdScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: title,
+        description,
+        url,
+        datePublished,
+        author,
+        publisher: { "@id": ORG_ID },
+        mainEntityOfPage: url,
+      }}
+    />
+  );
+}
+
+export function CollectionPageSchema({
+  name,
+  description,
+  url,
+  items,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  items: { name: string; url: string }[];
+}) {
+  return (
+    <JsonLdScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name,
+        description,
+        url,
+        hasPart: items.map((item) => ({
+          "@type": "Article",
+          name: item.name,
+          url: item.url,
+        })),
+      }}
+    />
+  );
+}

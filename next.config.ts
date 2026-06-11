@@ -51,6 +51,11 @@ const nextConfig: NextConfig = {
       { source: "/for-hospitals-and-ascs", destination: "/how-we-work", permanent: true },
       { source: "/synaptix-billing", destination: "/case-review", permanent: true },
       { source: "/contact", destination: "/case-review", permanent: true },
+      {
+        source: "/resources/articles/unfiled-small-claims",
+        destination: "/resources/articles/claims-your-attorney-never-files",
+        permanent: true,
+      },
     ];
   },
   async headers() {

@@ -17,33 +17,33 @@ const ROWS = [
   },
   {
     label: "Specialty depth",
-    attorney: "Generalist — IDR is a side practice",
+    attorney: "Generalist, IDR is a side practice",
     kronos: "Specialty trained: ortho / neuro / spine / plastics",
   },
   {
     label: "Filing approach",
     attorney: "Often batches CPT codes",
-    kronos: "One claim per CPT — the way IDR was designed",
+    kronos: "One claim per CPT, the way IDR was designed",
   },
   {
     label: "Who's on the file",
-    attorney: "Junior associates",
-    kronos: "RCM specialists trained by Dr. Abrahams (surgeon founder)",
+    attorney: "Generalist staff",
+    kronos: "RCM specialists trained by Dr. Abrahams",
   },
   {
     label: "Communication",
-    attorney: "Quarterly, if you're lucky",
-    kronos: "Live 9–5 M–F, 24 hr email, monthly review",
+    attorney: "Periodic case updates",
+    kronos: "Live 9 to 5 M F, 24 hour email, monthly review",
   },
   {
     label: "What you keep per dollar won",
-    attorney: "About eighty cents — after the 20% contingency",
-    kronos: "About ninety cents or more — quoted to your volume, not skimmed from every award",
+    attorney: "About eighty cents, after the 20% contingency",
+    kronos: "About ninety cents or more, quoted to your volume, not skimmed from every award",
   },
   {
     label: "Total practice savings",
     attorney: "20% fee on fewer won IDR disputes",
-    kronos: "Greater share of every award — plus more disputes won at IDR",
+    kronos: "Greater share of every award, plus more disputes won at IDR",
   },
 ] as const;
 

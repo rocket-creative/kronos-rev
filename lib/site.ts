@@ -10,8 +10,13 @@ export const PHONE_TEL = "+19147056830";
 
 /** Single inbox for all form submissions (Heisha Rivera, RCM). */
 export const CONTACT_EMAIL = "rcm@nybrainspine.com";
-export const EMAIL = CONTACT_EMAIL;
+/** Public facing contact email for display, schema, and mailto links. */
+export const PUBLIC_EMAIL = "sales@kronosrevenue.health";
+export const EMAIL = PUBLIC_EMAIL;
 export const FROM_EMAIL = "Kronos Revenue <noreply@kronosrevenue.health>";
+
+export const SYDRA_UTM_URL =
+  "https://www.sydrahealth.com/?utm_source=kronosrev&utm_medium=site&utm_campaign=group3";
 export const FOUNDER_PERSON_ID = `${SITE_URL}/team#person-john-abrahams`;
 
 export const SYDRA_URL = "https://www.sydrahealth.com/";

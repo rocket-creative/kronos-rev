@@ -10,7 +10,7 @@ export const HERO_H1 = (
 
 export const HERO_SUBHEAD = [
   "Providers who file federal IDR correctly win 88% of disputes, yet most surgical practices never file.",
-  "Kronos Revenue handles every NSA IDR claim end to end. One claim per CPT, specialty coded, quoted to your volume.",
+  "Kronos Revenue handles every NSA IDR claim end to end. One claim per CPT, specialty coded, quoted to your volume, and every unfiled claim expires 30 business days after the insurer pays.",
 ] as const;
 
 export const HERO_CTA_SUBLABEL =

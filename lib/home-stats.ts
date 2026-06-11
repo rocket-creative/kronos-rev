@@ -5,6 +5,10 @@ export type HomeStat = {
   href: string;
 };
 
+export const MEDIAN_AWARD_MULTIPLE = "~4.5x";
+export const MEDIAN_AWARD_MULTIPLE_PROSE =
+  "approximately 4.5 times the in network rate, median, Georgetown CHIR";
+
 export const HOME_STAT_BAR: HomeStat[] = [
   {
     value: "88%",
@@ -19,7 +23,7 @@ export const HOME_STAT_BAR: HomeStat[] = [
     href: "https://www.cms.gov/nosurprises/policies-and-resources/reports",
   },
   {
-    value: "~4.5x",
+    value: MEDIAN_AWARD_MULTIPLE,
     label: "Median provider award vs. in network rate",
     source: "Georgetown CHIR · Health Affairs · March 2026",
     href: "https://www.healthaffairs.org/",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ClaimReviewForm } from "@/components/ClaimReviewForm";
 import { FAQSection } from "@/components/FAQSection";
 import {
@@ -55,6 +56,13 @@ export default function CaseReviewPage() {
           <p className="font-body text-sm sm:text-base text-white/90 font-light leading-relaxed max-w-2xl">
             Send us 3 to 5 recent EOBs. We review eligibility, calculate your IDR recovery potential,
             and compare it against your current arrangement. One business day. No commitment.
+          </p>
+          <p className="font-body text-sm text-white/80 font-light leading-relaxed max-w-2xl mt-4">
+            Findings reviewed by{" "}
+            <Link href="/team#person-heisha-rivera" className="text-white underline hover:text-kronos-cyan">
+              Heisha Rivera
+            </Link>
+            , Director of Revenue Cycle Operations, 20 years in surgical specialty billing.
           </p>
         </div>
       </section>

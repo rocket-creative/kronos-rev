@@ -2,8 +2,9 @@ import { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { SPECIALTIES } from "@/lib/specialties";
 import { STATES } from "@/lib/states";
+import { ARTICLES } from "@/lib/articles";
 
-const LAST_CONTENT_UPDATE = new Date("2026-05-27");
+const LAST_CONTENT_UPDATE = new Date("2026-06-15");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
@@ -16,6 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/team`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/faq`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/case-review`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.95 },
+    { url: `${SITE_URL}/what-is-idr`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.95 },
+    { url: `${SITE_URL}/sydra`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${SITE_URL}/resources/articles`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.75 },
     { url: `${SITE_URL}/resources/idr-checklist`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.7 },
   ];
 
@@ -33,5 +37,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: s.slug === "texas" || s.slug === "new-york" ? 0.8 : 0.75,
   }));
 
-  return [...staticPages, ...specialtyPages, ...statePages];
+  const articlePages: MetadataRoute.Sitemap = ARTICLES.map((a) => ({
+    url: `${SITE_URL}/resources/articles/${a.slug}`,
+    lastModified: LAST_CONTENT_UPDATE,
+    changeFrequency: "monthly",
+    priority: 0.65,
+  }));
+
+  return [...staticPages, ...specialtyPages, ...statePages, ...articlePages];
 }

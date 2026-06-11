@@ -27,7 +27,7 @@ export const IDR_CHECKLIST_SECTIONS = [
   {
     title: "3. CPT filing rules",
     items: [
-      "File one claim per CPT code — do not batch multiple CPT codes unless batching conditions met",
+      "File one claim per CPT code, do not batch multiple CPT codes unless batching conditions met",
       "Batching permitted only when: same provider, same payer, same Category I CPT range",
       "Anesthesia services under the same CPT code may be bundled per current rules",
       "All add on CPT codes are filed as part of the primary procedure claim they modify",
@@ -40,7 +40,7 @@ export const IDR_CHECKLIST_SECTIONS = [
       "Federal IDRE portal submission completed at cms.gov/nosurprises",
       "Total amount sought entered for each CPT code",
       "Supporting documentation uploaded: operative note, CV, market comparison, prior determinations",
-      "IDRE administrative fee paid ($50 per dispute — confirm current rate before filing)",
+      "IDRE administrative fee paid ($50 per dispute, confirm current rate before filing)",
     ],
   },
   {

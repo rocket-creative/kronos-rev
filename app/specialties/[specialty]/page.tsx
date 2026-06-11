@@ -9,7 +9,8 @@ import { breadcrumbItems } from "@/lib/navigation";
 import { SPECIALTY_FAQS } from "@/lib/faqs";
 import { PAGE_SEO } from "@/lib/page-seo";
 import { marketingServiceSchema } from "@/lib/service-schema";
-import { getSpecialtyBySlug, SPECIALTIES } from "@/lib/specialties";
+import { getSpecialtyBySlug, SPECIALTIES, type SpecialtySlug } from "@/lib/specialties";
+import { specialtyRelatedLinks } from "@/lib/internal-links";
 import { CTA } from "@/lib/ctas";
 
 type Props = { params: Promise<{ specialty: string }> };
@@ -53,6 +54,7 @@ export default async function SpecialtyLandingPage({ params }: Props) {
       breadcrumbs={crumbs}
       currentPath={path}
       service={service}
+      relatedLinks={specialtyRelatedLinks(slug as SpecialtySlug)}
       faqs={SPECIALTY_FAQS}
       faqHeading={`${specialty.name} NSA IDR questions`}
       faqHeadingId="specialty-landing-faq"

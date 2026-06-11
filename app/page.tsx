@@ -22,7 +22,7 @@ const homeService = marketingServiceSchema(
   "/",
   "Revenue Cycle Management and IDR Dispute Resolution",
   "Specialty trained revenue cycle management and federal IDR for orthopedic, neurosurgery, spine, and plastic surgery practices. Full case management, NSA submissions, and post award follow up, end to end.",
-  "Healthcare Revenue Services"
+  "Revenue Cycle Management"
 );
 
 export default function HomePage() {

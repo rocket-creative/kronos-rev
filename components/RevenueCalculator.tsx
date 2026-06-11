@@ -3,6 +3,12 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { ArrowRight, TrendingUp, Clock, DollarSign, FileText } from "lucide-react";
+import {
+  CALCULATOR_FINE_PRINT,
+  LIFECYCLE_HOURLY_RATE,
+  LIFECYCLE_MANUAL_HOURS,
+  LIFECYCLE_SYDRA_HOURS,
+} from "@/lib/time-savings";
 
 const AMOUNT_BANDS = [
   { label: "Under $10K", midpoint: 7500 },
@@ -13,9 +19,9 @@ const AMOUNT_BANDS = [
 ] as const;
 
 const WIN_RATE = 0.88;
-const MANUAL_HOURS = 3;
-const SYDRA_HOURS = 0.25;
-const HOURLY_RATE = 65;
+const MANUAL_HOURS = LIFECYCLE_MANUAL_HOURS;
+const SYDRA_HOURS = LIFECYCLE_SYDRA_HOURS;
+const HOURLY_RATE = LIFECYCLE_HOURLY_RATE;
 
 function formatDollars(n: number): string {
   if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
@@ -30,9 +36,15 @@ function formatHours(n: number): string {
 
 interface RevenueCalculatorProps {
   compact?: boolean;
+  heading?: string;
+  showHeader?: boolean;
 }
 
-export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
+export function RevenueCalculator({
+  compact = false,
+  heading = "Run your practice's numbers",
+  showHeader = true,
+}: RevenueCalculatorProps) {
   const [monthlyCases, setMonthlyCases] = useState(10);
   const [bandIndex, setBandIndex] = useState(2); // default $25K–$50K
 
@@ -124,18 +136,20 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
   // Full mode
   return (
     <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
-      <header className="mb-10 sm:mb-14">
-        <p className="text-xs tracking-widest uppercase text-gray-700 mb-4">
-          Recovery Calculator
-        </p>
-        <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-gray-900">
-          What 20% of every award actually costs over time.
-        </h2>
-        <p className="font-body text-sm text-gray-700 font-light mt-4 max-w-2xl">
-          Uses CMS published win rates (88%) and Georgetown CHIR median award benchmarks. Not a
-          Kronos performance claim.
-        </p>
-      </header>
+      {showHeader && (
+        <header className="mb-10 sm:mb-14">
+          <p className="text-xs tracking-widest uppercase text-gray-700 mb-4">
+            Recovery Calculator
+          </p>
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-gray-900">
+            {heading}
+          </h2>
+          <p className="font-body text-sm text-gray-700 font-light mt-4 max-w-2xl">
+            Uses CMS published win rates (88%) and Georgetown CHIR median award benchmarks. Not a
+            Kronos performance claim.
+          </p>
+        </header>
+      )}
 
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
         {/* Left: Inputs */}
@@ -199,7 +213,7 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
 
           {/* Assumptions note */}
           <p className="font-body text-[10px] text-kronos-gray-700 font-light leading-relaxed border-t border-kronos-gray-300 pt-4">
-            Assumes 88% win rate (CMS Q1/Q2 2025 Public Use File), 3 hrs manual submission vs 15 min with Sydra, $65/hr billing specialist rate. Recovery estimate based on disputed amount midpoints. Not a guarantee of results.
+            {CALCULATOR_FINE_PRINT}
           </p>
         </div>
 
@@ -272,7 +286,7 @@ export function RevenueCalculator({ compact = false }: RevenueCalculatorProps) {
                 Ready to start recovering?
               </p>
               <p className="font-body text-xs text-white/85 font-light">
-                Get a free NSA IDR review — no commitment.
+                Get a free NSA IDR review, no commitment.
               </p>
             </div>
             <Link

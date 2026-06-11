@@ -4,14 +4,13 @@ import { BreadcrumbListSchema, WebPageSchema } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { createPageMetadata, absoluteUrl } from "@/lib/metadata";
 import { breadcrumbItems } from "@/lib/navigation";
+import { PAGE_SEO } from "@/lib/page-seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Sydra | NSA IDR Software by Kronos Health",
-  description:
-    "Sydra is Kronos Health's AI software for No Surprises Act IDR. Self-Serve or Sydra + Kronos Support on sydrahealth.com. Kronos Full-Service is handled on Kronos Revenue.",
+  title: PAGE_SEO.sydra.title,
+  description: PAGE_SEO.sydra.description,
   path: "/sydra",
-  ogImageAlt: "Sydra NSA IDR software by Kronos Health",
-  robots: { index: false, follow: true },
+  ogImageAlt: "In house IDR vs outsourcing with Sydra and Kronos Revenue",
 });
 
 export default function SydraPage() {
@@ -22,8 +21,8 @@ export default function SydraPage() {
     <>
       <BreadcrumbListSchema items={crumbs} />
       <WebPageSchema
-        name="Sydra NSA IDR Software"
-        description="Bridge to Sydra, Kronos Health's AI software for No Surprises Act IDR disputes."
+        name="In House IDR vs Outsourcing"
+        description={PAGE_SEO.sydra.description}
         url={pageUrl}
       />
       <div className="bg-kronos-bg min-h-dvh">
