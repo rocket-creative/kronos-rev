@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import type { NavLink } from "@/lib/navigation";
-import { CTA } from "@/lib/ctas";
 
 type ArticleBodyProps = {
   markdown: string;
@@ -78,23 +76,6 @@ export function ArticleBody({ markdown }: ArticleBodyProps) {
   );
 }
 
-export function ArticleMidCta() {
-  return (
-    <div className="my-10 py-8 px-6 bg-kronos-gray-200 border-l-4 border-kronos-cyan">
-      <p className="font-body text-sm text-gray-700 font-light mb-4">
-        Want to see what your claims are worth under current federal win rates and deadlines?
-      </p>
-      <Link
-        href={CTA.caseReview.href}
-        className="inline-flex items-center gap-2 bg-kronos-green-dark text-white py-3 px-6 uppercase tracking-widest text-xs font-bold hover:gap-3 transition-all"
-      >
-        {CTA.caseReview.label}
-        <ArrowRight className="w-3 h-3" aria-hidden="true" />
-      </Link>
-    </div>
-  );
-}
-
 export function ArticleRelatedLinks({ links }: { links: NavLink[] }) {
   if (links.length === 0) return null;
 
@@ -114,19 +95,5 @@ export function ArticleRelatedLinks({ links }: { links: NavLink[] }) {
         ))}
       </ul>
     </nav>
-  );
-}
-
-export function ArticleCloseCta() {
-  return (
-    <div className="mt-10">
-      <Link
-        href={CTA.caseReview.href}
-        className="inline-flex items-center gap-3 bg-kronos-cyan text-white py-3 px-8 uppercase tracking-widest text-xs font-bold hover:opacity-90 hover:gap-5 transition-all"
-      >
-        Get a free IDR review
-        <ArrowRight className="w-3 h-3" aria-hidden="true" />
-      </Link>
-    </div>
   );
 }

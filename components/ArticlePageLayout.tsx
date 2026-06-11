@@ -8,14 +8,14 @@ import {
 } from "@/lib/article-loader";
 import {
   ArticleBody,
-  ArticleCloseCta,
-  ArticleMidCta,
   ArticleRelatedLinks,
 } from "@/components/ArticleBody";
+import { ArticleCloseCta, ArticleHeroCta, ArticleMidCta } from "@/components/ArticleCta";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MedicallyReviewedBlock } from "@/components/MedicallyReviewedBlock";
 import { BreadcrumbListSchema, ArticleSchema } from "@/components/JsonLd";
 import { breadcrumbItems } from "@/lib/navigation";
+import { getArticleCtas } from "@/lib/article-ctas";
 import { PAGE_CONTAINER } from "@/lib/layout";
 import { absoluteUrl } from "@/lib/metadata";
 import { FOUNDER_PERSON_ID, SITE_URL } from "@/lib/site";
@@ -37,6 +37,7 @@ export function ArticlePageLayout({ article }: ArticlePageProps) {
   const { content } = splitArticleBody(rawBody);
   const { beforeMid, afterMid } = splitForMidCta(content);
   const authorProfile = getAuthorProfile(article.author);
+  const ctas = getArticleCtas(article.slug);
 
   const authorSchema =
     article.author === "Dr. John M. Abrahams, MD"
@@ -91,15 +92,15 @@ export function ArticlePageLayout({ article }: ArticlePageProps) {
               day: "numeric",
             })}
           </p>
+          <ArticleHeroCta block={ctas.hero} />
         </div>
       </section>
 
       <article className="bg-white py-12 sm:py-16">
         <div className={`${PAGE_CONTAINER} max-w-3xl`}>
           <ArticleBody markdown={beforeMid} />
-          <ArticleMidCta />
+          <ArticleMidCta block={ctas.mid} />
           <ArticleBody markdown={afterMid} />
-          <ArticleCloseCta />
           <ArticleRelatedLinks links={article.relatedLinks} />
           {article.medicallyReviewed && (
             <div className="mt-10">
@@ -108,6 +109,8 @@ export function ArticlePageLayout({ article }: ArticlePageProps) {
           )}
         </div>
       </article>
+
+      <ArticleCloseCta block={ctas.close} />
     </div>
   );
 }
